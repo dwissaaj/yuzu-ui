@@ -7,6 +7,9 @@ export default function Accordions({
   content,
   onClick,
   classNames,
+  titleClass,
+  subtitleClass,
+  ..._props
 }: Props) {
   const [open, setOpen] = useState(context?.isOpen);
   const opening: typeof onClick = () => {
@@ -17,7 +20,7 @@ export default function Accordions({
       <div>
         <button class="flex flex-col " onClick={opening}>
           <span class="text-xl">{title}</span>
-          <span class="text-lg font-light">{subtitle}</span>
+          <span class="text-lg font-light opacity-50">{subtitle}</span>
         </button>
       </div>
       {open &&

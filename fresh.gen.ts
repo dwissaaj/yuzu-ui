@@ -9,6 +9,11 @@ import * as $index from "./routes/index.tsx";
 import * as $Accordionsparent from "./islands/Accordionsparent.tsx";
 import * as $accordions_Accordions from "./islands/accordions/Accordions.tsx";
 import * as $accordions_type from "./islands/accordions/type.ts";
+import * as $button_Buttonbase from "./islands/button/Buttonbase.tsx";
+import * as $button_UseButton from "./islands/button/UseButton.ts";
+import * as $button_type from "./islands/button/type.ts";
+import * as $global_type from "./islands/global/type.ts";
+import * as $wrapper from "./islands/wrapper.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -22,6 +27,11 @@ const manifest = {
     "./islands/Accordionsparent.tsx": $Accordionsparent,
     "./islands/accordions/Accordions.tsx": $accordions_Accordions,
     "./islands/accordions/type.ts": $accordions_type,
+    "./islands/button/Buttonbase.tsx": $button_Buttonbase,
+    "./islands/button/UseButton.ts": $button_UseButton,
+    "./islands/button/type.ts": $button_type,
+    "./islands/global/type.ts": $global_type,
+    "./islands/wrapper.tsx": $wrapper,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;

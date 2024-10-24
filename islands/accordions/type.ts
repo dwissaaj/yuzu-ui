@@ -1,6 +1,7 @@
 import type { JSX } from "preact/jsx-runtime";
+import type { GlobalClassname } from "../global/type.ts";
 
-export interface Props<T extends object = {}> {
+export interface Props {
   children?: JSX.Element | null;
 
   title?: JSX.Element | string;
@@ -14,6 +15,10 @@ export interface Props<T extends object = {}> {
   context?: AccordionsItems | null;
 
   classNames?: JSX.CSSProperties | string;
+
+  titleClass?: GlobalClassname;
+
+  subtitleClass?: GlobalClassname;
 }
 
 export interface AccordionsItems {

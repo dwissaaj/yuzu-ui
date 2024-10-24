@@ -8,7 +8,7 @@ export default {
   theme: {
     extend: {
       animation: {
-        accord: "animation:slide-top .5s ease-in-out reverse both",
+        upAccord: "animation:slide-top .5s ease-in-out reverse both",
       },
       keyframes: {
         upAccord: {

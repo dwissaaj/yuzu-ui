@@ -1,4 +1,6 @@
 import Accordions from "../islands/accordions/Accordions.tsx";
+import Buttonbase from "../islands/button/Buttonbase.tsx";
+import Wrapper from "../islands/wrapper.tsx";
 
 Accordions;
 Accordions;
@@ -11,6 +13,14 @@ export default function Home() {
         subtitle={"this is a new"}
         content={"asdjaskdjlasdjlk"}
       />
+      <Buttonbase
+        onClick={() => console.log("clicks")}
+        className={"bg-red-500"}
+      >
+        <p>User</p>
+      </Buttonbase>
+
+      <Wrapper />
     </div>
   );
 }
