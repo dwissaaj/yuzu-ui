@@ -1,4 +1,4 @@
-import  { ButtonBase } from "./button/Buttonbase.tsx";
+import  ButtonBase  from "./button/Buttonbase.tsx";
 
 export default function Wrapper() {
   const handle = () => {
@@ -6,7 +6,7 @@ export default function Wrapper() {
   };
   return (
     <div>
-      <ButtonBase isDisabled={true} onClick={handle}>
+      <ButtonBase className={'bg-blue-500'} isDisabled={false} onClick={handle}>
         <p>User click</p>
       </ButtonBase>
     </div>

@@ -1,18 +1,23 @@
 import { forwardRef } from "preact/compat";
 import type { ButtonProps } from "./type.ts";
+import { useButton } from "./use-button.ts";
 
-const Buttonbase = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ onClick, children, className, isDisabled = false, ..._props }, ref) => {
-    return (
-      <button
-        disabled={isDisabled}
-        class={`${className} + `}
-        ref={ref}
-        onClick={onClick}
-      >
-        {children}
-      </button>
-    );
-  },
-);
-export default Buttonbase;
+const Button = forwardRef<"button", ButtonProps>((props, ref) => {
+
+  const { 
+    children,
+    isDisabled,
+    domRef,
+    className,
+    onClick,
+
+   } = useButton({ ...props});
+
+  return (
+    <button onClick={onClick} class={`${className}`} disabled={isDisabled} ref={domRef} >
+      {children}
+    </button>
+  );
+});
+
+export default Button;
