@@ -1,25 +1,12 @@
-import Accordions from "../islands/accordions/Accordions.tsx";
-import Buttonbase from "../islands/button/Buttonbase.tsx";
+import { signal } from "https://esm.sh/v135/@preact/signals-core@1.5.1/X-ZS8q/dist/signals-core.js";
 import Wrapper from "../islands/wrapper.tsx";
-
-Accordions;
-Accordions;
+import { todos } from "../islands/theme/use-theme.ts";
 
 export default function Home() {
+  console.log("value is", todos.value.error);
   return (
     <div class="px-4 py-8 mx-auto bg-[#86efac]">
-      <Accordions
-        title={"this isaccordion"}
-        subtitle={"this is a new"}
-        content={"asdjaskdjlasdjlk"}
-      />
-      <Buttonbase
-        onClick={() => console.log("clicks")}
-        className={"bg-red-500"}
-      >
-        <p>User</p>
-      </Buttonbase>
-
+      <button class={"bg-error"}>test</button>
       <Wrapper />
     </div>
   );

@@ -1,17 +1,14 @@
-import type { Props } from "./type.ts";
+import type { AccordionsFragment } from "./type.ts";
 import { useState } from "preact/hooks";
 export default function Accordions({
   title,
   subtitle,
-  context,
-  content,
   onClick,
   classNames,
-  titleClass,
-  subtitleClass,
-  ..._props
-}: Props) {
-  const [open, setOpen] = useState(context?.isOpen);
+  isOpen,
+  isDisable,
+}: AccordionsFragment) {
+  const [open, setOpen] = useState(isOpen);
   const opening: typeof onClick = () => {
     setOpen(!open);
   };
@@ -24,11 +21,7 @@ export default function Accordions({
         </button>
       </div>
       {open &&
-        (
-          <div class="animate-upAccord">
-            {content}
-          </div>
-        )}
+        <AccordionItem />}
     </div>
   );
 }

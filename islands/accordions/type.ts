@@ -1,30 +1,23 @@
 import type { JSX } from "preact/jsx-runtime";
-import type { GlobalClassname } from "../global/type.ts";
 
-export interface Props {
-  children?: JSX.Element | null;
-
+export interface AccordionsFragment {
   title?: JSX.Element | string;
 
   subtitle?: JSX.Element | string;
 
-  content?: JSX.Element | string | null;
-
   onClick?: JSX.MouseEventHandler<HTMLButtonElement> | null;
 
-  context?: AccordionsItems | null;
+  children?: JSX.Element | null;
 
   classNames?: JSX.CSSProperties | string;
 
-  titleClass?: GlobalClassname;
+  isOpen: boolean;
 
-  subtitleClass?: GlobalClassname;
+  isDisable: boolean;
 }
 
-export interface AccordionsItems {
-  isOpen?: boolean;
+export interface AccordionsChildren {
+  as?: JSX.Element;
 
-  isDisabled?: boolean;
-
-  children?: JSX.Element | null;
+  className?: JSX.CSSProperties | string;
 }

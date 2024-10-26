@@ -2,31 +2,26 @@ import type { Ref } from "https://esm.sh/v128/preact@10.22.0/hooks/src/index.js"
 import type { JSX } from "preact/jsx-runtime";
 
 export interface ButtonProps {
-  domRef?: Ref<HTMLButtonElement>;
+  domRef?: Ref<HTMLButtonElement> | null;
 
   onClick?: () => void;
 
   children?: JSX.Element | string;
 
-  className?: JSX.CSSProperties | string;
+  className?: string;
+
+  style?: JSX.CSSProperties | string;
 
   isDisabled: boolean;
 
-  as?: any
+  as?: any;
+
+  size?: "small" | "large";
+
+  variant?: "primary" | "secondary" | "error" | "warning" | "success";
+
+  type?: "button" | "reset" | "submit";
+
+  radius?: "sm" | "md" | "lg";
 }
 
-// export function UseButtonProps(props: ButtonProps) {
-//   const {
-//     onClick,
-//     children,
-//     className,
-//     isDisabled,
-//   } = props;
-
-//   return {
-//     onClick,
-//     children,
-//     className,
-//     isDisabled,
-//   };
-// }
