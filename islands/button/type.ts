@@ -4,7 +4,6 @@ import type { JSX } from "preact/jsx-runtime";
 export interface ButtonProps {
   ref?: Ref<HTMLButtonElement> | null;
   /**
-   * 
    * Dom Ref fur button
    */
   onClick?: () => void;
@@ -17,7 +16,7 @@ export interface ButtonProps {
    */
   className?: string;
   /**
-   * Class tailwind for customize 
+   * Class tailwind for customize
    */
   style?: JSX.CSSProperties | string;
   /**
@@ -33,7 +32,7 @@ export interface ButtonProps {
    * Take any component as a base
    */
 
-  size?: "small" | 'medium' | "large";
+  size?: "small" | "medium" | "large";
   /**
    * Customize can be done in button-variants
    * @default "small"
@@ -63,6 +62,6 @@ export interface ButtonProps {
    */
   isFullWidth?: boolean;
   /**
-   * Button take parent width 
+   * Button take parent width
    */
 }

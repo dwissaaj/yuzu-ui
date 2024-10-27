@@ -11,4 +11,3 @@ export const todos = signal({
   error: "#ff1c2b",
   warning: "#f0990e",
 });
-

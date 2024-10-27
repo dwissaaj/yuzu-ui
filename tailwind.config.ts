@@ -1,4 +1,3 @@
-
 import { type Config } from "tailwindcss";
 import { todos } from "./islands/theme/use-theme.ts";
 
