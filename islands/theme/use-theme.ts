@@ -1,5 +1,9 @@
 import { signal } from "https://esm.sh/v135/@preact/signals-core@1.5.1/X-ZS8q/dist/signals-core.js";
 
+/*
+Temporary global configuration for theme, this theme will auto imported
+by tailwind config
+*/
 export const todos = signal({
   primary: "#12fff3",
   secondary: "secondary",
@@ -7,4 +11,4 @@ export const todos = signal({
   error: "#ff1c2b",
   warning: "#f0990e",
 });
-console.log(todos.value.error);
+

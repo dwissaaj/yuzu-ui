@@ -5,10 +5,11 @@ export default function Wrapper() {
     alert("hei");
   };
   return (
-    <div>
-      <Button isDisabled={false} onClick={handle} variant="error">
-        <p class={'bg-error'}>asdasd</p>
+    <div class={'w-full bg-red-500'}>
+      <Button className="" isFullWidth={true} isDisabled={true} onClick={handle} variant="warning">
+        sadkasfjdlkjlaskljdasjlk
       </Button>
+      <button disabled={false} className={'w-full bg-blue-400 cursor-not-allowed brightness-50 '}>lo</button>
     </div>
   );
 }

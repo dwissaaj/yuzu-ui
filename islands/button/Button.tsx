@@ -4,7 +4,7 @@ import { useButton } from "./use-button.ts";
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props) => {
   const {
-    domRef,
+    ref,
     onClick,
     children,
     className,
@@ -16,16 +16,17 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props) => {
   } = useButton({ ...props });
 
   return (
-    <button
+    <Component
       onClick={onClick}
-      class={`${className} ${getButtonProps.radius} ${getButtonProps.radius}
-      ${getButtonProps.type} ${getButtonProps.size}`}
+      className={`${className} ${getButtonProps.variant} ${getButtonProps.radius}
+   ${getButtonProps.size} ${getButtonProps.disableClassName} ${getButtonProps.isFullWidth}`}
       style={`${style}`}
       disabled={isDisabled}
-      ref={domRef}
-    >
+      ref={ref}
+      type={getButtonProps.type}
+     >
       {children}
-    </button>
+    </Component>
   );
 });
 

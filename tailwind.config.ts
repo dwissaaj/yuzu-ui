@@ -1,4 +1,4 @@
-import { transform } from "https://deno.land/x/esbuild@v0.20.2/mod.js";
+
 import { type Config } from "tailwindcss";
 import { todos } from "./islands/theme/use-theme.ts";
 
