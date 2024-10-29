@@ -1,7 +1,7 @@
 import type { Ref } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { JSX } from "preact/jsx-runtime";
 
-export interface InputProps {
+export type InputPropsCustom = {  
   children?: JSX.Element | null;
   /**
    * Children for input, I think this is unecessery cause input cant take any html element
@@ -126,3 +126,6 @@ export interface InputProps {
    * Label placement
    */
 }
+
+
+export type InputProps = InputPropsCustom & JSX.IntrinsicElements['input'];

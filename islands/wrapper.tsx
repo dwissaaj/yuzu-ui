@@ -15,7 +15,7 @@ export default function Wrapper() {
 <>
 <div class={" flex flex-col gap-2"}>
       <div className={"p-8 "}>
-     <Input placeholder="Your Email" label="Your name" />
+     <Input onChange={onchanges} placeholder="Your Email" label="Your name" />
       </div>
       
     </div>
