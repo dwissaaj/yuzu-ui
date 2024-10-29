@@ -8,11 +8,18 @@ export default function Wrapper() {
   const handle = () => {
     alert("hei");
   };
+  function onchanges(){
+    console.log('ji')
+  }
   return (
-    <div class={"w-full flex flex-col gap-2"}>
-      <div className={"w-1/4 p-8 "}>
+<>
+<div class={" flex flex-col gap-2"}>
+      <div className={"p-8 "}>
      <Input placeholder="Your Email" label="Your name" />
       </div>
+      
     </div>
+    <Button onClick={handle} size={"large"} isFullWidth={false} isDisabled={false}>ads</Button>
+    </>
   );
 }

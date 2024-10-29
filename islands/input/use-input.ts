@@ -114,6 +114,7 @@ export function useInput(props: InputProps) {
     GetInputProps,
     onValueChange,
     onClear,
-    label
+    label,
+    labelPlacement
   };
 }

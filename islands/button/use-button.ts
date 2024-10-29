@@ -8,13 +8,12 @@ import {
 } from "./button-variant.ts";
 export function useButton(props: ButtonProps) {
   const {
-    ref,
+    domRef,
     onClick,
     children,
     className,
     style,
     isDisabled,
-    as,
     size = "small",
     variant = "primary",
     type = "button",
@@ -22,7 +21,6 @@ export function useButton(props: ButtonProps) {
     disableClassName,
     isFullWidth,
   } = props;
-  const Component = as || "button";
 
   /**
    * check if button disabled
@@ -46,20 +44,20 @@ export function useButton(props: ButtonProps) {
         variant: variantColors[variant],
         radius: radiusOptions[radius],
         size: sizeOptions[size],
-        type: typeButton[type],
+        type: typeButton,
       };
     },
-    [variant, radius, size, type, disableClassName],
+    [variant, radius, disableClassName, size, type],
   );
 
+
   return {
-    ref,
+    domRef,
     onClick,
     children,
     className,
     style,
     isDisabled,
-    Component,
     getButtonProps,
   };
 }

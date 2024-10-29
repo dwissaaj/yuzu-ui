@@ -16,11 +16,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
     placeholder,
     password,
     passwordIcon,
-    GetInputProps
+    GetInputProps,
+    onValueChange,
+    onClear,
   } = useInput({...props})
   return (
-    <div>
-      < input  />
+    <div ref={ref}  className={`${GetInputProps.variant}`}>
+      {children}
+      <input  inputMode={inputMode} type={type} value={value} name={name} style={style}  id={id}  placeholder={placeholder} className={`${className} `}  />
     </div>
   )
 });
