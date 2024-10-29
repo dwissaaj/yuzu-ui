@@ -12,6 +12,9 @@ import * as $button_button_variant from "./islands/button/button-variant.ts";
 import * as $button_type from "./islands/button/type.ts";
 import * as $button_use_button from "./islands/button/use-button.ts";
 import * as $global_type from "./islands/global/type.ts";
+import * as $icon_component_ClosePassword from "./islands/icon/component/ClosePassword.tsx";
+import * as $icon_component_OpenPassword from "./islands/icon/component/OpenPassword.tsx";
+import * as $icon_component_PasswordIcon from "./islands/icon/component/PasswordIcon.tsx";
 import * as $input_Input from "./islands/input/Input.tsx";
 import * as $input_input_variant from "./islands/input/input-variant.ts";
 import * as $input_type from "./islands/input/type.ts";
@@ -34,6 +37,9 @@ const manifest = {
     "./islands/button/type.ts": $button_type,
     "./islands/button/use-button.ts": $button_use_button,
     "./islands/global/type.ts": $global_type,
+    "./islands/icon/component/ClosePassword.tsx": $icon_component_ClosePassword,
+    "./islands/icon/component/OpenPassword.tsx": $icon_component_OpenPassword,
+    "./islands/icon/component/PasswordIcon.tsx": $icon_component_PasswordIcon,
     "./islands/input/Input.tsx": $input_Input,
     "./islands/input/input-variant.ts": $input_input_variant,
     "./islands/input/type.ts": $input_type,

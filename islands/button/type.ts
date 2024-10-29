@@ -64,4 +64,5 @@ export interface ButtonProps {
   /**
    * Button take parent width
    */
+  
 }

@@ -11,7 +11,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props) => {
     style,
     isDisabled,
     Component,
-
     getButtonProps,
   } = useButton({ ...props });
 

@@ -10,25 +10,40 @@ export interface InputProps {
   /**
    * Ref dom
    */
-  title?: string;
-  /**
-   * Title for
-   */
 
-  size?: "small" | "large";
+  value?: JSX.IntrinsicElements['input']['value'] ;
   /**
-   * How big title value, default to 128px to small and large
-   * 208px
+   * Input value
    */
-  fullWidth?: boolean;
+  inputMode?:
+    | "none"
+    | "text"
+    | "decimal"
+    | "numeric"
+    | "tel"
+    | "search"
+    | "email"
+    | "url";
   /**
-   * Should input same width as parents
+   * Html input value for keyboard
    */
-
+  type?: JSX.IntrinsicElements['input']['type']
+  /**
+   * Input field type
+   */
   id?: string;
   /**
    * input ID
    */
+  onClear?: () => void;
+  /**
+   *  onChange event.
+   */
+  onValueChange?: (value: string) => void;
+  /**
+   * On valu change
+   */
+
   className?: string | null;
   /**
    * Classname styling
@@ -40,22 +55,10 @@ export interface InputProps {
    * @default false
    */
 
-  inputMode?:
-    | "none"
-    | "text"
-    | "decimal"
-    | "numeric"
-    | "tel"
-    | "search"
-    | "email"
-    | "url";
-  /**
-   * Html input value
-   */
-
   isDisabled?: boolean;
   /**
    * disable state
+   * @default false
    */
 
   isReadOnly?: boolean;
@@ -89,10 +92,17 @@ export interface InputProps {
    * Variant option
    */
 
-  value?: string | number;
+  size?: "small" | "medium" | "large";
   /**
-   * Input value
+   * How big title value, default to 128px to small and large
+   * 208px
    */
+  fullWidth?: boolean;
+  /**
+   * Should input same width as parents
+   * @default false
+   */
+
   password?: boolean;
   /**
    * Either for password or not
@@ -107,7 +117,11 @@ export interface InputProps {
   /**
    * color input
    */
-  labelPlacement?: "none" | "left" | "right" | "bottom" | "up";
+  label?: string;
+  /**
+   * Label title element
+   */
+  labelPlacement?: "left" | "right" | "bottom" | "top";
   /**
    * Label placement
    */
