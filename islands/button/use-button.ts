@@ -44,12 +44,11 @@ export function useButton(props: ButtonProps) {
         variant: variantColors[variant],
         radius: radiusOptions[radius],
         size: sizeOptions[size],
-        type: typeButton,
+        type: typeButton[type],
       };
     },
     [variant, radius, disableClassName, size, type],
   );
-
 
   return {
     domRef,

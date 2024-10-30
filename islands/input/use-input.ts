@@ -19,47 +19,38 @@ export function useInput(props: InputProps) {
     isRequired = false,
     variant = "full",
     size = "small",
-    fullWidth = false,
+    isFullWidth = false,
     password = false,
     passwordIcon,
-    colors = "primary",
+    colors = "none",
     labelPlacement = "top",
     label,
-    onValueChange,
-    onClear,
   } = props;
-  
+
   const isDisabledMemo = useMemo(() => {
     return isDisabled ? "disabled:opacity-50 " : "";
-  },[isDisabled])
+  }, [isDisabled]);
   const isReadonlyClass = useMemo(() => {
     return isReadOnly ? "disabled:opacity-50 cursor-not-allowed " : "";
-  },[isReadOnly])
+  }, [isReadOnly]);
   const isErrorClass = useMemo(() => {
     return isError ? "border-error text-error" : "";
-  },[isReadOnly])
+  }, [isReadOnly]);
 
   const isFullWidthClass = useMemo(() => {
-    return fullWidth ? "w-full " : "";
-  },[fullWidth])
+    return isFullWidth ? "w-full " : "";
+  }, [isFullWidth]);
 
   const isRequiredClass = useMemo(() => {
-    return isRequired ? "after:content-['*'] after:ml-0.5 after:text-red-500 block  " : "";
-  },[isRequired])
-
+    return isRequired
+      ? "after:content-['*'] after:ml-0.5 after:text-red-500 block  "
+      : "";
+  }, [isRequired]);
 
   const getVariants = useMemo(
     () => {
       return {
-       variant: InputVariants.variant[variant]
-      };
-    },
-    [variant],
-  );
-  const getColors = useMemo(
-    () => {
-      return {
-       colors: InputVariants.colors[colors]
+        variant: InputVariants.variant[variant],
       };
     },
     [variant],
@@ -67,36 +58,41 @@ export function useInput(props: InputProps) {
   const getSize = useMemo(
     () => {
       return {
-       size: InputVariants.size[size]
+        size: InputVariants.size[size],
       };
     },
-    [variant],
+    [size],
   );
   const getLabel = useMemo(
     () => {
       return {
-       labelPlacement: InputVariants.labelPlacement[labelPlacement]
+        labelPlacement: InputVariants.labelPlacement[labelPlacement],
       };
     },
-    [variant],
+    [labelPlacement],
   );
-  
+
+  const getColors = useMemo(
+    () => {
+      return {
+        colors: InputVariants.colors,
+      };
+    },
+    [colors],
+  );
   const GetInputProps = useMemo(() => {
     return {
-        isDisabled: isDisabledMemo,
-        isReadOnly: isReadonlyClass,
-        isError: isErrorClass,
-        fullWidth: isFullWidthClass,
-        isRequired: isRequiredClass,
-        variant: getVariants,
-        colors: getColors,
-        size: getSize,
-        labelPlacement: getLabel,
-
-
-    }
-  },[isDisabled, isDisabled,
-     isError,isRequiredClass])
+      isDisabled: isDisabledMemo,
+      isReadOnly: isReadonlyClass,
+      isError: isErrorClass,
+      isFullWidth: isFullWidthClass,
+      isRequired: isRequiredClass,
+      variant: getVariants.variant,
+      colors: getColors.colors,
+      size: getSize.size,
+      labelPlacement: getLabel.labelPlacement,
+    };
+  }, [isDisabled, isDisabled, isError, isRequiredClass]);
 
   return {
     ref,
@@ -112,9 +108,7 @@ export function useInput(props: InputProps) {
     password,
     passwordIcon,
     GetInputProps,
-    onValueChange,
-    onClear,
     label,
-    labelPlacement
+    labelPlacement,
   };
 }

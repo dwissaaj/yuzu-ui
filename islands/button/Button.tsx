@@ -11,8 +11,6 @@ const Button = forwardRef<"button", ButtonProps>((props, ref) => {
     style,
     isDisabled,
     getButtonProps,
- 
-    
   } = useButton({ ...props });
 
   return (
@@ -24,7 +22,6 @@ const Button = forwardRef<"button", ButtonProps>((props, ref) => {
       disabled={isDisabled}
       ref={domRef}
       type={`${getButtonProps.type}`}
-
     >
       {children}
     </button>

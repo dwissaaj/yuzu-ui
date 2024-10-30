@@ -8,18 +8,31 @@ export default function Wrapper() {
   const handle = () => {
     alert("hei");
   };
-  function onchanges(){
-    console.log('ji')
+  function onchanges() {
+    console.log("ji");
   }
   return (
-<>
-<div class={" flex flex-col gap-2"}>
-      <div className={"p-8 "}>
-     <Input onChange={onchanges} placeholder="Your Email" label="Your name" />
+    <>
+      <div class={" flex flex-col gap-2"}>
+        <div className={"p-8 "}>
+          <Input
+            isError
+            colors="primary"
+            labelPlacement="top"
+            className={"focus:border-red-500"}
+            size="large"
+            variant="underline"
+            isFullWidth={false}
+            onChange={onchanges}
+            placeholder="Your Email"
+            label="Your name"
+          />
+        </div>
+        <input
+          placeholder={"testing"}
+          className={"focus:border-red-500 focus:border-4"}
+        />
       </div>
-      
-    </div>
-    <Button onClick={handle} size={"large"} isFullWidth={false} isDisabled={false}>ads</Button>
     </>
   );
 }

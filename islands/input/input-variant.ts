@@ -1,15 +1,16 @@
 export const InputVariants = {
   size: {
     small:
-      "py-1 px-4 w-32 hover:brightness-105 transition ease-in-out duration-300 rounded-sm",
+      "m-1 py-2 w-52 hover:brightness-105 transition ease-in-out duration-300 rounded-sm focus:border-red-500 focus:border-4",
     medium:
-      "py-1 px-4 w-44 hover:brightness-105 transition ease-in-out duration-300 rounded-lg",
+      "m-1 py-2 w-64 hover:brightness-105 transition ease-in-out duration-300 rounded-lg focus:border-red-500 focus:border-4",
     large:
-      "py-1 px-4 w-56 hover:brightness-105 transition ease-in-out duration-300 rounded-lg",
+      "m-1 py-2 w-96 hover:brightness-105 transition ease-in-out duration-300 rounded-lg focus:border-red-500 focus:border-4",
   },
   variant: {
-    underline: " border-b-2 outline-none ",
-    full: "outline",
+    underline:
+      "border-b-2 focus:outline-0 focus:border-b-2 focus:border-black ",
+    full: "border-2 outline-2 focus:outline-black  ",
   },
   colors: {
     primary: "bg-primary",

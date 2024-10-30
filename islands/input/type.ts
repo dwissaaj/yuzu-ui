@@ -1,19 +1,23 @@
 import type { Ref } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { JSX } from "preact/jsx-runtime";
 
-export type InputPropsCustom = {  
-  children?: JSX.Element | null;
+export type InputProps = Omit<JSX.IntrinsicElements["input"], "size"> & {
   /**
    * Children for input, I think this is unecessery cause input cant take any html element
    */
-  ref: Ref<HTMLInputElement> | null;
+  children?: JSX.Element | null;
   /**
    * Ref dom
    */
+  ref: Ref<HTMLInputElement> | null;
 
-  value?: JSX.IntrinsicElements['input']['value'] ;
   /**
    * Input value
+   */
+  value?: JSX.IntrinsicElements["input"]["value"];
+
+  /**
+   * Html input value for keyboard
    */
   inputMode?:
     | "none"
@@ -24,108 +28,100 @@ export type InputPropsCustom = {
     | "search"
     | "email"
     | "url";
-  /**
-   * Html input value for keyboard
-   */
-  type?: JSX.IntrinsicElements['input']['type']
+
   /**
    * Input field type
    */
-  id?: string;
+  type?: JSX.IntrinsicElements["input"]["type"];
   /**
    * input ID
    */
-  onClear?: () => void;
-  /**
-   *  onChange event.
-   */
-  onValueChange?: (value: string) => void;
-  /**
-   * On valu change
-   */
+  id?: string;
 
-  className?: string | null;
   /**
    * Classname styling
    */
+  className?: string | null;
 
-  isError?: boolean;
   /**
    * State for input
    * @default false
    */
+  isError?: boolean;
 
-  isDisabled?: boolean;
   /**
    * disable state
    * @default false
    */
+  isDisabled?: boolean;
 
-  isReadOnly?: boolean;
   /**
    * Should be read only or not
    */
+  isReadOnly?: boolean;
 
-  isRequired?: boolean;
   /**
    * Required state
    * @default false
    */
+  isRequired?: boolean;
 
-  name?: string;
   /**
    * Name for form control
    */
+  name?: string;
 
-  placeholder?: string;
   /**
    * Placeholder text
    */
+  placeholder?: string;
 
-  style?: JSX.CSSProperties;
   /**
    * Vanilla css plain styling
    */
+  style?: JSX.CSSProperties;
 
-  variant?: "underline" | "full";
   /**
    * Variant option
    */
+  variant?: "underline" | "full";
 
-  size?: "small" | "medium" | "large";
   /**
-   * How big title value, default to 128px to small and large
+   * How big title value, default to 128px to small,  large
    * 208px
    */
-  fullWidth?: boolean;
+  size?: "small" | "medium" | "large";
+
   /**
    * Should input same width as parents
    * @default false
    */
 
-  password?: boolean;
+  isFullWidth?: boolean;
+
   /**
    * Either for password or not
    * @default false
    */
-  passwordIcon?: JSX.Element;
+  password?: boolean;
+
   /**
    * JSX For password icon
    */
+  passwordIcon?: JSX.Element;
 
-  colors?: "primary" | "secondary" | "error" | "warning" | "success";
   /**
    * color input
    */
-  label?: string;
+  colors?: "primary" | "secondary" | "error" | "warning" | "success" | "none";
+
   /**
    * Label title element
    */
-  labelPlacement?: "left" | "right" | "bottom" | "top";
+  label?: string;
+
   /**
    * Label placement
    */
-}
-
-
-export type InputProps = InputPropsCustom & JSX.IntrinsicElements['input'];
+  labelPlacement?: "left" | "right" | "bottom" | "top";
+};
