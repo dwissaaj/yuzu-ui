@@ -16,9 +16,8 @@ export default function Wrapper() {
       <div class={" flex flex-col gap-2"}>
         <div className={" "}>
           <Input
-          required={true}
-            disabled={true}
-            type={'text'}
+            required={true}
+            type={'password'}
             // colors="error"
             labelPlacement="top"
             className={""}

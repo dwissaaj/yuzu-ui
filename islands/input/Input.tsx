@@ -1,6 +1,8 @@
 import { forwardRef, useState } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
 import type { InputProps } from "./type.ts";
 import { useInput } from "./use-input.ts";
+import ClosePassword from "../icon/component/ClosePassword.tsx";
+import OpenPassword from "../icon/component/OpenPassword.tsx";
 
 
 const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
@@ -15,13 +17,26 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
     name,
     style,
     placeholder,
-    passwordIcon,
+    // passwordIcon,
     GetInputProps,
     label,
-    labelPlacement,
+    // labelPlacement,
 
   } = useInput({ ...props });
-    const [ openPass, setOpenPass] = useState(false)
+  const [ typeState, setTypeState] = useState(name)
+  const [ passState, setPassState] = useState(false)
+
+  const handlePass = () => {
+    if (name === "password") {
+      setPassState(false)
+      setTypeState('text')
+    }
+    else if (name === "text") {
+      setPassState(true)
+      setTypeState("password")
+    }
+  }
+  
     return (
       <div
         ref={ref}
@@ -32,19 +47,28 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
           {label}
         </span>
         {children}
-        <input
+       <div className={`w-full flex flex-row gap-2 items-center
+        ${GetInputProps.variant}`}>
+       <input
         disabled={GetInputProps.disabled}
           readOnly={GetInputProps.readOnly}
           required={GetInputProps.required}
-          className={`p-2 ${GetInputProps.isError} ${GetInputProps.variant} ${GetInputProps.colors} ${GetInputProps.isDisabledStyle} ${GetInputProps.isReadonlyClass} ${className} `}
+          className={`focus:border-0 focus:outline-0 p-2 ${GetInputProps.isError}  ${GetInputProps.colors} ${GetInputProps.isDisabledStyle} ${GetInputProps.isReadonlyClass} ${className} `}
           inputMode={inputMode}
-          type={type}
+          type={typeState}
           value={value}
           name={name}
           id={id}
           style={`${style}`}
           placeholder={placeholder}
+
         />
+        <span className={'bg-red-500'}>
+          <button onClick={handlePass}> 
+{passState ? < OpenPassword /> : <ClosePassword /> }
+          </button>
+        </span>
+        </div>
       </div>
     );
   }

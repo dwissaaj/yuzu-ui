@@ -1,8 +1,8 @@
-import ClosePassword from "../icon/component/ClosePassword.tsx";
-import OpenPassword from "../icon/component/OpenPassword.tsx";
+
 import { InputVariants } from "./input-variant.ts";
 import type { InputProps } from "./type.ts";
 import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
+
 export function useInput(props: InputProps) {
   const {
     ref,
@@ -30,20 +30,12 @@ export function useInput(props: InputProps) {
     labelPlacement = "top",
     label,
   } = props;
-  // const isPassword = useMemo(() => {
-  //   const closePasswordIcon = ClosePassword;
-  //   const openPasswordIcon = OpenPassword;
-  //     if(type === "password") {
-  //       return { closePasswordIcon, openPasswordIcon}
-  //     }
-  //     else {
-  //       return null
-  //     }
-  // },[type])
 
 
-
-
+  /**
+   * Disabled class, can be modified using tailwind class
+   */
+  
   const isDisableClass = useMemo(() => {
     if(disabled === true) {
       const disabled = true
@@ -70,7 +62,7 @@ export function useInput(props: InputProps) {
     }
   }, [readOnly,isReadOnlyClass]);
 
-  
+
   const isErrorClass = useMemo(() => {
     return isError ? "border-error text-error placeholder:text-red-400 focus:border-error focus:outline-error invalid:text-error" : '';
   }, [isError]);
