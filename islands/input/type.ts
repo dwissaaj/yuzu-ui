@@ -64,7 +64,7 @@ export type InputProps = Omit<JSX.IntrinsicElements["input"], "size"> & {
    * Required state
    * @default false
    */
-  isRequired?: boolean;
+  isRequiredStyle?: boolean;
 
   /**
    * Name for form control
@@ -98,12 +98,6 @@ export type InputProps = Omit<JSX.IntrinsicElements["input"], "size"> & {
    */
 
   isFullWidth?: boolean;
-
-  /**
-   * Either for password or not
-   * @default false
-   */
-  password?: boolean;
 
   /**
    * JSX For password icon

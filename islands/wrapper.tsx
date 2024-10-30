@@ -21,7 +21,7 @@ export default function Wrapper() {
             labelPlacement="top"
             className={"focus:border-red-500"}
             size="large"
-            variant="underline"
+            variant="full"
             isFullWidth={false}
             onChange={onchanges}
             placeholder="Your Email"
@@ -29,6 +29,7 @@ export default function Wrapper() {
           />
         </div>
         <input
+         type={'password'}
           placeholder={"testing"}
           className={"focus:border-red-500 focus:border-4"}
         />
