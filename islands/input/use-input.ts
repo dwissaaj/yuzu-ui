@@ -15,10 +15,12 @@ export function useInput(props: InputProps) {
     name,
     style,
     placeholder,
-    isReadOnly,
+    isReadOnlyClass,
+    readOnly,
     isError = false,
-    isDisabled = false,
-    isRequiredStyle = false,
+    isDisabledStyle,
+    disabled,
+    isRequiredStyle,
     required = false,
     variant = "full",
     size = "small",
@@ -28,23 +30,50 @@ export function useInput(props: InputProps) {
     labelPlacement = "top",
     label,
   } = props;
-  const isPassword = useMemo(() => {
-    const closePasswordIcon = ClosePassword;
-    const openPasswordIcon = OpenPassword;
-      if(type === "password") {
-        return { closePasswordIcon, openPasswordIcon}
-      }
-  },[type,])
-  const isDisabledMemo = useMemo(() => {
-    return isDisabled ? "disabled:opacity-50 " : "";
-  }, [isDisabled]);
-  const isReadonlyClass = useMemo(() => {
-    return isReadOnly ? "disabled:opacity-50 cursor-not-allowed " : "";
-  }, [isReadOnly]);
+  // const isPassword = useMemo(() => {
+  //   const closePasswordIcon = ClosePassword;
+  //   const openPasswordIcon = OpenPassword;
+  //     if(type === "password") {
+  //       return { closePasswordIcon, openPasswordIcon}
+  //     }
+  //     else {
+  //       return null
+  //     }
+  // },[type])
 
+
+
+
+  const isDisableClass = useMemo(() => {
+    if(disabled === true) {
+      const disabled = true
+      const isDisabledStyle = "disabled:opacity-50 cursor-not-allowed"
+      return {isDisabledStyle , disabled}
+    }
+    else if(disabled === false) {
+      const disabled = false
+      const isDisabledStyle = ""
+      return {isDisabledStyle , disabled}
+    }
+  }, [isDisabledStyle, disabled]);
+
+  const isReadonlyClass = useMemo(() => {
+    if(readOnly === true) {
+      const readOnly = true
+      const isReadOnlyStyle = "read-only:opacity-20 read-only:border-20 read-only:outline-20 "
+      return {readOnly , isReadOnlyStyle}
+    }
+    else if(readOnly === false) {
+      const isReadOnly = false
+      const isReadOnlyStyle = ""
+      return {isReadOnly , isReadOnlyStyle}
+    }
+  }, [readOnly,isReadOnlyClass]);
+
+  
   const isErrorClass = useMemo(() => {
-    return isError ? "border-error text-error placeholder:text-error focus:border-error focus:outline-error" : variant;
-  }, [isReadOnly]);
+    return isError ? "border-error text-error placeholder:text-red-400 focus:border-error focus:outline-error invalid:text-error" : '';
+  }, [isError]);
 
   const isFullWidthClass = useMemo(() => {
     return isFullWidth ? "w-full " : "";
@@ -62,7 +91,8 @@ export function useInput(props: InputProps) {
       const isRequiredStyle = ""
       return {isRequiredStyle , required}
     }
-  }, [isRequiredStyle, required]);
+  }, [isReadOnlyClass, required]);
+
   const getVariants = useMemo(
     () => {
       return {
@@ -91,26 +121,28 @@ export function useInput(props: InputProps) {
   const getColors = useMemo(
     () => {
       return {
-        colors: InputVariants.colors,
+        colors: InputVariants.colors[colors],
       };
     },
     [colors],
   );
   const GetInputProps = useMemo(() => {
     return {
-      isDisabled: isDisabledMemo, //notyet
-      isReadOnly: isReadonlyClass, //notyet
+      isDisabledStyle: isDisableClass?.isDisabledStyle,
+      disabled: isDisableClass?.disabled,
+      isReadonlyClass: isReadonlyClass?.isReadOnlyStyle, 
+      readOnly: isReadonlyClass?.readOnly, 
       isError: isErrorClass,
       isFullWidth: isFullWidthClass,
-      isRequiredStyle: isRequiredStyleClass?.isRequiredStyle, //notyet
+      isRequiredStyle: isRequiredStyleClass?.isRequiredStyle,
       required: isRequiredStyleClass?.required, 
       variant: getVariants.variant,
       colors: getColors.colors,
       size: getSize.size,
       labelPlacement: getLabel.labelPlacement,
-      passwordIcon: isPassword
+
     };
-  }, [isDisabled, isDisabled, isError, isRequiredStyle, required]);
+  }, [disabled, isDisabledStyle, isError, isRequiredStyle, required,colors, , isReadonlyClass, readOnly ]);
 
   return {
     ref,

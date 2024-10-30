@@ -1,7 +1,7 @@
 import type { Ref } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { JSX } from "preact/jsx-runtime";
 
-export type InputProps = Omit<JSX.IntrinsicElements["input"], "size"> & {
+export type InputProps = Omit<JSX.IntrinsicElements["input"], "size" | "color"> & {
   /**
    * Children for input, I think this is unecessery cause input cant take any html element
    */
@@ -53,18 +53,18 @@ export type InputProps = Omit<JSX.IntrinsicElements["input"], "size"> & {
    * disable state
    * @default false
    */
-  isDisabled?: boolean;
+  isDisabledStyle?: string;
 
   /**
-   * Should be read only or not
+   * Read only styling
    */
-  isReadOnly?: boolean;
+  isReadOnlyClass?: string;
 
   /**
    * Required state
    * @default false
    */
-  isRequiredStyle?: boolean;
+  isRequiredStyle?: string;
 
   /**
    * Name for form control

@@ -25,15 +25,18 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
     return (
       <div
         ref={ref}
-        className={`flex flex-col gap-2 ${GetInputProps.isFullWidth}  ${GetInputProps.colors} ${GetInputProps.size}`}
+        className={`flex flex-col gap-2 p-2 ${GetInputProps.isFullWidth}  
+        ${GetInputProps.colors} ${GetInputProps.size}`}
       >
         <span className={`${GetInputProps.isRequiredStyle}`}>
           {label}
         </span>
         {children}
         <input
+        disabled={GetInputProps.disabled}
+          readOnly={GetInputProps.readOnly}
           required={GetInputProps.required}
-          className={`p-2 ${GetInputProps.isError} ${GetInputProps.colors} ${GetInputProps.variant} ${className} `}
+          className={`p-2 ${GetInputProps.isError} ${GetInputProps.variant} ${GetInputProps.colors} ${GetInputProps.isDisabledStyle} ${GetInputProps.isReadonlyClass} ${className} `}
           inputMode={inputMode}
           type={type}
           value={value}
@@ -42,10 +45,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
           style={`${style}`}
           placeholder={placeholder}
         />
-        <span className={'bg-red-500'}>
-          {passwordIcon}
-          asdas
-        </span>
       </div>
     );
   }

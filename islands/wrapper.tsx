@@ -14,13 +14,15 @@ export default function Wrapper() {
   return (
     <>
       <div class={" flex flex-col gap-2"}>
-        <div className={"p-8 "}>
+        <div className={" "}>
           <Input
-            isError
-            colors="primary"
+          required={true}
+            disabled={true}
+            type={'text'}
+            // colors="error"
             labelPlacement="top"
-            className={"focus:border-red-500"}
-            size="large"
+            className={""}
+            size="medium"
             variant="full"
             isFullWidth={false}
             onChange={onchanges}
