@@ -8,59 +8,55 @@ import {
 } from "./button-variant.ts";
 export function useButton(props: ButtonProps) {
   const {
-    ref,
+    domRef,
     onClick,
     children,
     className,
     style,
     isDisabled,
-    as,
     size = "small",
     variant = "primary",
     type = "button",
     radius = "md",
     disableClassName,
-    isFullWidth
+    isFullWidth,
   } = props;
-  const Component = as || "button";
 
   /**
    * check if button disabled
    */
   const disabledClass = useMemo(() => {
-    return isDisabled ? 'brightness-50 cursor-not-allowed' : '';
+    return isDisabled ? "brightness-50 cursor-not-allowed" : "";
   }, [isDisabled]);
 
-/**
+  /**
    * Calculate if full width
    */
   const fullWidthClass = useMemo(() => {
-    return isFullWidth ? 'w-full' : ''
-  }, [isFullWidth])
+    return isFullWidth ? "w-full" : "";
+  }, [isFullWidth]);
 
   const getButtonProps = useMemo(
     () => {
       return {
-        disableClassName : disabledClass,
+        disableClassName: disabledClass,
         isFullWidth: fullWidthClass,
         variant: variantColors[variant],
         radius: radiusOptions[radius],
         size: sizeOptions[size],
         type: typeButton[type],
-        
       };
     },
-    [variant, radius, size, type, disableClassName],
+    [variant, radius, disableClassName, size, type],
   );
 
   return {
-    ref,
+    domRef,
     onClick,
     children,
     className,
     style,
     isDisabled,
-    Component,
     getButtonProps,
   };
 }

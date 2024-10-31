@@ -1,4 +1,4 @@
-/* 
+/*
 Config file for
 variant all button
 
@@ -9,11 +9,13 @@ export const radiusOptions = {
   lg: "border-3 rounded-lg",
 };
 
-
 export const sizeOptions = {
-  small: "p-2 m-2",
-  medium: "p-4 m-2",
-  large: "p-6 m-4",
+  small:
+    "py-1 px-4 w-20 hover:brightness-105 transition ease-in-out duration-300 ",
+  medium:
+    "py-1 px-4 w-32 hover:brightness-105 transition ease-in-out duration-300",
+  large:
+    "py-1 px-4 w-44 hover:brightness-105 transition ease-in-out duration-300",
 };
 
 export const variantColors = {

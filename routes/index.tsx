@@ -3,9 +3,8 @@ import Wrapper from "../islands/wrapper.tsx";
 import { todos } from "../islands/theme/use-theme.ts";
 
 export default function Home() {
-  console.log("value is", todos.value.error);
   return (
-    <div class="px-4 py-8 mx-auto bg-[#86efac]">
+    <div class="px-4 py-8 mx-auto ">
       <button class={"bg-error"}>test</button>
       <Wrapper />
     </div>
