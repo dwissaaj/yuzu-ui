@@ -8,8 +8,7 @@ export const InputVariants = {
       "m-1 py-2 w-96 hover:brightness-105 transition ease-in-out duration-300 rounded-lg ",
   },
   variant: {
-    underline:
-      "border-b-2 ",
+    underline: "border-b-2 ",
     full: "border-2 outline-2  ",
   },
   colors: {
@@ -26,4 +25,10 @@ export const InputVariants = {
     right: "right-0",
     bottom: "bottom-0",
   },
+  requiredVariant: "after:content-['*'] after:ml-0.5 after:text-red-500 block",
+  readonlyVariant:
+    "read-only:opacity-20 read-only:border-20 read-only:outline-20 ",
+  disabledVariant: "disabled:opacity-20 cursor-not-allowed",
+  errorVariant:
+    "outline-error border-error text-error placeholder:text-error focus:outline-error invalid:text-error",
 };

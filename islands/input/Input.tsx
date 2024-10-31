@@ -20,7 +20,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
     GetLabelProps,
     GetParentsProps,
     GetInputStyle,
-    GetLabelPlacement
+    GetLabelPlacement,
   } = useInput({ ...props });
 
   const labelContent = GetLabelPlacement.label
@@ -33,11 +33,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
 
   const baseContent = (
     <input
-    ref={domRef}
+      ref={domRef}
       disabled={GetInputProps.disabled}
       readOnly={GetInputProps.readOnly}
       required={GetInputProps.required}
-      className={`p-2 w-full ${GetInputStyle.inputClass} ${className} `}
+      className={`p-2 w-full ${GetInputStyle.className} ${className} `}
       inputMode={inputMode}
       type={type}
       value={value}
@@ -52,7 +52,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
     if (GetLabelPlacement.labelPlacement === "top") {
       return (
         <div
-          className={`p-2 flex flex-col gap-2 ${GetParentsProps.parentClass} `}
+        {...GetParentsProps}
+          className={`p-2 flex flex-col gap-2 ${GetParentsProps.className} `}
         >
           {labelContent}
           <div
@@ -69,7 +70,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
     if (GetLabelPlacement.labelPlacement === "bottom") {
       return (
         <div
-          className={`flex flex-col gap-2 ${GetParentsProps.parentClass}`}
+        {...GetParentsProps}
+          className={`flex flex-col gap-2 ${GetParentsProps.className}`}
         >
           <div
             className={` flex flex-row gap-2 items-center
@@ -85,8 +87,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
   const leftWrapper = useMemo(() => {
     if (GetLabelPlacement.labelPlacement === "left") {
       return (
-        <div
-          className={`flex flex-row gap-2 items-end ${GetParentsProps.parentClass}`}
+        <div {...GetParentsProps}
+          className={`flex flex-row gap-2 items-end ${GetParentsProps.className}`}
         >
           <div className={"w-1/5"}>
             {labelContent}
@@ -106,7 +108,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
     if (GetLabelPlacement.labelPlacement === "right") {
       return (
         <div
-          className={` flex flex-row gap-2 items-end ${GetParentsProps.parentClass}`}
+        {...GetParentsProps}
+          className={` flex flex-row gap-2 items-end ${GetParentsProps.className}`}
         >
           <div
             className={`w-4/5 flex flex-row gap-2 items-center

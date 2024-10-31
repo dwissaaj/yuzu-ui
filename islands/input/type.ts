@@ -5,10 +5,6 @@ export type InputProps =
   & Omit<JSX.IntrinsicElements["input"], "size" | "color">
   & {
     /**
-     * Children for input, I think this is unecessery cause input cant take any html element
-     */
-    children?: JSX.Element | null;
-    /**
      * Ref dom
      */
     domRef?: Ref<HTMLInputElement> | null;

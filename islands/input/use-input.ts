@@ -5,7 +5,6 @@ import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js"
 export function useInput(props: InputProps) {
   const {
     domRef,
-    children,
     id,
     type,
     inputMode,
@@ -25,7 +24,6 @@ export function useInput(props: InputProps) {
     variant = "full",
     size = "small",
     isFullWidth = false,
-    passwordIcon,
     colors = "none",
     labelPlacement = "top",
     label,
@@ -37,7 +35,7 @@ export function useInput(props: InputProps) {
   const isDisableClass = useMemo(() => {
     if (disabled === true) {
       const disabled = true;
-      const isDisabledStyle = " disabled:opacity-20 cursor-not-allowed";
+      const isDisabledStyle = InputVariants.disabledVariant
       return { isDisabledStyle, disabled };
     } else if (disabled === false) {
       const disabled = false;
@@ -46,14 +44,10 @@ export function useInput(props: InputProps) {
     }
   }, [isDisabledStyle, disabled]);
 
-  /**
-   * If only readonly
-   */
   const isReadonlyClass = useMemo(() => {
     if (readOnly === true) {
       const readOnly = true;
-      const isReadOnlyStyle =
-        "read-only:opacity-20 read-only:border-20 read-only:outline-20 ";
+      const isReadOnlyStyle = InputVariants.readonlyVariant
       return { readOnly, isReadOnlyStyle };
     } else if (readOnly === false) {
       const isReadOnly = false;
@@ -70,8 +64,7 @@ export function useInput(props: InputProps) {
   const isRequiredStyleClass = useMemo(() => {
     if (required === true) {
       const required = true;
-      const isRequiredStyle =
-        "after:content-['*'] after:ml-0.5 after:text-red-500 block";
+      const isRequiredStyle = InputVariants.requiredVariant;
       return { isRequiredStyle, required };
     } else if (required === false) {
       const required = false;
@@ -136,34 +129,37 @@ export function useInput(props: InputProps) {
       labelPlacement: labelPlacement,
     }
   },[labelPlacement, label])
+
+
+
   const GetParentsProps = useMemo(() => {
     const getFullClass = isFullWidthClass
     const getColor = getColors.colors
     const getSizes = getSize.size
     const getDisabled =  isDisableClass?.isDisabledStyle
-    const parentClass = getColor + getFullClass +  getSizes + getDisabled  
-    
     return {
-        parentClass
+      className: `${getColor} ${getFullClass} ${getSizes} ${getDisabled}`,
     }
-  },[isErrorStyle,isError,colors,size,isDisableClass])
+  },[isFullWidthClass,colors,size,size,isDisableClass])
 
+  const errorClass = useMemo(
+    () => (isError ? isErrorStyle : "")
+  , [isError, isErrorStyle]);
 
   const GetInputStyle = useMemo(() => {
-    const isErrorStyle = "outline-error border-error text-error placeholder:text-red-400 focus:outline-error invalid:text-error"
+    const isErrorStyle = InputVariants.errorVariant
     const getError = isError ? isErrorStyle : ""
     const getColor = getColors.colors
     const getReadonly = isReadOnlyStyle
     const getDisabled =  isDisabledStyle
     const getVariant = getVariants.variant
-       const inputClass = getColor +  " " +  getDisabled + " " + getReadonly + " " + getError + " " + getVariant
+
     return {
-      inputClass 
+      className: `${getColor} ${getError} ${getError} ${getDisabled} ${getReadonly} ${getVariant}` 
     }
   },[isErrorStyle,colors,isDisabledStyle,isReadOnlyStyle,isError])
   return {
     domRef,
-    children,
     id,
     inputMode,
     type,
@@ -171,12 +167,8 @@ export function useInput(props: InputProps) {
     value,
     name,
     style,
-    isError,
-    isErrorStyle,
     placeholder,
-    passwordIcon,
     GetInputProps,
-    required,
     GetLabelProps,
     GetParentsProps,
     GetInputStyle,

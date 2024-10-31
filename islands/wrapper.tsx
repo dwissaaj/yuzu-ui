@@ -18,6 +18,9 @@ export default function Wrapper() {
       <div class={" flex flex-col gap-2"}>
         <div className={" "}>
           <Input
+
+            isError
+            isErrorStyle="bg-yellow-500 border-yellow-400"
             required={true}
             type="password"
             labelPlacement="top"
@@ -63,7 +66,7 @@ label="Name"
         labelPlacement="right"
         className={""}
         size="large"
-        variant="underline"
+        variant="full"
         isFullWidth={false}
         onChange={onchanges}
         placeholder="Your Email"
