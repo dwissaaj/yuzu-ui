@@ -120,6 +120,4 @@ export type InputProps =
      * Label placement
      */
     labelPlacement?: "left" | "right" | "bottom" | "top";
-
-
   };

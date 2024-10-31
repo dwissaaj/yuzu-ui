@@ -115,6 +115,12 @@ export function useInput(props: InputProps) {
     },
     [colors],
   );
+  const GetLabelProps = useMemo(() => {
+    return {
+      label: label,
+      isRequiredStyle: isRequiredStyleClass?.isRequiredStyle,
+    };
+  }, [label, isRequiredStyle]);
   const GetInputProps = useMemo(() => {
     return {
       isDisabledStyle: isDisableClass?.isDisabledStyle,
@@ -158,5 +164,6 @@ export function useInput(props: InputProps) {
     label,
     labelPlacement,
     required,
+    GetLabelProps,
   };
 }

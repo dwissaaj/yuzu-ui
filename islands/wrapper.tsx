@@ -20,7 +20,30 @@ export default function Wrapper() {
           <Input
             required={true}
             type="password"
-            // colors="error"
+            labelPlacement="top"
+            className={""}
+            size="large"
+            variant="full"
+            isFullWidth={false}
+            onChange={onchanges}
+            placeholder="Your Email"
+            label="Name"
+          />
+           <Input
+            required={true}
+            type="password"
+            labelPlacement="bottom"
+            className={""}
+            size="large"
+            variant="full"
+            isFullWidth={false}
+            onChange={onchanges}
+            placeholder="Your Email"
+            label="Name"
+          />
+           <Input
+            required={true}
+            type="password"
             labelPlacement="right"
             className={""}
             size="large"
@@ -30,12 +53,20 @@ export default function Wrapper() {
             placeholder="Your Email"
             label="Name"
           />
+           <Input
+            required={true}
+            type="password"
+            labelPlacement="left"
+            className={""}
+            size="large"
+            variant="full"
+            isFullWidth={false}
+            onChange={onchanges}
+            placeholder="Your Email"
+            label="Name"
+          />
         </div>
-        <input
-          type={"password"}
-          placeholder={"testing"}
-          className={"focus:border-red-500 focus:border-4"}
-        />
+        
       </div>
     </>
   );
