@@ -18,9 +18,8 @@ export default function Wrapper() {
       <div class={" flex flex-col gap-2"}>
         <div className={" "}>
           <Input
-
-            isError
-            isErrorStyle="bg-yellow-500 border-yellow-400"
+            isError={true}
+            isErrorStyle="border-yellow-500 bg-yellow-500"
             required={true}
             type="password"
             labelPlacement="top"
@@ -32,46 +31,43 @@ export default function Wrapper() {
             placeholder="Your Email"
             label="Name"
           />
-           <Input
-
-        isError={true}
-        required={true}
-        type="password"
-        labelPlacement="bottom"
-        className={""}
-        size="large"
-        variant="underline"
-        isFullWidth={false}
-        onChange={onchanges}
-        placeholder="Your Email"
-        label="Name"
-        />
           <Input
-
-
-required={true}
-type="password"
-labelPlacement="left"
-className={""}
-size="large"
-variant="full"
-isFullWidth={false}
-onChange={onchanges}
-placeholder="Your Email"
-label="Name"
-/>
-<Input
-        required={true}
-        type="password"
-        labelPlacement="right"
-        className={""}
-        size="large"
-        variant="full"
-        isFullWidth={false}
-        onChange={onchanges}
-        placeholder="Your Email"
-        label="Name"
-        />
+            isError={true}
+            required={true}
+            type="password"
+            labelPlacement="bottom"
+            className={""}
+            size="large"
+            variant="underline"
+            isFullWidth={false}
+            onChange={onchanges}
+            placeholder="Your Email"
+            label="Name"
+          />
+          <Input
+            required={true}
+            type="password"
+            labelPlacement="left"
+            className={""}
+            size="large"
+            variant="full"
+            isFullWidth={false}
+            onChange={onchanges}
+            placeholder="Your Email"
+            label="Name"
+          />
+          <Input
+            required={true}
+            type="password"
+            labelPlacement="right"
+            className={""}
+            size="large"
+            variant="full"
+            isFullWidth={false}
+            onChange={onchanges}
+            placeholder="Your Email"
+            label="Name"
+          />
         </div>
       </div>
     </>

@@ -35,7 +35,7 @@ export function useInput(props: InputProps) {
   const isDisableClass = useMemo(() => {
     if (disabled === true) {
       const disabled = true;
-      const isDisabledStyle = InputVariants.disabledVariant
+      const isDisabledStyle = InputVariants.disabledVariant;
       return { isDisabledStyle, disabled };
     } else if (disabled === false) {
       const disabled = false;
@@ -47,7 +47,7 @@ export function useInput(props: InputProps) {
   const isReadonlyClass = useMemo(() => {
     if (readOnly === true) {
       const readOnly = true;
-      const isReadOnlyStyle = InputVariants.readonlyVariant
+      const isReadOnlyStyle = InputVariants.readonlyVariant;
       return { readOnly, isReadOnlyStyle };
     } else if (readOnly === false) {
       const isReadOnly = false;
@@ -55,7 +55,6 @@ export function useInput(props: InputProps) {
       return { isReadOnly, isReadOnlyStyle };
     }
   }, [readOnly, isReadOnlyStyle]);
-
 
   const isFullWidthClass = useMemo(() => {
     return isFullWidth ? "w-full " : " ";
@@ -90,7 +89,6 @@ export function useInput(props: InputProps) {
     [size],
   );
 
-
   const getColors = useMemo(
     () => {
       return {
@@ -105,7 +103,6 @@ export function useInput(props: InputProps) {
       isRequiredStyle: isRequiredStyleClass?.isRequiredStyle,
     };
   }, [label, isRequiredStyle]);
-
 
   const GetInputProps = useMemo(() => {
     return {
@@ -127,37 +124,33 @@ export function useInput(props: InputProps) {
     return {
       label: label,
       labelPlacement: labelPlacement,
-    }
-  },[labelPlacement, label])
-
-
+    };
+  }, [labelPlacement, label]);
 
   const GetParentsProps = useMemo(() => {
-    const getFullClass = isFullWidthClass
-    const getColor = getColors.colors
-    const getSizes = getSize.size
-    const getDisabled =  isDisableClass?.isDisabledStyle
+    const getFullClass = isFullWidthClass;
+    const getColor = getColors.colors;
+    const getSizes = getSize.size;
+    const getDisabled = isDisableClass?.isDisabledStyle;
     return {
       className: `${getColor} ${getFullClass} ${getSizes} ${getDisabled}`,
-    }
-  },[isFullWidthClass,colors,size,size,isDisableClass])
+    };
+  }, [isFullWidthClass, colors, size, size, isDisableClass]);
 
-  const errorClass = useMemo(
-    () => (isError ? isErrorStyle : "")
-  , [isError, isErrorStyle]);
 
   const GetInputStyle = useMemo(() => {
-    const isErrorStyle = InputVariants.errorVariant
-    const getError = isError ? isErrorStyle : ""
-    const getColor = getColors.colors
-    const getReadonly = isReadOnlyStyle
-    const getDisabled =  isDisabledStyle
-    const getVariant = getVariants.variant
+    const isErrorStyle = InputVariants.errorVariant;
+    const getError = isError ? isErrorStyle : "";
+    const getColor = getColors.colors;
+    const getReadonly = isReadOnlyStyle;
+    const getDisabled = isDisabledStyle;
+    const getVariant = getVariants.variant;
 
     return {
-      className: `${getColor} ${getError} ${getError} ${getDisabled} ${getReadonly} ${getVariant}` 
-    }
-  },[isErrorStyle,colors,isDisabledStyle,isReadOnlyStyle,isError])
+      className:
+        `${getColor} ${getError} ${getDisabled} ${getReadonly} ${getVariant}`,
+    };
+  }, [isErrorStyle, colors, isDisabledStyle, isReadOnlyStyle, isError]);
   return {
     domRef,
     id,
@@ -172,6 +165,6 @@ export function useInput(props: InputProps) {
     GetLabelProps,
     GetParentsProps,
     GetInputStyle,
-    GetLabelPlacement
+    GetLabelPlacement,
   };
 }

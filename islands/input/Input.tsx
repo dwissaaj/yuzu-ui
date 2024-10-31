@@ -52,7 +52,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
     if (GetLabelPlacement.labelPlacement === "top") {
       return (
         <div
-        {...GetParentsProps}
+          {...GetParentsProps}
           className={`p-2 flex flex-col gap-2 ${GetParentsProps.className} `}
         >
           {labelContent}
@@ -70,7 +70,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
     if (GetLabelPlacement.labelPlacement === "bottom") {
       return (
         <div
-        {...GetParentsProps}
+          {...GetParentsProps}
           className={`flex flex-col gap-2 ${GetParentsProps.className}`}
         >
           <div
@@ -87,7 +87,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
   const leftWrapper = useMemo(() => {
     if (GetLabelPlacement.labelPlacement === "left") {
       return (
-        <div {...GetParentsProps}
+        <div
+          {...GetParentsProps}
           className={`flex flex-row gap-2 items-end ${GetParentsProps.className}`}
         >
           <div className={"w-1/5"}>
@@ -108,7 +109,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
     if (GetLabelPlacement.labelPlacement === "right") {
       return (
         <div
-        {...GetParentsProps}
+          {...GetParentsProps}
           className={` flex flex-row gap-2 items-end ${GetParentsProps.className}`}
         >
           <div
