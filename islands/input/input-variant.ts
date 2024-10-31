@@ -18,7 +18,7 @@ export const InputVariants = {
     error: "bg-error",
     success: "bg-success",
     warning: "bg-warning",
-    none: ""
+    none: "",
   },
   labelPlacement: {
     top: "top-0",

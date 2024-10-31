@@ -1,4 +1,3 @@
-
 import { InputVariants } from "./input-variant.ts";
 import type { InputProps } from "./type.ts";
 import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
@@ -31,57 +30,55 @@ export function useInput(props: InputProps) {
     label,
   } = props;
 
-
   /**
    * Disabled class, can be modified using tailwind class
    */
-  
+
   const isDisableClass = useMemo(() => {
-    if(disabled === true) {
-      const disabled = true
-      const isDisabledStyle = "disabled:opacity-50 cursor-not-allowed"
-      return {isDisabledStyle , disabled}
-    }
-    else if(disabled === false) {
-      const disabled = false
-      const isDisabledStyle = ""
-      return {isDisabledStyle , disabled}
+    if (disabled === true) {
+      const disabled = true;
+      const isDisabledStyle = "disabled:opacity-50 cursor-not-allowed";
+      return { isDisabledStyle, disabled };
+    } else if (disabled === false) {
+      const disabled = false;
+      const isDisabledStyle = "";
+      return { isDisabledStyle, disabled };
     }
   }, [isDisabledStyle, disabled]);
 
   const isReadonlyClass = useMemo(() => {
-    if(readOnly === true) {
-      const readOnly = true
-      const isReadOnlyStyle = "read-only:opacity-20 read-only:border-20 read-only:outline-20 "
-      return {readOnly , isReadOnlyStyle}
+    if (readOnly === true) {
+      const readOnly = true;
+      const isReadOnlyStyle =
+        "read-only:opacity-20 read-only:border-20 read-only:outline-20 ";
+      return { readOnly, isReadOnlyStyle };
+    } else if (readOnly === false) {
+      const isReadOnly = false;
+      const isReadOnlyStyle = "";
+      return { isReadOnly, isReadOnlyStyle };
     }
-    else if(readOnly === false) {
-      const isReadOnly = false
-      const isReadOnlyStyle = ""
-      return {isReadOnly , isReadOnlyStyle}
-    }
-  }, [readOnly,isReadOnlyClass]);
-
+  }, [readOnly, isReadOnlyClass]);
 
   const isErrorClass = useMemo(() => {
-    return isError ? "border-error text-error placeholder:text-red-400 focus:border-error focus:outline-error invalid:text-error" : '';
+    return isError
+      ? "border-error text-error placeholder:text-red-400 focus:border-error focus:outline-error invalid:text-error"
+      : "";
   }, [isError]);
 
   const isFullWidthClass = useMemo(() => {
     return isFullWidth ? "w-full " : "";
   }, [isFullWidth]);
 
-
   const isRequiredStyleClass = useMemo(() => {
-    if(required === true) {
-      const required = true
-      const isRequiredStyle = "after:content-['*'] after:ml-0.5 after:text-red-500 block"
-      return {isRequiredStyle , required}
-    }
-    else if(required === false) {
-      const required = false
-      const isRequiredStyle = ""
-      return {isRequiredStyle , required}
+    if (required === true) {
+      const required = true;
+      const isRequiredStyle =
+        "after:content-['*'] after:ml-0.5 after:text-red-500 block";
+      return { isRequiredStyle, required };
+    } else if (required === false) {
+      const required = false;
+      const isRequiredStyle = "";
+      return { isRequiredStyle, required };
     }
   }, [isReadOnlyClass, required]);
 
@@ -122,19 +119,28 @@ export function useInput(props: InputProps) {
     return {
       isDisabledStyle: isDisableClass?.isDisabledStyle,
       disabled: isDisableClass?.disabled,
-      isReadonlyClass: isReadonlyClass?.isReadOnlyStyle, 
-      readOnly: isReadonlyClass?.readOnly, 
+      isReadonlyClass: isReadonlyClass?.isReadOnlyStyle,
+      readOnly: isReadonlyClass?.readOnly,
       isError: isErrorClass,
       isFullWidth: isFullWidthClass,
       isRequiredStyle: isRequiredStyleClass?.isRequiredStyle,
-      required: isRequiredStyleClass?.required, 
+      required: isRequiredStyleClass?.required,
       variant: getVariants.variant,
       colors: getColors.colors,
       size: getSize.size,
       labelPlacement: getLabel.labelPlacement,
-
     };
-  }, [disabled, isDisabledStyle, isError, isRequiredStyle, required,colors, , isReadonlyClass, readOnly ]);
+  }, [
+    disabled,
+    isDisabledStyle,
+    isError,
+    isRequiredStyle,
+    required,
+    colors,
+    ,
+    isReadonlyClass,
+    readOnly,
+  ]);
 
   return {
     ref,
@@ -151,6 +157,6 @@ export function useInput(props: InputProps) {
     GetInputProps,
     label,
     labelPlacement,
-    required
+    required,
   };
 }
