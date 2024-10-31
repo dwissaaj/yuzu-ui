@@ -11,7 +11,7 @@ export type InputProps =
     /**
      * Ref dom
      */
-    ref: Ref<HTMLInputElement> | null;
+    domRef?: Ref<HTMLInputElement> | null;
 
     /**
      * Input value
@@ -60,13 +60,18 @@ export type InputProps =
     /**
      * Read only styling
      */
-    isReadOnlyClass?: string;
+    isReadOnlyStyle?: string;
 
     /**
      * Required state
      * @default false
      */
     isRequiredStyle?: string;
+
+    /**
+     * Custom access to error style
+     */
+    isErrorStyle?: string;
 
     /**
      * Name for form control

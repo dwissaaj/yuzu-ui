@@ -30,43 +30,46 @@ export default function Wrapper() {
             label="Name"
           />
            <Input
-            required={true}
-            type="password"
-            labelPlacement="bottom"
-            className={""}
-            size="large"
-            variant="full"
-            isFullWidth={false}
-            onChange={onchanges}
-            placeholder="Your Email"
-            label="Name"
-          />
-           <Input
-            required={true}
-            type="password"
-            labelPlacement="right"
-            className={""}
-            size="large"
-            variant="full"
-            isFullWidth={false}
-            onChange={onchanges}
-            placeholder="Your Email"
-            label="Name"
-          />
-           <Input
-            required={true}
-            type="password"
-            labelPlacement="left"
-            className={""}
-            size="large"
-            variant="full"
-            isFullWidth={false}
-            onChange={onchanges}
-            placeholder="Your Email"
-            label="Name"
-          />
+
+        isError={true}
+        required={true}
+        type="password"
+        labelPlacement="bottom"
+        className={""}
+        size="large"
+        variant="underline"
+        isFullWidth={false}
+        onChange={onchanges}
+        placeholder="Your Email"
+        label="Name"
+        />
+          <Input
+
+
+required={true}
+type="password"
+labelPlacement="left"
+className={""}
+size="large"
+variant="full"
+isFullWidth={false}
+onChange={onchanges}
+placeholder="Your Email"
+label="Name"
+/>
+<Input
+        required={true}
+        type="password"
+        labelPlacement="right"
+        className={""}
+        size="large"
+        variant="underline"
+        isFullWidth={false}
+        onChange={onchanges}
+        placeholder="Your Email"
+        label="Name"
+        />
         </div>
-        
       </div>
     </>
   );
