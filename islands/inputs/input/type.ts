@@ -48,10 +48,30 @@ export type InputProps =
     isError?: boolean;
 
     /**
-     * disable state
-     * @default false
+     * disabled styling
+     *
      */
     isDisabledStyle?: string;
+
+    /**
+     * Is input disabled
+     * @default false
+     */
+    isDisabled?: boolean;
+
+    /**
+     * Is input readonly
+     * @default false
+     */
+    isReadonly?: boolean;
+
+
+    /**
+     * Is input required
+     * @default false
+     */
+    isRequired?: boolean;
+
 
     /**
      * Read only styling
