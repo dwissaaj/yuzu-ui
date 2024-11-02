@@ -15,6 +15,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
     value,
     name,
     style,
+    isDisabledStyle,
+    isErrorStyle,
+    isRequiredStyle,
     placeholder,
     GetInputProps,
     GetLabelProps,
@@ -34,10 +37,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
   const baseContent = (
     <input
       ref={domRef}
-      disabled={GetInputProps.disabled}
-      readOnly={GetInputProps.readOnly}
-      required={GetInputProps.required}
-      className={`p-2 w-full ${GetInputStyle.className} ${className} `}
+      disabled={GetInputProps.isDisable}
+      readOnly={GetInputProps.isReadOnly}
+      required={GetInputProps.isRequired}
+      className={`p-2 w-full ${isDisabledStyle} ${isErrorStyle} ${isRequiredStyle}  ${GetInputStyle.className} ${className} `}
       inputMode={inputMode}
       type={type}
       value={value}

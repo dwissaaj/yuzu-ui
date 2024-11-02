@@ -20,10 +20,10 @@ export const InputVariants = {
     none: "",
   },
   labelPlacement: {
-    top: "top-0",
-    left: "left-0",
-    right: "right-0",
-    bottom: "bottom-0",
+    top: "top",
+    left: "left",
+    right: "right",
+    bottom: "bottom",
   },
   requiredVariant: "after:content-['*'] after:ml-0.5 after:text-red-500 block",
   readonlyVariant:
