@@ -1,10 +1,6 @@
 export const CheckboxVariants = {
-  labelPosition: {
-    top: "top",
-    bottom: "bottom",
-    left: "left",
-    right: "right",
-  },
+
+
   colors: {
     primary: "text-primary",
     secondary: "text-secondary",
@@ -26,7 +22,7 @@ export const CheckboxVariants = {
     large: "w-12 h-12",
   },
   boxStyle: "appearance-none",
-  
+
   boxRadius: {
     full: "rounded-full  border-2",
     large: "rounded-lg border-2",
@@ -39,6 +35,6 @@ export const CheckboxVariants = {
     error: "checked:bg-error",
     success: "checked:bg-success",
     warning: "checked:bg-warning",
-    none: ''
-  }
+    none: "",
+  },
 };

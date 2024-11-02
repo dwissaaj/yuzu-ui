@@ -49,7 +49,6 @@ export type InputProps =
 
     /**
      * disabled styling
-     *
      */
     isDisabledStyle?: string;
 
@@ -65,13 +64,11 @@ export type InputProps =
      */
     isReadonly?: boolean;
 
-
     /**
      * Is input required
      * @default false
      */
     isRequired?: boolean;
-
 
     /**
      * Read only styling

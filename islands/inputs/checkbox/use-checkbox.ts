@@ -5,9 +5,8 @@ import { colors } from "$fresh/src/server/deps.ts";
 
 export function useCheckbox(props: CheckboxProps) {
   const {
-    children,
     domRef,
-    labelPosition,
+    labelPosition = 'right',
     boxSize = 'medium',
     boxRadius = "none",
     boxStyle,
@@ -17,7 +16,7 @@ export function useCheckbox(props: CheckboxProps) {
     label,
     isDisabled,
     isDisabledStyle,
-    indeterminate,
+    isIndeterminate,
     className,
   } = props;
   const GetColor = useMemo(
@@ -37,7 +36,7 @@ export function useCheckbox(props: CheckboxProps) {
 
   const GetLabelClass = useMemo(() => {
     return {
-      labelPosition: CheckboxVariants.labelPosition,
+      labelPosition: labelPosition,
       label: label,
     };
   }, [label, labelPosition]);
@@ -114,14 +113,13 @@ export function useCheckbox(props: CheckboxProps) {
     };
   }, [isDisabled]);
   return {
-    children,
     domRef,
     className,
     GetLabelStyle,
     GetLabelClass,
     GetCheckboxProps,
     GetBoxStyle,
-    indeterminate,
+    isIndeterminate,
     boxStyle,
 
   };

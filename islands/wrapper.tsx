@@ -13,9 +13,9 @@ export default function Wrapper() {
   const [check, setCheck] = useState("");
   return (
     <>
-      <div class={" flex flex-col gap-2"}>
-        <div className={" "}>
-          <Checkbox value={check} indeterminate boxColor="error" size="small" boxRadius="small"  label={"school"} />
+      <div class={"w-full flex flex-col gap-2"}>
+        <div className={"w-1/2 "}>
+          <Input label={'school'} />
         </div>
       </div>
     </>
