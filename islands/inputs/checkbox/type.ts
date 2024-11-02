@@ -27,18 +27,24 @@ export type CheckboxProps =
 
     size?: "small" | "medium" | "large";
 
-    radius?: "full" | "large" | "small" | "none";
+    
 
     labelPosition?: "left" | "right" | "bottom" | "top";
 
     label?: string;
     className?: string | null;
 
-    checkboxColor?:
+    boxColor?:
       | "primary"
       | "secondary"
       | "error"
       | "warning"
       | "success"
       | "none";
+
+    boxSize?: "small" | "medium" | "large";
+
+    boxStyle?: string;
+
+    boxRadius?: "full" | "large" | "small" | "none";
   };

@@ -15,8 +15,7 @@ export default function Wrapper() {
     <>
       <div class={" flex flex-col gap-2"}>
         <div className={" "}>
-          <Checkbox size="small"  label={"school"} />
-          <Input isRequired label={"name"} variant="full" />
+          <Checkbox value={check} indeterminate boxColor="error" size="small" boxRadius="small"  label={"school"} />
         </div>
       </div>
     </>

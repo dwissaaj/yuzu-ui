@@ -8,25 +8,27 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
   const {
     children,
     domRef,
-    GetLabelClass,
-    GetLabelStyle,
-    indeterminate,
-    GetCheckboxProps,
     className,
+    GetLabelStyle,
+    GetLabelClass,
+    GetCheckboxProps,
+    GetBoxStyle,
+    indeterminate,
+    boxStyle,
   } = useCheckbox({ ...props });
   return (
     <div
       className={`flex flex-row gap-2 items-center
-    ${GetLabelStyle}`}
+   `}
     >
       <input
-        className={`appearance-none border-2 h-5 w-5 checked:border-red-400 checked:bg-primary ${className}`}
+        className={`${GetBoxStyle.className} ${boxStyle} ${className}`}
         ref={domRef}
         indeterminate={indeterminate}
         disabled={GetCheckboxProps.isDisable}
         type={"checkbox"}
       />
-      <label className={`${GetLabelStyle}`}>
+      <label className={`${GetLabelStyle.className}`}>
         {GetLabelClass.label}
       </label>
       {children}

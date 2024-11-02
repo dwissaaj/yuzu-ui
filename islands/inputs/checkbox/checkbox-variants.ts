@@ -5,14 +5,6 @@ export const CheckboxVariants = {
     left: "left",
     right: "right",
   },
-  checkboxColor: {
-    primary: "bg-primary",
-    secondary: "bg-secondary",
-    error: "bg-error",
-    success: "bg-success",
-    warning: "bg-warning",
-    none: "",
-  },
   colors: {
     primary: "text-primary",
     secondary: "text-secondary",
@@ -26,11 +18,27 @@ export const CheckboxVariants = {
     medium: "text-3xl",
     large: "text-5xl",
   },
-  radius: {
-    full: "rounded-full",
-    large: "rounded-lg",
-    small: "rounded-md",
-    none: "rounded-none",
-  },
+
   disableStyle: "disabled:opacity-20 cursor-not-allowed line-through",
+  boxSize: {
+    small: "w-5 h-5",
+    medium: "w-8 h-8",
+    large: "w-12 h-12",
+  },
+  boxStyle: "appearance-none",
+  
+  boxRadius: {
+    full: "rounded-full  border-2",
+    large: "rounded-lg border-2",
+    small: "rounded-md border-2",
+    none: "rounded-none border-2",
+  },
+  boxColor: {
+    primary: "checked:bg-primary",
+    secondary: "checked:bg-secondary",
+    error: "checked:bg-error",
+    success: "checked:bg-success",
+    warning: "checked:bg-warning",
+    none: ''
+  }
 };

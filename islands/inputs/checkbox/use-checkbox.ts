@@ -6,12 +6,14 @@ import { colors } from "$fresh/src/server/deps.ts";
 export function useCheckbox(props: CheckboxProps) {
   const {
     children,
-    type,
     domRef,
     labelPosition,
+    boxSize = 'medium',
+    boxRadius = "none",
+    boxStyle,
+    boxColor = 'none',
     color = "none",
     size = "small",
-    radius = "none",
     label,
     isDisabled,
     isDisabledStyle,
@@ -33,18 +35,29 @@ export function useCheckbox(props: CheckboxProps) {
   }, [size]);
 
 
-  const GetRadius = useMemo(() => {
-    return {
-      radius: CheckboxVariants.radius[radius],
-    };
-  }, [radius]);
   const GetLabelClass = useMemo(() => {
     return {
       labelPosition: CheckboxVariants.labelPosition,
       label: label,
     };
   }, [label, labelPosition]);
-
+  
+  const GetBoxRadius = useMemo(() => {
+    return {
+      radius: CheckboxVariants.boxRadius[boxRadius],
+    };
+  }, [boxRadius]);
+  
+  const GetBoxSize = useMemo(() => {
+    return {
+      size: CheckboxVariants.boxSize[boxSize],
+    };
+  }, [boxSize]);
+  const GetBoxColor = useMemo(() => {
+    return {
+      boxColor: CheckboxVariants.boxColor[boxColor],
+    };
+  }, [boxColor]);
   const GetDisabledClass = useMemo(() => {
     if (isDisabled === true) {
       const disabled = true;
@@ -56,15 +69,24 @@ export function useCheckbox(props: CheckboxProps) {
       return { isDisabledStyle, disabled };
     }
   }, [isDisabled, isDisabledStyle]);
-  const GetInputStle = useMemo(() => {
-    const getcolor = GetColor.color;
-    const getsize = Getsize.size;
+
+
+  /**
+   * Style for box
+   */
+  const GetBoxStyle = useMemo(() => {
+    const getBoxColor = GetBoxColor.boxColor
+    const getBoxsize = Getsize.size;
+    const getBoxRadius = GetBoxRadius.radius
+    const getBoxSize = GetBoxSize.size
     const getisDisabledStyle = GetDisabledClass?.isDisabledStyle;
+    const boxStyle = CheckboxVariants.boxStyle
     return {
       className:
-        `${getcolor} ${getsize}  ${getisDisabledStyle}`,
+        `${getBoxColor} ${getBoxsize} ${getisDisabledStyle} ${getBoxRadius} ${getBoxSize} ${boxStyle}`,
     };
-  }, [colors, size, radius, isDisabledStyle]);
+  }, [boxColor, isDisabledStyle, boxRadius, boxSize, ]);
+
 
   /**
    * styling for label input
@@ -74,11 +96,12 @@ export function useCheckbox(props: CheckboxProps) {
     const getcolor = GetColor.color;
     const getsize = Getsize.size;
     const getisDisabledStyle = GetDisabledClass?.isDisabledStyle;
+    const labelClassname = className
     return {
-      parentclass :
-        `${getcolor} ${getsize}  ${getisDisabledStyle}`,
+      className :
+        `${getcolor} ${getsize}  ${getisDisabledStyle} ${labelClassname}`,
     };
-  }, [colors, size, radius, isDisabledStyle]);
+  }, [colors, size, isDisabledStyle]);
 
   /**
    * For state input as props dont add to styling or class name
@@ -92,12 +115,14 @@ export function useCheckbox(props: CheckboxProps) {
   }, [isDisabled]);
   return {
     children,
-    type,
     domRef,
     className,
     GetLabelStyle,
     GetLabelClass,
     GetCheckboxProps,
+    GetBoxStyle,
     indeterminate,
+    boxStyle,
+
   };
 }
