@@ -1,7 +1,7 @@
 import type { Ref } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { JSX } from "preact/jsx-runtime";
 
-export type InputProps =
+export type PasswordsProps =
   & Omit<JSX.IntrinsicElements["input"], "size" | "color">
   & {
     /**
@@ -14,23 +14,6 @@ export type InputProps =
      */
     value?: JSX.IntrinsicElements["input"]["value"];
 
-    /**
-     * Html input value for keyboard
-     */
-    inputMode?:
-      | "none"
-      | "text"
-      | "decimal"
-      | "numeric"
-      | "tel"
-      | "search"
-      | "email"
-      | "url";
-
-    /**
-     * Input field type
-     */
-    type?: JSX.IntrinsicElements["input"]["type"];
     /**
      * input ID
      */
@@ -76,7 +59,8 @@ export type InputProps =
     isReadOnlyStyle?: string;
 
     /**
-     * Required style
+     * Required state
+     * @default false
      */
     isRequiredStyle?: string;
 
@@ -121,7 +105,12 @@ export type InputProps =
     /**
      * JSX For password icon
      */
-    passwordIcon?: JSX.Element;
+    closeIcon?: JSX.Element;
+
+    /**
+     * JSX For password icon
+     */
+    showIcon?: JSX.Element;
 
     /**
      * color input
@@ -137,4 +126,9 @@ export type InputProps =
      * Label placement
      */
     labelPlacement?: "left" | "right" | "bottom" | "top";
+
+    /**
+     * styling for icon 
+     */
+    variantIconStyle?: "underline" | "full";
   };
