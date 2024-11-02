@@ -9,11 +9,11 @@ export const PasswordsVariants = {
   },
   variant: {
     underline: "border-0 focus:outline-0 focus:ring-0 focus:border-0",
-    full: "border-0 focus:outline-error ",
+    full: "border-0 focus:outline-0 focus:ring-0 focus:border-0",
   },
   variantIconStyle: {
     underline: "border-b-2 ",
-    full: "border-0 focus:outline-error",
+    full: "border-2 ",
   
   },
   colors: {

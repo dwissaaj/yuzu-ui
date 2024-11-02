@@ -14,8 +14,7 @@ export default function Wrapper() {
       <div class={"w-full flex flex-col gap-2"}>
         <div className={"w-1/2 "}>
 
-          <Passwords size="large" variantIconStyle="underline" />
-      
+          <Passwords size="large" variant="full" variantIconStyle="full" />
         </div>
       </div>
     </>

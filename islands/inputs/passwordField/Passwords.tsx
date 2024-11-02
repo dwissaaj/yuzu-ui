@@ -30,9 +30,12 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
   } = usePasswords({ ...props });
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const inputRef = useRef(null)
   const [isFocused, setIsFocused] = useState(false);
-  console.log(inputRef)
+
+  // Handlers to update focus state
+  const handleFocus = () => setIsFocused(true);
+  const handleBlur = () => setIsFocused(false);
+
   const togglePasswordVisibility = () => {
     console.log(isPasswordVisible);
     setIsPasswordVisible((prev) => !prev);
@@ -47,7 +50,7 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
 
   const baseContent = (
     <input
-      ref={domRef || inputRef}
+      ref={domRef}
       disabled={GetInputProps.isDisable}
       readOnly={GetInputProps.isReadOnly}
       required={GetInputProps.isRequired}
@@ -59,6 +62,8 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
       id={id}
       style={`${style}`}
       placeholder={placeholder}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
     />
   );
 
@@ -74,7 +79,7 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
           {labelContent}
           <div
             className={`flex flex-row gap-2 items-center pr-4 ${GetVariantIcon.className}
-            ${inputRef.current ? "" : ""}
+            ${isFocused ? "border-2 outline-primary ring-primary border-primary" : "border-b-2"}
             `}
           >
             {baseContent}
@@ -89,7 +94,7 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
         </div>
       );
     }
-  }, [GetLabelPlacement, type, isPasswordVisible,inputRef]);
+  }, [GetLabelPlacement, type, isPasswordVisible,isFocused]);
 
   return (
     <>
