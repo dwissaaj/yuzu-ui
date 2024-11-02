@@ -174,5 +174,8 @@ export function useInput(props: InputProps) {
     isReadonly,
     isRequired,
     isDisabled,
+    isDisabledStyle,
+    isErrorStyle,
+    isRequiredStyle,
   };
 }

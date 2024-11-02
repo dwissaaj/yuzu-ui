@@ -3,19 +3,12 @@ import Checkbox from "./inputs/checkbox/Checkbox.tsx";
 import Input from "./inputs/input/Input.tsx";
 
 export default function Wrapper() {
-  const handle = () => {
-    alert("hei");
-  };
-  function onchanges() {
-    console.log("ji");
-  }
-  // const inputRef = useRef(null)
-  const [check, setCheck] = useState("");
+
   return (
     <>
       <div class={"w-full flex flex-col gap-2"}>
         <div className={"w-1/2 "}>
-          <Input label={'school'} />
+          <Input isDisabled isDisabledStyle="bg-red-500" label={'school'} />
         </div>
       </div>
     </>
