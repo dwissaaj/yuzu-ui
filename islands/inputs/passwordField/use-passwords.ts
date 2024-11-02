@@ -21,12 +21,12 @@ export function usePasswords(props: PasswordsProps) {
     isRequiredStyle,
     isRequired = false,
     variant = "full",
+    variantFocus ="full",
     size = "small",
     isFullWidth = false,
     colors = "none",
     labelPlacement = "top",
     label,
-    variantIconStyle = "full"
   } = props;
 
   const isDisableClass = useMemo(() => {
@@ -77,13 +77,13 @@ export function usePasswords(props: PasswordsProps) {
     },
     [variant],
   );
-  const getVariantIconClass = useMemo(
+  const getVariantRelax = useMemo(
     () => {
       return {
-        variantIconStyle: PasswordsVariants.variantIconStyle[variantIconStyle],
+        variantFocus: PasswordsVariants.variantFocus[variantFocus],
       };
     },
-    [variantIconStyle],
+    [variantFocus],
   );
   const getSize = useMemo(
     () => {
@@ -143,12 +143,13 @@ export function usePasswords(props: PasswordsProps) {
     };
   }, [isFullWidthClass, colors, size, size, isDisableClass]);
 
-  const GetVariantIcon = useMemo(() => {
-    const getVariant = getVariantIconClass.variantIconStyle
+  const GetVariantInputs = useMemo(() => {
+    const variant = getVariants.variant
+    const variantFocus = getVariantRelax.variantFocus
     return {
-      className: `${getVariant}`,
+      variant,variantFocus
     };
-  }, [variantIconStyle]);
+  }, [variant, variantFocus]);
 
   const GetInputStyle = useMemo(() => {
     const isErrorStyle = PasswordsVariants.errorVariant;
@@ -156,10 +157,10 @@ export function usePasswords(props: PasswordsProps) {
     const getColor = getColors.colors;
     const getReadonly = isReadonlyClass?.isReadOnlyStyle;
     const getDisabled = isDisableClass?.isDisabledStyle;
-    const getVariant = getVariants.variant
+
     return {
       className:
-        `${getColor} ${getError} ${getDisabled} ${getReadonly} ${getVariant}`,
+        `${getColor} ${getError} ${getDisabled} ${getReadonly} `,
     };
   }, [
     isErrorStyle,
@@ -167,7 +168,6 @@ export function usePasswords(props: PasswordsProps) {
     isReadonlyClass,
     isDisableClass,
     isError,
-    variant
   ]);
   return {
     domRef,
@@ -190,6 +190,6 @@ export function usePasswords(props: PasswordsProps) {
     isDisabledStyle,
     isErrorStyle,
     isRequiredStyle,
-    GetVariantIcon
+    GetVariantInputs
   };
 }

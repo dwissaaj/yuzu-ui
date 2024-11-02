@@ -26,13 +26,13 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
     isDisabledStyle,
     isErrorStyle,
     isRequiredStyle,
-    GetVariantIcon,
+    GetVariantInputs,
   } = usePasswords({ ...props });
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
 
-  // Handlers to update focus state
+
   const handleFocus = () => setIsFocused(true);
   const handleBlur = () => setIsFocused(false);
 
@@ -54,7 +54,7 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
       disabled={GetInputProps.isDisable}
       readOnly={GetInputProps.isReadOnly}
       required={GetInputProps.isRequired}
-      className={`p-2 w-full ${isDisabledStyle} ${isErrorStyle} ${isRequiredStyle}  ${GetInputStyle.className} ${className} `}
+      className={`p-2 w-full border-0 focus:outline-0 focus:ring-0 focus:border-0 `}
       inputMode={inputMode}
       type={isPasswordVisible ? "text" : "password"}
       value={value}
@@ -78,8 +78,8 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
         >
           {labelContent}
           <div
-            className={`flex flex-row gap-2 items-center pr-4 ${GetVariantIcon.className}
-            ${isFocused ? "border-2 outline-primary ring-primary border-primary" : "border-b-2"}
+            className={`flex flex-row gap-2 items-center pr-4
+            ${isFocused ? `${GetVariantInputs.variantFocus}` : `${GetVariantInputs.variant}`}
             `}
           >
             {baseContent}

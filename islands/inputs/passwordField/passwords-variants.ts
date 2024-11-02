@@ -7,14 +7,13 @@ export const PasswordsVariants = {
     large:
       "m-1 py-2 w-96 hover:brightness-105 transition ease-in-out duration-300 rounded-lg ",
   },
-  variant: {
-    underline: "border-0 focus:outline-0 focus:ring-0 focus:border-0",
-    full: "border-0 focus:outline-0 focus:ring-0 focus:border-0",
+  variantFocus: {
+    underline: "border-b-primary",
+    full: "border-2 border-primary",
   },
-  variantIconStyle: {
+  variant: {
     underline: "border-b-2 ",
     full: "border-2 ",
-  
   },
   colors: {
     primary: "bg-primary",

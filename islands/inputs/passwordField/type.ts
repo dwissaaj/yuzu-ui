@@ -85,9 +85,10 @@ export type PasswordsProps =
     style?: JSX.CSSProperties;
 
     /**
-     * Variant option
+     * Variant input, this for disable native html styling to 
+     * prevent crash with parents ( div element )
      */
-    variant?: "underline" | "full";
+    variantFocus?: "underline" | "full";
 
     /**
      * How big title value, default to 128px to small,  large
@@ -130,5 +131,5 @@ export type PasswordsProps =
     /**
      * styling for icon 
      */
-    variantIconStyle?: "underline" | "full";
+    variant?: "underline" | "full";
   };
