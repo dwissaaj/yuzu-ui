@@ -20,9 +20,21 @@ export type PasswordsProps =
     id?: string;
 
     /**
-     * Classname styling
+     * Classname styling for div parent
      */
     className?: string | null;
+
+    /**
+     * For direct access to input style
+     */
+    inputStyle?: string;
+
+
+        /**
+     * For direct access to label style
+     */
+    labelStyle?: string;
+
 
     /**
      * State for input

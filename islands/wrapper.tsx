@@ -15,7 +15,7 @@ export default function Wrapper() {
         <div className={"w-1/2 "}>
           <Passwords
             className={""}
-            label="hello"
+            label="password"
             labelPlacement="right"
             size="large"
             variant="underline"

@@ -7,6 +7,7 @@ import {
 } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
 import ClosePassword from "../../icon/component/ClosePassword.tsx";
 import OpenPassword from "../../icon/component/OpenPassword.tsx";
+import { lastPathSegment } from "$std/path/_common/basename.ts";
 const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
   const {
     domRef,
@@ -27,6 +28,8 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
     GetLabelProps,
     GetVariantStyle,
     GetPasswordProps,
+    inputStyle,
+    labelStyle,
   } = usePasswords({ ...props });
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -46,7 +49,7 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
   const labelContent = GetLabelPlacement.label
     ? (
       <span
-        className={`px-2  ${isRequiredStyle} ${GetLabelProps.isRequiredStyle}`}
+        className={`px-2 ${labelStyle}  ${isRequiredStyle} ${GetLabelProps.isRequiredStyle}`}
       >
         {GetLabelPlacement.label}
       </span>
@@ -55,7 +58,7 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
   const labelContentHorizontal = GetLabelPlacement.label
     ? (
       <span
-        className={`px-2 w-1/4  ${isRequiredStyle} ${GetLabelProps.isRequiredStyle}`}
+        className={`px-2 w-1/4 ${labelStyle}   ${isRequiredStyle} ${GetLabelProps.isRequiredStyle}`}
       >
         {GetLabelPlacement.label}
       </span>
@@ -67,7 +70,7 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
       disabled={GetPasswordProps.isDisable}
       readOnly={GetPasswordProps.isReadOnly}
       required={GetPasswordProps.isRequired}
-      className={`p-2 w-full border-0 focus:outline-0 focus:ring-0 focus:border-0 ${isDisabledStyle} ${isErrorStyle} ${GetInputStyle.className}`}
+      className={`p-2 w-full border-0 focus:outline-0 focus:ring-0 focus:border-0 ${inputStyle} ${isDisabledStyle} ${isErrorStyle} ${GetInputStyle.className}`}
       inputMode={inputMode}
       type={isPasswordVisible ? "text" : "password"}
       value={value}
