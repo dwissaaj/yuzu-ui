@@ -3,8 +3,6 @@ import type { Ref } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js
 export type CheckboxProps =
   & Omit<JSX.IntrinsicElements["input"], "size" | "color">
   & {
-
-
     /**
      * Dom ref
      */
@@ -27,7 +25,7 @@ export type CheckboxProps =
     isIndeterminate?: boolean;
 
     /**
-     * The color of the label 
+     * The color of the label
      */
     color?: "primary" | "secondary" | "error" | "warning" | "success" | "none";
 

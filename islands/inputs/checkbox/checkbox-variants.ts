@@ -1,6 +1,4 @@
 export const CheckboxVariants = {
-
-
   colors: {
     primary: "text-primary",
     secondary: "text-secondary",

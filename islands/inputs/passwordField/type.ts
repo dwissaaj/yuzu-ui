@@ -1,7 +1,7 @@
 import type { Ref } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { JSX } from "preact/jsx-runtime";
 
-export type InputProps =
+export type PasswordsProps =
   & Omit<JSX.IntrinsicElements["input"], "size" | "color">
   & {
     /**
@@ -15,31 +15,26 @@ export type InputProps =
     value?: JSX.IntrinsicElements["input"]["value"];
 
     /**
-     * Html input value for keyboard
-     */
-    inputMode?:
-      | "none"
-      | "text"
-      | "decimal"
-      | "numeric"
-      | "tel"
-      | "search"
-      | "email"
-      | "url";
-
-    /**
-     * Input field type
-     */
-    type?: JSX.IntrinsicElements["input"]["type"];
-    /**
      * input ID
      */
     id?: string;
 
     /**
-     * Classname styling
+     * Classname styling for div parent
      */
     className?: string | null;
+
+    /**
+     * For direct access to input style
+     */
+    inputStyle?: string;
+
+
+        /**
+     * For direct access to label style
+     */
+    labelStyle?: string;
+
 
     /**
      * State for input
@@ -76,7 +71,8 @@ export type InputProps =
     isReadOnlyStyle?: string;
 
     /**
-     * Required style
+     * Required state
+     * @default false
      */
     isRequiredStyle?: string;
 
@@ -101,10 +97,20 @@ export type InputProps =
     style?: JSX.CSSProperties;
 
     /**
-     * Variant option
+     * Variant input, this for disable native html styling to
+     * prevent crash with parents ( div element )
      */
-    variant?: "underline" | "full";
+    variantFocus?: "underline" | "full";
 
+    /**
+     * Variant focus styling custom
+     */
+    variantFocusStyle?: string;
+
+    /**
+     * Check the value of variant
+     */
+    variantLabel?: "underline" | "full" | string;
     /**
      * How big title value, default to 128px to small,  large
      * 208px
@@ -121,7 +127,12 @@ export type InputProps =
     /**
      * JSX For password icon
      */
-    passwordIcon?: JSX.Element;
+    closeIcon?: JSX.Element;
+
+    /**
+     * JSX For password icon
+     */
+    showIcon?: JSX.Element;
 
     /**
      * color input
@@ -137,4 +148,9 @@ export type InputProps =
      * Label placement
      */
     labelPlacement?: "left" | "right" | "bottom" | "top";
+
+    /**
+     * styling for icon
+     */
+    variant?: "underline" | "full";
   };

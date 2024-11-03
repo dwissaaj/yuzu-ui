@@ -9,6 +9,7 @@ import * as $index from "./routes/index.tsx";
 import * as $Accordionsparent from "./islands/Accordionsparent.tsx";
 import * as $global_type from "./islands/global/type.ts";
 import * as $icon_component_ClosePassword from "./islands/icon/component/ClosePassword.tsx";
+import * as $icon_component_Icon from "./islands/icon/component/Icon.tsx";
 import * as $icon_component_OpenPassword from "./islands/icon/component/OpenPassword.tsx";
 import * as $icon_component_PasswordIcon from "./islands/icon/component/PasswordIcon.tsx";
 import * as $inputs_button_Button from "./islands/inputs/button/Button.tsx";
@@ -23,6 +24,10 @@ import * as $inputs_input_Input from "./islands/inputs/input/Input.tsx";
 import * as $inputs_input_input_variant from "./islands/inputs/input/input-variant.ts";
 import * as $inputs_input_type from "./islands/inputs/input/type.ts";
 import * as $inputs_input_use_input from "./islands/inputs/input/use-input.ts";
+import * as $inputs_passwordField_Passwords from "./islands/inputs/passwordField/Passwords.tsx";
+import * as $inputs_passwordField_passwords_variants from "./islands/inputs/passwordField/passwords-variants.ts";
+import * as $inputs_passwordField_type from "./islands/inputs/passwordField/type.ts";
+import * as $inputs_passwordField_use_passwords from "./islands/inputs/passwordField/use-passwords.ts";
 import * as $theme_use_theme from "./islands/theme/use-theme.ts";
 import * as $wrapper from "./islands/wrapper.tsx";
 import type { Manifest } from "$fresh/server.ts";
@@ -38,6 +43,7 @@ const manifest = {
     "./islands/Accordionsparent.tsx": $Accordionsparent,
     "./islands/global/type.ts": $global_type,
     "./islands/icon/component/ClosePassword.tsx": $icon_component_ClosePassword,
+    "./islands/icon/component/Icon.tsx": $icon_component_Icon,
     "./islands/icon/component/OpenPassword.tsx": $icon_component_OpenPassword,
     "./islands/icon/component/PasswordIcon.tsx": $icon_component_PasswordIcon,
     "./islands/inputs/button/Button.tsx": $inputs_button_Button,
@@ -53,6 +59,13 @@ const manifest = {
     "./islands/inputs/input/input-variant.ts": $inputs_input_input_variant,
     "./islands/inputs/input/type.ts": $inputs_input_type,
     "./islands/inputs/input/use-input.ts": $inputs_input_use_input,
+    "./islands/inputs/passwordField/Passwords.tsx":
+      $inputs_passwordField_Passwords,
+    "./islands/inputs/passwordField/passwords-variants.ts":
+      $inputs_passwordField_passwords_variants,
+    "./islands/inputs/passwordField/type.ts": $inputs_passwordField_type,
+    "./islands/inputs/passwordField/use-passwords.ts":
+      $inputs_passwordField_use_passwords,
     "./islands/theme/use-theme.ts": $theme_use_theme,
     "./islands/wrapper.tsx": $wrapper,
   },
