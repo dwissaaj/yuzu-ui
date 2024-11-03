@@ -103,20 +103,7 @@ export function usePasswords(props: PasswordsProps) {
     };
   }, [label, isRequiredStyle]);
 
-  /**
-   * State for all input boolean
-   */
-  const GetInputProps = useMemo(() => {
-    return {
-      isDisable: isDisableClass?.disabled,
-      isReadOnly: isReadonlyClass?.readOnly,
-      isRequired: isRequiredStyleClass?.isRequired,
-    };
-  }, [
-    isDisabled,
-    isRequired,
-    isReadonly,
-  ]);
+
   const GetLabelPlacement = useMemo(() => {
     return {
       label: label,
@@ -131,6 +118,8 @@ export function usePasswords(props: PasswordsProps) {
     },
     [variantFocus],
   );
+
+
   /**
    * for styling parents div
    */
@@ -147,18 +136,30 @@ export function usePasswords(props: PasswordsProps) {
   /**
    * For input parent
    */
-  const GetVariantInputs = useMemo(() => {
+  const GetVariantStyle = useMemo(() => {
     if(variant === "full") {
       const variantLabel = "full"
       const variantLabelStyle = getVariantFocus.variantFocus["full"]
       const variant = getVariants.variant
-      return {variantLabelStyle,variantLabel, variant, variantFocusStyle}
+      const getDisabled = isDisableClass?.isDisabledStyle;
+      const isErrorStyle = PasswordsVariants.errorVariant;
+      const getError = isError ? isErrorStyle : "";
+      const getColor = getColors.colors;
+      const getReadonly = isReadonlyClass?.isReadOnlyStyle;
+      const allClass = getDisabled + getError + getColor + getReadonly
+      return {variantLabel, variantLabelStyle, variant, variantFocusStyle, allClass }
     }
     else {
       const variantLabel = "underline"
       const variantLabelStyle = getVariantFocus.variantFocus["underline"]
       const variant = getVariants.variant
-      return {variantLabel, variantLabelStyle, variant, variantFocusStyle}
+      const getDisabled = isDisableClass?.isDisabledStyle;
+      const isErrorStyle = PasswordsVariants.errorVariant;
+      const getError = isError ? isErrorStyle : "";
+      const getColor = getColors.colors;
+      const getReadonly = isReadonlyClass?.isReadOnlyStyle;
+      const allClass = getDisabled + getError + getColor + getReadonly
+      return {variantLabel, variantLabelStyle, variant, variantFocusStyle, allClass }
     }
   }, [variant, variantFocusStyle, ])
 
@@ -168,7 +169,6 @@ export function usePasswords(props: PasswordsProps) {
     const getColor = getColors.colors;
     const getReadonly = isReadonlyClass?.isReadOnlyStyle;
     const getDisabled = isDisableClass?.isDisabledStyle;
-
     return {
       className:
         `${getColor} ${getError} ${getDisabled} ${getReadonly} `,
@@ -180,6 +180,21 @@ export function usePasswords(props: PasswordsProps) {
     isDisableClass,
     isError,
   ]);
+
+  /**
+   * State for component
+   */
+  const GetPasswordProps = useMemo(() => {
+    return {
+      isDisable: isDisableClass?.disabled,
+      isReadOnly: isReadonlyClass?.readOnly,
+      isRequired: isRequiredStyleClass?.isRequired,
+    };
+  }, [
+    isDisabled,
+    isRequired,
+    isReadonly,
+  ]);
   return {
     domRef,
     id,
@@ -190,7 +205,6 @@ export function usePasswords(props: PasswordsProps) {
     name,
     style,
     placeholder,
-    GetInputProps,
     GetLabelProps,
     GetParentsProps,
     GetInputStyle,
@@ -201,6 +215,8 @@ export function usePasswords(props: PasswordsProps) {
     isDisabledStyle,
     isErrorStyle,
     isRequiredStyle,
-    GetVariantInputs,
+    GetVariantStyle,
+    GetPasswordProps,
+    isError
   };
 }

@@ -8,12 +8,12 @@ export const PasswordsVariants = {
       "m-1 py-2 w-96 hover:brightness-105 transition ease-in-out duration-300 rounded-lg ",
   },
   variantFocus: {
-    underline: "border-b-2",
-    full: "border-2  "
+    underline: "border-b-2 transition ease-in-out delay-150 duration-300",
+    full: "border-2  transition ease-in-out delay-150 duration-300"
   },
   variant: {
-    underline: "border-b-2 ",
-    full: "border-2 ",
+    underline: "border-b-2 transition ease-in-out delay-150 duration-300",
+    full: "border-2 transition ease-in-out delay-150 duration-300",
   },
   colors: {
     primary: "bg-primary",
@@ -34,5 +34,5 @@ export const PasswordsVariants = {
     "read-only:opacity-20 read-only:border-20 read-only:outline-20 ",
   disabledVariant: "disabled:opacity-20 cursor-not-allowed",
   errorVariant:
-    "outline-error border-error text-error placeholder:text-error focus:outline-error invalid:text-error",
+    "outline-error border-error text-error placeholder:text-error focus:outline-error invalid:text-error ",
 };

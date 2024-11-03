@@ -1,4 +1,4 @@
-import { forwardRef, useRef } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
+import { forwardRef } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { PasswordsProps } from "./type.ts";
 import { usePasswords } from "./use-passwords.ts";
 import {
@@ -7,7 +7,6 @@ import {
 } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
 import ClosePassword from "../../icon/component/ClosePassword.tsx";
 import OpenPassword from "../../icon/component/OpenPassword.tsx";
-import { PasswordsVariants } from "./passwords-variants.ts";
 const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
   const {
     domRef,
@@ -19,31 +18,24 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
     name,
     style,
     placeholder,
-    GetInputProps,
-    GetLabelProps,
     GetParentsProps,
     GetInputStyle,
     GetLabelPlacement,
     isDisabledStyle,
     isErrorStyle,
     isRequiredStyle,
-    GetVariantInputs,
+    GetVariantStyle,
+    GetPasswordProps
   } = usePasswords({ ...props });
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
 
-  const [variantFocus, setVariantFocus] = useState(GetVariantInputs.variant)
-  
+
   const handleFocus = () => {
-    // console.log('handle', variantFocus)
-    // console.log('check', GetVariantInputs.variantLabel[variantFocus])
-    // setVariantFocus(GetVariantInputs.variantLabel)
     setIsFocused(true)
   };
   const handleBlur = () => {
-    // setVariantFocus(GetVariantInputs.variantLabel)
-    // console.log('handle blur', variantFocus)
     setIsFocused(false)
   };
 
@@ -53,7 +45,7 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
   };
   const labelContent = GetLabelPlacement.label
     ? (
-      <span className={`px-2 ${GetLabelProps.isRequiredStyle}`}>
+      <span className={`px-2 ${isRequiredStyle}`}>
         {GetLabelPlacement.label}
       </span>
     )
@@ -62,10 +54,10 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
   const baseContent = (
     <input
       ref={domRef}
-      disabled={GetInputProps.isDisable}
-      readOnly={GetInputProps.isReadOnly}
-      required={GetInputProps.isRequired}
-      className={`p-2 w-full border-0 focus:outline-0 focus:ring-0 focus:border-0 `}
+      disabled={GetPasswordProps.isDisable}
+      readOnly={GetPasswordProps.isReadOnly}
+      required={GetPasswordProps.isRequired}
+      className={`p-2 w-full border-0 focus:outline-0 focus:ring-0 focus:border-0 ${isDisabledStyle} ${isErrorStyle}`}
       inputMode={inputMode}
       type={isPasswordVisible ? "text" : "password"}
       value={value}
@@ -77,23 +69,33 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
       onBlur={handleBlur}
     />
   );
-
-  const closeIcon = <ClosePassword />;
-  const openIcon = <OpenPassword />;
+  const closeIcon = (
+    <span className={`transition-opacity duration-300 ${isPasswordVisible ? 'opacity-100' : 'opacity-0'}`}>
+      <ClosePassword />
+    </span>
+  );
+  const openIcon = (
+    <span className={`transition-opacity duration-300 ${isPasswordVisible ? 'opacity-0' : 'opacity-100'}`}>
+      <OpenPassword />
+    </span>
+  );
   const mainWrapper = useMemo(() => {
     if (GetLabelPlacement.labelPlacement === "top") {
       return (
         <div
-          className={`p-2 flex flex-col gap-2 ${GetParentsProps.className} `}
+          className={`p-2 flex flex-col gap-2 ${GetParentsProps.className} 
+          ${className} ${isDisabledStyle} ${isErrorStyle}`}
         >
           {labelContent}
           <div
             className={` flex flex-row gap-2 items-center pr-4
-            ${isFocused ? `${GetVariantInputs.variantLabelStyle} ${GetVariantInputs.variantFocusStyle}` : `${GetVariantInputs.variant} `}`}
+            ${isFocused ? `${GetVariantStyle.variantLabelStyle} ${GetVariantStyle.variantFocusStyle}` : 
+              `${GetVariantStyle.variant} ${GetInputStyle.className} 
+              ${isDisabledStyle} ${isErrorStyle}`}`}
           >
             {baseContent}
             <button
-              className={"transition ease-in-out delay-300 duration-700"}
+              className={`transition ease-in-out delay-150 duration-300 ${isDisabledStyle} ${isErrorStyle}`}
               type={"button"}
               onClick={togglePasswordVisibility}
             >
@@ -103,7 +105,7 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
         </div>
       );
     }
-  }, [GetLabelPlacement, type, isPasswordVisible,isFocused, GetVariantInputs, variantFocus]);
+  }, [GetLabelPlacement, type, isPasswordVisible,isFocused, GetVariantStyle]);
 
   return (
     <>
