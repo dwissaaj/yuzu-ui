@@ -8,8 +8,8 @@ export const PasswordsVariants = {
       "m-1 py-2 w-96 hover:brightness-105 transition ease-in-out duration-300 rounded-lg ",
   },
   variantFocus: {
-    underline: "border-b-primary",
-    full: "border-2 border-primary",
+    underline: "border-b-2",
+    full: "border-2  "
   },
   variant: {
     underline: "border-b-2 ",

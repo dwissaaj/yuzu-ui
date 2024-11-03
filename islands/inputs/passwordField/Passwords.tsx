@@ -7,6 +7,7 @@ import {
 } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
 import ClosePassword from "../../icon/component/ClosePassword.tsx";
 import OpenPassword from "../../icon/component/OpenPassword.tsx";
+import { PasswordsVariants } from "./passwords-variants.ts";
 const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
   const {
     domRef,
@@ -32,9 +33,19 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
 
-
-  const handleFocus = () => setIsFocused(true);
-  const handleBlur = () => setIsFocused(false);
+  const [variantFocus, setVariantFocus] = useState(GetVariantInputs.variant)
+  
+  const handleFocus = () => {
+    // console.log('handle', variantFocus)
+    // console.log('check', GetVariantInputs.variantLabel[variantFocus])
+    // setVariantFocus(GetVariantInputs.variantLabel)
+    setIsFocused(true)
+  };
+  const handleBlur = () => {
+    // setVariantFocus(GetVariantInputs.variantLabel)
+    // console.log('handle blur', variantFocus)
+    setIsFocused(false)
+  };
 
   const togglePasswordVisibility = () => {
     console.log(isPasswordVisible);
@@ -73,14 +84,12 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
     if (GetLabelPlacement.labelPlacement === "top") {
       return (
         <div
-          {...GetParentsProps}
           className={`p-2 flex flex-col gap-2 ${GetParentsProps.className} `}
         >
           {labelContent}
           <div
-            className={`flex flex-row gap-2 items-center pr-4
-            ${isFocused ? `${GetVariantInputs.variantFocus}` : `${GetVariantInputs.variant}`}
-            `}
+            className={` flex flex-row gap-2 items-center pr-4
+            ${isFocused ? `${GetVariantInputs.variantLabelStyle} ${GetVariantInputs.variantFocusStyle}` : `${GetVariantInputs.variant} `}`}
           >
             {baseContent}
             <button
@@ -94,7 +103,7 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
         </div>
       );
     }
-  }, [GetLabelPlacement, type, isPasswordVisible,isFocused]);
+  }, [GetLabelPlacement, type, isPasswordVisible,isFocused, GetVariantInputs, variantFocus]);
 
   return (
     <>

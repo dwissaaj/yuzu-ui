@@ -90,6 +90,16 @@ export type PasswordsProps =
      */
     variantFocus?: "underline" | "full";
 
+
+    /**
+     * Variant focus styling custom
+     */
+    variantFocusStyle?: string;
+    
+    /**
+     * Check the value of variant
+     */
+    variantLabel?: "underline" | "full" | string
     /**
      * How big title value, default to 128px to small,  large
      * 208px

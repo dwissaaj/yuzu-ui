@@ -22,6 +22,7 @@ export function usePasswords(props: PasswordsProps) {
     isRequired = false,
     variant = "full",
     variantFocus ="full",
+    variantFocusStyle,
     size = "small",
     isFullWidth = false,
     colors = "none",
@@ -77,14 +78,7 @@ export function usePasswords(props: PasswordsProps) {
     },
     [variant],
   );
-  const getVariantRelax = useMemo(
-    () => {
-      return {
-        variantFocus: PasswordsVariants.variantFocus[variantFocus],
-      };
-    },
-    [variantFocus],
-  );
+
   const getSize = useMemo(
     () => {
       return {
@@ -129,7 +123,14 @@ export function usePasswords(props: PasswordsProps) {
       labelPlacement: labelPlacement,
     };
   }, [labelPlacement, label]);
-
+  const getVariantFocus = useMemo(
+    () => {
+      return {
+        variantFocus: PasswordsVariants.variantFocus,
+      };
+    },
+    [variantFocus],
+  );
   /**
    * for styling parents div
    */
@@ -143,13 +144,23 @@ export function usePasswords(props: PasswordsProps) {
     };
   }, [isFullWidthClass, colors, size, size, isDisableClass]);
 
+  /**
+   * For input parent
+   */
   const GetVariantInputs = useMemo(() => {
-    const variant = getVariants.variant
-    const variantFocus = getVariantRelax.variantFocus
-    return {
-      variant,variantFocus
-    };
-  }, [variant, variantFocus]);
+    if(variant === "full") {
+      const variantLabel = "full"
+      const variantLabelStyle = getVariantFocus.variantFocus["full"]
+      const variant = getVariants.variant
+      return {variantLabelStyle,variantLabel, variant, variantFocusStyle}
+    }
+    else {
+      const variantLabel = "underline"
+      const variantLabelStyle = getVariantFocus.variantFocus["underline"]
+      const variant = getVariants.variant
+      return {variantLabel, variantLabelStyle, variant, variantFocusStyle}
+    }
+  }, [variant, variantFocusStyle, ])
 
   const GetInputStyle = useMemo(() => {
     const isErrorStyle = PasswordsVariants.errorVariant;
@@ -190,6 +201,6 @@ export function usePasswords(props: PasswordsProps) {
     isDisabledStyle,
     isErrorStyle,
     isRequiredStyle,
-    GetVariantInputs
+    GetVariantInputs,
   };
 }
