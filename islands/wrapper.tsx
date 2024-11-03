@@ -13,7 +13,34 @@ export default function Wrapper() {
     <>
       <div class={"w-full flex flex-col gap-2"}>
         <div className={"w-1/2 "}>
-          <Passwords isError isErrorStyle="border-yellow-500 bg-yellow-500"   size="large" variant="underline"  />
+          <Passwords
+            className={""}
+            label="hello"
+            labelPlacement="right"
+            size="large"
+            variant="underline"
+          />
+          <Passwords
+            className={""}
+            label="your password"
+            labelPlacement="left"
+            size="large"
+            variant="underline"
+          />
+          <Passwords
+            className={""}
+            label="hello"
+            labelPlacement="top"
+            size="large"
+            variant="underline"
+          />
+          <Passwords
+            className={""}
+            label="hello"
+            labelPlacement="bottom"
+            size="large"
+            variant="underline"
+          />
         </div>
       </div>
     </>

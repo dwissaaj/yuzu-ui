@@ -24,19 +24,19 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
     isDisabledStyle,
     isErrorStyle,
     isRequiredStyle,
+    GetLabelProps,
     GetVariantStyle,
-    GetPasswordProps
+    GetPasswordProps,
   } = usePasswords({ ...props });
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
 
-
   const handleFocus = () => {
-    setIsFocused(true)
+    setIsFocused(true);
   };
   const handleBlur = () => {
-    setIsFocused(false)
+    setIsFocused(false);
   };
 
   const togglePasswordVisibility = () => {
@@ -45,19 +45,29 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
   };
   const labelContent = GetLabelPlacement.label
     ? (
-      <span className={`px-2 ${isRequiredStyle}`}>
+      <span
+        className={`px-2  ${isRequiredStyle} ${GetLabelProps.isRequiredStyle}`}
+      >
         {GetLabelPlacement.label}
       </span>
     )
     : null;
-
+  const labelContentHorizontal = GetLabelPlacement.label
+    ? (
+      <span
+        className={`px-2 w-1/4  ${isRequiredStyle} ${GetLabelProps.isRequiredStyle}`}
+      >
+        {GetLabelPlacement.label}
+      </span>
+    )
+    : null;
   const baseContent = (
     <input
       ref={domRef}
       disabled={GetPasswordProps.isDisable}
       readOnly={GetPasswordProps.isReadOnly}
       required={GetPasswordProps.isRequired}
-      className={`p-2 w-full border-0 focus:outline-0 focus:ring-0 focus:border-0 ${isDisabledStyle} ${isErrorStyle}`}
+      className={`p-2 w-full border-0 focus:outline-0 focus:ring-0 focus:border-0 ${isDisabledStyle} ${isErrorStyle} ${GetInputStyle.className}`}
       inputMode={inputMode}
       type={isPasswordVisible ? "text" : "password"}
       value={value}
@@ -70,34 +80,39 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
     />
   );
   const closeIcon = (
-    <span className={`transition-opacity duration-300 ${isPasswordVisible ? 'opacity-100' : 'opacity-0'}`}>
-      <ClosePassword />
+    <span className={`${GetInputStyle.className} `}>
+      <ClosePassword svgStyle={`${isErrorStyle} w-6`} />
     </span>
   );
   const openIcon = (
-    <span className={`transition-opacity duration-300 ${isPasswordVisible ? 'opacity-0' : 'opacity-100'}`}>
-      <OpenPassword />
+    <span className={`${GetInputStyle.className}`}>
+      <OpenPassword svgStyle={`${isErrorStyle} w-6`} />
     </span>
   );
+
   const mainWrapper = useMemo(() => {
     if (GetLabelPlacement.labelPlacement === "top") {
       return (
         <div
           className={`p-2 flex flex-col gap-2 ${GetParentsProps.className} 
-          ${className} ${isDisabledStyle} ${isErrorStyle}`}
+          ${className} ${isDisabledStyle}`}
         >
           {labelContent}
           <div
             className={` flex flex-row gap-2 items-center pr-4
-            ${isFocused ? `${GetVariantStyle.variantLabelStyle} ${GetVariantStyle.variantFocusStyle}` : 
-              `${GetVariantStyle.variant} ${GetInputStyle.className} 
-              ${isDisabledStyle} ${isErrorStyle}`}`}
+            ${
+              isFocused
+                ? `${GetVariantStyle.variantLabelStyle} ${GetVariantStyle.variantFocusStyle} ${GetInputStyle.className} ${isErrorStyle}`
+                : `${GetVariantStyle.variant} ${GetInputStyle.className} 
+              ${isDisabledStyle} ${isErrorStyle}`
+            } `}
           >
             {baseContent}
             <button
-              className={`transition ease-in-out delay-150 duration-300 ${isDisabledStyle} ${isErrorStyle}`}
+              className={`transition ease-in-out delay-150 duration-300 ${isDisabledStyle} ${GetInputStyle.className}`}
               type={"button"}
               onClick={togglePasswordVisibility}
+              disabled={GetPasswordProps.isDisable}
             >
               {isPasswordVisible ? closeIcon : openIcon}
             </button>
@@ -105,11 +120,108 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
         </div>
       );
     }
-  }, [GetLabelPlacement, type, isPasswordVisible,isFocused, GetVariantStyle]);
+  }, [GetLabelPlacement, type, isPasswordVisible, isFocused, GetVariantStyle]);
+  const bottomWrapper = useMemo(() => {
+    if (GetLabelPlacement.labelPlacement === "bottom") {
+      return (
+        <div
+          className={`p-2 flex flex-col gap-2 ${GetParentsProps.className} 
+          ${className} ${isDisabledStyle}`}
+        >
+          <div
+            className={` flex flex-row gap-2 items-center pr-4
+            ${
+              isFocused
+                ? `${GetVariantStyle.variantLabelStyle} ${GetVariantStyle.variantFocusStyle} ${GetInputStyle.className} ${isErrorStyle}`
+                : `${GetVariantStyle.variant} ${GetInputStyle.className} 
+              ${isDisabledStyle} ${isErrorStyle}`
+            } `}
+          >
+            {baseContent}
+            <button
+              className={`transition ease-in-out delay-150 duration-300 ${isDisabledStyle} ${GetInputStyle.className}`}
+              type={"button"}
+              onClick={togglePasswordVisibility}
+              disabled={GetPasswordProps.isDisable}
+            >
+              {isPasswordVisible ? closeIcon : openIcon}
+            </button>
+          </div>
+          {labelContent}
+        </div>
+      );
+    }
+  }, [GetLabelPlacement, type, isPasswordVisible, isFocused, GetVariantStyle]);
+  const leftWrapper = useMemo(() => {
+    if (GetLabelPlacement.labelPlacement === "left") {
+      return (
+        <div
+          className={`p-2 flex flex-row gap-2 ${GetParentsProps.className} 
+          ${className} ${isDisabledStyle} items-end`}
+        >
+          {labelContentHorizontal}
+          <div
+            className={`w-3/4 flex flex-row gap-2 items-center pr-4
+            ${
+              isFocused
+                ? `${GetVariantStyle.variantLabelStyle} ${GetVariantStyle.variantFocusStyle} ${GetInputStyle.className} ${isErrorStyle}`
+                : `${GetVariantStyle.variant} ${GetInputStyle.className} 
+              ${isDisabledStyle} ${isErrorStyle}`
+            } `}
+          >
+            {baseContent}
+            <button
+              className={`transition ease-in-out delay-150 duration-300 ${isDisabledStyle} ${GetInputStyle.className}`}
+              type={"button"}
+              onClick={togglePasswordVisibility}
+              disabled={GetPasswordProps.isDisable}
+            >
+              {isPasswordVisible ? closeIcon : openIcon}
+            </button>
+          </div>
+        </div>
+      );
+    }
+  }, [GetLabelPlacement, type, isPasswordVisible, isFocused, GetVariantStyle]);
+
+  const rightWrapper = useMemo(() => {
+    if (GetLabelPlacement.labelPlacement === "right") {
+      return (
+        <div
+          className={`p-2 flex flex-row gap-2  ${GetParentsProps.className} 
+          ${className} ${isDisabledStyle} items-end`}
+        >
+          <div
+            className={`w-3/4 flex flex-row gap-2 items-center pr-4
+            ${
+              isFocused
+                ? `${GetVariantStyle.variantLabelStyle} ${GetVariantStyle.variantFocusStyle} ${GetInputStyle.className} ${isErrorStyle}`
+                : `${GetVariantStyle.variant} ${GetInputStyle.className} 
+              ${isDisabledStyle} ${isErrorStyle}`
+            } `}
+          >
+            {baseContent}
+            <button
+              className={`transition ease-in-out delay-150 duration-300 ${isDisabledStyle} ${GetInputStyle.className}`}
+              type={"button"}
+              onClick={togglePasswordVisibility}
+              disabled={GetPasswordProps.isDisable}
+            >
+              {isPasswordVisible ? closeIcon : openIcon}
+            </button>
+          </div>
+          {labelContentHorizontal}
+        </div>
+      );
+    }
+  }, [GetLabelPlacement, type, isPasswordVisible, isFocused, GetVariantStyle]);
 
   return (
     <>
       {mainWrapper}
+      {bottomWrapper ? bottomWrapper : null}
+      {leftWrapper ? leftWrapper : null}
+      {rightWrapper ? rightWrapper : null}
     </>
   );
 });

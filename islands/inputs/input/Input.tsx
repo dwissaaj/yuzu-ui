@@ -28,7 +28,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
 
   const labelContent = GetLabelPlacement.label
     ? (
-      <span className={`px-2 ${GetLabelProps.isRequiredStyle}`}>
+      <span className={` ${GetLabelProps.isRequiredStyle}`}>
         {GetLabelPlacement.label}
       </span>
     )
@@ -55,8 +55,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
     if (GetLabelPlacement.labelPlacement === "top") {
       return (
         <div
-          {...GetParentsProps}
-          className={`p-2 flex flex-col gap-2 ${GetParentsProps.className} `}
+          className={` flex flex-col gap-2 ${GetParentsProps.className} `}
         >
           {labelContent}
           <div
@@ -73,7 +72,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
     if (GetLabelPlacement.labelPlacement === "bottom") {
       return (
         <div
-          {...GetParentsProps}
           className={`flex flex-col gap-2 ${GetParentsProps.className}`}
         >
           <div
@@ -91,7 +89,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
     if (GetLabelPlacement.labelPlacement === "left") {
       return (
         <div
-          {...GetParentsProps}
           className={`flex flex-row gap-2 items-end ${GetParentsProps.className}`}
         >
           <div className={"w-1/5"}>
@@ -112,7 +109,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
     if (GetLabelPlacement.labelPlacement === "right") {
       return (
         <div
-          {...GetParentsProps}
           className={` flex flex-row gap-2 items-end ${GetParentsProps.className}`}
         >
           <div
