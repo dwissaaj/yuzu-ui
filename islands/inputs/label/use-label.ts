@@ -6,12 +6,12 @@ export function useLabel(props: LabelProps) {
   const {
     domRef,
     label,
-    yuzuLabelStyle,
+    yuzuLabelStyle="",
     children,
     fontSize = "small",
     color = "none",
-    style,
-    className,
+    style="",
+    className="",
     ...otherProps
   } = props;
   const getColors = useMemo(

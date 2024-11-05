@@ -22,7 +22,8 @@ export default function Wrapper() {
             title={"fruits"}
             
           >
-            <Input size="small" placeholder={'as'} label={'as'} />
+            <Input label={'asd'} placeholder={'asd'} />
+            < Passwords label={'your pass'} />
   
           </Fieldset>
         </div>

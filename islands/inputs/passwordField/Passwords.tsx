@@ -49,16 +49,17 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
   const labelContent = GetLabelPlacement.label
     ? (
       <span
-        className={`px-2 ${labelStyle}  ${isRequiredStyle} ${GetLabelProps.isRequiredStyle}`}
+        className={`px-2 ${labelStyle} ${isRequiredStyle} ${GetLabelProps.isRequiredStyle}`}
       >
         {GetLabelPlacement.label}
       </span>
     )
     : null;
+
   const labelContentHorizontal = GetLabelPlacement.label
     ? (
       <span
-        className={`px-2 w-1/4 ${labelStyle}   ${isRequiredStyle} ${GetLabelProps.isRequiredStyle}`}
+        className={`px-2 w-1/4 ${labelStyle} ${isRequiredStyle} ${GetLabelProps.isRequiredStyle}`}
       >
         {GetLabelPlacement.label}
       </span>
@@ -84,7 +85,7 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
     />
   );
   const closeIcon = (
-    <span className={`${GetInputStyle.className} `}>
+    <span className={`${GetInputStyle.className}`}>
       <ClosePassword svgStyle={`${isErrorStyle} w-6`} />
     </span>
   );

@@ -37,7 +37,8 @@ export type InputProps =
     id?: string;
 
     /**
-     * Classname styling
+     * Classname styling for input, but best practice change the styling
+     * via variant file
      */
     className?: string | null;
 
