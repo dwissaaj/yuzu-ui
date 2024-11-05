@@ -7,18 +7,18 @@ export function usePasswords(props: PasswordsProps) {
     id,
     type,
     inputMode,
-    className,
+    className="",
     value,
     name,
-    style,
+    style="",
     placeholder,
-    isReadOnlyStyle,
+    isReadOnlyStyle="",
     isError = false,
-    isDisabledStyle,
-    isErrorStyle,
+    isDisabledStyle="",
+    isErrorStyle="",
     isDisabled = false,
     isReadonly = false,
-    isRequiredStyle,
+    isRequiredStyle="",
     isRequired = false,
     variant = "full",
     variantFocus = "full",
@@ -28,8 +28,9 @@ export function usePasswords(props: PasswordsProps) {
     colors = "none",
     labelPlacement = "top",
     label,
-    inputStyle,
-    labelStyle,
+    inputStyle="",
+    labelStyle="",
+    ...otherProps
   } = props;
 
   const isDisableClass = useMemo(() => {
@@ -239,5 +240,6 @@ export function usePasswords(props: PasswordsProps) {
     isError,
     inputStyle,
     labelStyle,
+    ...otherProps,
   };
 }

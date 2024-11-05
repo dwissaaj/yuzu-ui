@@ -6,11 +6,13 @@ export function useLabel(props: LabelProps) {
   const {
     domRef,
     label,
-    yuzuLabelStyle,
+    yuzuLabelStyle="",
     children,
-    fontSize= "small",
+    fontSize = "small",
     color = "none",
-    style,
+    style="",
+    className="",
+    ...otherProps
   } = props;
   const getColors = useMemo(
     () => {
@@ -22,7 +24,6 @@ export function useLabel(props: LabelProps) {
   );
   const getSize = useMemo(
     () => {
-      
       return LabelVariants.fontSize[fontSize];
     },
     [fontSize],
@@ -48,5 +49,7 @@ export function useLabel(props: LabelProps) {
     color,
     style,
     GetLabelProps,
+    className,
+    ...otherProps,
   };
 }

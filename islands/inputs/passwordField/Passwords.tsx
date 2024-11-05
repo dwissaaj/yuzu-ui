@@ -29,6 +29,7 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
     GetPasswordProps,
     inputStyle,
     labelStyle,
+    ...otherProps
   } = usePasswords({ ...props });
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -48,16 +49,17 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
   const labelContent = GetLabelPlacement.label
     ? (
       <span
-        className={`px-2 ${labelStyle}  ${isRequiredStyle} ${GetLabelProps.isRequiredStyle}`}
+        className={`px-2 ${labelStyle} ${isRequiredStyle} ${GetLabelProps.isRequiredStyle}`}
       >
         {GetLabelPlacement.label}
       </span>
     )
     : null;
+
   const labelContentHorizontal = GetLabelPlacement.label
     ? (
       <span
-        className={`px-2 w-1/4 ${labelStyle}   ${isRequiredStyle} ${GetLabelProps.isRequiredStyle}`}
+        className={`px-2 w-1/4 ${labelStyle} ${isRequiredStyle} ${GetLabelProps.isRequiredStyle}`}
       >
         {GetLabelPlacement.label}
       </span>
@@ -65,6 +67,7 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
     : null;
   const baseContent = (
     <input
+      {...otherProps}
       ref={domRef}
       disabled={GetPasswordProps.isDisable}
       readOnly={GetPasswordProps.isReadOnly}
@@ -75,14 +78,14 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
       value={value}
       name={name}
       id={id}
-      style={`${style}`}
+      style={style}
       placeholder={placeholder}
       onFocus={handleFocus}
       onBlur={handleBlur}
     />
   );
   const closeIcon = (
-    <span className={`${GetInputStyle.className} `}>
+    <span className={`${GetInputStyle.className}`}>
       <ClosePassword svgStyle={`${isErrorStyle} w-6`} />
     </span>
   );

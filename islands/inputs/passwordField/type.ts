@@ -20,7 +20,7 @@ export type PasswordsProps =
     id?: string;
 
     /**
-     * Classname styling for div parent
+     * Classname styling for div parent, not recomended to use
      */
     className?: string | null;
 

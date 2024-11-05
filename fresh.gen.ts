@@ -20,6 +20,10 @@ import * as $inputs_checkbox_Checkbox from "./islands/inputs/checkbox/Checkbox.t
 import * as $inputs_checkbox_checkbox_variants from "./islands/inputs/checkbox/checkbox-variants.ts";
 import * as $inputs_checkbox_type from "./islands/inputs/checkbox/type.ts";
 import * as $inputs_checkbox_use_checkbox from "./islands/inputs/checkbox/use-checkbox.ts";
+import * as $inputs_fieldset_Fieldset from "./islands/inputs/fieldset/Fieldset.tsx";
+import * as $inputs_fieldset_fieldset_variants from "./islands/inputs/fieldset/fieldset-variants.ts";
+import * as $inputs_fieldset_type from "./islands/inputs/fieldset/type.ts";
+import * as $inputs_fieldset_use_fieldset from "./islands/inputs/fieldset/use-fieldset.ts";
 import * as $inputs_input_Input from "./islands/inputs/input/Input.tsx";
 import * as $inputs_input_input_variant from "./islands/inputs/input/input-variant.ts";
 import * as $inputs_input_type from "./islands/inputs/input/type.ts";
@@ -59,6 +63,11 @@ const manifest = {
       $inputs_checkbox_checkbox_variants,
     "./islands/inputs/checkbox/type.ts": $inputs_checkbox_type,
     "./islands/inputs/checkbox/use-checkbox.ts": $inputs_checkbox_use_checkbox,
+    "./islands/inputs/fieldset/Fieldset.tsx": $inputs_fieldset_Fieldset,
+    "./islands/inputs/fieldset/fieldset-variants.ts":
+      $inputs_fieldset_fieldset_variants,
+    "./islands/inputs/fieldset/type.ts": $inputs_fieldset_type,
+    "./islands/inputs/fieldset/use-fieldset.ts": $inputs_fieldset_use_fieldset,
     "./islands/inputs/input/Input.tsx": $inputs_input_Input,
     "./islands/inputs/input/input-variant.ts": $inputs_input_input_variant,
     "./islands/inputs/input/type.ts": $inputs_input_type,

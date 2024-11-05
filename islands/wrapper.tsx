@@ -3,6 +3,8 @@ import Checkbox from "./inputs/checkbox/Checkbox.tsx";
 import Input from "./inputs/input/Input.tsx";
 import Passwords from "./inputs/passwordField/Passwords.tsx";
 import Label from "./inputs/label/label.tsx";
+import Button from "./inputs/button/Button.tsx";
+import Fieldset from "./inputs/fieldset/Fieldset.tsx";
 
 export default function Wrapper() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -14,7 +16,16 @@ export default function Wrapper() {
     <>
       <div class={"w-full flex flex-col gap-2"}>
         <div className={"w-1/2 "}>
-          <Label label={'as'} /> 
+          <Fieldset
+          
+            
+            title={"fruits"}
+            
+          >
+            <Input label={'asd'} placeholder={'asd'} />
+            < Passwords label={'your pass'} />
+  
+          </Fieldset>
         </div>
       </div>
     </>

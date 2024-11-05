@@ -1,4 +1,3 @@
-import type { ChangeEvent } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
 import type { Ref } from "https://esm.sh/v128/preact@10.22.0/hooks/src/index.js";
 import type { JSX } from "preact/jsx-runtime";
 
@@ -8,7 +7,7 @@ export type ButtonProps =
     /**
      * Dom Ref fur button
      */
-    domRef?: Ref<HTMLButtonElement> | null;
+    domRef?: Ref<HTMLButtonElement>;
     /**
      * Return function void for button
      */
@@ -56,14 +55,11 @@ export type ButtonProps =
     radius?: "sm" | "md" | "lg";
 
     /**
-     * styling for classname if button disabled
+     * styling for classname if button disabled but for better result and to prevent error change  the style to variant file
      */
-    disableClassName?: string | null;
+    disableClassName?: string;
     /**
      * Button take parent width
      */
     isFullWidth?: boolean;
   };
-// export type ButtonProp = Exclude<JSX.IntrinsicElements['button'], 'size'>
-
-// export type ButtonProps = CustomButtonProps & ButtonProp

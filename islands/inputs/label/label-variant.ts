@@ -1,5 +1,5 @@
 export const LabelVariants = {
-    fontSize: {
+  fontSize: {
     small: "text-lg",
     medium: "text-2lg",
     large: "text-3xl",

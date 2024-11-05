@@ -10,14 +10,15 @@ export function useCheckbox(props: CheckboxProps) {
     boxSize = "medium",
     boxRadius = "none",
     boxStyle,
-    boxColor = "none",
+    boxColor = "primary",
     color = "none",
     size = "small",
     label,
     isDisabled,
-    isDisabledStyle,
+    isDisabledStyle="",
     isIndeterminate,
-    className,
+    className="",
+    ...otherProps
   } = props;
   const GetColor = useMemo(
     () => {
@@ -118,5 +119,6 @@ export function useCheckbox(props: CheckboxProps) {
     GetBoxStyle,
     isIndeterminate,
     boxStyle,
+    ...otherProps,
   };
 }

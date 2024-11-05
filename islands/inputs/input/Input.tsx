@@ -5,7 +5,7 @@ import {
 import type { InputProps } from "./type.ts";
 import { useInput } from "./use-input.ts";
 
-const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
+const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const {
     domRef,
     id,
@@ -24,6 +24,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
     GetParentsProps,
     GetInputStyle,
     GetLabelPlacement,
+    ...otherProps
   } = useInput({ ...props });
 
   const labelContent = GetLabelPlacement.label
@@ -36,17 +37,18 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
 
   const baseContent = (
     <input
+      {...otherProps}
       ref={domRef}
       disabled={GetInputProps.isDisable}
       readOnly={GetInputProps.isReadOnly}
       required={GetInputProps.isRequired}
-      className={`p-2 w-full ${isDisabledStyle} ${isErrorStyle} ${isRequiredStyle}  ${GetInputStyle.className} ${className} `}
+      className={`p-2 w-full ${GetInputStyle.className} ${isDisabledStyle}${isErrorStyle} ${isRequiredStyle} ${className} `}
       inputMode={inputMode}
       type={type}
       value={value}
       name={name}
       id={id}
-      style={`${style}`}
+      style={style}
       placeholder={placeholder}
     />
   );
