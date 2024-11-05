@@ -22,7 +22,7 @@ export default function Wrapper() {
             title={"fruits"}
             
           >
-            <Checkbox label={"Apple"} id={"apple"} value={"apple"} />
+            <Input placeholder={'as'} label={'as'} />
   
           </Fieldset>
         </div>

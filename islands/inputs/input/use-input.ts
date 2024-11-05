@@ -24,7 +24,7 @@ export function useInput(props: InputProps) {
     variant = "full",
     size = "small",
     isFullWidth = false,
-    colors = "none",
+    color = "default",
     labelPlacement = "top",
     label,
     ...otherProps
@@ -73,7 +73,7 @@ export function useInput(props: InputProps) {
   const getVariants = useMemo(
     () => {
       return {
-        variant: InputVariants.variant[variant],
+        variant: InputVariants.variants[variant],
       };
     },
     [variant],
@@ -90,10 +90,10 @@ export function useInput(props: InputProps) {
   const getColors = useMemo(
     () => {
       return {
-        colors: InputVariants.colors[colors],
+        color: InputVariants.colors[color],
       };
     },
-    [colors],
+    [color],
   );
   const GetLabelProps = useMemo(() => {
     return {
@@ -128,18 +128,18 @@ export function useInput(props: InputProps) {
    */
   const GetParentsProps = useMemo(() => {
     const getFullClass = isFullWidthClass;
-    const getColor = getColors.colors;
+    const getColor = getColors.color;
     const getSizes = getSize.size;
     const getDisabled = isDisableClass?.isDisabledStyle;
     return {
       className: `${getColor} ${getFullClass} ${getSizes} ${getDisabled}`,
     };
-  }, [isFullWidthClass, colors, size, size, isDisableClass]);
+  }, [isFullWidthClass, color, size, size, isDisableClass]);
 
   const GetInputStyle = useMemo(() => {
     const isErrorStyle = InputVariants.errorVariant;
     const getError = isError ? isErrorStyle : "";
-    const getColor = getColors.colors;
+    const getColor = getColors.color;
     const getReadonly = isReadonlyClass?.isReadOnlyStyle;
     const getDisabled = isDisableClass?.isDisabledStyle;
     const getVariant = getVariants.variant;
@@ -150,7 +150,7 @@ export function useInput(props: InputProps) {
     };
   }, [
     isErrorStyle,
-    colors,
+    color,
     isDisabledStyle,
     isReadOnlyStyle,
     isError,

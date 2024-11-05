@@ -13,10 +13,12 @@ const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>((props) => {
     GetFieldsetClass,
     title,
     className,
+    ...otherProps
   } = useFieldset({ ...props });
 
   return (
     <fieldset
+    {...otherProps}
       ref={domRef}
       title={title}
       style={style}

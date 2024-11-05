@@ -7,9 +7,9 @@ export const InputVariants = {
     large:
       "m-1 py-2 w-96 hover:brightness-105 transition ease-in-out duration-300 rounded-lg ",
   },
-  variant: {
-    underline: "border-b-2 ",
-    full: "border-2 outline-2  ",
+  variants: {
+    underline: "border-b-2",
+    full: "border-2 outline-2",
   },
   colors: {
     primary: "bg-primary",
@@ -17,7 +17,7 @@ export const InputVariants = {
     error: "bg-error",
     success: "bg-success",
     warning: "bg-warning",
-    none: "",
+    default: "",
   },
   labelPlacement: {
     top: "top",

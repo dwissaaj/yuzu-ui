@@ -15,7 +15,7 @@ export function useFieldset(props: FieldsetProps) {
     isDisabled,
     yuzuDisabledStyle= "",
     variant= "underline",
-    
+    ...otherProps
   } = props;
 
   const GetColors = useMemo(
@@ -84,5 +84,6 @@ export function useFieldset(props: FieldsetProps) {
     GetFieldsetClass,
     title,
     className,
+    ...otherProps
   };
 }
