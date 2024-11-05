@@ -30,6 +30,7 @@ export function usePasswords(props: PasswordsProps) {
     label,
     inputStyle,
     labelStyle,
+    ...otherProps
   } = props;
 
   const isDisableClass = useMemo(() => {
@@ -239,5 +240,6 @@ export function usePasswords(props: PasswordsProps) {
     isError,
     inputStyle,
     labelStyle,
+    otherProps,
   };
 }

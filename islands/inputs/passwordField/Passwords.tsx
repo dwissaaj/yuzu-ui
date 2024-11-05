@@ -29,6 +29,7 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
     GetPasswordProps,
     inputStyle,
     labelStyle,
+    ...otherProps
   } = usePasswords({ ...props });
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -65,6 +66,7 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
     : null;
   const baseContent = (
     <input
+      {...otherProps}
       ref={domRef}
       disabled={GetPasswordProps.isDisable}
       readOnly={GetPasswordProps.isReadOnly}

@@ -1,6 +1,7 @@
 import type { ButtonProps } from "./type.ts";
 import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
 import {
+  disableButtonStyle,
   radiusOptions,
   sizeOptions,
   typeButton,
@@ -26,7 +27,7 @@ export function useButton(props: ButtonProps) {
    * check if button disabled
    */
   const disabledClass = useMemo(() => {
-    return isDisabled ? "brightness-50 cursor-not-allowed" : "";
+    return isDisabled ? disableButtonStyle : "";
   }, [isDisabled]);
 
   /**

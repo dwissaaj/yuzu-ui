@@ -16,7 +16,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props) => {
 
   return (
     <button
-    {...otherProps}
+      {...otherProps}
       onClick={onClick}
       className={`${className} ${getButtonProps.variant} ${getButtonProps.radius}
    ${getButtonProps.size} ${getButtonProps.disableClassName} ${getButtonProps.isFullWidth}`}

@@ -3,6 +3,8 @@ Config file for
 variant all button
 
 */
+
+export const disableButtonStyle = "brightness-50 cursor-not-allowed";
 export const radiusOptions = {
   sm: "border rounded-sm",
   md: "border-2 rounded-md",

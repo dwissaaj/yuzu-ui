@@ -119,6 +119,6 @@ export function useCheckbox(props: CheckboxProps) {
     GetBoxStyle,
     isIndeterminate,
     boxStyle,
-    ...otherProps
+    ...otherProps,
   };
 }

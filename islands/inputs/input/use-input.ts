@@ -178,6 +178,6 @@ export function useInput(props: InputProps) {
     isDisabledStyle,
     isErrorStyle,
     isRequiredStyle,
-    ...otherProps
+    ...otherProps,
   };
 }

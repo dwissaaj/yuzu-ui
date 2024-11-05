@@ -1,26 +1,29 @@
-import type { CSSProperties, Ref } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
+import type {
+  CSSProperties,
+  Ref,
+} from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { JSX } from "preact/jsx-runtime";
 
+export type FieldsetProps = JSX.IntrinsicElements["fieldset"] & {
+  domRef?: Ref<HTMLFieldSetElement>;
 
-export type FieldsetProps = JSX.IntrinsicElements['fieldset'] & {
+  style?: CSSProperties | string;
 
-    domRef?: Ref<HTMLFieldSetElement>
+  title?: string;
 
-    style?: CSSProperties | string;
+  yuzuTitleStyle?: string;
 
-    title?: string;
+  children?: JSX.Element | JSX.Element[];
 
-    yuzuTitleStyle?: string;
+  direction?: "row" | "column";
 
-    children?: JSX.Element;
+  isDisabled?: boolean;
 
-    direction?: "row" | "column";
+  yuzuDisabledStyle?: string;
 
-    isDisabled?: boolean;
+  variant?: "underline" | "full";
 
-    yuzuDisabledStyle?: string;
+  color?: "primary" | "secondary" | "error" | "warning" | "success";
 
-    isHideTitle?: boolean
-
-    variant?: "underline" | "full"
-}
+  className?: string;
+};

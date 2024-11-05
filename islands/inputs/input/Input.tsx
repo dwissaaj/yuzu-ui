@@ -37,6 +37,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 
   const baseContent = (
     <input
+      {...otherProps}
       ref={domRef}
       disabled={GetInputProps.isDisable}
       readOnly={GetInputProps.isReadOnly}

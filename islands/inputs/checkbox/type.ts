@@ -15,7 +15,7 @@ export type CheckboxProps =
     isDisabled?: boolean;
 
     /**
-     * custom style access for disable
+     * custom style access for disable but for better result and to prevent error change the style to variant file
      */
     isDisabledStyle?: string;
 
@@ -57,7 +57,7 @@ export type CheckboxProps =
       | "secondary"
       | "error"
       | "warning"
-      | "success"
+      | "success";
 
     /**
      * How big the checkbox rendered
@@ -66,7 +66,7 @@ export type CheckboxProps =
     boxSize?: "small" | "medium" | "large";
 
     /**
-     * custom access to box style
+     * custom access to box style but for better result and to prevent error change the style to variant file
      */
     boxStyle?: string;
 

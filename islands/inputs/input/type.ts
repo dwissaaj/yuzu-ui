@@ -48,7 +48,8 @@ export type InputProps =
     isError?: boolean;
 
     /**
-     * disabled styling
+     * disabled styling, but for better result and to prevent error change
+     * the style to variant file
      */
     isDisabledStyle?: string;
 
@@ -71,17 +72,19 @@ export type InputProps =
     isRequired?: boolean;
 
     /**
-     * Read only styling
+     * Read only styling but for better result and to prevent error change
+     * the style to variant file
      */
     isReadOnlyStyle?: string;
 
     /**
-     * Required style
+     * Required style but for better result and to prevent error change
+     * the style to variant file
      */
     isRequiredStyle?: string;
 
     /**
-     * Custom access to error style
+     * Custom access to error style but for better result and to prevent error change the style to variant file
      */
     isErrorStyle?: string;
 
