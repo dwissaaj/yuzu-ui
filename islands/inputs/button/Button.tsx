@@ -20,7 +20,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props) => {
       onClick={onClick}
       className={`${className} ${getButtonProps.variant} ${getButtonProps.radius}
    ${getButtonProps.size} ${getButtonProps.disableClassName} ${getButtonProps.isFullWidth}`}
-      style={`${style}`}
+      style={style}
       disabled={isDisabled}
       ref={domRef}
       type={`${getButtonProps.type}`}

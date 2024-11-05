@@ -77,7 +77,7 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
       value={value}
       name={name}
       id={id}
-      style={`${style}`}
+      style={style}
       placeholder={placeholder}
       onFocus={handleFocus}
       onBlur={handleBlur}

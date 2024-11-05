@@ -22,7 +22,7 @@ export default function Wrapper() {
             title={"fruits"}
             
           >
-            <Input placeholder={'as'} label={'as'} />
+            <Input size="small" placeholder={'as'} label={'as'} />
   
           </Fieldset>
         </div>

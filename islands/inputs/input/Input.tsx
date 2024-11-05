@@ -42,13 +42,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
       disabled={GetInputProps.isDisable}
       readOnly={GetInputProps.isReadOnly}
       required={GetInputProps.isRequired}
-      className={`p-2 w-full ${isDisabledStyle} ${isErrorStyle} ${isRequiredStyle}  ${GetInputStyle.className} ${className} `}
+      className={`p-2 w-full ${GetInputStyle.className} ${isDisabledStyle}${isErrorStyle} ${isRequiredStyle} ${className} `}
       inputMode={inputMode}
       type={type}
       value={value}
       name={name}
       id={id}
-      style={`${style}`}
+      style={style}
       placeholder={placeholder}
     />
   );

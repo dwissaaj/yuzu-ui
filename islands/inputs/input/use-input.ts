@@ -8,24 +8,24 @@ export function useInput(props: InputProps) {
     id,
     type,
     inputMode,
-    className,
+    className="",
     value,
     name,
-    style,
+    style="",
     placeholder,
-    isReadOnlyStyle,
+    isReadOnlyStyle="",
     isError = false,
-    isDisabledStyle,
-    isErrorStyle,
+    isDisabledStyle="",
+    isErrorStyle="",
     isDisabled = false,
     isReadonly = false,
-    isRequiredStyle,
+    isRequiredStyle="",
     isRequired = false,
-    variant = "full",
-    size = "small",
+    variant ="full",
+    size ="small",
     isFullWidth = false,
-    color = "default",
-    labelPlacement = "top",
+    color ="default",
+    labelPlacement ="top",
     label,
     ...otherProps
   } = props;
@@ -37,7 +37,7 @@ export function useInput(props: InputProps) {
       return { isDisabledStyle, disabled };
     } else if (isDisabled === false) {
       const disabled = false;
-      const isDisabledStyle = " ";
+      const isDisabledStyle = "";
       return { isDisabledStyle, disabled };
     }
   }, [isDisabledStyle, isDisabled]);
@@ -49,13 +49,13 @@ export function useInput(props: InputProps) {
       return { readOnly, isReadOnlyStyle };
     } else if (isReadonly === false) {
       const readOnly = false;
-      const isReadOnlyStyle = " ";
+      const isReadOnlyStyle = "";
       return { readOnly, isReadOnlyStyle };
     }
   }, [isReadonly, isReadOnlyStyle]);
 
   const isFullWidthClass = useMemo(() => {
-    return isFullWidth ? "w-full " : " ";
+    return isFullWidth ? "w-full " : "";
   }, [isFullWidth]);
 
   const isRequiredStyleClass = useMemo(() => {
@@ -65,7 +65,7 @@ export function useInput(props: InputProps) {
       return { isRequiredStyle, isRequired };
     } else if (isRequired === false) {
       const isRequired = false;
-      const isRequiredStyle = " ";
+      const isRequiredStyle = "";
       return { isRequiredStyle, isRequired };
     }
   }, [isReadOnlyStyle, isRequired]);
@@ -132,7 +132,7 @@ export function useInput(props: InputProps) {
     const getSizes = getSize.size;
     const getDisabled = isDisableClass?.isDisabledStyle;
     return {
-      className: `${getColor} ${getFullClass} ${getSizes} ${getDisabled}`,
+      className: `p-2 ${getColor} ${getFullClass} ${getSizes} ${getDisabled}`,
     };
   }, [isFullWidthClass, color, size, size, isDisableClass]);
 
@@ -143,7 +143,6 @@ export function useInput(props: InputProps) {
     const getReadonly = isReadonlyClass?.isReadOnlyStyle;
     const getDisabled = isDisableClass?.isDisabledStyle;
     const getVariant = getVariants.variant;
-
     return {
       className:
         `${getColor} ${getError} ${getDisabled} ${getReadonly} ${getVariant}`,
