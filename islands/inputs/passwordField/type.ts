@@ -29,12 +29,10 @@ export type PasswordsProps =
      */
     inputStyle?: string;
 
-
-        /**
+    /**
      * For direct access to label style
      */
     labelStyle?: string;
-
 
     /**
      * State for input
