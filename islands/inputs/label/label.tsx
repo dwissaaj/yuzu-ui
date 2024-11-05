@@ -9,9 +9,10 @@ const Label = forwardRef<HTMLLabelElement, LabelProps>((props) => {
         children,
         style,
         GetLabelProps,
+        ...rest
     } = useLabel({...props})
     return (
-        <label style={style}  ref={domRef}  className={`${GetLabelProps.className} ${yuzuLabelStyle}`}>
+        <label {...rest} style={style}  ref={domRef}  className={`${GetLabelProps.className} ${yuzuLabelStyle}`} >
             {label}
             {children}
         </label>

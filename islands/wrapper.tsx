@@ -14,7 +14,11 @@ export default function Wrapper() {
     <>
       <div class={"w-full flex flex-col gap-2"}>
         <div className={"w-1/2 "}>
-          <Label label={'as'} /> 
+        <form name={'date'} id={'date'}>
+          <Label color="primary" label={'name'} htmlFor={'name'} form={'date'} >
+          <input type={'text'} id={'name'} value={'name'}/>
+          </Label>
+        </form>
         </div>
       </div>
     </>

@@ -5,7 +5,7 @@ import {
 import type { InputProps } from "./type.ts";
 import { useInput } from "./use-input.ts";
 
-const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
+const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const {
     domRef,
     id,

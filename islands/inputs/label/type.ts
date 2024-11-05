@@ -3,7 +3,7 @@ import type {
   CSSProperties,
   Ref,
 } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
-export type LabelProps = JSX.IntrinsicElements["label"] & {
+export type LabelProps = JSX.IntrinsicElements['fieldset'] & {
   /**
    * Dom ref
    */
@@ -39,4 +39,6 @@ export type LabelProps = JSX.IntrinsicElements["label"] & {
    * Color label, configuration can be custom to label-variant
    */
   color?: "primary" | "secondary" | "error" | "warning" | "success" | "none";
+
+
 };
