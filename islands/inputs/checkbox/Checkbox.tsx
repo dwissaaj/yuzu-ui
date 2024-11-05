@@ -19,7 +19,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
   } = useCheckbox({ ...props });
   const InputWrapper = (
     <input
-    {...otherProps}
+      {...otherProps}
       className={`${GetBoxStyle.className} ${boxStyle} ${className}`}
       ref={domRef}
       indeterminate={isIndeterminate}

@@ -24,6 +24,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     GetParentsProps,
     GetInputStyle,
     GetLabelPlacement,
+    ...otherProps
   } = useInput({ ...props });
 
   const labelContent = GetLabelPlacement.label

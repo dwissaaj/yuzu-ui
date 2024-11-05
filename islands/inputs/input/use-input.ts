@@ -27,6 +27,7 @@ export function useInput(props: InputProps) {
     colors = "none",
     labelPlacement = "top",
     label,
+    ...otherProps
   } = props;
 
   const isDisableClass = useMemo(() => {
@@ -177,5 +178,6 @@ export function useInput(props: InputProps) {
     isDisabledStyle,
     isErrorStyle,
     isRequiredStyle,
+    ...otherProps
   };
 }

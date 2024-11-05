@@ -28,11 +28,10 @@ export const CheckboxVariants = {
     none: "rounded-none border-2",
   },
   boxColor: {
-    primary: "checked:bg-primary",
-    secondary: "checked:bg-secondary",
-    error: "checked:bg-error",
-    success: "checked:bg-success",
-    warning: "checked:bg-warning",
-    none: "",
+    primary: "checked:bg-primary peer checked:after:content-['✓'] checked:after:block checked:after:w-full checked:after:h-full checked:after:flex checked:after:items-center checked:after:justify-center",
+    secondary: "checked:bg-secondary peer checked:after:content-['✓'] checked:after:block checked:after:w-full checked:after:h-full checked:after:flex checked:after:items-center checked:after:justify-center",
+    error: "checked:bg-error peer checked:after:content-['✓'] checked:after:block checked:after:w-full checked:after:h-full checked:after:flex checked:after:items-center checked:after:justify-center",
+    success: "checked:bg-success peer checked:after:content-['✓'] checked:after:block checked:after:w-full checked:after:h-full checked:after:flex checked:after:items-center checked:after:justify-center",
+    warning: "checked:bg-warning peer checked:after:content-['✓'] checked:after:block checked:after:w-full checked:after:h-full checked:after:flex checked:after:items-center checked:after:justify-center",
   },
 };

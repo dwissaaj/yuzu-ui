@@ -58,7 +58,6 @@ export type CheckboxProps =
       | "error"
       | "warning"
       | "success"
-      | "none";
 
     /**
      * How big the checkbox rendered

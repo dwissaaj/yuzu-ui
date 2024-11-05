@@ -15,7 +15,8 @@ export default function Wrapper() {
     <>
       <div class={"w-full flex flex-col gap-2"}>
         <div className={"w-1/2 "}>
-        <Checkbox checked label={'asd'} />
+        <Checkbox boxColor="error" name={'che'} id={'as'} checked={true} label={'asd'} />
+        <input name={'a'} id={'s'} type={'checkbox'} checked />
         </div>
       </div>
     </>
