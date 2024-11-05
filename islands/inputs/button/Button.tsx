@@ -2,7 +2,7 @@ import { forwardRef } from "preact/compat";
 import type { ButtonProps } from "./type.ts";
 import { useButton } from "./use-button.ts";
 
-const Button = forwardRef<"button", ButtonProps>((props, ref) => {
+const Button = forwardRef<"button", ButtonProps>((props) => {
   const {
     domRef,
     onClick,
@@ -11,6 +11,7 @@ const Button = forwardRef<"button", ButtonProps>((props, ref) => {
     style,
     isDisabled,
     getButtonProps,
+  
   } = useButton({ ...props });
 
   return (

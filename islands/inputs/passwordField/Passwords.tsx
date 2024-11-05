@@ -7,7 +7,6 @@ import {
 } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
 import ClosePassword from "../../icon/component/ClosePassword.tsx";
 import OpenPassword from "../../icon/component/OpenPassword.tsx";
-import { lastPathSegment } from "$std/path/_common/basename.ts";
 const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
   const {
     domRef,
