@@ -13,8 +13,6 @@ export const FieldsetVariants = {
     error: "border-error",
     success: "border-success",
     warning: "border-warning",
-    default: ""
+    default: "",
   },
 };
-
-

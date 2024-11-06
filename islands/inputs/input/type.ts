@@ -130,7 +130,13 @@ export type InputProps =
     /**
      * color input
      */
-    color?: "primary" | "secondary" | "error" | "warning" | "success" | "default";
+    color?:
+      | "primary"
+      | "secondary"
+      | "error"
+      | "warning"
+      | "success"
+      | "default";
 
     /**
      * Label title element
