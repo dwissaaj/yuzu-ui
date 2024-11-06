@@ -46,6 +46,7 @@ export function useButton(props: ButtonProps) {
   }, [types]);
 
   /**
+   * @description
    * Hooks for all button className
    * @return {string}
    */

@@ -25,7 +25,8 @@ export default function Wrapper() {
             domRef={buttonRef}
             className={"s"}
             size={"large"}
-            variant={"primary"}
+            variant="custom"
+            radius='lg'
             label={"asdasd"}
           />
         </div>

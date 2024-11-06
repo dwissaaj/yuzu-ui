@@ -48,17 +48,18 @@ export type ButtonProps =
      * @example
      * size: {extra-large: "w-72 h-42"}
      */
-    size?: keyof typeof ButtonVariants.sizes | string;
+    size?: keyof typeof ButtonVariants.sizes;
 
     /**
      * Variant type similar to Tailwinds Variants, can be extended in the
-     * variant file at `use-theme.ts`. The default is 5
-     *
-     * @enum "primary" | "secondary" | "error" | "warning" | "success" | "Your Variant"
-     * @default "primary"
+     * variant file at `use-theme.ts`. The default enum can choose, if not provided will defaulted to "primary"
+     * @enum 
+     * "primary" | "secondary" | "error" | "warning" | "success" | "Your Variant"
+     * 
+     * @default "primary" 
      * @example {variants: {custom: "bg-yellow-500"}}
      */
-    variant?: keyof typeof ButtonVariants.variantsStyle | string;
+    variant?: keyof typeof ButtonVariants.variantsStyle ;
 
     /**
      * Button action type
@@ -67,10 +68,12 @@ export type ButtonProps =
     types?: "button" | "reset" | "submit";
 
     /**
-     * Button radius
+     * Button radius can be extended in variant file
      * @default "small"
+     * 
+     * @enum {"sm" | "md" | "lg"}
      */
-    radius?: keyof typeof ButtonVariants.radiusStyle | string;
+    radius?: keyof typeof ButtonVariants.radiusStyle;
 
     /**
      * @see Only use this for hooks or variant
