@@ -6,15 +6,15 @@ export function useFieldset(props: FieldsetProps) {
   const {
     domRef,
     style,
-    color= "primary",
+    color = "primary",
     title,
-    className="",
-    yuzuTitleStyle="",
+    className = "",
+    yuzuTitleStyle = "",
     children,
-    direction= "row",
+    direction = "row",
     isDisabled,
-    yuzuDisabledStyle= "",
-    variant= "underline",
+    yuzuDisabledStyle = "",
+    variant = "underline",
     ...otherProps
   } = props;
 
@@ -26,8 +26,6 @@ export function useFieldset(props: FieldsetProps) {
     },
     [color],
   );
-
-
 
   const GetVariant = useMemo(
     () => {
@@ -47,24 +45,22 @@ export function useFieldset(props: FieldsetProps) {
     [direction],
   );
 
-
   /**
    * Anything with **Props need to be treated as a boolean state, like disabled, requiredonly etc
    */
 
   const GetFieldsetClass = useMemo(
     () => {
-      const color = GetColors.color
-      const variant = GetVariant.variant 
-      const direction  = GetDirection.direction
-      console.log(color)
+      const color = GetColors.color;
+      const variant = GetVariant.variant;
+      const direction = GetDirection.direction;
+      console.log(color);
       return {
-       className: `${color} ${variant} ${direction}`
+        className: `${color} ${variant} ${direction}`,
       };
     },
     [color],
   );
-
 
   const GetFieldsetProps = useMemo(
     () => {
@@ -84,6 +80,6 @@ export function useFieldset(props: FieldsetProps) {
     GetFieldsetClass,
     title,
     className,
-    ...otherProps
+    ...otherProps,
   };
 }

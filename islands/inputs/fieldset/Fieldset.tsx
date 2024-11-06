@@ -18,7 +18,7 @@ const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>((props) => {
 
   return (
     <fieldset
-    {...otherProps}
+      {...otherProps}
       ref={domRef}
       title={title}
       style={style}

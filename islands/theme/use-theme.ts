@@ -6,7 +6,7 @@ by tailwind config
 */
 export const todos = signal({
   primary: "#12fff3",
-  secondary: "secondary",
+  secondary: "#F312FF",
   success: "#27e650",
   error: "#ff1c2b",
   warning: "#f0990e",

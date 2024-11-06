@@ -10,7 +10,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props) => {
     className,
     style,
     isDisabled,
-    getButtonProps,
+    GetButtonClass,
+    label,
+    disableStyle,
+    GetButtonProps,
     ...otherProps
   } = useButton({ ...props });
 
@@ -18,14 +21,14 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props) => {
     <button
       {...otherProps}
       onClick={onClick}
-      className={`${className} ${getButtonProps.variant} ${getButtonProps.radius}
-   ${getButtonProps.size} ${getButtonProps.disableClassName} ${getButtonProps.isFullWidth}`}
+      className={`${GetButtonClass.className} ${className} ${disableStyle}`}
       style={style}
       disabled={isDisabled}
       ref={domRef}
-      type={`${getButtonProps.type}`}
+      type={`${GetButtonProps}`}
     >
       {children}
+      {label}
     </button>
   );
 });

@@ -1,54 +1,69 @@
 import type { ButtonProps } from "./type.ts";
 import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
-import {
-  disableButtonStyle,
-  radiusOptions,
-  sizeOptions,
-  typeButton,
-  variantColors,
-} from "./button-variant.ts";
+import { ButtonVariants } from "./button-variant.ts";
 export function useButton(props: ButtonProps) {
   const {
     domRef,
     onClick,
     children,
-    className="",
-    style="",
+    className = "",
+    style,
     isDisabled,
     size = "small",
     variant = "primary",
-    type = "button",
+    types = "button",
     radius = "md",
-    disableClassName,
+    disableStyle = "",
     isFullWidth,
+    label,
+    ...otherProps
   } = props;
 
   /**
-   * check if button disabled
+   * check if button disabled and return the disabled style from variant
+   * @default false
+   * @return {string} for variant
    */
-  const disabledClass = useMemo(() => {
-    return isDisabled ? disableButtonStyle : "";
-  }, [isDisabled]);
+  const disabledClass = useMemo(
+    () => (isDisabled ? ButtonVariants.disableStyle : ""),
+    [isDisabled],
+  );
 
   /**
-   * Calculate if full width
+   * Hook for full width component
+   * @default false
    */
-  const fullWidthClass = useMemo(() => {
-    return isFullWidth ? "w-full" : "";
-  }, [isFullWidth]);
+  const fullWidthClass = useMemo(() => (isFullWidth ? "w-full" : ""), [
+    isFullWidth,
+  ]);
 
-  const getButtonProps = useMemo(
+  /**
+   * Hooks for checking the type of the button
+   * @returns {string} type  e.g "button"
+   */
+  const GetButtonProps = useMemo(() => {
+    return types;
+  }, [types]);
+
+  /**
+   * @description
+   * Hooks for all button className
+   * @return {string}
+   */
+  const GetButtonClass = useMemo(
     () => {
+      const disableStyle = disabledClass;
+      const getisFullWidth = fullWidthClass;
+      const getvariants = ButtonVariants.variantsStyle[variant];
+      const getradius = ButtonVariants.radiusStyle[radius];
+      const getsize = ButtonVariants.sizes[size];
       return {
-        disableClassName: disabledClass,
-        isFullWidth: fullWidthClass,
-        variant: variantColors[variant],
-        radius: radiusOptions[radius],
-        size: sizeOptions[size],
-        type: typeButton[type],
+        className:
+          `hover:brightness-105 transition ease-in-out duration-500 ${getvariants} ${getisFullWidth} ${getradius} ${getsize} ${fullWidthClass} ${disableStyle}`
+            .trim(),
       };
     },
-    [variant, radius, disableClassName, size, type],
+    [variant, radius, disableStyle, size, types],
   );
 
   return {
@@ -58,6 +73,10 @@ export function useButton(props: ButtonProps) {
     className,
     style,
     isDisabled,
-    getButtonProps,
+    GetButtonClass,
+    label,
+    disableStyle,
+    GetButtonProps,
+    ...otherProps,
   };
 }

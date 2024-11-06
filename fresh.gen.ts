@@ -14,6 +14,7 @@ import * as $icon_component_OpenPassword from "./islands/icon/component/OpenPass
 import * as $icon_component_PasswordIcon from "./islands/icon/component/PasswordIcon.tsx";
 import * as $inputs_button_Button from "./islands/inputs/button/Button.tsx";
 import * as $inputs_button_button_variant from "./islands/inputs/button/button-variant.ts";
+import * as $inputs_button_index from "./islands/inputs/button/index.ts";
 import * as $inputs_button_type from "./islands/inputs/button/type.ts";
 import * as $inputs_button_use_button from "./islands/inputs/button/use-button.ts";
 import * as $inputs_checkbox_Checkbox from "./islands/inputs/checkbox/Checkbox.tsx";
@@ -56,6 +57,7 @@ const manifest = {
     "./islands/icon/component/PasswordIcon.tsx": $icon_component_PasswordIcon,
     "./islands/inputs/button/Button.tsx": $inputs_button_Button,
     "./islands/inputs/button/button-variant.ts": $inputs_button_button_variant,
+    "./islands/inputs/button/index.ts": $inputs_button_index,
     "./islands/inputs/button/type.ts": $inputs_button_type,
     "./islands/inputs/button/use-button.ts": $inputs_button_use_button,
     "./islands/inputs/checkbox/Checkbox.tsx": $inputs_checkbox_Checkbox,

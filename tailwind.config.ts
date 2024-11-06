@@ -20,7 +20,7 @@ export default {
         primary: todos.value.primary,
         secondary: todos.value.secondary,
         error: todos.value.error,
-        success: todos.value.error,
+        success: todos.value.success,
         warning: todos.value.warning,
       },
     },
