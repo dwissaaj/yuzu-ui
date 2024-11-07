@@ -47,17 +47,17 @@ export type LabelProps = JSX.IntrinsicElements["label"] & {
   /**
    * Readonly class
    */
-  fontReadonly?: keyof typeof LabelVariants.fontReadonly;
+  yuzuFontReadonly?: string;
 
   /**
    * Required class for label
    */
-  fontRequired?: keyof typeof LabelVariants.fontRequired;
+  yuzuFontRequired?: string;
 
   /**
    * Required class for label
    */
-  fontDisabled?: keyof typeof LabelVariants.fontDisabled;
+  yuzuFontDisabled?: string;
 
   /**
    * the label state readonly

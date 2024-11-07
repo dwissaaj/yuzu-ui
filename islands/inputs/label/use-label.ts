@@ -9,15 +9,15 @@ export function useLabel(props: LabelProps) {
     children,
     fontSize = "small",
     fontColor = "none",
-    style = "",
-    className = "",
-    fontWeight = "medium",
+    style ="",
+    className ="",
+    fontWeight ="medium",
     isDisabled=false,
     isReadonly=false,
     isRequired=false,
-    fontReadonly ="",
-    fontDisabled="",
-    fontRequired="",
+    yuzuFontReadonly="",
+    yuzuFontDisabled="",
+    yuzuFontRequired="",
     ...otherProps
   } = props;
   const getColors = useMemo(
@@ -88,7 +88,7 @@ export function useLabel(props: LabelProps) {
       const readonly = getReadonly?.fontReadonly
       const disabled = getDisabled?.disabledClass
       return {
-        className: `${size} ${color} ${weight} ${readonly} ${required} ${disabled}`,
+        className: `${size} ${color} ${weight} ${readonly} ${required} ${disabled}`.trim(),
       };
     },
     [fontColor, fontSize, fontWeight],
@@ -104,6 +104,9 @@ export function useLabel(props: LabelProps) {
     isReadonly,
     isRequired,
     isDisabled,
+    yuzuFontReadonly,
+    yuzuFontDisabled,
+    yuzuFontRequired,
     ...otherProps,
   };
 }

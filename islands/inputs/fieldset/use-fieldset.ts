@@ -10,11 +10,11 @@ export function useFieldset(props: FieldsetProps) {
     domRef,
     style,
     children,
-    className = "",
-    fieldsetDirection = "row",
-    labelVariant = "none",
-    fieldsetColor = "primary",
-    fieldsetVariant = "underline",
+    className ="",
+    fieldsetDirection ="row",
+    labelVariant ="none",
+    fieldsetColor ="primary",
+    fieldsetVariant ="underline",
     isDisabled,
     label,
     yuzuDisableStyle="",
@@ -71,7 +71,7 @@ export function useFieldset(props: FieldsetProps) {
       const disabled = GetDisabledStyle;
       console.log(color);
       return {
-        className: `${color} ${variant} ${direction} ${disabled}`,
+        className: `${color} ${variant} ${direction} ${disabled}`.trim(),
       };
     },
     [fieldsetDirection, fieldsetColor, fieldsetVariant],

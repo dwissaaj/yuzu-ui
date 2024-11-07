@@ -29,7 +29,9 @@ import { useLabel } from "./use-label.ts";
  * @param {boolean} [isRequired=false] - Should a label contain asterik for required
  * @param {boolean} [isReadonly=false] - Should a label only read state
  * @param {boolean} [isDisabled=false] - Should a label disabled state
- * 
+ * @param {string} [yuzuFontReadonly=""] - override styling disabled, better to change in variant file, if no provded will return empty string
+ *  * @param {string} [yuzuFontDisabled=""] - override styling disabled, better to change in variant file
+ *  * @param {string} [yuzuFontRequired=""] - override styling disabled, better to change in variant file
  * @return {JSX.Element}
  */
 
@@ -41,16 +43,19 @@ const Label = forwardRef<HTMLLabelElement, LabelProps>((props) => {
     children,
     style,
     GetLabelProps,
+    yuzuFontReadonly,
+    yuzuFontDisabled,
+    yuzuFontRequired,
     ...otherProps
   } = useLabel({ ...props });
 
   return (
     <label
       {...otherProps}
-
       style={style}
       ref={domRef}
-      className={`${className} ${GetLabelProps.className}`}
+      className={`${className} ${GetLabelProps.className}
+      ${yuzuFontDisabled} ${yuzuFontReadonly} ${yuzuFontRequired}`}
     >
       {label}
       {children}
