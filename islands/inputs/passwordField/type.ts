@@ -76,17 +76,6 @@ export type PasswordsProps =
     isErrorStyle?: string;
 
     /**
-     * Name for form control
-     */
-    name?: string;
-
-    /**
-     * Placeholder text
-     */
-    placeholder?: string;
-
-
-    /**
      * Variant input, this for disable native html styling to
      * prevent crash with parents ( div element )
      */
@@ -101,6 +90,8 @@ export type PasswordsProps =
      * Check the value of variant
      */
     variantLabel?: "underline" | "full" | string;
+
+    
     /**
      * How big title value, default to 128px to small,  large
      * 208px

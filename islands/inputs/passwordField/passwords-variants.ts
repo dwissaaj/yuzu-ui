@@ -1,5 +1,5 @@
 export const PasswordsVariants = {
-  size: {
+  sizes: {
     small:
       "m-1 p-2 w-52 hover:brightness-105 transition ease-in-out duration-300 rounded-sm ",
     medium:
@@ -11,7 +11,7 @@ export const PasswordsVariants = {
     underline: "border-b-2 transition ease-in-out delay-150 duration-300",
     full: "border-2 transition ease-in-out delay-150 duration-300",
   },
-  variant: {
+  variants: {
     underline: "border-b-2 transition ease-in-out delay-150 duration-300",
     full: "border-2 transition ease-in-out delay-150 duration-300",
   },
@@ -21,9 +21,8 @@ export const PasswordsVariants = {
     error: "bg-error",
     success: "bg-success",
     warning: "bg-warning",
-    none: "",
   },
-  labelPlacement: {
+  labelPlacements: {
     top: "top",
     left: "left",
     right: "right",

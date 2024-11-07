@@ -26,7 +26,10 @@ import { useLabel } from "./use-label.ts";
  *      - `"success"`
  *      - `"warning"`
  *      - `"none"` (default).
- *
+ * @param {boolean} [isRequired=false] - Should a label contain asterik for required
+ * @param {boolean} [isReadonly=false] - Should a label only read state
+ * 
+ * 
  * @return {JSX.Element}
  */
 

@@ -29,10 +29,12 @@ import * as $inputs_input_Input from "./islands/inputs/input/Input.tsx";
 import * as $inputs_input_input_variant from "./islands/inputs/input/input-variant.ts";
 import * as $inputs_input_type from "./islands/inputs/input/type.ts";
 import * as $inputs_input_use_input from "./islands/inputs/input/use-input.ts";
+import * as $inputs_label_Label from "./islands/inputs/label/Label.tsx";
 import * as $inputs_label_label_variant from "./islands/inputs/label/label-variant.ts";
-import * as $inputs_label_label from "./islands/inputs/label/Label.tsx";
 import * as $inputs_label_type from "./islands/inputs/label/type.ts";
 import * as $inputs_label_use_label from "./islands/inputs/label/use-label.ts";
+import * as $inputs_password_password_variants from "./islands/inputs/password/password-variants.ts";
+import * as $inputs_password_type from "./islands/inputs/password/type.ts";
 import * as $inputs_passwordField_Passwords from "./islands/inputs/passwordField/Passwords.tsx";
 import * as $inputs_passwordField_passwords_variants from "./islands/inputs/passwordField/passwords-variants.ts";
 import * as $inputs_passwordField_type from "./islands/inputs/passwordField/type.ts";
@@ -74,10 +76,13 @@ const manifest = {
     "./islands/inputs/input/input-variant.ts": $inputs_input_input_variant,
     "./islands/inputs/input/type.ts": $inputs_input_type,
     "./islands/inputs/input/use-input.ts": $inputs_input_use_input,
+    "./islands/inputs/label/Label.tsx": $inputs_label_Label,
     "./islands/inputs/label/label-variant.ts": $inputs_label_label_variant,
-    "./islands/inputs/label/label.tsx": $inputs_label_label,
     "./islands/inputs/label/type.ts": $inputs_label_type,
     "./islands/inputs/label/use-label.ts": $inputs_label_use_label,
+    "./islands/inputs/password/password-variants.ts":
+      $inputs_password_password_variants,
+    "./islands/inputs/password/type.ts": $inputs_password_type,
     "./islands/inputs/passwordField/Passwords.tsx":
       $inputs_passwordField_Passwords,
     "./islands/inputs/passwordField/passwords-variants.ts":

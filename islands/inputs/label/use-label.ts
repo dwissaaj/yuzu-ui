@@ -12,6 +12,10 @@ export function useLabel(props: LabelProps) {
     style = "",
     className = "",
     fontWeight = "medium",
+    fontReadonly,
+    fontRequired,
+    isReadonly=false,
+    isRequired=false,
     ...otherProps
   } = props;
   const getColors = useMemo(
@@ -32,14 +36,35 @@ export function useLabel(props: LabelProps) {
     },
     [fontWeight],
   );
-
+  const getReadonly = useMemo(
+    () => {
+      if(isReadonly === true) {
+        const isReadonly = true
+        const readOnlyClass = LabelVariants.fontReadonly
+        return {isReadonly,readOnlyClass}
+      }
+    },
+    [fontReadonly],
+  );
+  const getRequired = useMemo(
+    () => {
+      if(isRequired === true) {
+        const isRequired = true
+        const requiredClass = LabelVariants.fontRequired
+        return {isRequired,requiredClass}
+      }
+    },
+    [fontRequired],
+  );
   const GetLabelProps = useMemo(
     () => {
       const size = getSize;
       const color = getColors;
       const weight = getWeight;
+      const required = getRequired?.requiredClass
+      const readonly = getReadonly?.readOnlyClass
       return {
-        className: `${size} ${color} ${weight}`,
+        className: `${size} ${color} ${weight} ${readonly} ${required}`,
       };
     },
     [fontColor, fontSize, fontWeight],
@@ -52,6 +77,8 @@ export function useLabel(props: LabelProps) {
     style,
     GetLabelProps,
     className,
+    isReadonly,
+    isRequired,
     ...otherProps,
   };
 }

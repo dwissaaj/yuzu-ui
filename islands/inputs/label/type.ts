@@ -43,4 +43,28 @@ export type LabelProps = JSX.IntrinsicElements["label"] & {
    * Font weight
    */
   fontWeight?: keyof typeof LabelVariants.fontWeights;
+
+  /**
+   * Readonly class
+   */
+  fontReadonly?: keyof typeof LabelVariants.fontReadonly;
+
+  /**
+   * Required class for label
+   */
+  fontRequired?: keyof typeof LabelVariants.fontRequired;
+
+
+  /**
+   * the label state
+   * @default false
+
+   */
+  isReadonly?: boolean;
+
+  /**
+   * Label state for required
+   * @default false
+   */
+  isRequired?: boolean;
 };

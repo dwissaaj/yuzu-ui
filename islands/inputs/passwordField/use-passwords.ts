@@ -4,14 +4,9 @@ import { PasswordsVariants } from "./passwords-variants.ts";
 export function usePasswords(props: PasswordsProps) {
   const {
     domRef,
-    id,
     type,
-    inputMode,
     className = "",
-    value,
-    name,
     style = "",
-    placeholder,
     isReadOnlyStyle = "",
     isError = false,
     isDisabledStyle = "",
@@ -217,14 +212,9 @@ export function usePasswords(props: PasswordsProps) {
   ]);
   return {
     domRef,
-    id,
-    inputMode,
     type,
     className,
-    value,
-    name,
     style,
-    placeholder,
     GetLabelProps,
     GetParentsProps,
     GetInputStyle,

@@ -10,13 +10,9 @@ import OpenPassword from "../../icon/component/OpenPassword.tsx";
 const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
   const {
     domRef,
-    id,
-    inputMode,
-    type,
     className,
-    value,
-    name,
     style,
+    type,
     placeholder,
     GetParentsProps,
     GetInputStyle,
@@ -73,11 +69,8 @@ const Passwords = forwardRef<HTMLInputElement, PasswordsProps>((props) => {
       readOnly={GetPasswordProps.isReadOnly}
       required={GetPasswordProps.isRequired}
       className={`p-2 w-full border-0 focus:outline-0 focus:ring-0 focus:border-0 ${inputStyle} ${isDisabledStyle} ${isErrorStyle} ${GetInputStyle.className}`}
-      inputMode={inputMode}
+      
       type={isPasswordVisible ? "text" : "password"}
-      value={value}
-      name={name}
-      id={id}
       style={style}
       placeholder={placeholder}
       onFocus={handleFocus}

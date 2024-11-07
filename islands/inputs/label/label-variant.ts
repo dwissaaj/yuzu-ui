@@ -17,4 +17,6 @@ export const LabelVariants = {
     medium: "font-medium",
     bold: "font-bold",
   },
+  fontReadonly: 'read-only:opacity-20 read-only:border-20 read-only:outline-20',
+  fontRequired: "after:content-['*'] after:ml-0.5 after:text-red-500 block"
 };
