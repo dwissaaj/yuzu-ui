@@ -3,6 +3,7 @@ import type {
   CSSProperties,
   Ref,
 } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
+import type { LabelVariants } from "./label-variant.ts";
 export type LabelProps = JSX.IntrinsicElements["label"] & {
   /**
    * Dom ref
@@ -20,12 +21,6 @@ export type LabelProps = JSX.IntrinsicElements["label"] & {
   className?: string;
 
   /**
-   * Access to classname label, don't add size color or any
-   * native type it will throw error due to tailwind will rendered twice
-   */
-  yuzuLabelStyle?: string;
-
-  /**
    * Add children to label
    */
   children?: JSX.Element | string;
@@ -38,10 +33,15 @@ export type LabelProps = JSX.IntrinsicElements["label"] & {
   /**
    * Label size, configuration can be custom to label-variant
    */
-  fontSize?: "small" | "medium" | "large";
+  fontSize?: keyof typeof LabelVariants.fontSizes;
 
   /**
    * Color label, configuration can be custom to label-variant
    */
-  color?: "primary" | "secondary" | "error" | "warning" | "success" | "none";
+  fontColor?: keyof typeof LabelVariants.fontColors
+
+  /**
+   * Font weight
+   */
+  fontWeight?: keyof typeof LabelVariants.fontWeights
 };

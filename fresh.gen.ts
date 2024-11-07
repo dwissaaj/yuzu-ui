@@ -30,7 +30,7 @@ import * as $inputs_input_input_variant from "./islands/inputs/input/input-varia
 import * as $inputs_input_type from "./islands/inputs/input/type.ts";
 import * as $inputs_input_use_input from "./islands/inputs/input/use-input.ts";
 import * as $inputs_label_label_variant from "./islands/inputs/label/label-variant.ts";
-import * as $inputs_label_label from "./islands/inputs/label/label.tsx";
+import * as $inputs_label_label from "./islands/inputs/label/Label.tsx";
 import * as $inputs_label_type from "./islands/inputs/label/type.ts";
 import * as $inputs_label_use_label from "./islands/inputs/label/use-label.ts";
 import * as $inputs_passwordField_Passwords from "./islands/inputs/passwordField/Passwords.tsx";

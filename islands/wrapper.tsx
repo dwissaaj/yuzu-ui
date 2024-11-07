@@ -7,8 +7,9 @@ import Checkbox from "./inputs/checkbox/Checkbox.tsx";
 import Fieldset from "./inputs/fieldset/Fieldset.tsx";
 import Label from "./inputs/label/label.tsx";
 
+
 export default function Wrapper() {
-  const fieldsetRef = useRef<HTMLFieldSetElement>(null);
+  const fieldsetRef = useRef<HTMLLabelElement>(null);
 
   useEffect(() => {
     // Check if the fieldset ref is assigned properly
@@ -23,7 +24,10 @@ export default function Wrapper() {
     <>
       <div class={"w-full flex flex-col gap-2"}>
         <div>
-          <Label />
+         
+          <Fieldset label={'asd'} >
+          <Label htmlFor={'name'} domRef={fieldsetRef} label={'text'} fontColor="primary" fontSize="large" />
+          </Fieldset>
         </div>
       </div>
     </>

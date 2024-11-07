@@ -1,10 +1,10 @@
 export const LabelVariants = {
-  fontSize: {
+  fontSizes: {
     small: "text-lg",
     medium: "text-2lg",
     large: "text-3xl",
   },
-  colors: {
+  fontColors: {
     primary: "text-primary",
     secondary: "text-secondary",
     error: "text-error",
@@ -12,4 +12,9 @@ export const LabelVariants = {
     warning: "text-warning",
     none: "",
   },
+  fontWeights: {
+    light: 'font light',
+    medium: 'font-medium',
+    bold: 'font-bold'
+  }
 };

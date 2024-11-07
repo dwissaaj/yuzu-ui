@@ -1,12 +1,42 @@
+
+
 import { forwardRef } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { LabelProps } from "./type.ts";
 import { useLabel } from "./use-label.ts";
-const Label = forwardRef<HTMLLabelElement, LabelProps>((props, ref) => {
+
+/**
+ * @component
+ * LabelVariants defines the available font styles, colors, and sizes for labels and can be extended
+ * 
+ * @example
+ * <Label fontSize="medium" fontColor="primary" fontWeight="bold">
+ *   Example Label
+ * </Label>
+ * 
+ *  @param {React.Ref} domRef - The reference to the label element. Can be used to directly manipulate the label element in the DOM.
+ * @param {string} label - The content to display inside the label. This can be text or other React elements.
+ * @param {JSX.Element} children - The child elements inside the label
+ * 
+ * @param {string} [fontSize="small"] - The font size of the label and can be modified and extended
+ *      - `"small"` (default)
+ *      - `"medium"`
+ *      - `"large"`
+ * @param {string} [fontColor="none"] - The font color of the label and can be modified and extended
+ *      - `"primary"`
+ *      - `"secondary"`
+ *      - `"error"`
+ *      - `"success"`
+ *      - `"warning"`
+ *      - `"none"` (default).
+ * 
+ * @return {JSX.Element}
+ */
+
+const Label = forwardRef<HTMLLabelElement, LabelProps>((props) => {
   const {
     domRef,
     label,
     className,
-    yuzuLabelStyle,
     children,
     style,
     GetLabelProps,
@@ -16,10 +46,9 @@ const Label = forwardRef<HTMLLabelElement, LabelProps>((props, ref) => {
   return (
     <label
       {...otherProps}
-      // Ensure this does not contain incompatible props
       style={style}
-      ref={domRef || ref}
-      className={`${className} ${GetLabelProps.className} ${yuzuLabelStyle}`}
+      ref={domRef}
+      className={`${className} ${GetLabelProps.className}`}
     >
       {label}
       {children}

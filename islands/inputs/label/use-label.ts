@@ -6,47 +6,49 @@ export function useLabel(props: LabelProps) {
   const {
     domRef,
     label,
-    yuzuLabelStyle = "",
     children,
     fontSize = "small",
-    color = "none",
+    fontColor = "none",
     style = "",
     className = "",
+    fontWeight="medium",
     ...otherProps
   } = props;
   const getColors = useMemo(
     () => {
-      return {
-        color: LabelVariants.colors[color],
-      };
+      return LabelVariants.fontColors[fontColor]
     },
-    [color],
+    [fontColor],
   );
   const getSize = useMemo(
     () => {
-      return LabelVariants.fontSize[fontSize];
+      return LabelVariants.fontSizes[fontSize];
     },
     [fontSize],
+  );
+  const getWeight = useMemo(
+    () => {
+      return LabelVariants.fontWeights[fontWeight];
+    },
+    [fontWeight],
   );
 
   const GetLabelProps = useMemo(
     () => {
-      const size = getSize;
-      const color = getColors.color;
+      const size = getSize
+      const color = getColors;
+      const weight = getWeight;
       return {
-        className: `${size} ${color}`,
+        className: `${size} ${color} ${weight}`,
       };
     },
-    [color, fontSize],
+    [fontColor, fontSize, fontWeight],
   );
 
   return {
     domRef,
     label,
-    yuzuLabelStyle,
     children,
-    fontSize,
-    color,
     style,
     GetLabelProps,
     className,
