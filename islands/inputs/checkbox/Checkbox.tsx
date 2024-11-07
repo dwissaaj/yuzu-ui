@@ -8,27 +8,29 @@ import { useCheckbox } from "./use-checkbox.ts";
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
   const {
     domRef,
+    children,
     className,
-    GetLabelStyle,
     GetLabelClass,
-    GetCheckboxProps,
     GetBoxStyle,
+    disableBoxStyle,
+    GetDisabledClass,
+    GetCheckboxProps,
+    disabledTitleStyle,
     isIndeterminate,
-    boxStyle,
     ...otherProps
   } = useCheckbox({ ...props });
   const InputWrapper = (
     <input
       {...otherProps}
-      className={`${GetBoxStyle.className} ${boxStyle} ${className}`}
+      className={`${GetBoxStyle.className} ${disableBoxStyle} `}
       ref={domRef}
       indeterminate={isIndeterminate}
-      disabled={GetCheckboxProps.isDisable}
+      disabled={GetCheckboxProps.isDisabled}
       type={"checkbox"}
     />
   );
   const LabelWrapper = (
-    <label className={`${GetLabelStyle.className}`}>
+    <label disabled={GetCheckboxProps?.isDisabled} className={`${GetLabelClass.className} ${disabledTitleStyle}`}>
       {GetLabelClass.label}
     </label>
   );
@@ -37,9 +39,10 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
     if (GetLabelClass.labelPosition === "right") {
       return (
         <div
-          className={`flex flex-row gap-2 items-center
+          className={`${className} ${GetDisabledClass?.getParentStyle} flex flex-col gap-2 items-center
    `}
         >
+          {children}
           {InputWrapper}
           {LabelWrapper}
         </div>
@@ -50,9 +53,10 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
     if (GetLabelClass.labelPosition === "left") {
       return (
         <div
-          className={`flex flex-row gap-2 items-center
+          className={`${className} ${GetDisabledClass?.getParentStyle} flex flex-col gap-2 items-center
    `}
         >
+           {children}
           {LabelWrapper}
           {InputWrapper}
         </div>
@@ -63,9 +67,10 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
     if (GetLabelClass.labelPosition === "top") {
       return (
         <div
-          className={`flex flex-col gap-2 items-center
+          className={`${className} ${GetDisabledClass?.getParentStyle} flex flex-col gap-2 items-center
    `}
         >
+           {children}
           {LabelWrapper}
           {InputWrapper}
         </div>
@@ -76,9 +81,10 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
     if (GetLabelClass.labelPosition === "bottom") {
       return (
         <div
-          className={`flex flex-col gap-2 items-center
+          className={`${className} ${GetDisabledClass?.getParentStyle} flex flex-col gap-2 items-center
    `}
         >
+           {children}
           {InputWrapper}
           {LabelWrapper}
         </div>
