@@ -24,7 +24,7 @@ export default function Wrapper() {
     <>
       <div class={"w-full flex flex-col gap-2"}>
         <div>
-          <Fieldset label={"asd"}>
+          <Fieldset isDisabled label={"asd"}>
             <div disabled={true} className={'disabled:bg-red-500 flex flex-col gap-2'}>
               <label >asd</label>
               <input disabled className={'disabled:bg-red-500'} placeholder={'asd'} />
@@ -32,7 +32,7 @@ export default function Wrapper() {
 
           </Fieldset>
         </div>
-        <Label isRequired>asd</Label>
+        <Label >asd</Label>
       </div>
     </>
   );

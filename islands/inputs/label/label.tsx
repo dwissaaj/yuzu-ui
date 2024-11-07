@@ -28,7 +28,7 @@ import { useLabel } from "./use-label.ts";
  *      - `"none"` (default).
  * @param {boolean} [isRequired=false] - Should a label contain asterik for required
  * @param {boolean} [isReadonly=false] - Should a label only read state
- * 
+ * @param {boolean} [isDisabled=false] - Should a label disabled state
  * 
  * @return {JSX.Element}
  */
@@ -47,6 +47,7 @@ const Label = forwardRef<HTMLLabelElement, LabelProps>((props) => {
   return (
     <label
       {...otherProps}
+
       style={style}
       ref={domRef}
       className={`${className} ${GetLabelProps.className}`}

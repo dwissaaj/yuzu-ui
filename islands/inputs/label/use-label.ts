@@ -12,10 +12,12 @@ export function useLabel(props: LabelProps) {
     style = "",
     className = "",
     fontWeight = "medium",
-    fontReadonly,
-    fontRequired,
+    isDisabled=false,
     isReadonly=false,
     isRequired=false,
+    fontReadonly ="",
+    fontDisabled="",
+    fontRequired="",
     ...otherProps
   } = props;
   const getColors = useMemo(
@@ -38,33 +40,55 @@ export function useLabel(props: LabelProps) {
   );
   const getReadonly = useMemo(
     () => {
-      if(isReadonly === true) {
-        const isReadonly = true
-        const readOnlyClass = LabelVariants.fontReadonly
-        return {isReadonly,readOnlyClass}
-      }
-    },
-    [fontReadonly],
+      if (isReadonly === true) {
+        const isReadonly = true;
+        const fontReadonly = LabelVariants.fontReadonly;
+        return { isReadonly, fontReadonly };
+      } else if (isDisabled === false) {
+        const isReadonly = false;
+        const fontReadonly = ""
+        return { fontReadonly, isReadonly };
+      }},
+    [isReadonly],
   );
   const getRequired = useMemo(
     () => {
-      if(isRequired === true) {
-        const isRequired = true
-        const requiredClass = LabelVariants.fontRequired
-        return {isRequired,requiredClass}
-      }
-    },
-    [fontRequired],
+      if (isRequired === true) {
+        const isRequired = true;
+        const requiredClass = LabelVariants.fontRequired;
+        return { isRequired, requiredClass };
+      } else if (isDisabled === false) {
+        const isRequired = false;
+        const requiredClass = ""
+        return { isRequired, requiredClass };
+      }},
+    [isRequired],
   );
+
+  const getDisabled = useMemo(
+    () => {
+      if (isDisabled === true) {
+        const isDisabled = true;
+        const disabledClass = LabelVariants.fontDisabled;
+        return { isDisabled, disabledClass };
+      } else if (isDisabled === false) {
+        const isDisabled = false;
+        const disabledClass = ""
+        return { isDisabled, disabledClass };
+      }},
+    [isDisabled],
+  );
+
   const GetLabelProps = useMemo(
     () => {
       const size = getSize;
       const color = getColors;
       const weight = getWeight;
       const required = getRequired?.requiredClass
-      const readonly = getReadonly?.readOnlyClass
+      const readonly = getReadonly?.fontReadonly
+      const disabled = getDisabled?.disabledClass
       return {
-        className: `${size} ${color} ${weight} ${readonly} ${required}`,
+        className: `${size} ${color} ${weight} ${readonly} ${required} ${disabled}`,
       };
     },
     [fontColor, fontSize, fontWeight],
@@ -79,6 +103,7 @@ export function useLabel(props: LabelProps) {
     className,
     isReadonly,
     isRequired,
+    isDisabled,
     ...otherProps,
   };
 }

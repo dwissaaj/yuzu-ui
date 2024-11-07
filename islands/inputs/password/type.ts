@@ -31,6 +31,7 @@ export type PasswordsProps =
     parentVariant: keyof typeof PasswordsVariants.parentVariants
 
     parentDisableStyle: keyof typeof PasswordsVariants.parentDisableStyle
+    parentErrorStyle : keyof typeof PasswordsVariants.parentErrorStyle
 
     
 

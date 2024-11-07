@@ -33,8 +33,10 @@ import * as $inputs_label_Label from "./islands/inputs/label/Label.tsx";
 import * as $inputs_label_label_variant from "./islands/inputs/label/label-variant.ts";
 import * as $inputs_label_type from "./islands/inputs/label/type.ts";
 import * as $inputs_label_use_label from "./islands/inputs/label/use-label.ts";
+import * as $inputs_password_Password from "./islands/inputs/password/Password.tsx";
 import * as $inputs_password_password_variants from "./islands/inputs/password/password-variants.ts";
 import * as $inputs_password_type from "./islands/inputs/password/type.ts";
+import * as $inputs_password_use_password from "./islands/inputs/password/use-password.ts";
 import * as $inputs_passwordField_Passwords from "./islands/inputs/passwordField/Passwords.tsx";
 import * as $inputs_passwordField_passwords_variants from "./islands/inputs/passwordField/passwords-variants.ts";
 import * as $inputs_passwordField_type from "./islands/inputs/passwordField/type.ts";
@@ -80,9 +82,11 @@ const manifest = {
     "./islands/inputs/label/label-variant.ts": $inputs_label_label_variant,
     "./islands/inputs/label/type.ts": $inputs_label_type,
     "./islands/inputs/label/use-label.ts": $inputs_label_use_label,
+    "./islands/inputs/password/Password.tsx": $inputs_password_Password,
     "./islands/inputs/password/password-variants.ts":
       $inputs_password_password_variants,
     "./islands/inputs/password/type.ts": $inputs_password_type,
+    "./islands/inputs/password/use-password.ts": $inputs_password_use_password,
     "./islands/inputs/passwordField/Passwords.tsx":
       $inputs_passwordField_Passwords,
     "./islands/inputs/passwordField/passwords-variants.ts":
