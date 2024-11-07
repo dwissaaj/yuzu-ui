@@ -1,3 +1,29 @@
+/**
+* @param {React.Ref} domRef - The reference to the Fieldset DOM element.
+* @param {React.CSSProperties} style - Inline styles to apply to the Fieldset.
+* @param {React.ReactNode} children - Child elements to render inside the Fieldset.
+* @param {string} [className=""] - Additional CSS class name(s) to apply to the Fieldset.
+* @param {string} [fieldsetDirection="row"] - The direction of the fieldset content. Possible values are:
+*   - `"row"` (default)
+*   - `"column"`
+* @param {string} [labelVariant="none"] - The variant style for the label. Possible values are:
+*   - `"none"`
+*   - `"default"`
+*   - `"bold"`
+*   - and other custom label styles.
+* @param {string} [fieldsetColor="primary"] - The color variant for the fieldset. Possible values are:
+*   - `"primary"`
+*   - `"secondary"`
+*   - and custom color styles.
+* @param {string} [fieldsetVariant="underline"] - The variant style for the fieldset. Possible values include:
+*   - `"underline"`
+*   - `"solid"`
+*   - `"dashed"`
+* @param {boolean} [isDisabled] - If `true`, the fieldset and its contents will be disabled.
+* @param {string} label - The text content for the Fieldset's label. 
+* @param {string} [yuzuDisableStyle] - Custom class name to override the default disabled styles. Use with caution and prefer changing styles via variants.
+*/
+
 import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
 import type { FieldsetProps } from "./type.ts";
 import { FieldsetVariants } from "./fieldset-variants.ts";
@@ -6,60 +32,72 @@ export function useFieldset(props: FieldsetProps) {
   const {
     domRef,
     style,
-    color = "primary",
-    title,
-    className = "",
-    yuzuTitleStyle = "",
     children,
-    direction = "row",
+    className = "",
+    fieldsetDirection = "row",
+    labelVariant = "none",
+    fieldsetColor = "primary",
+    fieldsetVariant = "underline",
     isDisabled,
-    yuzuDisabledStyle = "",
-    variant = "underline",
+    label,
+    yuzuDisableStyle,
     ...otherProps
   } = props;
 
-  const GetColors = useMemo(
+  const GetLabelVariant = useMemo(
     () => {
       return {
-        color: FieldsetVariants.colors[color],
+        labelVariant: FieldsetVariants.labelVariants[labelVariant],
+        label: label,
       };
     },
-    [color],
+    [labelVariant],
   );
 
-  const GetVariant = useMemo(
+  const GetFieldsetVariant = useMemo(
     () => {
       return {
-        variant: FieldsetVariants.variants[variant],
+        fieldsetVariant: FieldsetVariants.fieldsetVariants[fieldsetVariant],
       };
     },
-    [variant],
+    [fieldsetVariant],
   );
 
-  const GetDirection = useMemo(
+  const GetFieldsetDirection = useMemo(
     () => {
       return {
-        direction: FieldsetVariants.directions[direction],
+        fieldsetDirection:
+          FieldsetVariants.fieldsetDirections[fieldsetDirection],
       };
     },
-    [direction],
+    [fieldsetDirection],
+  );
+  const GetFieldsetColor = useMemo(
+    () => {
+      return {
+        fieldsetColor: FieldsetVariants.fieldsetColors[fieldsetColor],
+      };
+    },
+    [fieldsetColor],
   );
 
-  /**
-   * Anything with **Props need to be treated as a boolean state, like disabled, requiredonly etc
-   */
+  const GetDisabledStyle = useMemo(
+    () => (isDisabled ? FieldsetVariants.disableStyle : ""),
+    [isDisabled],
+  );
 
   const GetFieldsetClass = useMemo(
     () => {
-      const color = GetColors.color;
-      const variant = GetVariant.variant;
-      const direction = GetDirection.direction;
+      const color = GetFieldsetColor.fieldsetColor;
+      const variant = GetFieldsetVariant.fieldsetVariant;
+      const direction = GetFieldsetDirection.fieldsetDirection;
+      const disabled = GetDisabledStyle;
       console.log(color);
       return {
-        className: `${color} ${variant} ${direction}`,
+        className: `${color} ${variant} ${direction} ${disabled}`,
       };
     },
-    [color],
+    [fieldsetDirection, fieldsetColor, fieldsetVariant],
   );
 
   const GetFieldsetProps = useMemo(
@@ -73,13 +111,13 @@ export function useFieldset(props: FieldsetProps) {
   return {
     domRef,
     style,
-    children,
-    GetFieldsetProps,
-    yuzuDisabledStyle,
-    yuzuTitleStyle,
-    GetFieldsetClass,
-    title,
     className,
+    children,
+    GetFieldsetClass,
+    GetLabelVariant,
+    GetFieldsetProps,
+    yuzuDisableStyle,
+    isDisabled,
     ...otherProps,
   };
 }

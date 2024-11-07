@@ -11,7 +11,7 @@ export const ButtonVariants = {
     sm: "rounded-sm",
     md: "rounded-md",
     lg: "rounded-lg",
-  } ,
+  },
   sizes: {
     small:
       "shadow-md py-1 px-4 w-20 hover:brightness-105 transition ease-in-out duration-500",
@@ -19,7 +19,7 @@ export const ButtonVariants = {
       "shadow-lg py-1 px-4 w-32 hover:brightness-105 transition ease-in-out duration-500",
     large:
       "shadow-xl py-1 px-4 w-44 hover:brightness-105 transition ease-in-out duration-500",
-  } ,
+  },
 
   variantsStyle: {
     primary:
@@ -31,8 +31,8 @@ export const ButtonVariants = {
       "bg-success active:bg-success/20 focus:outline-2 focus:outline-success/80",
     warning:
       "bg-warning active:bg-warning/20 focus:outline-2 focus:outline-warning/80",
-      custom: 'bg-yellow-500'
-  } ,
+    custom: "bg-yellow-500",
+  },
   types: {
     button: "button",
     reset: "reset",

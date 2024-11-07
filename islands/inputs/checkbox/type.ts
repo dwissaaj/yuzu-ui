@@ -1,5 +1,8 @@
 import type { JSX } from "preact/jsx-runtime";
-import type { CSSProperties, Ref } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
+import type {
+  CSSProperties,
+  Ref,
+} from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { CheckboxVariants } from "./checkbox-variants.ts";
 export type CheckboxProps =
   & Omit<JSX.IntrinsicElements["input"], "size" | "color">
@@ -18,22 +21,19 @@ export type CheckboxProps =
 
     /**
      * custom style access for disable but for better result and to prevent error change the style to variant file
-     *
      */
-    disableBoxStyle?: string;
+    yuzudisableBoxStyle?: string;
 
-        /**
+    /**
      * custom style access for disable but for better result and to prevent error change the style to variant file
-     *
      */
-    disabledTitleStyle?: string;
+    yuzudisabledTitleStyle?: string;
 
     /**
      * Input checked or not
      * @default false
      */
     isIndeterminate?: boolean;
-
 
     /**
      * Take any component for children, can't be used with label
@@ -43,20 +43,18 @@ export type CheckboxProps =
      */
     children?: JSX.Element | string;
 
-    
     /**
      * Class tailwind for customize, if no argument provided will return empty string to css
      * @type {string} empty string if not provided
      */
     className?: string;
 
-
     /**
      * Position between label and box
-     * 
+     *
      * @default top
      */
-    labelPosition: "left" | "right" | "bottom" | "top";
+    labelPosition?: "left" | "right" | "bottom" | "top";
 
     /**
      * Label name with string
@@ -69,30 +67,28 @@ export type CheckboxProps =
      * @enum {"small" | "medium" | "large" | "your size"}
      * @default medium
      */
-    boxSize?: keyof typeof CheckboxVariants.boxSizes
+    boxSize?: keyof typeof CheckboxVariants.boxSizes;
+
     /**
      * Variant of box can be add new custom, can be extended
      * @enum {"primary" | "secondary" | "error" | "warning" | "success" | "Your Variant"}
      * @default primary
      */
-    boxVariant?: keyof typeof CheckboxVariants.boxVariants
+    boxVariant?: keyof typeof CheckboxVariants.boxVariants;
 
     /**
-     * Radius of button box can be add new variant. 
+     * Radius of button box can be add new variant.
      * @enum { "full" |"small" | "none" | "large" | "your size"}
      * @default none
      */
-    boxRadius?: keyof typeof CheckboxVariants.boxRadius
-
+    boxRadius?: keyof typeof CheckboxVariants.boxRadius;
 
     /**
      * Size for text, for custom change in variant file. The Standard Options
      * @enum { "small" | "medium" | "large" | "your size"}
      * @default small
      */
-    labelSize?: keyof typeof CheckboxVariants.labelSizes
-
-
+    labelSize?: keyof typeof CheckboxVariants.labelSizes;
 
     /**
      * The color of the label can be add new in variant.
@@ -100,6 +96,4 @@ export type CheckboxProps =
      * @default none
      */
     labelColor?: keyof typeof CheckboxVariants.labelColors;
-
-
   };

@@ -5,6 +5,61 @@ import {
 import type { CheckboxProps } from "./type.ts";
 import { useCheckbox } from "./use-checkbox.ts";
 
+/**
+ * Checkbox component that can be used for form inputs.
+ * 
+ * @component
+ * 
+ * @example
+ * <Checkbox 
+ *  label="Mikan"
+ *  labelPosition = "top",
+ *  boxSize = "medium",
+ *  boxRadius = "none",
+ *  boxVariant = "primary",
+ *  labelColor = "none",
+ *  labelSize = "small",
+ * />
+ * @param {string} [boxSize="medium"] - Size of the checkbox box. Possible values are:
+ *   - `"small"`
+ *   - `"medium"`  (default)
+ *   - `"large"`
+ *   - `"custom size"` 
+ * @param {string} [boxRadius="none"] - Border radius for the checkbox box. Possible values are:
+ *   - `"none"`
+ *   - `"small"` (default)
+ *   - `"large"`
+ *   - `"full"`
+ *   - `"your variant"`
+ * @param {string} [boxVariant="primary"] - Variant for the checkbox box. Possible values are:
+ *   - `"primary"` (default)
+ *   - `"secondary"`
+ *   - `"error"`
+ *   - `"success"`
+ *   - `"warning"`
+ *   - `"your variant"`
+ * @param {string} [labelColor="none"] - Color for the label text. Possible values are:
+ *   - `"primary"`
+ *   - `"secondary"`
+ *   - `"error"`
+ *   - `"success"`
+ *   - `"warning"`
+ *   - `"none"` (default)
+ * @param {string} [labelSize="small"] - Font size for the label. Possible values are:
+ *   - `"small"` (default)
+ *   - `"medium"`
+ *   - `"large"`
+ * @param {boolean} [isDisabled=false] - Whether the checkbox is disabled or not.
+ * @param {boolean} [isIndeterminate=false] - is checbox checked or not
+ * @param {string} [className=""] - A classnames override to div parent, if no called will return empty string 
+ * @param {string} [yuzudisabledTitleStyle=""] - Override disabled for title/label
+ * 
+ * @param {string} [yuzudisableBoxStyle=""] - Override disabled for box
+ * 
+ * @returns {JSX.Element} - Return JSX Element accept any props from input
+ */
+
+
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
   const {
     domRef,
@@ -12,17 +67,17 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
     className,
     GetLabelClass,
     GetBoxStyle,
-    disableBoxStyle,
+    yuzudisabledTitleStyle,
+    yuzudisableBoxStyle,
     GetDisabledClass,
     GetCheckboxProps,
-    disabledTitleStyle,
     isIndeterminate,
     ...otherProps
   } = useCheckbox({ ...props });
   const InputWrapper = (
     <input
       {...otherProps}
-      className={`${GetBoxStyle.className} ${disableBoxStyle} `}
+      className={`${GetBoxStyle.className} ${yuzudisableBoxStyle} `}
       ref={domRef}
       indeterminate={isIndeterminate}
       disabled={GetCheckboxProps.isDisabled}
@@ -30,7 +85,10 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
     />
   );
   const LabelWrapper = (
-    <label disabled={GetCheckboxProps?.isDisabled} className={`${GetLabelClass.className} ${disabledTitleStyle}`}>
+    <label
+      disabled={GetCheckboxProps?.isDisabled}
+      className={`${GetLabelClass.className} ${yuzudisabledTitleStyle}`}
+    >
       {GetLabelClass.label}
     </label>
   );
@@ -56,7 +114,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
           className={`${className} ${GetDisabledClass?.getParentStyle} flex flex-col gap-2 items-center
    `}
         >
-           {children}
+          {children}
           {LabelWrapper}
           {InputWrapper}
         </div>
@@ -70,7 +128,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
           className={`${className} ${GetDisabledClass?.getParentStyle} flex flex-col gap-2 items-center
    `}
         >
-           {children}
+          {children}
           {LabelWrapper}
           {InputWrapper}
         </div>
@@ -84,7 +142,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
           className={`${className} ${GetDisabledClass?.getParentStyle} flex flex-col gap-2 items-center
    `}
         >
-           {children}
+          {children}
           {InputWrapper}
           {LabelWrapper}
         </div>

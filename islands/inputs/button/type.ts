@@ -53,13 +53,13 @@ export type ButtonProps =
     /**
      * Variant type similar to Tailwinds Variants, can be extended in the
      * variant file at `use-theme.ts`. The default enum can choose, if not provided will defaulted to "primary"
-     * @enum 
+     * @enum
      * "primary" | "secondary" | "error" | "warning" | "success" | "Your Variant"
-     * 
-     * @default "primary" 
+     *
+     * @default "primary"
      * @example {variants: {custom: "bg-yellow-500"}}
      */
-    variant?: keyof typeof ButtonVariants.variantsStyle ;
+    variant?: keyof typeof ButtonVariants.variantsStyle;
 
     /**
      * Button action type
@@ -70,27 +70,21 @@ export type ButtonProps =
     /**
      * Button radius can be extended in variant file
      * @default "small"
-     * 
+     *
      * @enum {"sm" | "md" | "lg"}
      */
     radius?: keyof typeof ButtonVariants.radiusStyle;
 
     /**
      * @see Only use this for hooks or variant
-     * This for styling variant disabled, only use it for variant and hooks, never call in component to prevent error render. Change styling for disabled is via variant file
+     * This for styling variant disabled, only use if you know what you are doing better Change styling for disabled is via variant file
      */
 
-    disableStyle?: string;
+    yuzuDisableStyle?: string;
 
     /**
      * @default false
      * Should a Button take parent width don't use with size
      */
     isFullWidth?: boolean;
-
-    /**
-     * Label of the button if using label don't mix with children to prevent error
-     *  @example <Button label="click Me!!" />
-     */
-    label?: string;
   };

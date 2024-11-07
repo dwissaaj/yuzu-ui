@@ -9,14 +9,14 @@ export type LabelProps = JSX.IntrinsicElements["label"] & {
    */
   domRef?: Ref<HTMLLabelElement>;
 
-  /** */
+  /**
+   * Your string label
+   */
   label?: string;
 
   /**
-   * access to classname string, not recomended to use, change your variant
-   * at variant file than access this
+   * access to classname parents
    */
-
   className?: string;
 
   /**

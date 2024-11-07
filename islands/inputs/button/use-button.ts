@@ -13,9 +13,8 @@ export function useButton(props: ButtonProps) {
     variant = "primary",
     types = "button",
     radius = "md",
-    disableStyle = "",
+    yuzuDisableStyle = "",
     isFullWidth,
-    label,
     ...otherProps
   } = props;
 
@@ -63,7 +62,7 @@ export function useButton(props: ButtonProps) {
             .trim(),
       };
     },
-    [variant, radius, disableStyle, size, types],
+    [variant, radius, size, types],
   );
 
   return {
@@ -74,8 +73,7 @@ export function useButton(props: ButtonProps) {
     style,
     isDisabled,
     GetButtonClass,
-    label,
-    disableStyle,
+    yuzuDisableStyle,
     GetButtonProps,
     ...otherProps,
   };
