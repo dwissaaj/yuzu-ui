@@ -11,12 +11,12 @@ export function useLabel(props: LabelProps) {
     fontColor = "none",
     style = "",
     className = "",
-    fontWeight="medium",
+    fontWeight = "medium",
     ...otherProps
   } = props;
   const getColors = useMemo(
     () => {
-      return LabelVariants.fontColors[fontColor]
+      return LabelVariants.fontColors[fontColor];
     },
     [fontColor],
   );
@@ -35,7 +35,7 @@ export function useLabel(props: LabelProps) {
 
   const GetLabelProps = useMemo(
     () => {
-      const size = getSize
+      const size = getSize;
       const color = getColors;
       const weight = getWeight;
       return {

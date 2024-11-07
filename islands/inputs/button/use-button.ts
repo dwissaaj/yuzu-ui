@@ -7,14 +7,14 @@ export function useButton(props: ButtonProps) {
     onClick,
     children,
     className = "",
-    style,
+    style = "",
     isDisabled,
     size = "small",
     variant = "primary",
     types = "button",
     radius = "md",
     yuzuDisableStyle = "",
-    isFullWidth,
+    isFullWidth = false,
     ...otherProps
   } = props;
 

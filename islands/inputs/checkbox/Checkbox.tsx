@@ -7,11 +7,11 @@ import { useCheckbox } from "./use-checkbox.ts";
 
 /**
  * Checkbox component that can be used for form inputs.
- * 
+ *
  * @component
- * 
+ *
  * @example
- * <Checkbox 
+ * <Checkbox
  *  label="Mikan"
  *  labelPosition = "top",
  *  boxSize = "medium",
@@ -20,11 +20,15 @@ import { useCheckbox } from "./use-checkbox.ts";
  *  labelColor = "none",
  *  labelSize = "small",
  * />
+ * 
+ * @param {Ref<HTMLInputElement>} props.domRef - The ref for the button element.
+ * @param {string} [props.className=""] - Additional classes to apply to the button, if no value provided will return empty string
+ * @param {JSX.CSSProperties} [props.style=""] - Inline styles to apply to the button, if no value provided will return empty string
  * @param {string} [boxSize="medium"] - Size of the checkbox box. Possible values are:
  *   - `"small"`
  *   - `"medium"`  (default)
  *   - `"large"`
- *   - `"custom size"` 
+ *   - `"custom size"`
  * @param {string} [boxRadius="none"] - Border radius for the checkbox box. Possible values are:
  *   - `"none"`
  *   - `"small"` (default)
@@ -51,14 +55,13 @@ import { useCheckbox } from "./use-checkbox.ts";
  *   - `"large"`
  * @param {boolean} [isDisabled=false] - Whether the checkbox is disabled or not.
  * @param {boolean} [isIndeterminate=false] - is checbox checked or not
- * @param {string} [className=""] - A classnames override to div parent, if no called will return empty string 
+ * @param {string} [className=""] - A classnames override to div parent, if no called will return empty string
  * @param {string} [yuzudisabledTitleStyle=""] - Override disabled for title/label
- * 
+ *
  * @param {string} [yuzudisableBoxStyle=""] - Override disabled for box
- * 
+ *
  * @returns {JSX.Element} - Return JSX Element accept any props from input
  */
-
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
   const {

@@ -1,5 +1,4 @@
 import type {
-  CSSProperties,
   Ref,
 } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { JSX } from "preact/jsx-runtime";
@@ -11,7 +10,7 @@ export type FieldsetProps = JSX.IntrinsicElements["fieldset"] & {
   /**
    * Css styling
    */
-  style?: CSSProperties | string;
+  style?: JSX.CSSProperties;
 
   /**
    * Label for the fieldset
@@ -46,10 +45,9 @@ export type FieldsetProps = JSX.IntrinsicElements["fieldset"] & {
 
   /**
    * Access to class disabled fieldset
-  
    */
-  yuzuDisableStyle?: string
-  
+  yuzuDisableStyle?: string;
+
   /**
    * fieldset variant can be extended in variant-file
    * @default underline

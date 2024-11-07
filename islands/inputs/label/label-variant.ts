@@ -13,8 +13,8 @@ export const LabelVariants = {
     none: "",
   },
   fontWeights: {
-    light: 'font light',
-    medium: 'font-medium',
-    bold: 'font-bold'
-  }
+    light: "font light",
+    medium: "font-medium",
+    bold: "font-bold",
+  },
 };

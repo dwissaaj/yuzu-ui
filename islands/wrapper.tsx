@@ -6,7 +6,7 @@ import { Button } from "./inputs/button/index.ts";
 import Checkbox from "./inputs/checkbox/Checkbox.tsx";
 import Fieldset from "./inputs/fieldset/Fieldset.tsx";
 import Label from "./inputs/label/label.tsx";
-
+import Passwords from "./inputs/passwordField/Passwords.tsx";
 
 export default function Wrapper() {
   const fieldsetRef = useRef<HTMLLabelElement>(null);
@@ -18,17 +18,17 @@ export default function Wrapper() {
     } else {
       console.log("Fieldset ref is not working.");
     }
-  }, []); 
+  }, []);
 
   return (
     <>
       <div class={"w-full flex flex-col gap-2"}>
         <div>
-         
-          <Fieldset label={'asd'} >
-          <Label htmlFor={'name'} domRef={fieldsetRef} label={'text'} fontColor="primary" fontSize="large" />
+          <Fieldset label={"asd"}>
+            <Passwords label={"your name"} />
           </Fieldset>
         </div>
+        <Button>asd</Button>
       </div>
     </>
   );

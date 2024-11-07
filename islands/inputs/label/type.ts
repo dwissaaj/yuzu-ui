@@ -1,6 +1,5 @@
 import type { JSX } from "preact/jsx-runtime";
 import type {
-  CSSProperties,
   Ref,
 } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { LabelVariants } from "./label-variant.ts";
@@ -28,7 +27,7 @@ export type LabelProps = JSX.IntrinsicElements["label"] & {
   /**
    * Native style label
    */
-  style?: CSSProperties;
+  style?: JSX.CSSProperties;
 
   /**
    * Label size, configuration can be custom to label-variant
@@ -38,10 +37,10 @@ export type LabelProps = JSX.IntrinsicElements["label"] & {
   /**
    * Color label, configuration can be custom to label-variant
    */
-  fontColor?: keyof typeof LabelVariants.fontColors
+  fontColor?: keyof typeof LabelVariants.fontColors;
 
   /**
    * Font weight
    */
-  fontWeight?: keyof typeof LabelVariants.fontWeights
+  fontWeight?: keyof typeof LabelVariants.fontWeights;
 };

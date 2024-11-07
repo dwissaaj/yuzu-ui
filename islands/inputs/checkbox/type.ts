@@ -1,6 +1,5 @@
 import type { JSX } from "preact/jsx-runtime";
 import type {
-  CSSProperties,
   Ref,
 } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { CheckboxVariants } from "./checkbox-variants.ts";

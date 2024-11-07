@@ -10,19 +10,15 @@ export type PasswordsProps =
     domRef?: Ref<HTMLInputElement> | null;
 
     /**
-     * Input value
-     */
-    value?: JSX.IntrinsicElements["input"]["value"];
-
-    /**
-     * input ID
-     */
-    id?: string;
-
-    /**
      * Classname styling for div parent, not recomended to use
      */
-    className?: string | null;
+    className?: string;
+
+
+    /**
+     * Vanilla css plain styling
+     */
+    style?: JSX.CSSProperties
 
     /**
      * For direct access to input style
@@ -89,10 +85,6 @@ export type PasswordsProps =
      */
     placeholder?: string;
 
-    /**
-     * Vanilla css plain styling
-     */
-    style?: JSX.CSSProperties;
 
     /**
      * Variant input, this for disable native html styling to
