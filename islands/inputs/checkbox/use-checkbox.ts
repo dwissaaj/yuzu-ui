@@ -1,124 +1,137 @@
 import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
 import type { CheckboxProps } from "./type.ts";
 import { CheckboxVariants } from "./checkbox-variants.ts";
-import { colors } from "$fresh/src/server/deps.ts";
+
 
 export function useCheckbox(props: CheckboxProps) {
   const {
     domRef,
-    labelPosition = "right",
+    children,
+    labelPosition = "top",
     boxSize = "medium",
     boxRadius = "none",
-    boxStyle,
-    boxColor = "primary",
-    color = "none",
-    size = "small",
+    boxVariant = "primary",
+    labelColor = "none",
+    labelSize = "small",
     label,
     isDisabled,
-    isDisabledStyle = "",
+    disableBoxStyle="",
+    disabledTitleStyle="",
     isIndeterminate,
-    className = "",
+    className="",
     ...otherProps
   } = props;
-  const GetColor = useMemo(
+
+
+  /**
+   * Used for checking input disabled and return class and sate
+   * @return { isDisabled, isDisabledStyle}
+   */
+  const GetDisabledClass = useMemo(() => {
+    if (isDisabled === true) {
+      const disabled = true;
+      const getParentStyle = 'disabled:opacity-20 cursor-not-allowed'
+      return { disabled , getParentStyle};
+    } else if (isDisabled === false) {
+      const disabled = false;
+      const getParentStyle = ''
+      return { getParentStyle, disabled };
+    }
+  }, [isDisabled, disableBoxStyle, disabledTitleStyle]);
+
+
+  const GetTextDisabledStyle = useMemo(
+    () => (isDisabled ? CheckboxVariants.disableTextStyle : ""),
+    [isDisabled],
+  );
+
+  const GetColorLabel = useMemo(
     () => {
       return {
-        color: CheckboxVariants.colors[color],
+        labelColors: CheckboxVariants.labelColors[labelColor],
       };
     },
-    [color],
+    [labelColor],
   );
-  const Getsize = useMemo(() => {
+  const GetSizeLabel = useMemo(() => {
     return {
-      size: CheckboxVariants.size[size],
+      labelSize: CheckboxVariants.labelSizes[labelSize],
     };
-  }, [size]);
+  }, [labelSize]);
+
 
   const GetLabelClass = useMemo(() => {
+    const getSize = GetSizeLabel.labelSize
+    const getColor = GetColorLabel.labelColors
+    const getPosition = labelPosition
+    const getDisabled = GetTextDisabledStyle
     return {
-      labelPosition: labelPosition,
-      label: label,
+      className : `${getSize} ${getColor} ${getDisabled} `.trim(),
+      label: `${label}`,
+      labelPosition: getPosition
     };
-  }, [label, labelPosition]);
+  }, [label, labelPosition, labelSize, labelColor]);
 
   const GetBoxRadius = useMemo(() => {
     return {
-      radius: CheckboxVariants.boxRadius[boxRadius],
+      boxRadius: CheckboxVariants.boxRadius[boxRadius],
     };
   }, [boxRadius]);
 
   const GetBoxSize = useMemo(() => {
     return {
-      size: CheckboxVariants.boxSize[boxSize],
+      boxSize: CheckboxVariants.boxSizes[boxSize],
     };
   }, [boxSize]);
-  const GetBoxColor = useMemo(() => {
+
+  const GetBoxVariant = useMemo(() => {
     return {
-      boxColor: CheckboxVariants.boxColor[boxColor],
+      boxVariant: CheckboxVariants.boxVariants[boxVariant],
     };
-  }, [boxColor]);
-  const GetDisabledClass = useMemo(() => {
-    if (isDisabled === true) {
-      const disabled = true;
-      const isDisabledStyle = CheckboxVariants.disableStyle;
-      return { isDisabledStyle, disabled };
-    } else if (isDisabled === false) {
-      const disabled = false;
-      const isDisabledStyle = " ";
-      return { isDisabledStyle, disabled };
-    }
-  }, [isDisabled, isDisabledStyle]);
+  }, [boxVariant]);
+
+  const GetBoxDisabledStyle = useMemo(
+    () => (isDisabled ? CheckboxVariants.disableBoxStyle : ""),
+    [isDisabled],
+  );
 
   /**
    * Style for box
    */
   const GetBoxStyle = useMemo(() => {
-    const getBoxColor = GetBoxColor.boxColor;
-    const getBoxsize = Getsize.size;
-    const getBoxRadius = GetBoxRadius.radius;
-    const getBoxSize = GetBoxSize.size;
-    const getisDisabledStyle = GetDisabledClass?.isDisabledStyle;
-    const boxStyle = CheckboxVariants.boxStyle;
+    const getBoxColor = GetBoxVariant.boxVariant;
+    const getBoxsize = GetBoxSize.boxSize;
+    const getBoxRadius = GetBoxRadius.boxRadius;
+    const getBoxDisabled = GetBoxDisabledStyle
     return {
       className:
-        `${getBoxColor} ${getBoxsize} ${getisDisabledStyle} ${getBoxRadius} ${getBoxSize} ${boxStyle}`,
+        `${CheckboxVariants.boxAppearance} ${getBoxColor} ${getBoxsize} ${getBoxRadius} ${getBoxDisabled}`.trim(),
     };
-  }, [boxColor, isDisabledStyle, boxRadius, boxSize]);
+  }, [boxVariant, boxRadius, boxSize, GetBoxDisabledStyle]);
 
-  /**
-   * styling for label input
-   */
-
-  const GetLabelStyle = useMemo(() => {
-    const getcolor = GetColor.color;
-    const getsize = Getsize.size;
-    const getisDisabledStyle = GetDisabledClass?.isDisabledStyle;
-    const labelClassname = className;
-    return {
-      className:
-        `${getcolor} ${getsize}  ${getisDisabledStyle} ${labelClassname}`,
-    };
-  }, [colors, size, isDisabledStyle]);
-
-  /**
+  /*
    * For state input as props dont add to styling or class name
    * dont use or export disabled class for state
    */
+
   const GetCheckboxProps = useMemo(() => {
-    const isDisable = GetDisabledClass?.disabled;
     return {
-      isDisable,
+      isDisabled
     };
   }, [isDisabled]);
+
+
   return {
     domRef,
+    children,
     className,
-    GetLabelStyle,
     GetLabelClass,
     GetCheckboxProps,
     GetBoxStyle,
+    GetDisabledClass,
+    disableBoxStyle,
+    disabledTitleStyle,
     isIndeterminate,
-    boxStyle,
     ...otherProps,
   };
 }
