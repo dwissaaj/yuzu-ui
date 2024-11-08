@@ -6,9 +6,9 @@ import { Button } from "./inputs/button/index.ts";
 import Checkbox from "./inputs/checkbox/Checkbox.tsx";
 import Fieldset from "./inputs/fieldset/Fieldset.tsx";
 import Label from "./inputs/label/label.tsx";
-import PasswordNew from "./inputs/password/Password.tsx";
+import Password from "./inputs/password/Password.tsx";
 export default function Wrapper() {
-  const fieldsetRef = useRef<HTMLLabelElement>(null);
+  const fieldsetRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     // Check if the fieldset ref is assigned properly
@@ -23,16 +23,14 @@ export default function Wrapper() {
     <>
       <div class={"w-full flex flex-col gap-2"}>
         <div>
-          <PasswordNew
-          id={'your name'}
-          form="asd"
+          <Password
+            id={"your name"}
+            form="asd"
+            domRef={fieldsetRef}
             placeholder={"your ame"}
             size={"small"}
-            color="none"
+            color="primary"
             variant="underline"
-            isReadonly={true}
-            
-            
           />
         </div>
       </div>
