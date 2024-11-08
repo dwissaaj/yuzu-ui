@@ -1,8 +1,8 @@
 import type { Ref } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { JSX } from "preact/jsx-runtime";
-import type { PasswordsVariants } from "./password-variants.ts";
+import type { InputVariants } from "./input-variants.ts";
 
-export type PasswordProps =
+export type InputProps =
   & Omit<JSX.IntrinsicElements["input"], "size" | "color">
   & {
     /**
@@ -23,17 +23,17 @@ export type PasswordProps =
     /**
      * Size of the input will consume by div parents
      */
-    size?: keyof typeof PasswordsVariants.sizes;
+    size?: keyof typeof InputVariants.sizes;
 
     /**
      * Color based on variant, only consume by div parent
      */
-    color?: keyof typeof PasswordsVariants.colors;
+    color?: keyof typeof InputVariants.colors;
 
     /**
      * Variant can't be extended unless config the hooks
      */
-    variant?: keyof typeof PasswordsVariants.variants;
+    variant?: keyof typeof InputVariants.variants;
 
     /**
      * Access to error state style
@@ -44,10 +44,15 @@ export type PasswordProps =
      * Access to readonly state style
      */
     yuzuInputReadonlyStyle?: string;
+
     /**
-     * Access to readonly state style
+     * Access to error state style
      */
-    yuzuInputDisables?: string;
+    yuzuDisabledStyle?: string;
+    /**
+     * Access to error state style
+     */
+    yuzuRequiredStyle?: string;
     /**
      *  State for read only
      */
@@ -67,4 +72,10 @@ export type PasswordProps =
      *  State for disabled
      */
     isDisabled?: boolean;
+
+    isRequired?: boolean;
+
+    label?: string;
+
+    labelPlacement?: "top" | "bottom" | "left" | "right";
   };

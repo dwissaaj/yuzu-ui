@@ -1,8 +1,8 @@
 import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
-import { PasswordsVariants } from "./password-variants.ts";
-import type { PasswordProps } from "./type.ts";
+import type { InputProps } from "./type.ts";
+import { InputVariants } from "./input-variants.ts";
 
-export function usePassword(props: PasswordProps) {
+export function useInput(props: InputProps) {
   const {
     domRef,
     className = "",
@@ -10,23 +10,27 @@ export function usePassword(props: PasswordProps) {
     size = "medium",
     color = "none",
     variant = "full",
-    isFullWidth = false,
-    isDisabled = false,
     yuzuErrorStyle = "",
     yuzuInputReadonlyStyle = "",
-    yuzuInputDisables="",
+    yuzuDisabledStyle="",
+    yuzuRequiredStyle="",
     isReadonly = false,
+    isFullWidth = false,
+    isDisabled = false,
     isError = false,
+    isRequired = false,
+    label,
+    labelPlacement,
     ...otherProps
   } = props;
 
   const fullWidthClass = useMemo(
     () => {
       if (isFullWidth === true) {
-        return { size: PasswordsVariants.fullWidth };
+        return { size: InputVariants.fullWidth };
       } else isFullWidth === false;
       {
-        return { size: PasswordsVariants.sizes[size] };
+        return { size: InputVariants.sizes[size] };
       }
     },
     [isFullWidth, size],
@@ -34,7 +38,7 @@ export function usePassword(props: PasswordProps) {
   const GetSizeClass = useMemo(
     () => {
       return {
-        parentSize: PasswordsVariants.sizes[size],
+        parentSize: InputVariants.sizes[size],
       };
     },
     [size],
@@ -42,16 +46,23 @@ export function usePassword(props: PasswordProps) {
   const GetVariantClass = useMemo(
     () => {
       return {
-        variant: PasswordsVariants.variants[variant],
+        variant: InputVariants.variants[variant],
       };
     },
     [variant],
   );
-
+  const GetLabelPlacement = useMemo(
+    () => {
+      return {
+        label: labelPlacement
+      };
+    },
+    [label],
+  );
   const GetDisabled = useMemo(
     () => {
       if (isDisabled === true) {
-        const disabledStyle = PasswordsVariants.disabledStyle;
+        const disabledStyle = InputVariants.disabledStyle;
         return { disabledStyle };
       } else isDisabled === false;
       {
@@ -61,18 +72,7 @@ export function usePassword(props: PasswordProps) {
     },
     [isDisabled],
   );
-  const GetCustomDisabled = useMemo(
-    () => {
-      if (isDisabled === true) {
-        return { yuzuInputDisables };
-      } else isDisabled === false;
-      {
-        const yuzuInputDisables = "";
-        return { yuzuInputDisables };
-      }
-    },
-    [isDisabled],
-  );
+
   const GetCustomError = useMemo(
     () => {
       if (isError === true) {
@@ -83,7 +83,7 @@ export function usePassword(props: PasswordProps) {
         return { errorStyle };
       }
     },
-    [isError],
+    [isDisabled],
   );
   const GetCustomReadonly = useMemo(
     () => {
@@ -95,12 +95,12 @@ export function usePassword(props: PasswordProps) {
         return { yuzuInputReadonlyStyle };
       }
     },
-    [isReadonly],
+    [isDisabled],
   );
   const GetErrorInput = useMemo(
     () => {
       if (isError === true) {
-        const errorStyle = PasswordsVariants.errorStyle;
+        const errorStyle = InputVariants.errorStyle;
         return { errorStyle };
       } else isError === false;
       {
@@ -110,10 +110,34 @@ export function usePassword(props: PasswordProps) {
     },
     [isDisabled],
   );
+  const GetCustomDisabled = useMemo(
+    () => {
+      if (isDisabled === true) {
+        return { yuzuDisabledStyle };
+      } else isDisabled === false;
+      {
+        const yuzuDisabledStyle = "";
+        return { yuzuDisabledStyle };
+      }
+    },
+    [isDisabled],
+  );
+  const GetCustomRequired = useMemo(
+    () => {
+      if (isRequired === true) {
+        return { yuzuRequiredStyle };
+      } else isRequired === false;
+      {
+        const yuzuRequiredStyle = "";
+        return { yuzuRequiredStyle };
+      }
+    },
+    [isRequired],
+  );
   const GetReadonly = useMemo(
     () => {
       if (isReadonly === true) {
-        const inputReadonlyStyle = PasswordsVariants.inputReadonlyStyles;
+        const inputReadonlyStyle = InputVariants.inputReadonlyStyles;
         return { inputReadonlyStyle };
       } else isReadonly === false;
       {
@@ -126,11 +150,11 @@ export function usePassword(props: PasswordProps) {
   const GetColorClass = useMemo(
     () => {
       if (variant === "underline") {
-        const colorSelected = PasswordsVariants.colors[color];
+        const colorSelected = InputVariants.colors[color];
         return `border-${colorSelected}`;
       } else variant === "full";
       {
-        const colorSelected = PasswordsVariants.colors[color];
+        const colorSelected = InputVariants.colors[color];
         return `bg-${colorSelected}`;
       }
     },
@@ -162,10 +186,23 @@ export function usePassword(props: PasswordProps) {
       const color = GetColorClass;
       const disable = GetDisabled.disabledStyle;
       const error = GetErrorInput.errorStyle;
-      const base = PasswordsVariants.inputStyle;
       const readonly = GetReadonly.inputReadonlyStyle;
       return {
-        className: `${base} ${color} ${disable} ${error} ${readonly}`,
+        className: ` ${color} ${disable} ${error} ${readonly}`,
+      };
+    },
+    [GetColorClass, GetDisabled],
+  );
+  const GetLabelProps = useMemo(
+    () => {
+      const labels = label;
+      const disable = GetDisabled.disabledStyle;
+      const readonly = GetReadonly.inputReadonlyStyle;
+      
+      return {
+        className: `${disable} ${readonly}`,
+        labelPlacement: GetLabelPlacement.label,
+        label: labels
       };
     },
     [GetColorClass, GetDisabled],
@@ -180,8 +217,11 @@ export function usePassword(props: PasswordProps) {
     GetDisabled,
     GetCustomError,
     GetCustomReadonly,
-    GetCustomDisabled,
+    GetCustomRequired,
     isReadonly,
+    isRequired,
+    GetCustomDisabled,
+    GetLabelProps,
     ...otherProps,
   };
 }

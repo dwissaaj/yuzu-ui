@@ -29,6 +29,10 @@ import * as $inputs_input_Input from "./islands/inputs/input/Input.tsx";
 import * as $inputs_input_input_variant from "./islands/inputs/input/input-variant.ts";
 import * as $inputs_input_type from "./islands/inputs/input/type.ts";
 import * as $inputs_input_use_input from "./islands/inputs/input/use-input.ts";
+import * as $inputs_inputi_Inputs from "./islands/inputs/inputi/Inputs.tsx";
+import * as $inputs_inputi_input_variants from "./islands/inputs/inputi/input-variants.ts";
+import * as $inputs_inputi_type from "./islands/inputs/inputi/type.ts";
+import * as $inputs_inputi_use_input from "./islands/inputs/inputi/use-input.ts";
 import * as $inputs_label_Label from "./islands/inputs/label/Label.tsx";
 import * as $inputs_label_label_variant from "./islands/inputs/label/label-variant.ts";
 import * as $inputs_label_type from "./islands/inputs/label/type.ts";
@@ -74,6 +78,10 @@ const manifest = {
     "./islands/inputs/input/input-variant.ts": $inputs_input_input_variant,
     "./islands/inputs/input/type.ts": $inputs_input_type,
     "./islands/inputs/input/use-input.ts": $inputs_input_use_input,
+    "./islands/inputs/inputi/Inputs.tsx": $inputs_inputi_Inputs,
+    "./islands/inputs/inputi/input-variants.ts": $inputs_inputi_input_variants,
+    "./islands/inputs/inputi/type.ts": $inputs_inputi_type,
+    "./islands/inputs/inputi/use-input.ts": $inputs_inputi_use_input,
     "./islands/inputs/label/Label.tsx": $inputs_label_Label,
     "./islands/inputs/label/label-variant.ts": $inputs_label_label_variant,
     "./islands/inputs/label/type.ts": $inputs_label_type,

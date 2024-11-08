@@ -7,6 +7,8 @@ import Checkbox from "./inputs/checkbox/Checkbox.tsx";
 import Fieldset from "./inputs/fieldset/Fieldset.tsx";
 import Label from "./inputs/label/label.tsx";
 import Password from "./inputs/password/Password.tsx";
+import Inputi from "./inputs/inputi/Inputs.tsx";
+
 export default function Wrapper() {
   const fieldsetRef = useRef<HTMLInputElement>(null);
 
@@ -23,15 +25,7 @@ export default function Wrapper() {
     <>
       <div class={"w-full flex flex-col gap-2"}>
         <div>
-          <Password
-            id={"your name"}
-            form="asd"
-            domRef={fieldsetRef}
-            placeholder={"your ame"}
-            size={"small"}
-            color="primary"
-            variant="underline"
-          />
+          <Inputi label={'as'} labelPlacement="top" variant="underline" id={'name'} form={'forms'} value={'as'} placeholder={'number'} />
         </div>
       </div>
     </>
