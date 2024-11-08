@@ -64,11 +64,11 @@ export function usePassword(props: PasswordProps) {
   const GetCustomDisabled = useMemo(
     () => {
       if (isDisabled === true) {
-        return { yuzuInputDisables };
+        return  yuzuInputDisables ;
       } else isDisabled === false;
       {
         const yuzuInputDisables = "";
-        return { yuzuInputDisables };
+        return yuzuInputDisables 
       }
     },
     [isDisabled],

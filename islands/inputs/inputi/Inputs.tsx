@@ -2,7 +2,7 @@ import {
     forwardRef,
     useMemo,
   } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
-  import { useInput } from "./use-input.ts";
+  import { useInputi } from "./use-input.ts";
   import type { InputProps } from "./type.ts";
   
   const Inputi = forwardRef<HTMLInputElement, InputProps>((props) => {
@@ -22,11 +22,11 @@ import {
         GetCustomDisabled,
         GetLabelProps,
       ...otherProps
-    } = useInput({ ...props });
+    } = useInputi({ ...props });
   
     const labelContent = GetLabelProps.label
       ? (
-        <span className={` ${GetLabelProps.className}`}>
+        <span className={`${GetLabelProps.className} ${GetCustomRequired.yuzuRequiredStyle} `}>
           {GetLabelProps.label}
         </span>
       )
@@ -39,7 +39,7 @@ import {
         disabled={isDisabled}
         readOnly={isReadonly}
         required={isRequired}
-        className={`p-2 w-full ${GetInputStyle.className}  `}
+        className={`w-full ${className} ${GetDisabled.disabledStyle} ${GetCustomDisabled} ${GetInputStyle.className} ${GetCustomError.yuzuErrorStyle} ${GetCustomDisabled} ${GetCustomReadonly.yuzuReadonlyStyle} `}
         style={style}
       />
     );
@@ -48,7 +48,9 @@ import {
       if (GetLabelProps.labelPlacement === "top") {
         return (
           <div
-            className={` flex flex-col gap-2 ${GetLabelProps.className} `}
+            className={`flex flex-col gap-2 ${GetParentsStyle.className} 
+            ${GetCustomDisabled}
+            ${GetCustomError.yuzuErrorStyle} ${GetCustomDisabled} ${GetCustomReadonly.yuzuReadonlyStyle} `}
           >
             {labelContent}
             <div

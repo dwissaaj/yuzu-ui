@@ -25,7 +25,8 @@ export default function Wrapper() {
     <>
       <div class={"w-full flex flex-col gap-2"}>
         <div>
-          <Inputi label={'as'} labelPlacement="top" variant="underline" id={'name'} form={'forms'} value={'as'} placeholder={'number'} />
+          <Inputi className={''} label={'username'} labelPlacement="top" variant="underline" id={'name'} form={'forms'} value={'as'} placeholder={'number'}/>
+        <Password />
         </div>
       </div>
     </>

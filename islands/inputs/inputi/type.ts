@@ -1,6 +1,6 @@
 import type { Ref } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { JSX } from "preact/jsx-runtime";
-import type { InputVariants } from "./input-variants.ts";
+import type { InputiVariants } from "./input-variants.ts";
 
 export type InputProps =
   & Omit<JSX.IntrinsicElements["input"], "size" | "color">
@@ -23,17 +23,17 @@ export type InputProps =
     /**
      * Size of the input will consume by div parents
      */
-    size?: keyof typeof InputVariants.sizes;
+    size?: keyof typeof InputiVariants.sizes;
 
     /**
      * Color based on variant, only consume by div parent
      */
-    color?: keyof typeof InputVariants.colors;
+    color?: keyof typeof InputiVariants.colors;
 
     /**
      * Variant can't be extended unless config the hooks
      */
-    variant?: keyof typeof InputVariants.variants;
+    variant?: keyof typeof InputiVariants.variants;
 
     /**
      * Access to error state style
@@ -43,7 +43,7 @@ export type InputProps =
     /**
      * Access to readonly state style
      */
-    yuzuInputReadonlyStyle?: string;
+    yuzuReadonlyStyle?: string;
 
     /**
      * Access to error state style
@@ -57,7 +57,7 @@ export type InputProps =
      *  State for read only
      */
     isReadonly?: boolean;
-
+  
     /**
      *  State for read only
      */
@@ -67,7 +67,7 @@ export type InputProps =
      *  State for error
      */
     isError?: boolean;
-
+    errorStyle?: string
     /**
      *  State for disabled
      */
@@ -78,4 +78,6 @@ export type InputProps =
     label?: string;
 
     labelPlacement?: "top" | "bottom" | "left" | "right";
+
+ 
   };

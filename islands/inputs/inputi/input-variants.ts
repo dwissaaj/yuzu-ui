@@ -1,11 +1,11 @@
-export const InputVariants = {
+export const InputiVariants = {
   sizes: {
     small:
-      "m-1 p-2 w-52 hover:brightness-105 transition ease-in-out duration-300 rounded-sm ",
+      "m-1 p-2 w-52 hover:brightness-110 transition ease-in-out duration-300 rounded-sm ",
     medium:
-      "m-1 p-2 w-64 hover:brightness-105 transition ease-in-out duration-300 rounded-lg ",
+      "m-1 p-2 w-64 hover:brightness-110 transition ease-in-out duration-300 rounded-lg ",
     large:
-      "m-1 p-2 w-96 hover:brightness-105 transition ease-in-out duration-300 rounded-lg ",
+      "m-1 p-2 w-96 hover:brightness-110 transition ease-in-out duration-300 rounded-lg ",
   },
   colors: {
     primary: "primary",
@@ -18,7 +18,7 @@ export const InputVariants = {
 
   disabledStyle: "opacity-50 cursor-not-allowed",
   variants: {
-    underline: "border-b-2 transition ease-in-out delay-150 duration-300",
+    underline: "border-b-2 transition ease-in-out delay-150 duration-300 !rounded-none",
     full: "border-2 transition ease-in-out delay-150 duration-300",
   },
   fullWidth:
@@ -30,4 +30,5 @@ export const InputVariants = {
     "opacity-50 read-only:opacity-50 read-only:border-50 read-only:outline-50",
   inputDisableStyle: "opacity-50 cursor-not-allowed",
   inputStyle: "w-full border-0 focus:outline-0 focus:ring-0 focus:border-0",
+  labelRequiredStyle: "after:content-['*'] after:ml-0.5 after:text-red-500 block"
 };

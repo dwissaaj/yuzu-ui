@@ -18,7 +18,7 @@ export const PasswordsVariants = {
 
   disabledStyle: "opacity-50 cursor-not-allowed",
   variants: {
-    underline: "border-b-2 transition ease-in-out delay-150 duration-300",
+    underline: "border-b-2 transition ease-in-out delay-150 duration-300 !rounded-none",
     full: "border-2 transition ease-in-out delay-150 duration-300",
   },
   fullWidth:
