@@ -82,7 +82,7 @@ export function usePasswords(props: PasswordsProps) {
   const getVariants = useMemo(
     () => {
       return {
-        variant: PasswordsVariants.variant[variant],
+        variant: PasswordsVariants,
       };
     },
     [variant],
@@ -91,7 +91,7 @@ export function usePasswords(props: PasswordsProps) {
   const getSize = useMemo(
     () => {
       return {
-        size: PasswordsVariants.size[size],
+        size: PasswordsVariants,
       };
     },
     [size],
@@ -100,7 +100,7 @@ export function usePasswords(props: PasswordsProps) {
   const getColors = useMemo(
     () => {
       return {
-        colors: PasswordsVariants.colors[colors],
+        colors: PasswordsVariants,
       };
     },
     [colors],
@@ -152,7 +152,7 @@ export function usePasswords(props: PasswordsProps) {
       const getError = isErroClass?.isErrorStyle;
       const getColor = getColors.colors;
       const getReadonly = isReadonlyClass?.isReadOnlyStyle;
-      const allClass = getError + getColor + getReadonly + getDisabled;
+      const allClass = +getColor;
       return {
         variantLabel,
         variantLabelStyle,
@@ -168,7 +168,7 @@ export function usePasswords(props: PasswordsProps) {
       const getError = isErroClass?.isErrorStyle;
       const getColor = getColors.colors;
       const getReadonly = isReadonlyClass?.isReadOnlyStyle;
-      const allClass = getError + getColor + getReadonly + getDisabled;
+      const allClass = getColor;
       return {
         variantLabel,
         variantLabelStyle,

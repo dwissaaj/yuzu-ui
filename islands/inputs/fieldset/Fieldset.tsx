@@ -1,4 +1,3 @@
-
 import { forwardRef } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { FieldsetProps } from "./type.ts";
 import { useFieldset } from "./use-fieldset.ts";
@@ -6,15 +5,15 @@ import { useFieldset } from "./use-fieldset.ts";
  * Fieldset component that can be used to group related inputs with a label.
  * Provides a range of styles for orientation, label appearance, color themes, and variants.
  * @component
- * @example 
+ * @example
  * <Fieldset
  * fieldsetDirection="row"
  * labelVariant="none"
  * fieldsetColor="primary"
  * fieldsetVariant="underline">
- * 
+ *
  * </Fieldset >
- * 
+ *
  * @param {} domRef - The reference to the Fieldset DOM element.
  * @param {JSX.CSSProperties} style - Inline styles to apply to the Fieldset.
  * @param {JSX.Element} children - Child elements to render inside the Fieldset.

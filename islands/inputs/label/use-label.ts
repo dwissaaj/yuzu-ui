@@ -9,15 +9,15 @@ export function useLabel(props: LabelProps) {
     children,
     fontSize = "small",
     fontColor = "none",
-    style ="",
-    className ="",
-    fontWeight ="medium",
-    isDisabled=false,
-    isReadonly=false,
-    isRequired=false,
-    yuzuFontReadonly="",
-    yuzuFontDisabled="",
-    yuzuFontRequired="",
+    style = "",
+    className = "",
+    fontWeight = "medium",
+    isDisabled = false,
+    isReadonly = false,
+    isRequired = false,
+    yuzuFontReadonly = "",
+    yuzuFontDisabled = "",
+    yuzuFontRequired = "",
     ...otherProps
   } = props;
   const getColors = useMemo(
@@ -46,9 +46,10 @@ export function useLabel(props: LabelProps) {
         return { isReadonly, fontReadonly };
       } else if (isDisabled === false) {
         const isReadonly = false;
-        const fontReadonly = ""
+        const fontReadonly = "";
         return { fontReadonly, isReadonly };
-      }},
+      }
+    },
     [isReadonly],
   );
   const getRequired = useMemo(
@@ -59,9 +60,10 @@ export function useLabel(props: LabelProps) {
         return { isRequired, requiredClass };
       } else if (isDisabled === false) {
         const isRequired = false;
-        const requiredClass = ""
+        const requiredClass = "";
         return { isRequired, requiredClass };
-      }},
+      }
+    },
     [isRequired],
   );
 
@@ -73,9 +75,10 @@ export function useLabel(props: LabelProps) {
         return { isDisabled, disabledClass };
       } else if (isDisabled === false) {
         const isDisabled = false;
-        const disabledClass = ""
+        const disabledClass = "";
         return { isDisabled, disabledClass };
-      }},
+      }
+    },
     [isDisabled],
   );
 
@@ -84,11 +87,13 @@ export function useLabel(props: LabelProps) {
       const size = getSize;
       const color = getColors;
       const weight = getWeight;
-      const required = getRequired?.requiredClass
-      const readonly = getReadonly?.fontReadonly
-      const disabled = getDisabled?.disabledClass
+      const required = getRequired?.requiredClass;
+      const readonly = getReadonly?.fontReadonly;
+      const disabled = getDisabled?.disabledClass;
       return {
-        className: `${size} ${color} ${weight} ${readonly} ${required} ${disabled}`.trim(),
+        className:
+          `${size} ${color} ${weight} ${readonly} ${required} ${disabled}`
+            .trim(),
       };
     },
     [fontColor, fontSize, fontWeight],

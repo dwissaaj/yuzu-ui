@@ -14,11 +14,10 @@ export type PasswordsProps =
      */
     className?: string;
 
-
     /**
      * Vanilla css plain styling
      */
-    style?: JSX.CSSProperties
+    style?: JSX.CSSProperties;
 
     /**
      * For direct access to input style
@@ -91,7 +90,6 @@ export type PasswordsProps =
      */
     variantLabel?: "underline" | "full" | string;
 
-    
     /**
      * How big title value, default to 128px to small,  large
      * 208px

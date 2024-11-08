@@ -2,7 +2,7 @@ import type { Ref } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js
 import type { JSX } from "preact/jsx-runtime";
 import type { PasswordsVariants } from "./password-variants.ts";
 
-export type PasswordsProps =
+export type PasswordNewProps =
   & Omit<JSX.IntrinsicElements["input"], "size" | "color">
   & {
     /**
@@ -15,25 +15,25 @@ export type PasswordsProps =
      */
     className?: string;
 
-
     /**
      * Vanilla css plain styling
      */
-    style?: JSX.CSSProperties
+    style?: JSX.CSSProperties;
 
     /**
      * Size of the input will consume by div parents
      */
-    parentSizes: keyof typeof PasswordsVariants.parentSizes
+    size?: keyof typeof PasswordsVariants.sizes;
 
-    parentColor: keyof typeof PasswordsVariants.parentColors
-  
-    parentVariant: keyof typeof PasswordsVariants.parentVariants
+    color?: keyof typeof PasswordsVariants.colors;
 
-    parentDisableStyle: keyof typeof PasswordsVariants.parentDisableStyle
-    parentErrorStyle : keyof typeof PasswordsVariants.parentErrorStyle
+    variant?: keyof typeof PasswordsVariants.variants;
 
-    
+    disabledStyle?: keyof typeof PasswordsVariants.disabledStyle;
+    errorStyle?: keyof typeof PasswordsVariants.errorStyle;
 
+    isFullWidth?: boolean;
 
-  }
+    isError?: boolean;
+    isDisabled?: boolean;
+  };

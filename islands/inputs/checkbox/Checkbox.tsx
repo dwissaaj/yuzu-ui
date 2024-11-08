@@ -20,7 +20,7 @@ import { useCheckbox } from "./use-checkbox.ts";
  *  labelColor = "none",
  *  labelSize = "small",
  * />
- * 
+ *
  * @param {Ref<HTMLInputElement>} props.domRef - The ref for the button element.
  * @param {string} [props.className=""] - Additional classes to apply to the button, if no value provided will return empty string
  * @param {JSX.CSSProperties} [props.style=""] - Inline styles to apply to the button, if no value provided will return empty string

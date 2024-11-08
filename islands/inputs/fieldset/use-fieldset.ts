@@ -1,5 +1,3 @@
-
-
 import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
 import type { FieldsetProps } from "./type.ts";
 import { FieldsetVariants } from "./fieldset-variants.ts";
@@ -10,14 +8,14 @@ export function useFieldset(props: FieldsetProps) {
     domRef,
     style,
     children,
-    className ="",
-    fieldsetDirection ="row",
-    labelVariant ="none",
-    fieldsetColor ="primary",
-    fieldsetVariant ="underline",
+    className = "",
+    fieldsetDirection = "row",
+    labelVariant = "none",
+    fieldsetColor = "primary",
+    fieldsetVariant = "underline",
     isDisabled,
     label,
-    yuzuDisableStyle="",
+    yuzuDisableStyle = "",
     ...otherProps
   } = props;
 

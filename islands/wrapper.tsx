@@ -6,8 +6,7 @@ import { Button } from "./inputs/button/index.ts";
 import Checkbox from "./inputs/checkbox/Checkbox.tsx";
 import Fieldset from "./inputs/fieldset/Fieldset.tsx";
 import Label from "./inputs/label/label.tsx";
-import Passwords from "./inputs/passwordField/Passwords.tsx";
-
+import PasswordNew from "./inputs/password/Password.tsx";
 export default function Wrapper() {
   const fieldsetRef = useRef<HTMLLabelElement>(null);
 
@@ -24,15 +23,15 @@ export default function Wrapper() {
     <>
       <div class={"w-full flex flex-col gap-2"}>
         <div>
-          <Fieldset isDisabled label={"asd"}>
-            <div disabled={true} className={'disabled:bg-red-500 flex flex-col gap-2'}>
-              <label >asd</label>
-              <input disabled className={'disabled:bg-red-500'} placeholder={'asd'} />
-            </div>
-
-          </Fieldset>
+          <PasswordNew
+          id={'your name'}
+          form="asd"
+            placeholder={"your ame"}
+            size={"small"}
+            color="primary"
+            variant="full"
+          />
         </div>
-        <Label >asd</Label>
       </div>
     </>
   );
