@@ -28,8 +28,11 @@ export default function Wrapper() {
           form="asd"
             placeholder={"your ame"}
             size={"small"}
-            color="primary"
-            variant="full"
+            color="none"
+            variant="underline"
+            isReadonly={true}
+            
+            
           />
         </div>
       </div>

@@ -27,13 +27,19 @@ export type PasswordNewProps =
 
     color?: keyof typeof PasswordsVariants.colors;
 
+    /**
+     * Variant can't be extended unless config the hooks
+     */
     variant?: keyof typeof PasswordsVariants.variants;
 
-    disabledStyle?: keyof typeof PasswordsVariants.disabledStyle;
-    errorStyle?: keyof typeof PasswordsVariants.errorStyle;
+    disabledStyle?: string;
+    inputReadonlyStyle?: string;
 
+    yuzuErrorStyle?: string;
+    yuzuInputReadonlyStyle?: string;
+
+    isReadonly?: boolean
     isFullWidth?: boolean;
-
     isError?: boolean;
     isDisabled?: boolean;
   };

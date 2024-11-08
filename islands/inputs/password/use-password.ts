@@ -11,9 +11,12 @@ export function usePassword(props: PasswordNewProps) {
     color = "none",
     disabledStyle,
     variant = "full",
+    inputReadonlyStyle,
     isFullWidth,
     isDisabled,
-    errorStyle="",
+    yuzuErrorStyle="",
+    yuzuInputReadonlyStyle="",
+    isReadonly,
     isError=false,
     ...otherProps
   } = props;
@@ -49,7 +52,7 @@ export function usePassword(props: PasswordNewProps) {
   const GetDisabled = useMemo(
     () => {
       if (isDisabled === true) {
-        const disabledStyle = PasswordsVariants.disabledStyle;
+        const disabledStyle = PasswordsVariants.disabledStyle
         return { disabledStyle };
       } else isDisabled === false;
       {
@@ -59,7 +62,8 @@ export function usePassword(props: PasswordNewProps) {
     },
     [isDisabled, disabledStyle],
   );
-  const GetError = useMemo(
+ 
+  const GetErrorInput = useMemo(
     () => {
       if (isError === true) {
         const errorStyle = PasswordsVariants.errorStyle;
@@ -72,7 +76,19 @@ export function usePassword(props: PasswordNewProps) {
     },
     [isDisabled, disabledStyle],
   );
-
+  const GetReadonly = useMemo(
+    () => {
+      if (isReadonly === true) {
+        const inputReadonlyStyle = PasswordsVariants.inputReadonlyStyles;
+        return { inputReadonlyStyle };
+      } else isReadonly === false;
+      {
+        const inputReadonlyStyle = ""
+        return { inputReadonlyStyle };
+      }
+    },
+    [isDisabled, disabledStyle],
+  );
   const GetColorClass = useMemo(
     () => {
       if(variant === "underline") {
@@ -93,9 +109,10 @@ export function usePassword(props: PasswordNewProps) {
       const disable = GetDisabled.disabledStyle;
       console.log(color);
       const variant = GetVariantClass.variant;
-      const error = GetError.errorStyle
+      const error = GetErrorInput.errorStyle
+      const readonly = GetReadonly.inputReadonlyStyle
       return {
-        className: `${size} ${color} ${variant} ${disable} ${error}`.trim(),
+        className: `${size} ${color} ${variant} ${disable} ${error} ${readonly}`.trim(),
       };
     },
     [
@@ -110,9 +127,11 @@ export function usePassword(props: PasswordNewProps) {
     () => {
         const color = GetColorClass
         const disable = GetDisabled.disabledStyle
-        const error = GetError.errorStyle
+        const error = GetErrorInput.errorStyle
+        const base = PasswordsVariants.inputStyle
+        const readonly = GetReadonly.inputReadonlyStyle
         return {
-          className :`px-2 w-full border-0 focus:outline-0 focus:ring-0 focus:border-0 ${color} ${disable} ${error}`
+          className :`${base} ${color} ${disable} ${error} ${readonly}`
         }
     },[GetColorClass, GetDisabled])
   return {
@@ -123,6 +142,9 @@ export function usePassword(props: PasswordNewProps) {
     isDisabled,
     GetInputStyle,
     GetDisabled,
+    yuzuErrorStyle,
+    yuzuInputReadonlyStyle,
+    isReadonly,
     ...otherProps,
   };
 }

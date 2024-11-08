@@ -15,7 +15,10 @@ const PasswordNew = forwardRef<HTMLInputElement, PasswordNewProps>((props) => {
     GetParentsStyle,
     isDisabled,
     GetInputStyle,
+    yuzuErrorStyle,
     GetDisabled,
+    yuzuInputReadonlyStyle,
+    isReadonly,
     ...otherProps
   } = usePassword({ ...props });
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -43,13 +46,15 @@ const PasswordNew = forwardRef<HTMLInputElement, PasswordNewProps>((props) => {
     </span>
   );
   return (
-    <div style={style} className={`${className} ${GetParentsStyle.className}`}>
+    <div style={style} className={`${className} ${GetParentsStyle.className}
+    ${yuzuErrorStyle}`}>
       <div className={`w-full flex flex-row`}>
         <input
         {...otherProps}
           disabled={isDisabled}
+          readOnly={isReadonly}
           ref={domRef}
-          className={`${GetInputStyle.className}`}
+          className={`${yuzuInputReadonlyStyle} ${GetInputStyle.className}`}
           type={isPasswordVisible ? "text" : "password"}
         />
         <button
