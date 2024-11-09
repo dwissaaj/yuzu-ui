@@ -32,9 +32,7 @@ export default function Wrapper() {
             form={"forms"}
             value={"as"}
             placeholder={"number"}
-            isRequired={true}
-            isReadonly
-            yuzuReadonlyStyle="bg-yellow-500"
+           
           />
       
         </div>
