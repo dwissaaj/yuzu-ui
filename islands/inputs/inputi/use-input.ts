@@ -5,7 +5,7 @@ import { InputiVariants } from "./input-variants.ts";
 export function useInputi(props: InputProps) {
   const {
     domRef,
-    className = "",
+    className= "",
     style = "",
     size = "medium",
     color = "primary",
@@ -14,7 +14,6 @@ export function useInputi(props: InputProps) {
     yuzuReadonlyStyle = "",
     yuzuDisabledStyle="",
     yuzuRequiredStyle="",
-    errorStyle,
     isReadonly = false,
     isFullWidth = false,
     isDisabled = false,
@@ -64,11 +63,11 @@ export function useInputi(props: InputProps) {
     () => {
       if (isDisabled === true) {
         const disabledStyle = InputiVariants.disabledStyle;
-        return { disabledStyle };
+        return disabledStyle 
       } else isDisabled === false;
       {
         const disabledStyle = "";
-        return { disabledStyle };
+        return disabledStyle 
       }
     },
     [isDisabled],
@@ -77,11 +76,13 @@ export function useInputi(props: InputProps) {
   const GetCustomError = useMemo(
     () => {
       if (isError === true) {
-        return { yuzuErrorStyle };
+        console.log(isError)
+        console.log(yuzuErrorStyle)
+        return  yuzuErrorStyle 
       } else isError === false;
       {
-        const errorStyle = "";
-        return { errorStyle };
+        const yuzuErrorStyle  = "";
+        return yuzuErrorStyle 
       }
     },
     [isError],
@@ -89,11 +90,11 @@ export function useInputi(props: InputProps) {
   const GetCustomReadonly = useMemo(
     () => {
       if (isReadonly === true) {
-        return { yuzuReadonlyStyle };
+        return  yuzuReadonlyStyle 
       } else isError === false;
       {
         const yuzuReadonlyStyle = "";
-        return { yuzuReadonlyStyle };
+        return yuzuReadonlyStyle
       }
     },
     [isReadonly],
@@ -101,11 +102,12 @@ export function useInputi(props: InputProps) {
   const GetErrorInput = useMemo(
     () => {
       if (isError === true) {
-        const errorStyle = InputiVariants.errorStyle;
-        return { errorStyle };
+        const yuzuErrorStyle = InputiVariants.errorStyle;
+        return { yuzuErrorStyle };
       } else isError === false;
       {
-        return { errorStyle };
+        const yuzuErrorStyle = ""
+        return { yuzuErrorStyle };
       }
     },
     [isError],
@@ -113,7 +115,6 @@ export function useInputi(props: InputProps) {
   const GetCustomDisabled = useMemo(
     () => {
       if (isDisabled === true) {
-        console.log('hey',isDisabled)
         return yuzuDisabledStyle ;
       } else isDisabled === false;
       {
@@ -126,11 +127,11 @@ export function useInputi(props: InputProps) {
   const GetCustomRequired = useMemo(
     () => {
       if (isRequired === true) {
-        return { yuzuRequiredStyle };
+        return yuzuRequiredStyle
       } else isRequired === false;
       {
         const yuzuRequiredStyle = "";
-        return { yuzuRequiredStyle };
+        return yuzuRequiredStyle
       }
     },
     [isRequired],
@@ -138,12 +139,12 @@ export function useInputi(props: InputProps) {
   const GetReadonly = useMemo(
     () => {
       if (isReadonly === true) {
-        const inputReadonlyStyle = InputiVariants.inputReadonlyStyles;
-        return { inputReadonlyStyle };
+        const readonlyStyles = InputiVariants.readonlyStyles;
+        return { readonlyStyles };
       } else isReadonly === false;
       {
-        const inputReadonlyStyle = "";
-        return { inputReadonlyStyle };
+        const readonlyStyles = "";
+        return { readonlyStyles };
       }
     },
     [isReadonly],
@@ -161,21 +162,23 @@ export function useInputi(props: InputProps) {
     },
     [color, variant],
   );
+
   const GetParentsStyle = useMemo(
     () => {
       const size = fullWidthClass.size;
       const color = GetColorClass;
-      const disable = GetDisabled.disabledStyle;
+      const disable = GetDisabled
       const variant = GetVariantClass.variant;
-      const error = GetErrorInput.errorStyle;
-      const readonly = GetReadonly.inputReadonlyStyle;
+      const error = GetErrorInput.yuzuErrorStyle;
+      const readonly = GetReadonly.readonlyStyles;
       return {
         className: `${size} ${color} ${variant} ${disable} ${error} ${readonly}`
-          .trim(),
+        .trim(),
       };
     },
     [
       GetColorClass,
+      GetReadonly,
       GetDisabled,
       GetSizeClass,
       GetVariantClass,
@@ -185,26 +188,27 @@ export function useInputi(props: InputProps) {
   const GetInputStyle = useMemo(
     () => {
       const color = GetColorClass;
-      const disable = GetDisabled.disabledStyle;
-      const error = GetErrorInput.errorStyle;
+      const disable = GetDisabled;
+      const error = GetErrorInput.yuzuErrorStyle;
       const base = InputiVariants.inputStyle;
-      const readonly = GetReadonly.inputReadonlyStyle;
+      const readonly = GetReadonly.readonlyStyles;
       return {
-        className: `${base} ${color} ${disable} ${error} ${readonly}`,
+        className: `${base} ${color} ${disable} ${error} ${readonly}`.trim(),
       };
     },
     [GetColorClass, GetDisabled],
   );
+
   const GetRequiredLabel = useMemo(
     () => {
       return {
         readOnly: InputiVariants.labelRequiredStyle
       }
-    },[])
+    },[isRequired])
   const GetLabelProps = useMemo(
     () => {
       const labels = label;
-      const disable = GetDisabled.disabledStyle;
+      const disable = GetDisabled;
       const readonly = GetRequiredLabel.readOnly;
       return {
         className: `${disable} ${readonly}`.trim(),

@@ -25,8 +25,8 @@ export default function Wrapper() {
     <>
       <div class={"w-full flex flex-col gap-2"}>
         <div>
-          <Inputi className={''} label={'username'} labelPlacement="top" variant="underline" id={'name'} form={'forms'} value={'as'} placeholder={'number'}/>
-        <Password />
+          <Inputi className={''} label={'username'} labelPlacement="top" variant="underline" id={'name'} form={'forms'} value={'as'} placeholder={'number'} isRequired yuzuRequiredStyle="bg-blue-500" />
+       
         </div>
       </div>
     </>

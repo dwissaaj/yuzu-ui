@@ -43,7 +43,7 @@ export type PasswordProps =
     /**
      * Access to readonly state style
      */
-    yuzuInputReadonlyStyle?: string;
+    yuzuReadonlyStyle?: string;
     /**
      * Access to readonly state style
      */

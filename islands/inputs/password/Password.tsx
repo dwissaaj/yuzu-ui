@@ -85,8 +85,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>((props) => {
     <>
       <div
         style={style}
-        className={`${className} ${GetParentsStyle.className}
-    ${GetCustomError.yuzuErrorStyle} ${GetCustomReadonly.yuzuInputReadonlyStyle}${GetCustomDisabled.yuzuInputDisables}`}
+        className={`${GetParentsStyle.className} ${className} ${GetCustomError} ${GetCustomReadonly} ${GetCustomDisabled}`}
       >
         <div className={`w-full flex flex-row`}>
           <input
@@ -94,7 +93,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>((props) => {
             disabled={isDisabled}
             readOnly={isReadonly}
             ref={domRef}
-            className={`${GetInputStyle.className} ${GetCustomReadonly.yuzuInputReadonlyStyle} ${GetCustomError.yuzuErrorStyle} GetCustomDisabled`}
+            className={`${GetInputStyle.className} ${GetCustomReadonly} ${GetCustomError} ${GetCustomDisabled}`}
             type={isPasswordVisible ? "text" : "password"}
           />
           <button

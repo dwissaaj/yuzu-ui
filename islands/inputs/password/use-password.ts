@@ -13,7 +13,7 @@ export function usePassword(props: PasswordProps) {
     isFullWidth = false,
     isDisabled = false,
     yuzuErrorStyle = "",
-    yuzuInputReadonlyStyle = "",
+    yuzuReadonlyStyle = "",
     yuzuInputDisables="",
     isReadonly = false,
     isError = false,
@@ -76,11 +76,11 @@ export function usePassword(props: PasswordProps) {
   const GetCustomError = useMemo(
     () => {
       if (isError === true) {
-        return { yuzuErrorStyle };
+        return yuzuErrorStyle 
       } else isError === false;
       {
         const errorStyle = "";
-        return { errorStyle };
+        return errorStyle
       }
     },
     [isError],
@@ -88,11 +88,11 @@ export function usePassword(props: PasswordProps) {
   const GetCustomReadonly = useMemo(
     () => {
       if (isReadonly === true) {
-        return { yuzuInputReadonlyStyle };
+        return yuzuReadonlyStyle
       } else isError === false;
       {
-        const yuzuInputReadonlyStyle = "";
-        return { yuzuInputReadonlyStyle };
+        const yuzuReadonlyStyle = "";
+        return yuzuReadonlyStyle
       }
     },
     [isReadonly],
@@ -165,7 +165,7 @@ export function usePassword(props: PasswordProps) {
       const base = PasswordsVariants.inputStyle;
       const readonly = GetReadonly.inputReadonlyStyle;
       return {
-        className: `${base} ${color} ${disable} ${error} ${readonly}`,
+        className: `${base} ${color} ${disable} ${error} ${readonly}`.trim(),
       };
     },
     [GetColorClass, GetDisabled],

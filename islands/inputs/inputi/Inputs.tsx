@@ -26,7 +26,7 @@ import {
   
     const labelContent = GetLabelProps.label
       ? (
-        <span className={`${GetLabelProps.className} ${GetCustomRequired.yuzuRequiredStyle} `}>
+        <span className={`${GetLabelProps.className} ${GetCustomRequired} `}>
           {GetLabelProps.label}
         </span>
       )
@@ -39,7 +39,7 @@ import {
         disabled={isDisabled}
         readOnly={isReadonly}
         required={isRequired}
-        className={`w-full ${className} ${GetDisabled.disabledStyle} ${GetCustomDisabled} ${GetInputStyle.className} ${GetCustomError.yuzuErrorStyle} ${GetCustomDisabled} ${GetCustomReadonly.yuzuReadonlyStyle} `}
+        className={` ${GetInputStyle.className} ${GetCustomError} ${GetCustomDisabled} ${GetCustomReadonly} ${GetDisabled} ${GetCustomDisabled}`}
         style={style}
       />
     );
@@ -48,9 +48,7 @@ import {
       if (GetLabelProps.labelPlacement === "top") {
         return (
           <div
-            className={`flex flex-col gap-2 ${GetParentsStyle.className} 
-            ${GetCustomDisabled}
-            ${GetCustomError.yuzuErrorStyle} ${GetCustomDisabled} ${GetCustomReadonly.yuzuReadonlyStyle} `}
+            className={`${className} flex flex-col gap-2 ${GetParentsStyle.className} ${GetCustomError} ${GetCustomDisabled} ${GetCustomReadonly} ${GetDisabled} ${GetCustomDisabled} `}
           >
             {labelContent}
             <div
@@ -67,7 +65,7 @@ import {
       if (GetLabelProps.labelPlacement === "bottom") {
         return (
           <div
-            className={`flex flex-col gap-2 ${GetParentsStyle.className}`}
+            className={`${className} flex flex-col gap-2 ${GetParentsStyle.className} ${GetCustomError} ${GetCustomDisabled} ${GetCustomReadonly} ${GetDisabled} ${GetCustomDisabled} `}
           >
             <div
               className={` flex flex-row gap-2 items-center
@@ -84,7 +82,7 @@ import {
       if (GetLabelProps.labelPlacement === "left") {
         return (
           <div
-            className={`flex flex-row gap-2 items-end ${GetParentsStyle.className}`}
+            className={`${className} flex flex-col gap-2 ${GetParentsStyle.className} ${GetCustomError} ${GetCustomDisabled} ${GetCustomReadonly} ${GetDisabled} ${GetCustomDisabled} `}
           >
             <div className={"w-1/5"}>
               {labelContent}
@@ -104,8 +102,8 @@ import {
       if (GetLabelProps.labelPlacement === "right") {
         return (
           <div
-            className={` flex flex-row gap-2 items-end ${GetParentsStyle.className}`}
-          >
+          className={`${className} flex flex-col gap-2 ${GetParentsStyle.className} ${GetCustomError} ${GetCustomDisabled} ${GetCustomReadonly} ${GetDisabled} ${GetCustomDisabled} `}
+        >
             <div
               className={`w-4/5 flex flex-row gap-2 items-center
           `}

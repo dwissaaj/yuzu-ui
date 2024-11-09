@@ -67,7 +67,6 @@ export type InputProps =
      *  State for error
      */
     isError?: boolean;
-    errorStyle?: string
     /**
      *  State for disabled
      */
