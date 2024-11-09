@@ -61,7 +61,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
     GetLabelProps,
     ...otherProps
   } = useInput({ ...props });
-
+console.log(GetCustomDisabled)
   const labelContent = GetLabelProps.label
     ? (
       <span className={`${GetLabelProps.className} ${GetCustomRequired} `}>

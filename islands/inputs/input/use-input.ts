@@ -76,8 +76,6 @@ export function useInput(props: InputProps) {
   const GetCustomError = useMemo(
     () => {
       if (isError === true) {
-        console.log(isError);
-        console.log(yuzuErrorStyle);
         return yuzuErrorStyle;
       } else isError === false;
       {
@@ -99,6 +97,7 @@ export function useInput(props: InputProps) {
     },
     [isReadonly],
   );
+  
   const GetErrorInput = useMemo(
     () => {
       if (isError === true) {
@@ -112,18 +111,7 @@ export function useInput(props: InputProps) {
     },
     [isError],
   );
-  const GetCustomDisabled = useMemo(
-    () => {
-      if (isDisabled === true) {
-        return yuzuDisabledStyle;
-      } else isDisabled === false;
-      {
-        const yuzuDisabledStyle = "";
-        return { yuzuDisabledStyle };
-      }
-    },
-    [GetDisabled],
-  );
+
   const GetCustomRequired = useMemo(
     () => {
       if (isRequired === true) {
@@ -136,6 +124,20 @@ export function useInput(props: InputProps) {
     },
     [isRequired],
   );
+  const GetCustomDisabled = useMemo(
+    () => {
+      if (isDisabled === true) {
+        console.log(yuzuDisabledStyle)
+        return yuzuDisabledStyle;
+      } else isDisabled === false;
+      {
+        const yuzuInputDisables = "";
+        return yuzuInputDisables;
+      }
+    },
+    [isDisabled],
+  );
+
   const GetReadonly = useMemo(
     () => {
       if (isReadonly === true) {
@@ -201,17 +203,22 @@ export function useInput(props: InputProps) {
 
   const GetRequiredLabel = useMemo(
     () => {
-      return {
-        readOnly: InputVariants.labelRequiredStyle,
-      };
+      if (isRequired === true) {
+        const requiredStyle = InputVariants.labelRequiredStyle;
+        return requiredStyle;
+      } else isDisabled === false;
+      {
+        const requiredStyle = "";
+        return requiredStyle;
+      }
     },
-    [isRequired],
+    [isDisabled],
   );
   const GetLabelProps = useMemo(
     () => {
       const labels = label;
       const disable = GetDisabled;
-      const readonly = GetRequiredLabel.readOnly;
+      const readonly = GetRequiredLabel;
       return {
         className: `${disable} ${readonly}`.trim(),
         labelPlacement: GetLabelPlacement.label,
