@@ -47,6 +47,7 @@ import * as $inputs_radio_radio_group_radio_group_variants from "./islands/input
 import * as $inputs_radio_radio_group_type from "./islands/inputs/radio/radio-group/type.ts";
 import * as $inputs_radio_radio_group_use_radio_group from "./islands/inputs/radio/radio-group/use-radio-group.ts";
 import * as $inputs_radio_radio_radio_variants from "./islands/inputs/radio/radio/radio-variants.ts";
+import * as $inputs_radio_radio_types from "./islands/inputs/radio/radio/types.ts";
 import * as $theme_use_theme from "./islands/theme/use-theme.ts";
 import * as $wrapper from "./islands/wrapper.tsx";
 import type { Manifest } from "$fresh/server.ts";
@@ -108,6 +109,7 @@ const manifest = {
       $inputs_radio_radio_group_use_radio_group,
     "./islands/inputs/radio/radio/radio-variants.ts":
       $inputs_radio_radio_radio_variants,
+    "./islands/inputs/radio/radio/types.ts": $inputs_radio_radio_types,
     "./islands/theme/use-theme.ts": $theme_use_theme,
     "./islands/wrapper.tsx": $wrapper,
   },

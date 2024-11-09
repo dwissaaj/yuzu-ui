@@ -1,5 +1,5 @@
 import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
-import type { RadioGroupProps } from "./type.ts";
+import type { RadioGroupProps, RadioGroupSlot } from "./type.ts";
 import { RadioGroupVariants } from "./radio-group-variants.ts";
 
 export function useRadioGroup(props: RadioGroupProps) {
@@ -7,13 +7,14 @@ export function useRadioGroup(props: RadioGroupProps) {
     domRef,
     style,
     children,
-    className = "",
+    className,
     label,
     direction="row",
     variant="full",
     borderColor="primary",
     labelColor="default",
     labelSize="small",
+    
     yuzuLabelStyle,
     ...otherProps
   } = props;
@@ -84,6 +85,18 @@ export function useRadioGroup(props: RadioGroupProps) {
     () => (yuzuLabelStyle ? yuzuLabelStyle : ""),
     [yuzuLabelStyle]
   );
+  const radioSlots: RadioGroupSlot = {
+    yuzuBase: "",
+    yuzuLabel: ""
+  };
+  const GetClassname = useMemo(
+    () => {
+      const wrapper = radioSlots
+      console.log(wrapper)
+      return {
+        wrapper
+      }
+    },[className])
   return {
     domRef,
     style,
