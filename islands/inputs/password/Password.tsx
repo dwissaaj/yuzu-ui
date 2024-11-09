@@ -6,7 +6,7 @@ import type { PasswordProps } from "./type.ts";
 import { usePassword } from "./use-password.ts";
 import ClosePassword from "../../icon/component/ClosePassword.tsx";
 import OpenPassword from "../../icon/component/OpenPassword.tsx";
-import type { JSX } from "preact/jsx-runtime";
+
 /**
  * Input component for form data entry with customizable styles and behaviors.
  *
@@ -85,7 +85,8 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>((props) => {
     <>
       <div
         style={style}
-        className={`${GetParentsStyle.className} ${className} ${GetCustomError} ${GetCustomReadonly} ${GetCustomDisabled}`}
+        className={`${className} ${GetParentsStyle.className}
+    ${GetCustomError} ${GetCustomReadonly}${GetCustomDisabled}`}
       >
         <div className={`w-full flex flex-row`}>
           <input

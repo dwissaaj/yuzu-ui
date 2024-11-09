@@ -1,76 +1,49 @@
-import { InputVariants } from "./input-variant.ts";
-import type { InputProps } from "./type.ts";
 import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
+import type { InputProps } from "./type.ts";
+import { InputVariants } from "./input-variants.ts";
 
 export function useInput(props: InputProps) {
   const {
     domRef,
-    id,
-    type,
-    inputMode,
     className = "",
-    value,
-    name,
     style = "",
-    placeholder,
-    isReadOnlyStyle = "",
-    isError = false,
-    isDisabledStyle = "",
-    isErrorStyle = "",
-    isDisabled = false,
-    isReadonly = false,
-    isRequiredStyle = "",
-    isRequired = false,
+    size = "medium",
+    color = "primary",
     variant = "full",
-    size = "small",
+    yuzuErrorStyle = "",
+    yuzuReadonlyStyle = "",
+    yuzuDisabledStyle = "",
+    yuzuRequiredStyle = "",
+    isReadonly = false,
     isFullWidth = false,
-    color = "default",
-    labelPlacement = "top",
+    isDisabled = false,
+    isError = false,
+    isRequired = false,
     label,
+    labelPlacement = "top",
     ...otherProps
   } = props;
 
-  const isDisableClass = useMemo(() => {
-    if (isDisabled === true) {
-      const disabled = true;
-      const isDisabledStyle = InputVariants.disabledVariant;
-      return { isDisabledStyle, disabled };
-    } else if (isDisabled === false) {
-      const disabled = false;
-      const isDisabledStyle = "";
-      return { isDisabledStyle, disabled };
-    }
-  }, [isDisabledStyle, isDisabled]);
-
-  const isReadonlyClass = useMemo(() => {
-    if (isReadonly === true) {
-      const readOnly = true;
-      const isReadOnlyStyle = InputVariants.readonlyVariant;
-      return { readOnly, isReadOnlyStyle };
-    } else if (isReadonly === false) {
-      const readOnly = false;
-      const isReadOnlyStyle = "";
-      return { readOnly, isReadOnlyStyle };
-    }
-  }, [isReadonly, isReadOnlyStyle]);
-
-  const isFullWidthClass = useMemo(() => {
-    return isFullWidth ? "w-full " : "";
-  }, [isFullWidth]);
-
-  const isRequiredStyleClass = useMemo(() => {
-    if (isRequired === true) {
-      const isRequired = true;
-      const isRequiredStyle = InputVariants.requiredVariant;
-      return { isRequiredStyle, isRequired };
-    } else if (isRequired === false) {
-      const isRequired = false;
-      const isRequiredStyle = "";
-      return { isRequiredStyle, isRequired };
-    }
-  }, [isReadOnlyStyle, isRequired]);
-
-  const getVariants = useMemo(
+  const fullWidthClass = useMemo(
+    () => {
+      if (isFullWidth === true) {
+        return { size: InputVariants.fullWidth };
+      } else isFullWidth === false;
+      {
+        return { size: InputVariants.sizes[size] };
+      }
+    },
+    [isFullWidth, size],
+  );
+  const GetSizeClass = useMemo(
+    () => {
+      return {
+        parentSize: InputVariants.sizes[size],
+      };
+    },
+    [size],
+  );
+  const GetVariantClass = useMemo(
     () => {
       return {
         variant: InputVariants.variants[variant],
@@ -78,105 +51,190 @@ export function useInput(props: InputProps) {
     },
     [variant],
   );
-  const getSize = useMemo(
+  const GetLabelPlacement = useMemo(
     () => {
       return {
-        size: InputVariants.size[size],
+        label: labelPlacement,
       };
     },
-    [size],
+    [label],
+  );
+  const GetDisabled = useMemo(
+    () => {
+      if (isDisabled === true) {
+        const disabledStyle = InputVariants.disabledStyle;
+        return disabledStyle;
+      } else isDisabled === false;
+      {
+        const disabledStyle = "";
+        return disabledStyle;
+      }
+    },
+    [isDisabled],
   );
 
-  const getColors = useMemo(
+  const GetCustomError = useMemo(
+    () => {
+      if (isError === true) {
+        console.log(isError);
+        console.log(yuzuErrorStyle);
+        return yuzuErrorStyle;
+      } else isError === false;
+      {
+        const yuzuErrorStyle = "";
+        return yuzuErrorStyle;
+      }
+    },
+    [isError],
+  );
+  const GetCustomReadonly = useMemo(
+    () => {
+      if (isReadonly === true) {
+        return yuzuReadonlyStyle;
+      } else isError === false;
+      {
+        const yuzuReadonlyStyle = "";
+        return yuzuReadonlyStyle;
+      }
+    },
+    [isReadonly],
+  );
+  const GetErrorInput = useMemo(
+    () => {
+      if (isError === true) {
+        const yuzuErrorStyle = InputVariants.errorStyle;
+        return { yuzuErrorStyle };
+      } else isError === false;
+      {
+        const yuzuErrorStyle = "";
+        return { yuzuErrorStyle };
+      }
+    },
+    [isError],
+  );
+  const GetCustomDisabled = useMemo(
+    () => {
+      if (isDisabled === true) {
+        return yuzuDisabledStyle;
+      } else isDisabled === false;
+      {
+        const yuzuDisabledStyle = "";
+        return { yuzuDisabledStyle };
+      }
+    },
+    [GetDisabled],
+  );
+  const GetCustomRequired = useMemo(
+    () => {
+      if (isRequired === true) {
+        return yuzuRequiredStyle;
+      } else isRequired === false;
+      {
+        const yuzuRequiredStyle = "";
+        return yuzuRequiredStyle;
+      }
+    },
+    [isRequired],
+  );
+  const GetReadonly = useMemo(
+    () => {
+      if (isReadonly === true) {
+        const readonlyStyles = InputVariants.readonlyStyles;
+        return { readonlyStyles };
+      } else isReadonly === false;
+      {
+        const readonlyStyles = "";
+        return { readonlyStyles };
+      }
+    },
+    [isReadonly],
+  );
+  const GetColorClass = useMemo(
+    () => {
+      if (variant === "underline") {
+        const colorSelected = InputVariants.colors[color];
+        return `border-${colorSelected}`;
+      } else variant === "full";
+      {
+        const colorSelected = InputVariants.colors[color];
+        return `bg-${colorSelected}`;
+      }
+    },
+    [color, variant],
+  );
+
+  const GetParentsStyle = useMemo(
+    () => {
+      const size = fullWidthClass.size;
+      const color = GetColorClass;
+      const disable = GetDisabled;
+      const variant = GetVariantClass.variant;
+      const error = GetErrorInput.yuzuErrorStyle;
+      const readonly = GetReadonly.readonlyStyles;
+      return {
+        className: `${size} ${color} ${variant} ${disable} ${error} ${readonly}`
+          .trim(),
+      };
+    },
+    [
+      GetColorClass,
+      GetReadonly,
+      GetDisabled,
+      GetSizeClass,
+      GetVariantClass,
+    ],
+  );
+
+  const GetInputStyle = useMemo(
+    () => {
+      const color = GetColorClass;
+      const disable = GetDisabled;
+      const error = GetErrorInput.yuzuErrorStyle;
+      const base = InputVariants.inputStyle;
+      const readonly = GetReadonly.readonlyStyles;
+      return {
+        className: `${base} ${color} ${disable} ${error} ${readonly}`.trim(),
+      };
+    },
+    [GetColorClass, GetDisabled],
+  );
+
+  const GetRequiredLabel = useMemo(
     () => {
       return {
-        color: InputVariants.colors[color],
+        readOnly: InputVariants.labelRequiredStyle,
       };
     },
-    [color],
+    [isRequired],
   );
-  const GetLabelProps = useMemo(() => {
-    return {
-      label: label,
-      isRequiredStyle: isRequiredStyleClass?.isRequiredStyle,
-    };
-  }, [label, isRequiredStyle]);
-
-  /**
-   * State for all input boolean
-   */
-  const GetInputProps = useMemo(() => {
-    return {
-      isDisable: isDisableClass?.disabled,
-      isReadOnly: isReadonlyClass?.readOnly,
-      isRequired: isRequiredStyleClass?.isRequired,
-    };
-  }, [
-    isDisabled,
-    isRequired,
-    isReadonly,
-  ]);
-  const GetLabelPlacement = useMemo(() => {
-    return {
-      label: label,
-      labelPlacement: labelPlacement,
-    };
-  }, [labelPlacement, label]);
-
-  /**
-   * for styling parents div
-   */
-  const GetParentsProps = useMemo(() => {
-    const getFullClass = isFullWidthClass;
-    const getColor = getColors.color;
-    const getSizes = getSize.size;
-    const getDisabled = isDisableClass?.isDisabledStyle;
-    return {
-      className: `p-2 ${getColor} ${getFullClass} ${getSizes} ${getDisabled}`,
-    };
-  }, [isFullWidthClass, color, size, size, isDisableClass]);
-
-  const GetInputStyle = useMemo(() => {
-    const isErrorStyle = InputVariants.errorVariant;
-    const getError = isError ? isErrorStyle : "";
-    const getColor = getColors.color;
-    const getReadonly = isReadonlyClass?.isReadOnlyStyle;
-    const getDisabled = isDisableClass?.isDisabledStyle;
-    const getVariant = getVariants.variant;
-    return {
-      className:
-        `${getColor} ${getError} ${getDisabled} ${getReadonly} ${getVariant}`,
-    };
-  }, [
-    isErrorStyle,
-    color,
-    isDisabledStyle,
-    isReadOnlyStyle,
-    isError,
-    isReadonlyClass,
-    isReadonlyClass,
-  ]);
+  const GetLabelProps = useMemo(
+    () => {
+      const labels = label;
+      const disable = GetDisabled;
+      const readonly = GetRequiredLabel.readOnly;
+      return {
+        className: `${disable} ${readonly}`.trim(),
+        labelPlacement: GetLabelPlacement.label,
+        label: labels,
+      };
+    },
+    [GetColorClass, GetDisabled],
+  );
   return {
     domRef,
-    id,
-    inputMode,
-    type,
     className,
-    value,
-    name,
     style,
-    placeholder,
-    GetInputProps,
-    GetLabelProps,
-    GetParentsProps,
+    GetParentsStyle,
+    isDisabled,
     GetInputStyle,
-    GetLabelPlacement,
+    GetDisabled,
+    GetCustomError,
+    GetCustomReadonly,
+    GetCustomRequired,
     isReadonly,
     isRequired,
-    isDisabled,
-    isDisabledStyle,
-    isErrorStyle,
-    isRequiredStyle,
+    GetCustomDisabled,
+    GetLabelProps,
     ...otherProps,
   };
 }

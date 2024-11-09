@@ -47,7 +47,7 @@ export type PasswordProps =
     /**
      * Access to readonly state style
      */
-    yuzuInputDisables?: string;
+    yuzuDisabledStyle?: string;
     /**
      *  State for read only
      */

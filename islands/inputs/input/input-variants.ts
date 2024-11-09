@@ -1,4 +1,4 @@
-export const InputiVariants = {
+export const InputVariants = {
   sizes: {
     small:
       "m-1 p-2 w-52 hover:brightness-110 transition ease-in-out duration-300 rounded-sm ",
@@ -13,12 +13,13 @@ export const InputiVariants = {
     error: "error",
     success: "success",
     warning: "warning",
-    none: "gray-500",
+    default: "",
   },
 
   disabledStyle: "opacity-50 cursor-not-allowed",
   variants: {
-    underline: "border-b-2 transition ease-in-out delay-150 duration-300 !rounded-none",
+    underline:
+      "border-b-2 transition ease-in-out delay-150 duration-300 !rounded-none",
     full: "border-2 transition ease-in-out delay-150 duration-300",
   },
   fullWidth:
@@ -30,5 +31,6 @@ export const InputiVariants = {
     "opacity-50 read-only:opacity-50 read-only:border-50 read-only:outline-50",
   inputDisableStyle: "opacity-50 cursor-not-allowed",
   inputStyle: "w-full border-0 focus:outline-0 focus:ring-0 focus:border-0",
-  labelRequiredStyle: "after:content-['*'] after:ml-0.5 after:text-red-500 block"
+  labelRequiredStyle:
+    "after:content-['*'] after:ml-0.5 after:text-red-500 block",
 };

@@ -1,5 +1,6 @@
 import type { Ref } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { JSX } from "preact/jsx-runtime";
+import type { InputVariants } from "./input-variants.ts";
 
 export type InputProps =
   & Omit<JSX.IntrinsicElements["input"], "size" | "color">
@@ -10,94 +11,9 @@ export type InputProps =
     domRef?: Ref<HTMLInputElement> | null;
 
     /**
-     * Input value
+     * Classname styling for div parent, not recomended to use
      */
-    value?: JSX.IntrinsicElements["input"]["value"];
-
-    /**
-     * Html input value for keyboard
-     */
-    inputMode?:
-      | "none"
-      | "text"
-      | "decimal"
-      | "numeric"
-      | "tel"
-      | "search"
-      | "email"
-      | "url";
-
-    /**
-     * Input field type
-     */
-    type?: JSX.IntrinsicElements["input"]["type"];
-    /**
-     * input ID
-     */
-    id?: string;
-
-    /**
-     * Classname styling for input, but best practice change the styling
-     * via variant file
-     */
-    className?: string | null;
-
-    /**
-     * State for input
-     * @default false
-     */
-    isError?: boolean;
-
-    /**
-     * disabled styling, but for better result and to prevent error change
-     * the style to variant file
-     */
-    isDisabledStyle?: string;
-
-    /**
-     * Is input disabled
-     * @default false
-     */
-    isDisabled?: boolean;
-
-    /**
-     * Is input readonly
-     * @default false
-     */
-    isReadonly?: boolean;
-
-    /**
-     * Is input required
-     * @default false
-     */
-    isRequired?: boolean;
-
-    /**
-     * Read only styling but for better result and to prevent error change
-     * the style to variant file
-     */
-    isReadOnlyStyle?: string;
-
-    /**
-     * Required style but for better result and to prevent error change
-     * the style to variant file
-     */
-    isRequiredStyle?: string;
-
-    /**
-     * Custom access to error style but for better result and to prevent error change the style to variant file
-     */
-    isErrorStyle?: string;
-
-    /**
-     * Name for form control
-     */
-    name?: string;
-
-    /**
-     * Placeholder text
-     */
-    placeholder?: string;
+    className?: string;
 
     /**
      * Vanilla css plain styling
@@ -105,46 +21,60 @@ export type InputProps =
     style?: JSX.CSSProperties;
 
     /**
-     * Variant option
+     * Size of the input will consume by div parents
      */
-    variant?: "underline" | "full";
+    size?: keyof typeof InputVariants.sizes;
 
     /**
-     * How big title value, default to 128px to small,  large
-     * 208px
+     * Color based on variant, only consume by div parent
      */
-    size?: "small" | "medium" | "large";
+    color?: keyof typeof InputVariants.colors;
 
     /**
-     * Should input same width as parents
-     * @default false
+     * Variant can't be extended unless config the hooks
      */
+    variant?: keyof typeof InputVariants.variants;
 
+    /**
+     * Access to error state style
+     */
+    yuzuErrorStyle?: string;
+
+    /**
+     * Access to readonly state style
+     */
+    yuzuReadonlyStyle?: string;
+
+    /**
+     * Access to error state style
+     */
+    yuzuDisabledStyle?: string;
+    /**
+     * Access to error state style
+     */
+    yuzuRequiredStyle?: string;
+    /**
+     *  State for read only
+     */
+    isReadonly?: boolean;
+
+    /**
+     *  State for read only
+     */
     isFullWidth?: boolean;
 
     /**
-     * JSX For password icon
+     *  State for error
      */
-    passwordIcon?: JSX.Element;
-
+    isError?: boolean;
     /**
-     * color input
+     *  State for disabled
      */
-    color?:
-      | "primary"
-      | "secondary"
-      | "error"
-      | "warning"
-      | "success"
-      | "default";
+    isDisabled?: boolean;
 
-    /**
-     * Label title element
-     */
+    isRequired?: boolean;
+
     label?: string;
 
-    /**
-     * Label placement
-     */
-    labelPlacement?: "left" | "right" | "bottom" | "top";
+    labelPlacement?: "top" | "bottom" | "left" | "right";
   };

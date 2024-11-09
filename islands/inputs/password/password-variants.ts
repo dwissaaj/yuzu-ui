@@ -18,7 +18,8 @@ export const PasswordsVariants = {
 
   disabledStyle: "opacity-50 cursor-not-allowed",
   variants: {
-    underline: "border-b-2 transition ease-in-out delay-150 duration-300 !rounded-none",
+    underline:
+      "border-b-2 transition ease-in-out delay-150 duration-300 !rounded-none",
     full: "border-2 transition ease-in-out delay-150 duration-300",
   },
   fullWidth:
@@ -31,4 +32,5 @@ export const PasswordsVariants = {
   inputDisableStyle: "opacity-50 cursor-not-allowed",
   inputStyle: "w-full border-0 focus:outline-0 focus:ring-0 focus:border-0",
   buttonStyle: "transition ease-in-out delay-150 duration-300",
+
 };

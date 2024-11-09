@@ -2,12 +2,9 @@ import {
   useEffect,
   useRef,
 } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
-import { Button } from "./inputs/button/index.ts";
-import Checkbox from "./inputs/checkbox/Checkbox.tsx";
-import Fieldset from "./inputs/fieldset/Fieldset.tsx";
-import Label from "./inputs/label/label.tsx";
+
+import Input from "./inputs/input/Inputs.tsx";
 import Password from "./inputs/password/Password.tsx";
-import Inputi from "./inputs/inputi/Inputs.tsx";
 
 export default function Wrapper() {
   const fieldsetRef = useRef<HTMLInputElement>(null);
@@ -25,8 +22,19 @@ export default function Wrapper() {
     <>
       <div class={"w-full flex flex-col gap-2"}>
         <div>
-          <Inputi className={''} label={'username'} labelPlacement="top" variant="underline" id={'name'} form={'forms'} value={'as'} placeholder={'number'} isRequired yuzuRequiredStyle="bg-blue-500" />
-       
+          <Input
+            domRef={fieldsetRef}
+            className={""}
+            label={"username"}
+            labelPlacement="top"
+            variant="underline"
+            id={"name"}
+            form={"forms"}
+            value={"as"}
+            placeholder={"number"}
+           
+          />
+          <Password isError yuzuErrorStyle="bg-red-500" />
         </div>
       </div>
     </>

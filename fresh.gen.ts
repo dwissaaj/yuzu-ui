@@ -25,14 +25,10 @@ import * as $inputs_fieldset_Fieldset from "./islands/inputs/fieldset/Fieldset.t
 import * as $inputs_fieldset_fieldset_variants from "./islands/inputs/fieldset/fieldset-variants.ts";
 import * as $inputs_fieldset_type from "./islands/inputs/fieldset/type.ts";
 import * as $inputs_fieldset_use_fieldset from "./islands/inputs/fieldset/use-fieldset.ts";
-import * as $inputs_input_Input from "./islands/inputs/input/Input.tsx";
-import * as $inputs_input_input_variant from "./islands/inputs/input/input-variant.ts";
+import * as $inputs_input_Inputs from "./islands/inputs/input/Inputs.tsx";
+import * as $inputs_input_input_variants from "./islands/inputs/input/input-variants.ts";
 import * as $inputs_input_type from "./islands/inputs/input/type.ts";
 import * as $inputs_input_use_input from "./islands/inputs/input/use-input.ts";
-import * as $inputs_inputi_Inputs from "./islands/inputs/inputi/Inputs.tsx";
-import * as $inputs_inputi_input_variants from "./islands/inputs/inputi/input-variants.ts";
-import * as $inputs_inputi_type from "./islands/inputs/inputi/type.ts";
-import * as $inputs_inputi_use_input from "./islands/inputs/inputi/use-input.ts";
 import * as $inputs_label_Label from "./islands/inputs/label/Label.tsx";
 import * as $inputs_label_label_variant from "./islands/inputs/label/label-variant.ts";
 import * as $inputs_label_type from "./islands/inputs/label/type.ts";
@@ -41,6 +37,7 @@ import * as $inputs_password_Password from "./islands/inputs/password/Password.t
 import * as $inputs_password_password_variants from "./islands/inputs/password/password-variants.ts";
 import * as $inputs_password_type from "./islands/inputs/password/type.ts";
 import * as $inputs_password_use_password from "./islands/inputs/password/use-password.ts";
+import * as $inputs_radio_type from "./islands/inputs/radio/type.ts";
 import * as $theme_use_theme from "./islands/theme/use-theme.ts";
 import * as $wrapper from "./islands/wrapper.tsx";
 import type { Manifest } from "$fresh/server.ts";
@@ -74,14 +71,10 @@ const manifest = {
       $inputs_fieldset_fieldset_variants,
     "./islands/inputs/fieldset/type.ts": $inputs_fieldset_type,
     "./islands/inputs/fieldset/use-fieldset.ts": $inputs_fieldset_use_fieldset,
-    "./islands/inputs/input/Input.tsx": $inputs_input_Input,
-    "./islands/inputs/input/input-variant.ts": $inputs_input_input_variant,
+    "./islands/inputs/input/Inputs.tsx": $inputs_input_Inputs,
+    "./islands/inputs/input/input-variants.ts": $inputs_input_input_variants,
     "./islands/inputs/input/type.ts": $inputs_input_type,
     "./islands/inputs/input/use-input.ts": $inputs_input_use_input,
-    "./islands/inputs/inputi/Inputs.tsx": $inputs_inputi_Inputs,
-    "./islands/inputs/inputi/input-variants.ts": $inputs_inputi_input_variants,
-    "./islands/inputs/inputi/type.ts": $inputs_inputi_type,
-    "./islands/inputs/inputi/use-input.ts": $inputs_inputi_use_input,
     "./islands/inputs/label/Label.tsx": $inputs_label_Label,
     "./islands/inputs/label/label-variant.ts": $inputs_label_label_variant,
     "./islands/inputs/label/type.ts": $inputs_label_type,
@@ -91,6 +84,7 @@ const manifest = {
       $inputs_password_password_variants,
     "./islands/inputs/password/type.ts": $inputs_password_type,
     "./islands/inputs/password/use-password.ts": $inputs_password_use_password,
+    "./islands/inputs/radio/type.ts": $inputs_radio_type,
     "./islands/theme/use-theme.ts": $theme_use_theme,
     "./islands/wrapper.tsx": $wrapper,
   },
