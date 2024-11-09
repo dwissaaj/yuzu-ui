@@ -22,7 +22,7 @@ import type { InputProps } from "./type.ts";
  * placeholder={"number"}
  * isRequired
  * yuzuRequiredStyle="bg-blue-500"
- * /> 
+ * />
  * @param {Ref<HTMLInputElement> } domRef - A reference to the component's DOM element, useful for direct manipulation or focusing.
  * @param {string} [className=""] - Custom class names for additional styling. Default is an empty string.
  * @param {JSX.CSSProperties} [style=""] - Inline styles for the component. Default is an empty string.
@@ -61,7 +61,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
     GetLabelProps,
     ...otherProps
   } = useInput({ ...props });
-console.log(GetCustomDisabled)
+  console.log(GetCustomDisabled);
   const labelContent = GetLabelProps.label
     ? (
       <span className={`${GetLabelProps.className} ${GetCustomRequired} `}>

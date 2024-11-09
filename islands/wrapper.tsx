@@ -5,6 +5,8 @@ import {
 
 import Input from "./inputs/input/Inputs.tsx";
 import Password from "./inputs/password/Password.tsx";
+import Fieldset from "./inputs/fieldset/Fieldset.tsx";
+import RadioGroup from "./inputs/radio/radio-group/RadioGroup.tsx";
 
 export default function Wrapper() {
   const fieldsetRef = useRef<HTMLInputElement>(null);
@@ -22,19 +24,9 @@ export default function Wrapper() {
     <>
       <div class={"w-full flex flex-col gap-2"}>
         <div>
-          <Input
-            domRef={fieldsetRef}
-            className={""}
-            label={"username"}
-            labelPlacement="top"
-            variant="underline"
-            id={"name"}
-            form={"forms"}
-            value={"as"}
-            placeholder={"number"}
-           
-          />
-      
+          <RadioGroup label={'fruits'} variant="plain">
+            <Input label={'asds'} />
+          </RadioGroup>
         </div>
       </div>
     </>

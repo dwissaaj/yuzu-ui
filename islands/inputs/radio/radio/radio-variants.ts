@@ -1,11 +1,11 @@
-export const PasswordsVariants = {
+export const RadioVariants = {
   sizes: {
     small:
-      "m-1 p-2 w-52 hover:brightness-105 transition ease-in-out duration-300 rounded-sm ",
+      "m-1 p-2 w-52 hover:brightness-110 transition ease-in-out duration-300 rounded-sm ",
     medium:
-      "m-1 p-2 w-64 hover:brightness-105 transition ease-in-out duration-300 rounded-lg ",
+      "m-1 p-2 w-64 hover:brightness-110 transition ease-in-out duration-300 rounded-lg ",
     large:
-      "m-1 p-2 w-96 hover:brightness-105 transition ease-in-out duration-300 rounded-lg ",
+      "m-1 p-2 w-96 hover:brightness-110 transition ease-in-out duration-300 rounded-lg ",
   },
   colors: {
     primary: "primary",
@@ -13,7 +13,7 @@ export const PasswordsVariants = {
     error: "error",
     success: "success",
     warning: "warning",
-    none: "gray-500",
+    default: "",
   },
 
   disabledStyle: "opacity-50 cursor-not-allowed",
@@ -27,9 +27,10 @@ export const PasswordsVariants = {
   errorStyle:
     "outline-error focus:outline-error invalid:text-error text-error !border-error",
   errorStyleParent: "border-error",
-  inputReadonlyStyles:
+  readonlyStyles:
     "opacity-50 read-only:opacity-50 read-only:border-50 read-only:outline-50",
   inputDisableStyle: "opacity-50 cursor-not-allowed",
   inputStyle: "w-full border-0 focus:outline-0 focus:ring-0 focus:border-0",
-  buttonStyle: "transition ease-in-out delay-150 duration-300",
+  labelRequiredStyle:
+    "after:content-['*'] after:ml-0.5 after:text-red-500 block",
 };

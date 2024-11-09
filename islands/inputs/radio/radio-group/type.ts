@@ -1,90 +1,40 @@
 import type { Ref } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { JSX } from "preact/jsx-runtime";
 
+import { RadioGroupVariants } from "./radio-group-variants.ts";
 
-export type RadioProps =
-  & Omit<JSX.IntrinsicElements["input"], "size" | "color">
-  & {
-    /**
-     * Ref dom
-     */
-    domRef?: Ref<HTMLInputElement> | null;
+export type RadioGroupProps = JSX.IntrinsicElements["fieldset"] & {
+  /**
+   * Ref dom
+   */
+  domRef?: Ref<HTMLFieldSetElement> | null;
 
-    /**
-     * Classname styling for div parent, not recomended to use
-     */
-    className?: string;
+  /**
+   * Classname styling for div parent, not recomended to use
+   */
+  className?: string;
 
-    /**
-     * Vanilla css plain styling
-     */
-    style?: JSX.CSSProperties;
+  /**
+   * Vanilla css plain styling
+   */
+  style?: JSX.CSSProperties;
 
-    /**
-     * Size of the input will consume by div parents
-     */
-    size?: keyof typeof InputVariants.sizes;
+  /**
+   * label title
+   */
+  label?: string;
 
-    /**
-     * Color based on variant, only consume by div parent
-     */
-    color?: keyof typeof InputVariants.colors;
+  direction?: "row" | "column";
 
-    /**
-     * Variant can't be extended unless config the hooks
-     */
-    variant?: keyof typeof InputVariants.variants;
+  variant?: keyof typeof RadioGroupVariants.variants;
 
-    /**
-     * Access to error state style
-     */
-    yuzuErrorStyle?: string;
+  borderColor?: keyof typeof RadioGroupVariants.borderColors;
 
-    /**
-     * Access to readonly state style
-     */
-    yuzuReadonlyStyle?: string;
+  labelColor?: keyof typeof RadioGroupVariants.labelColors;
+  labelSize?: keyof typeof RadioGroupVariants.labelSizes;
 
-    /**
-     * Access to error state style
-     */
-    yuzuDisabledStyle?: string;
-    /**
-     * Access to error state style
-     */
-    yuzuRequiredStyle?: string;
-    /**
-     *  State for read only
-     */
-    isReadonly?: boolean;
 
-    /**
-     *  State for read only
-     */
-    isFullWidth?: boolean;
+  children?: JSX.Element
 
-    /**
-     *  State for error
-     */
-    isError?: boolean;
-    /**
-     *  State for disabled
-     */
-    isDisabled?: boolean;
-
-    /**
-     * Is required ?
-     * @default false
-     */
-    isRequired?: boolean;
-
-    /**
-     * label title
-     */
-    label?: string;
-
-    /**
-     * where label should rendered
-     */
-    labelPlacement?: "top" | "bottom" | "left" | "right";
-  };
+  yuzuLabelStyle?: string
+};
