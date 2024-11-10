@@ -32,5 +32,4 @@ export const PasswordsVariants = {
   inputDisableStyle: "opacity-50 cursor-not-allowed",
   inputStyle: "w-full border-0 focus:outline-0 focus:ring-0 focus:border-0",
   buttonStyle: "transition ease-in-out delay-150 duration-300",
-
 };

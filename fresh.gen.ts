@@ -28,6 +28,7 @@ import * as $inputs_fieldset_index from "./islands/inputs/fieldset/index.ts";
 import * as $inputs_fieldset_type from "./islands/inputs/fieldset/type.ts";
 import * as $inputs_fieldset_use_fieldset from "./islands/inputs/fieldset/use-fieldset.ts";
 import * as $inputs_input_Inputs from "./islands/inputs/input/Inputs.tsx";
+import * as $inputs_input_index from "./islands/inputs/input/index.ts";
 import * as $inputs_input_input_variants from "./islands/inputs/input/input-variants.ts";
 import * as $inputs_input_type from "./islands/inputs/input/type.ts";
 import * as $inputs_input_use_input from "./islands/inputs/input/use-input.ts";
@@ -37,11 +38,19 @@ import * as $inputs_label_label_variant from "./islands/inputs/label/label-varia
 import * as $inputs_label_type from "./islands/inputs/label/type.ts";
 import * as $inputs_label_use_label from "./islands/inputs/label/use-label.ts";
 import * as $inputs_password_Password from "./islands/inputs/password/Password.tsx";
+import * as $inputs_password_index from "./islands/inputs/password/index.ts";
 import * as $inputs_password_password_variants from "./islands/inputs/password/password-variants.ts";
 import * as $inputs_password_type from "./islands/inputs/password/type.ts";
 import * as $inputs_password_use_password from "./islands/inputs/password/use-password.ts";
+import * as $inputs_radio_index from "./islands/inputs/radio/index.ts";
+import * as $inputs_radio_radio_group_RadioGroup from "./islands/inputs/radio/radio-group/RadioGroup.tsx";
+import * as $inputs_radio_radio_group_radio_group_variants from "./islands/inputs/radio/radio-group/radio-group-variants.ts";
 import * as $inputs_radio_radio_group_type from "./islands/inputs/radio/radio-group/type.ts";
-import * as $inputs_radio_radio_variants from "./islands/inputs/radio/radio-variants.ts";
+import * as $inputs_radio_radio_group_use_radio_group from "./islands/inputs/radio/radio-group/use-radio-group.ts";
+import * as $inputs_radio_radio_Radio from "./islands/inputs/radio/radio/Radio.tsx";
+import * as $inputs_radio_radio_radio_variants from "./islands/inputs/radio/radio/radio-variants.ts";
+import * as $inputs_radio_radio_types from "./islands/inputs/radio/radio/types.ts";
+import * as $inputs_radio_radio_use_radio from "./islands/inputs/radio/radio/use-radio.ts";
 import * as $theme_use_theme from "./islands/theme/use-theme.ts";
 import * as $wrapper from "./islands/wrapper.tsx";
 import type { Manifest } from "$fresh/server.ts";
@@ -78,6 +87,7 @@ const manifest = {
     "./islands/inputs/fieldset/type.ts": $inputs_fieldset_type,
     "./islands/inputs/fieldset/use-fieldset.ts": $inputs_fieldset_use_fieldset,
     "./islands/inputs/input/Inputs.tsx": $inputs_input_Inputs,
+    "./islands/inputs/input/index.ts": $inputs_input_index,
     "./islands/inputs/input/input-variants.ts": $inputs_input_input_variants,
     "./islands/inputs/input/type.ts": $inputs_input_type,
     "./islands/inputs/input/use-input.ts": $inputs_input_use_input,
@@ -87,13 +97,25 @@ const manifest = {
     "./islands/inputs/label/type.ts": $inputs_label_type,
     "./islands/inputs/label/use-label.ts": $inputs_label_use_label,
     "./islands/inputs/password/Password.tsx": $inputs_password_Password,
+    "./islands/inputs/password/index.ts": $inputs_password_index,
     "./islands/inputs/password/password-variants.ts":
       $inputs_password_password_variants,
     "./islands/inputs/password/type.ts": $inputs_password_type,
     "./islands/inputs/password/use-password.ts": $inputs_password_use_password,
+    "./islands/inputs/radio/index.ts": $inputs_radio_index,
+    "./islands/inputs/radio/radio-group/RadioGroup.tsx":
+      $inputs_radio_radio_group_RadioGroup,
+    "./islands/inputs/radio/radio-group/radio-group-variants.ts":
+      $inputs_radio_radio_group_radio_group_variants,
     "./islands/inputs/radio/radio-group/type.ts":
       $inputs_radio_radio_group_type,
-    "./islands/inputs/radio/radio-variants.ts": $inputs_radio_radio_variants,
+    "./islands/inputs/radio/radio-group/use-radio-group.ts":
+      $inputs_radio_radio_group_use_radio_group,
+    "./islands/inputs/radio/radio/Radio.tsx": $inputs_radio_radio_Radio,
+    "./islands/inputs/radio/radio/radio-variants.ts":
+      $inputs_radio_radio_radio_variants,
+    "./islands/inputs/radio/radio/types.ts": $inputs_radio_radio_types,
+    "./islands/inputs/radio/radio/use-radio.ts": $inputs_radio_radio_use_radio,
     "./islands/theme/use-theme.ts": $theme_use_theme,
     "./islands/wrapper.tsx": $wrapper,
   },

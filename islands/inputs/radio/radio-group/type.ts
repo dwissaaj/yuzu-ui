@@ -1,90 +1,92 @@
-import type { Ref } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
+import type {
+  CSSProperties,
+  Ref,
+} from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { JSX } from "preact/jsx-runtime";
 
+import { RadioGroupVariants } from "./radio-group-variants.ts";
 
-export type RadioProps =
-  & Omit<JSX.IntrinsicElements["input"], "size" | "color">
-  & {
-    /**
-     * Ref dom
-     */
-    domRef?: Ref<HTMLInputElement> | null;
+export type RadioGroupSlot = Record<"yuzuBase" | "yuzuLabel", string>;
 
-    /**
-     * Classname styling for div parent, not recomended to use
-     */
-    className?: string;
+export type RadioGroupProps = JSX.IntrinsicElements["fieldset"] & {
+  /**
+   * Ref dom
+   */
+  domRef?: Ref<HTMLFieldSetElement>;
 
-    /**
-     * Vanilla css plain styling
-     */
-    style?: JSX.CSSProperties;
+  /**
+   * Custom class names to apply additional styling to the `RadioGroup` container.
+   *
+   * @type {string}
+   * @default ""
+   */
+  className?: string;
 
-    /**
-     * Size of the input will consume by div parents
-     */
-    size?: keyof typeof InputVariants.sizes;
+  /**
+   * Custom inline styles to apply to the `RadioGroup` container using vanilla CSS.
+   *
+   * @type {CSSProperties}
+   * @default {}
+   */
+  style?: CSSProperties;
 
-    /**
-     * Color based on variant, only consume by div parent
-     */
-    color?: keyof typeof InputVariants.colors;
+  /**
+   * The label text to be displayed for the `RadioGroup`.
+   * This can be a string or JSX element.
+   *
+   * @type {string}
+   */
+  label?: string;
 
-    /**
-     * Variant can't be extended unless config the hooks
-     */
-    variant?: keyof typeof InputVariants.variants;
+  /**
+   * Defines the direction of the radio buttons within the group.
+   * Options are "row" (horizontal layout) and "column" (vertical layout).
+   *
+   * @type {"row" | "column"}
+   * @default "row"
+   */
+  direction?: "row" | "column";
 
-    /**
-     * Access to error state style
-     */
-    yuzuErrorStyle?: string;
+  /**
+   * The variant style of the `RadioGroup`, which determines its overall appearance.
+   * The value is derived from the available variants in `RadioGroupVariants.variants`.
+   *
+   * @type {keyof typeof RadioGroupVariants.variants}
+   */
+  variant?: keyof typeof RadioGroupVariants.variants;
 
-    /**
-     * Access to readonly state style
-     */
-    yuzuReadonlyStyle?: string;
+  /**
+   * The border color for the `RadioGroup`. The value is derived from the available colors in `RadioGroupVariants.borderColors`.
+   *
+   * @type {keyof typeof RadioGroupVariants.borderColors}
+   */
+  borderColor?: keyof typeof RadioGroupVariants.borderColors;
 
-    /**
-     * Access to error state style
-     */
-    yuzuDisabledStyle?: string;
-    /**
-     * Access to error state style
-     */
-    yuzuRequiredStyle?: string;
-    /**
-     *  State for read only
-     */
-    isReadonly?: boolean;
+  /**
+   * The color of the label text for the `RadioGroup`. The value is derived from the available colors in `RadioGroupVariants.labelColors`.
+   *
+   * @type {keyof typeof RadioGroupVariants.labelColors}
+   */
+  labelColor?: keyof typeof RadioGroupVariants.labelColors;
 
-    /**
-     *  State for read only
-     */
-    isFullWidth?: boolean;
+  /**
+   * The size of the label text for the `RadioGroup`. The value is derived from the available sizes in `RadioGroupVariants.labelSizes`.
+   *
+   * @type {keyof typeof RadioGroupVariants.labelSizes}
+   */
+  labelSize?: keyof typeof RadioGroupVariants.labelSizes;
 
-    /**
-     *  State for error
-     */
-    isError?: boolean;
-    /**
-     *  State for disabled
-     */
-    isDisabled?: boolean;
+  /**
+   * The children to be rendered inside the `RadioGroup`. This can be one or more `Radio` components.
+   *
+   * @type {JSX.Element | JSX.Element[]}
+   */
+  children?: JSX.Element | JSX.Element[];
 
-    /**
-     * Is required ?
-     * @default false
-     */
-    isRequired?: boolean;
-
-    /**
-     * label title
-     */
-    label?: string;
-
-    /**
-     * where label should rendered
-     */
-    labelPlacement?: "top" | "bottom" | "left" | "right";
-  };
+  /**
+   * Custom style to apply to the label of the `RadioGroup`.
+   *
+   * @type {string}
+   */
+  yuzuLabelStyle?: string;
+};

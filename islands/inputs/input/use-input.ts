@@ -97,7 +97,7 @@ export function useInput(props: InputProps) {
     },
     [isReadonly],
   );
-  
+
   const GetErrorInput = useMemo(
     () => {
       if (isError === true) {
@@ -127,7 +127,6 @@ export function useInput(props: InputProps) {
   const GetCustomDisabled = useMemo(
     () => {
       if (isDisabled === true) {
-        console.log(yuzuDisabledStyle)
         return yuzuDisabledStyle;
       } else isDisabled === false;
       {

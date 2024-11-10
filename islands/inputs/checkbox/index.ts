@@ -1,4 +1,3 @@
-
 import { CheckboxVariants } from "./checkbox-variants.ts";
 import Checkbox from "./Checkbox.tsx";
 
