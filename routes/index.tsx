@@ -5,7 +5,6 @@ import { todos } from "../islands/theme/use-theme.ts";
 export default function Home() {
   return (
     <div class="px-4 py-8 mx-auto ">
-      <button class={"bg-error"}>test</button>
       <Wrapper />
     </div>
   );
