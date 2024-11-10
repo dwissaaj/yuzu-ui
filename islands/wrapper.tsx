@@ -7,6 +7,7 @@ import Input from "./inputs/input/Inputs.tsx";
 import Password from "./inputs/password/Password.tsx";
 import Fieldset from "./inputs/fieldset/Fieldset.tsx";
 import RadioGroup from "./inputs/radio/radio-group/RadioGroup.tsx";
+import Radio from "./inputs/radio/radio/Radio.tsx";
 
 export default function Wrapper() {
   const fieldsetRef = useRef<HTMLInputElement>(null);
@@ -24,8 +25,22 @@ export default function Wrapper() {
     <>
       <div class={"w-full flex flex-col gap-2"}>
         <div>
-          <RadioGroup label={'fruits'} variant="plain">
-            <Input label={'asds'} />
+          <RadioGroup labelColor="primary"  direction="column" label={"fruits"} variant="full">
+            <Radio
+              isDisabled
+              textSize="small"
+              id={"orange"}
+              name={"fruits"}
+              color="secondary"
+              label={"orange"}
+            />
+            <Radio
+              radioSize="small"
+              id={"apel"}
+              name={"fruits"}
+              color="primary"
+              label={"apel"}
+            />
           </RadioGroup>
         </div>
       </div>
