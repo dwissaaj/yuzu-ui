@@ -1,5 +1,4 @@
 import { signal } from "@preact/signals";
-import type { Props } from "./accordions/type.ts";
 import { useMemo } from "https://esm.sh/v128/preact@10.22.0/hooks/src/index.js";
 import { useState } from "preact/hooks";
 export default function Accordionsparent() {

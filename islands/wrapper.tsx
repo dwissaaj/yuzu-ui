@@ -3,14 +3,11 @@ import {
   useRef,
 } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 
-import Input from "./inputs/input/Inputs.tsx";
-import Password from "./inputs/password/Password.tsx";
-import Fieldset from "./inputs/fieldset/Fieldset.tsx";
-import RadioGroup from "./inputs/radio/radio-group/RadioGroup.tsx";
-import Radio from "./inputs/radio/radio/Radio.tsx";
+import SelectGroup from "./inputs/select/select-field/SelectGroup.tsx";
+import SelectItem from "./inputs/select/select-item/SelectItem.tsx";
 
 export default function Wrapper() {
-  const fieldsetRef = useRef<HTMLInputElement>(null);
+  const fieldsetRef = useRef<HTMLSelectElement>(null);
 
   useEffect(() => {
     // Check if the fieldset ref is assigned properly
@@ -24,26 +21,37 @@ export default function Wrapper() {
   return (
     <>
       <div class={"w-full flex flex-col gap-2"}>
-        <div>
-          <RadioGroup labelColor="primary"  direction="column" label={"fruits"} variant="full">
-            <Radio
-              isDisabled
-              textSize="small"
-              id={"orange"}
+        <div className={"w-1/2"}>
+          <SelectGroup
+            className={"w-72"}
+            domRef={fieldsetRef}
+            color="success"
+            label={"fav fruits"}
+            variant="underline"
+          >
+            <SelectItem isDisabled name={"fruits"}>Orange</SelectItem>
+            <SelectItem
+              classNames={{ yuzuOption: "!text-blue-500" }}
               name={"fruits"}
-              color="secondary"
-              label={"orange"}
-            />
-            <Radio
-              radioSize="small"
-              id={"apel"}
-              name={"fruits"}
-              color="primary"
-              label={"apel"}
-            />
-          </RadioGroup>
+            >
+              Apple
+            </SelectItem>
+          </SelectGroup>
         </div>
       </div>
     </>
   );
 }
+
+// <div className={`opacity-50`}>
+// <div className={"bg-red-500"}>
+//   <legend>What is your favorite</legend>
+//   <small>the most you eat</small>
+// </div>
+// <div className={"bg-red-500"}>
+//   <select disabled={true} className={"bg-red-500"}>
+//     <option>orange</option>
+//     <option>apple</option>
+//   </select>
+// </div>
+// </div>

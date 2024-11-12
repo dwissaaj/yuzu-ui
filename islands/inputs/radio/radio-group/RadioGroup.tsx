@@ -5,10 +5,10 @@ import { useRadioGroup } from "./use-radio-group.ts";
  * The `RadioGroup` component allows you to group and style a set of radio buttons with customizable styling and layout options.
  *
  * @component
- * 
+ *
  * @example
- * <RadioGroup 
- * labelColor="primary" 
+ * <RadioGroup
+ * labelColor="primary"
  * direction="column"
  * label={"fruits"}
  * variant="full">

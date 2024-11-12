@@ -51,6 +51,14 @@ import * as $inputs_radio_radio_Radio from "./islands/inputs/radio/radio/Radio.t
 import * as $inputs_radio_radio_radio_variants from "./islands/inputs/radio/radio/radio-variants.ts";
 import * as $inputs_radio_radio_types from "./islands/inputs/radio/radio/types.ts";
 import * as $inputs_radio_radio_use_radio from "./islands/inputs/radio/radio/use-radio.ts";
+import * as $inputs_select_select_field_SelectGroup from "./islands/inputs/select/select-field/SelectGroup.tsx";
+import * as $inputs_select_select_field_select_field_variants from "./islands/inputs/select/select-field/select-field-variants.ts";
+import * as $inputs_select_select_field_type from "./islands/inputs/select/select-field/type.ts";
+import * as $inputs_select_select_field_use_select_field from "./islands/inputs/select/select-field/use-select-field.ts";
+import * as $inputs_select_select_item_SelectItem from "./islands/inputs/select/select-item/SelectItem.tsx";
+import * as $inputs_select_select_item_select_item_variants from "./islands/inputs/select/select-item/select-item-variants.ts";
+import * as $inputs_select_select_item_type from "./islands/inputs/select/select-item/type.ts";
+import * as $inputs_select_select_item_use_select_item from "./islands/inputs/select/select-item/use-select-item.ts";
 import * as $theme_use_theme from "./islands/theme/use-theme.ts";
 import * as $wrapper from "./islands/wrapper.tsx";
 import type { Manifest } from "$fresh/server.ts";
@@ -116,6 +124,22 @@ const manifest = {
       $inputs_radio_radio_radio_variants,
     "./islands/inputs/radio/radio/types.ts": $inputs_radio_radio_types,
     "./islands/inputs/radio/radio/use-radio.ts": $inputs_radio_radio_use_radio,
+    "./islands/inputs/select/select-field/SelectGroup.tsx":
+      $inputs_select_select_field_SelectGroup,
+    "./islands/inputs/select/select-field/select-field-variants.ts":
+      $inputs_select_select_field_select_field_variants,
+    "./islands/inputs/select/select-field/type.ts":
+      $inputs_select_select_field_type,
+    "./islands/inputs/select/select-field/use-select-field.ts":
+      $inputs_select_select_field_use_select_field,
+    "./islands/inputs/select/select-item/SelectItem.tsx":
+      $inputs_select_select_item_SelectItem,
+    "./islands/inputs/select/select-item/select-item-variants.ts":
+      $inputs_select_select_item_select_item_variants,
+    "./islands/inputs/select/select-item/type.ts":
+      $inputs_select_select_item_type,
+    "./islands/inputs/select/select-item/use-select-item.ts":
+      $inputs_select_select_item_use_select_item,
     "./islands/theme/use-theme.ts": $theme_use_theme,
     "./islands/wrapper.tsx": $wrapper,
   },
