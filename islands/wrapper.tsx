@@ -4,6 +4,7 @@ import {
 } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 
 import SelectGroup from "./inputs/select/select-field/SelectGroup.tsx";
+import SelectItem from "./inputs/select/select-item/SelectItem.tsx";
 
 export default function Wrapper() {
   const fieldsetRef = useRef<HTMLSelectElement>(null);
@@ -23,21 +24,14 @@ export default function Wrapper() {
         <div className={"w-1/2"}>
           <SelectGroup
             className={"w-72"}
-            classNames={{
-              yuzuBase: "border-2 border-red-500",
-              yuzuLabel: "text-blue-500",
-              yuzuBaseError: "bg-yellow-100",
-              yuzuBaseDisabled: "outline outline-2 outline-offset-2",
-              yuzuDescription: "!text-7xl",
-            }}
             domRef={fieldsetRef}
-            isDisabled
-            color="primary"
+            color="success"
             label={"fav fruits"}
-            description="what is your liked"
+            variant="underline"
+            
           >
-            <option name={"fruits"}>orange</option>
-            <option name={"fruits"}>apple</option>
+           <SelectItem isDisabled name={'fruits'}>Orange</SelectItem>
+           <SelectItem classNames={{yuzuOption: "!text-blue-500"}} name={'fruits'}>Apple</SelectItem>
           </SelectGroup>
         </div>
       </div>

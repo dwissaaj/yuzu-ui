@@ -1,11 +1,22 @@
 export const SelectGroupVariants = {
   colors: {
-    primary: "bg-primary",
-    secondary: "bg-secondary",
-    error: "bg-error",
-    success: "bg-success",
-    warning: "bg-warning",
+    primary: "primary",
+    secondary: "secondary",
+    error: "error",
+    success: "success",
+    warning: "warning",
     default: "",
+  },
+  radiuses: {
+    small: "rounded-sm",
+    medium: "rounded-lg",
+    large: "rounded-xl",
+    none: "rounded-none"
+  },
+  variants: {
+    underline:
+      "border-b-2 transition ease-in-out delay-150 duration-300",
+    full: "border-2 transition ease-in-out delay-150 duration-300",
   },
   errorStyles: "border-error text-error",
   disabledStyles: "opacity-50 cursor-not-allowed",

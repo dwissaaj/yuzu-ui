@@ -9,7 +9,8 @@ export type SelectGroupSlot = Partial<
     | "yuzuBaseDisabled"
     | "yuzuBaseError"
     | "yuzuLabel"
-    | "yuzuDescription",
+    | "yuzuDescription"
+    | "yuzuOption",
     string
   >
 >;
@@ -42,8 +43,8 @@ export type SelectGroupProps = JSX.IntrinsicElements["select"] & {
 
   color?: keyof typeof SelectGroupVariants.colors;
   label?: string | JSX.Element;
-
+  radius?: keyof typeof SelectGroupVariants.radiuses
   description?: string;
-
+  variant?: keyof typeof SelectGroupVariants.variants
   disabledKeys?: string[];
 };

@@ -11,22 +11,47 @@ export function useSelectField(props: SelectGroupProps) {
     classNames,
     isDisabled,
     description,
+    radius="none",
+    variant="full",
     isError,
     isRequired,
     color = "default",
     label,
     ...otherProps
   } = props;
-  
-
-  const GetColor = useMemo(
+  const GetColorClass = useMemo(
+    () => {
+      if (variant === "underline") {
+        const colorSelected = SelectGroupVariants.colors[color];
+        return `border-${colorSelected}`;
+          
+      } else variant === "full";
+      {
+        const colorSelected = SelectGroupVariants.colors[color];
+       
+        return `bg-${colorSelected}`;
+         
+      }
+    },
+    [color, variant],
+  );
+  const GetRadius = useMemo(
     () => {
       return {
-        color: SelectGroupVariants.colors[color],
+        radius: SelectGroupVariants.radiuses[radius],
       };
     },
-    [color],
+    [radius],
   );
+  const GetVariant = useMemo(
+    () => {
+      return {
+        variant: SelectGroupVariants.variants[variant],
+      };
+    },
+    [variant],
+  );
+  
   const GetDisabled = useMemo(
     () => {
       if (isDisabled === true) {
@@ -44,12 +69,15 @@ export function useSelectField(props: SelectGroupProps) {
     () => {
       const disabled = GetDisabled.disabledStyles;
       const base = SelectGroupVariants.base;
-      console.log(disabled);
+      const radius = GetRadius.radius
+      const color = GetColorClass
+      const variant = GetVariant.variant
+      
       return {
-        className: `${base} ${disabled}`.trim(),
+        className: `${base} ${color} ${disabled} ${variant} ${radius}`.trim(),
       };
     },
-    [GetColor, GetDisabled],
+    [ GetDisabled, GetRadius, GetColorClass],
   );
   const GetError = useMemo(
     () => {
@@ -104,8 +132,9 @@ export function useSelectField(props: SelectGroupProps) {
       const yuzuBaseError = classNames?.yuzuBaseError ? classNames?.yuzuBaseError : ""
       const yuzuLabel = classNames?.yuzuLabel ? classNames?.yuzuLabel : ""
       const yuzuDescription = classNames?.yuzuDescription ? classNames?.yuzuDescription :""
+      const yuzuOption = classNames?.yuzuOption ? classNames?.yuzuOption :""
       return {
-        yuzuBase, yuzuBaseDisabled, yuzuBaseError, yuzuDescription, yuzuLabel
+        yuzuBase, yuzuBaseDisabled, yuzuBaseError, yuzuDescription, yuzuLabel, yuzuOption
       }
     },[classNames])
   return {
@@ -117,7 +146,7 @@ export function useSelectField(props: SelectGroupProps) {
     GetDescription,
     GetSlot,
     isDisabled,
-    GetColor,
+    GetColorClass,
     GetLabel,
     GetError,
     ...otherProps,

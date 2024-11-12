@@ -21,24 +21,24 @@ const SelectGroup = forwardRef<HTMLSelectElement, SelectGroupProps>((props) => {
     GetDescription,
     GetSlot,
     GetError,
+    GetColorClass,
     isDisabled,
-    GetColor,
     ...otherProps
   } = useSelectField({ ...props });
 
   return (
     <div
-      className={`${className} ${GetColor.color} ${GetSelectFieldProps.className} ${GetError.errorStyle} ${GetSlot?.yuzuBase} ${GetSlot?.yuzuBaseDisabled} ${GetSlot?.yuzuBaseError}`}
+      className={`${className} ${GetSelectFieldProps.className} ${GetError.errorStyle} ${GetSlot?.yuzuBase} ${GetSlot?.yuzuBaseDisabled} ${GetSlot?.yuzuBaseError} `}
     >
       <div className={"w-full flex flex-col gap-1"}>
         <legend
           required={GetLabel?.isRequired}
-          className={`${GetSlot?.yuzuLabel} ${GetLabel.requiredStyle}`}
+          className={`px-2 ${GetSlot?.yuzuLabel} ${GetLabel.requiredStyle}`}
         >
           {GetLabel?.label}
         </legend>
         <small
-          className={`${GetDescription.descriptionStyles} ${GetSlot?.yuzuDescription}`}
+          className={`px-2 ${GetDescription.descriptionStyles} ${GetSlot?.yuzuDescription}`}
         >
           {GetDescription.description}
         </small>
@@ -49,7 +49,7 @@ const SelectGroup = forwardRef<HTMLSelectElement, SelectGroupProps>((props) => {
           required={GetLabel.isRequired}
           disabled={isDisabled}
           ref={domRef}
-          className={`w-full ${GetColor.color}`}
+          className={`w-full p-2 ${GetColorClass} ${GetSlot.yuzuOption}`}
         >
           {children}
         </select>

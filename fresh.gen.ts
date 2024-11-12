@@ -55,6 +55,10 @@ import * as $inputs_select_select_field_SelectGroup from "./islands/inputs/selec
 import * as $inputs_select_select_field_select_field_variants from "./islands/inputs/select/select-field/select-field-variants.ts";
 import * as $inputs_select_select_field_type from "./islands/inputs/select/select-field/type.ts";
 import * as $inputs_select_select_field_use_select_field from "./islands/inputs/select/select-field/use-select-field.ts";
+import * as $inputs_select_select_item_SelectItem from "./islands/inputs/select/select-item/SelectItem.tsx";
+import * as $inputs_select_select_item_select_item_variants from "./islands/inputs/select/select-item/select-item-variants.ts";
+import * as $inputs_select_select_item_type from "./islands/inputs/select/select-item/type.ts";
+import * as $inputs_select_select_item_use_select_item from "./islands/inputs/select/select-item/use-select-item.ts";
 import * as $theme_use_theme from "./islands/theme/use-theme.ts";
 import * as $wrapper from "./islands/wrapper.tsx";
 import type { Manifest } from "$fresh/server.ts";
@@ -128,6 +132,14 @@ const manifest = {
       $inputs_select_select_field_type,
     "./islands/inputs/select/select-field/use-select-field.ts":
       $inputs_select_select_field_use_select_field,
+    "./islands/inputs/select/select-item/SelectItem.tsx":
+      $inputs_select_select_item_SelectItem,
+    "./islands/inputs/select/select-item/select-item-variants.ts":
+      $inputs_select_select_item_select_item_variants,
+    "./islands/inputs/select/select-item/type.ts":
+      $inputs_select_select_item_type,
+    "./islands/inputs/select/select-item/use-select-item.ts":
+      $inputs_select_select_item_use_select_item,
     "./islands/theme/use-theme.ts": $theme_use_theme,
     "./islands/wrapper.tsx": $wrapper,
   },
