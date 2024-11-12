@@ -11,11 +11,10 @@ export const SelectGroupVariants = {
     small: "rounded-sm",
     medium: "rounded-lg",
     large: "rounded-xl",
-    none: "rounded-none"
+    none: "rounded-none",
   },
   variants: {
-    underline:
-      "border-b-2 transition ease-in-out delay-150 duration-300",
+    underline: "border-b-2 transition ease-in-out delay-150 duration-300",
     full: "border-2 transition ease-in-out delay-150 duration-300",
   },
   errorStyles: "border-error text-error",

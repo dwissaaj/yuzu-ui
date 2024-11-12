@@ -28,10 +28,14 @@ export default function Wrapper() {
             color="success"
             label={"fav fruits"}
             variant="underline"
-            
           >
-           <SelectItem isDisabled name={'fruits'}>Orange</SelectItem>
-           <SelectItem classNames={{yuzuOption: "!text-blue-500"}} name={'fruits'}>Apple</SelectItem>
+            <SelectItem isDisabled name={"fruits"}>Orange</SelectItem>
+            <SelectItem
+              classNames={{ yuzuOption: "!text-blue-500" }}
+              name={"fruits"}
+            >
+              Apple
+            </SelectItem>
           </SelectGroup>
         </div>
       </div>

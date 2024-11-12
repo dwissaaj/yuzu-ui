@@ -11,8 +11,8 @@ export function useSelectField(props: SelectGroupProps) {
     classNames,
     isDisabled,
     description,
-    radius="none",
-    variant="full",
+    radius = "none",
+    variant = "full",
     isError,
     isRequired,
     color = "default",
@@ -24,13 +24,11 @@ export function useSelectField(props: SelectGroupProps) {
       if (variant === "underline") {
         const colorSelected = SelectGroupVariants.colors[color];
         return `border-${colorSelected}`;
-          
       } else variant === "full";
       {
         const colorSelected = SelectGroupVariants.colors[color];
-       
+
         return `bg-${colorSelected}`;
-         
       }
     },
     [color, variant],
@@ -51,7 +49,7 @@ export function useSelectField(props: SelectGroupProps) {
     },
     [variant],
   );
-  
+
   const GetDisabled = useMemo(
     () => {
       if (isDisabled === true) {
@@ -69,15 +67,15 @@ export function useSelectField(props: SelectGroupProps) {
     () => {
       const disabled = GetDisabled.disabledStyles;
       const base = SelectGroupVariants.base;
-      const radius = GetRadius.radius
-      const color = GetColorClass
-      const variant = GetVariant.variant
-      
+      const radius = GetRadius.radius;
+      const color = GetColorClass;
+      const variant = GetVariant.variant;
+
       return {
         className: `${base} ${color} ${disabled} ${variant} ${radius}`.trim(),
       };
     },
-    [ GetDisabled, GetRadius, GetColorClass],
+    [GetDisabled, GetRadius, GetColorClass],
   );
   const GetError = useMemo(
     () => {
@@ -127,16 +125,29 @@ export function useSelectField(props: SelectGroupProps) {
 
   const GetSlot = useMemo(
     () => {
-      const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : ""
-      const yuzuBaseDisabled = classNames?.yuzuBaseDisabled ? classNames?.yuzuBaseDisabled : ""
-      const yuzuBaseError = classNames?.yuzuBaseError ? classNames?.yuzuBaseError : ""
-      const yuzuLabel = classNames?.yuzuLabel ? classNames?.yuzuLabel : ""
-      const yuzuDescription = classNames?.yuzuDescription ? classNames?.yuzuDescription :""
-      const yuzuOption = classNames?.yuzuOption ? classNames?.yuzuOption :""
+      const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";
+      const yuzuBaseDisabled = classNames?.yuzuBaseDisabled
+        ? classNames?.yuzuBaseDisabled
+        : "";
+      const yuzuBaseError = classNames?.yuzuBaseError
+        ? classNames?.yuzuBaseError
+        : "";
+      const yuzuLabel = classNames?.yuzuLabel ? classNames?.yuzuLabel : "";
+      const yuzuDescription = classNames?.yuzuDescription
+        ? classNames?.yuzuDescription
+        : "";
+      const yuzuOption = classNames?.yuzuOption ? classNames?.yuzuOption : "";
       return {
-        yuzuBase, yuzuBaseDisabled, yuzuBaseError, yuzuDescription, yuzuLabel, yuzuOption
-      }
-    },[classNames])
+        yuzuBase,
+        yuzuBaseDisabled,
+        yuzuBaseError,
+        yuzuDescription,
+        yuzuLabel,
+        yuzuOption,
+      };
+    },
+    [classNames],
+  );
   return {
     domRef,
     style,

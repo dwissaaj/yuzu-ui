@@ -17,34 +17,91 @@ export type SelectGroupSlot = Partial<
 
 export type SelectGroupProps = JSX.IntrinsicElements["select"] & {
   /**
-   * Ref dom
+   * Dom for ref
    */
   domRef?: Ref<HTMLSelectElement>;
 
   /**
-   * Custom class names to apply additional styling to the `RadioGroup` container.
+   * Custom class names to apply additional styling to the `SelectGroup` container.
    *
    * @type {string}
    * @default ""
    */
   className?: string;
+
+  /**
+   * Custom class names for specific parts of the `SelectGroup` component, such as base, label, error, and more.
+   *
+   * @type {SelectGroupSlot}
+   */
   classNames?: SelectGroupSlot;
 
+  /**
+   * Child elements, typically `<option>` elements, to be rendered inside the `SelectGroup`.
+   *
+   * @type {JSX.Element | JSX.Element[]}
+   */
   children?: JSX.Element | JSX.Element[];
 
   /**
-   * main parent div
+   * If true, the `SelectGroup` will be disabled, making it uninteractive.
+   *
+   * @type {boolean}
+   * @default false
    */
-
   isDisabled?: boolean;
 
+  /**
+   * If true, error styles will be applied to the `SelectGroup`.
+   *
+   * @type {boolean}
+   * @default false
+   */
   isError?: boolean;
+
+  /**
+   * If true, the `SelectGroup` will be marked as required.
+   *
+   * @type {boolean}
+   * @default false
+   */
   isRequired?: boolean;
 
+  /**
+   * The color scheme for the `SelectGroup`. Options include `"primary"`, `"secondary"`, `"error"`, `"success"`, `"warning"`, and `"default"`.
+   *
+   * @type {keyof typeof SelectGroupVariants.colors}
+   * @default "default"
+   */
   color?: keyof typeof SelectGroupVariants.colors;
+
+  /**
+   * A label to display above the `SelectGroup`.
+   *
+   * @type {string | JSX.Element}
+   */
   label?: string | JSX.Element;
-  radius?: keyof typeof SelectGroupVariants.radiuses
+
+  /**
+   * The border radius of the `SelectGroup`. Options include `"small"`, `"medium"`, `"large"`, and `"none"`.
+   *
+   * @type {keyof typeof SelectGroupVariants.radiuses}
+   * @default "none"
+   */
+  radius?: keyof typeof SelectGroupVariants.radiuses;
+
+  /**
+   * A description to display below the `SelectGroup`.
+   *
+   * @type {string}
+   */
   description?: string;
-  variant?: keyof typeof SelectGroupVariants.variants
-  disabledKeys?: string[];
+
+  /**
+   * The style variant of the `SelectGroup`. Options include `"full"` (bordered) and `"underline"` (bottom border only).
+   *
+   * @type {keyof typeof SelectGroupVariants.variants}
+   * @default "full"
+   */
+  variant?: keyof typeof SelectGroupVariants.variants;
 };

@@ -7,12 +7,11 @@ export function useSelectItem(props: SelectItemProps) {
     domRef,
     style,
     children,
-    className="",
+    className = "",
     classNames,
     isDisabled,
     ...otherProps
   } = props;
-  
 
   const GetDisabled = useMemo(
     () => {
@@ -27,17 +26,18 @@ export function useSelectItem(props: SelectItemProps) {
     },
     [isDisabled],
   );
-  
 
   const GetSlot = useMemo(
     () => {
-      const yuzuOption = classNames?.yuzuOption ? classNames?.yuzuOption : ""
-        console.log(yuzuOption)
+      const yuzuOption = classNames?.yuzuOption ? classNames?.yuzuOption : "";
+
       return {
-        yuzuOption
-      }
-    },[classNames])
-    
+        yuzuOption,
+      };
+    },
+    [classNames],
+  );
+
   return {
     domRef,
     style,
