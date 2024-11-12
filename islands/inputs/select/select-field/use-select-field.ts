@@ -10,14 +10,15 @@ export function useSelectField(props: SelectGroupProps) {
     className,
     classNames,
     isDisabled,
-    disabledStyles,
     description,
     isError,
-    errorStyles,
+    isRequired,
     color = "default",
     label,
     ...otherProps
   } = props;
+  
+
   const GetColor = useMemo(
     () => {
       return {
@@ -26,31 +27,99 @@ export function useSelectField(props: SelectGroupProps) {
     },
     [color],
   );
+  const GetDisabled = useMemo(
+    () => {
+      if (isDisabled === true) {
+        const disabledStyles = SelectGroupVariants.disabledStyles;
+        return { disabledStyles };
+      } else isDisabled === false;
+      {
+        const disabledStyles = "";
+        return { disabledStyles };
+      }
+    },
+    [isDisabled],
+  );
   const GetSelectFieldProps = useMemo(
     () => {
-      const color = GetColor.color;
+      const disabled = GetDisabled.disabledStyles;
+      const base = SelectGroupVariants.base;
+      console.log(disabled);
       return {
-        className: `${color}`.trim(),
+        className: `${base} ${disabled}`.trim(),
       };
     },
-    [GetColor],
+    [GetColor, GetDisabled],
   );
-  const GetCustomLabel = useMemo(
+  const GetError = useMemo(
     () => {
-      const custom = classNames
-      return custom;
+      if (isError === true) {
+        return {
+          errorStyle: SelectGroupVariants.errorStyles,
+          isError,
+        };
+      } else isError === false;
+      return {
+        errorStyle: "",
+        isError,
+      };
     },
-    [className],
+    [isError],
   );
+  const GetLabel = useMemo(
+    () => {
+      const yuzuLabel = classNames?.yuzuLabel;
+      console.log(SelectGroupVariants.labelRequired);
+      if (isRequired === true) {
+        return {
+          requiredStyle: SelectGroupVariants.labelRequired,
+          label,
+          isRequired,
+          yuzuLabel,
+        };
+      } else isRequired === false;
+      return {
+        requiredStyle: "",
+        label,
+        isRequired,
+        yuzuLabel,
+      };
+    },
+    [label, isRequired, classNames],
+  );
+  const GetDescription = useMemo(
+    () => {
+      return {
+        descriptionStyles: SelectGroupVariants.descriptionStyles,
+        description,
+      };
+    },
+    [description],
+  );
+
+  const GetSlot = useMemo(
+    () => {
+      const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : ""
+      const yuzuBaseDisabled = classNames?.yuzuBaseDisabled ? classNames?.yuzuBaseDisabled : ""
+      const yuzuBaseError = classNames?.yuzuBaseError ? classNames?.yuzuBaseError : ""
+      const yuzuLabel = classNames?.yuzuLabel ? classNames?.yuzuLabel : ""
+      const yuzuDescription = classNames?.yuzuDescription ? classNames?.yuzuDescription :""
+      return {
+        yuzuBase, yuzuBaseDisabled, yuzuBaseError, yuzuDescription, yuzuLabel
+      }
+    },[classNames])
   return {
     domRef,
     style,
     children,
     className,
     GetSelectFieldProps,
-    GetCustomLabel,
-    label,
-    description,
+    GetDescription,
+    GetSlot,
+    isDisabled,
+    GetColor,
+    GetLabel,
+    GetError,
     ...otherProps,
   };
 }

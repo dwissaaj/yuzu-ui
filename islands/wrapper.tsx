@@ -6,7 +6,7 @@ import {
 import SelectGroup from "./inputs/select/select-field/SelectGroup.tsx";
 
 export default function Wrapper() {
-  const fieldsetRef = useRef<HTMLInputElement>(null);
+  const fieldsetRef = useRef<HTMLSelectElement>(null);
 
   useEffect(() => {
     // Check if the fieldset ref is assigned properly
@@ -20,19 +20,30 @@ export default function Wrapper() {
   return (
     <>
       <div class={"w-full flex flex-col gap-2"}>
-        <SelectGroup classNames={{
-          yuzuBase: "bg-red-500"
-        }}  label={'fav fruits'} description="what is your liked">
-        <option name={'fruits'}>orange</option>
-        <option name={'fruits'}>apple</option>
-        </SelectGroup>
-        
-       
+        <div className={"w-1/2"}>
+          <SelectGroup
+            className={"w-72"}
+            classNames={{
+              yuzuBase: "border-2 border-red-500",
+              yuzuLabel: "text-blue-500",
+              yuzuBaseError: "bg-yellow-100",
+              yuzuBaseDisabled: "outline outline-2 outline-offset-2",
+              yuzuDescription: "!text-7xl",
+            }}
+            domRef={fieldsetRef}
+            isDisabled
+            color="primary"
+            label={"fav fruits"}
+            description="what is your liked"
+          >
+            <option name={"fruits"}>orange</option>
+            <option name={"fruits"}>apple</option>
+          </SelectGroup>
+        </div>
       </div>
     </>
   );
 }
-
 
 // <div className={`opacity-50`}>
 // <div className={"bg-red-500"}>

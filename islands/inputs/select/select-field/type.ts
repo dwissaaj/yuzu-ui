@@ -1,17 +1,18 @@
 import type { JSX } from "preact/jsx-runtime";
 import type {
-  CSSProperties,
   Ref,
 } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { SelectGroupVariants } from "./select-field-variants.ts";
-export type SelectGroupSlot = <PartialRecord<
-| "yuzuBase"
-| "yuzuBaseDisabled"
-| "yuzuBaseError"
-| "yuzuLabel"
-| "yuzuDescription",
-string
->>
+export type SelectGroupSlot = Partial<
+  Record<
+    | "yuzuBase"
+    | "yuzuBaseDisabled"
+    | "yuzuBaseError"
+    | "yuzuLabel"
+    | "yuzuDescription",
+    string
+  >
+>;
 
 export type SelectGroupProps = JSX.IntrinsicElements["select"] & {
   /**
@@ -25,8 +26,8 @@ export type SelectGroupProps = JSX.IntrinsicElements["select"] & {
    * @type {string}
    * @default ""
    */
-  className?:  string;
-  classNames?: SelectGroupSlot 
+  className?: string;
+  classNames?: SelectGroupSlot;
 
   children?: JSX.Element | JSX.Element[];
 
@@ -36,15 +37,13 @@ export type SelectGroupProps = JSX.IntrinsicElements["select"] & {
 
   isDisabled?: boolean;
 
-  disabledStyles?: string;
-
   isError?: boolean;
-
-  errorStyles?: string;
+  isRequired?: boolean;
 
   color?: keyof typeof SelectGroupVariants.colors;
-
   label?: string | JSX.Element;
 
   description?: string;
+
+  disabledKeys?: string[];
 };
