@@ -7,23 +7,69 @@ export function useButton(props: ButtonProps) {
     onClick,
     children,
     className = "",
-    style = "",
     isDisabled,
     size = "small",
     spinnerSize = "small",
-    variant = "primary",
+    color = "primary",
+    variant = "border",
     radius = "md",
     isLoading,
     isFullWidth = false,
     ...otherProps
   } = props;
 
+  const GetColor = useMemo(
+    () => {
+      return {
+        color: ButtonVariants.colors[color],
+      };
+    },
+    [color],
+  );
+  const GetVariant = useMemo(
+    () => {
+      return {
+        variant: ButtonVariants.variants[variant],
+      };
+    },
+    [variant],
+  );
+
+  const GetVariantColor = useMemo(
+    () => {
+      
+      if (variant === "solid") {
+        const color = GetColor.color;
+        const variants = GetVariant.variant
+        console.log(variants);
+        return `${variants}${color}`;
+      } else if (variant === "border") {
+        const color = GetColor.color;
+        const variants = ButtonVariants.variants.border;
+        return `${variants}${color}`;
+      } else if (variant === "ghost") {
+        const color = GetColor.color;
+        console.log("coor", color);
+        // const borders = ButtonVariants.variants.border;
+        // const colorbor = borders + color;
+        const variants = ButtonVariants.variants.ghost;
+        
+        const combine = variants + color
+        console.log('type',typeof combine)
+        console.log(combine);
+        return combine.toString()
+      } else {
+        return "";
+      }
+    },
+    [GetColor, GetVariant, variant, color],
+  );
   /**
    * check if button disabled and return the disabled style from variant
    * @default false
    * @return {string} for variant
    */
-  const disabledClass = useMemo(
+  const GetDisabled = useMemo(
     () => (isDisabled ? ButtonVariants.disableStyle : ""),
     [isDisabled],
   );
@@ -63,42 +109,39 @@ export function useButton(props: ButtonProps) {
    */
   const GetButtonProps = useMemo(
     () => {
-      const disableStyle = disabledClass;
-
-      const getvariants = ButtonVariants.variantsStyle[variant];
+      const disabled = GetDisabled;
       const getradius = ButtonVariants.radiusStyle[radius];
       const size = GetSize;
       return {
-        className: ` ${getvariants} ${size} ${getradius} ${disableStyle} $`
+        className: `${size} ${getradius} ${disabled}`
           .trim(),
       };
     },
-    [variant, radius, GetSize],
+    [radius, GetSize],
   );
+
   const GetSpinnerProps = useMemo(
     () => {
       if (isLoading === true) {
-        const size = GetSpinnerSize.sizespin;
-
+        const sizes = GetSpinnerSize.sizespin;
         return {
-          className: `${size} animate-spin`,
+          className: `${sizes} animate-spin`,
         };
       }
     },
     [isLoading, GetSpinnerSize],
   );
-  
+
   return {
     domRef,
     onClick,
     children,
     GetSpinnerProps,
     className,
-    style,
     isDisabled,
-    GetSpinnerSize,
     isLoading,
-
+    GetDisabled,
+    GetVariantColor,
     GetButtonProps,
     ...otherProps,
   };

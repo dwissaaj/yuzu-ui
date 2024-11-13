@@ -10,7 +10,7 @@ export type ButtonSlot = Partial<
   >
 >;
 export type ButtonProps =
-  & Omit<JSX.IntrinsicElements["button"], "size">
+  & Omit<JSX.IntrinsicElements["button"], "size" | "loading">
   & {
     /**
      * Dom Ref for button
@@ -67,7 +67,9 @@ export type ButtonProps =
      * @default "primary"
      * @example {variants: {custom: "bg-yellow-500"}}
      */
-    variant?: keyof typeof ButtonVariants.variantsStyle;
+    variant?: keyof typeof ButtonVariants.variants;
+
+    color?: keyof typeof ButtonVariants.colors;
 
     /**
      * Button radius can be extended in variant file
@@ -85,6 +87,5 @@ export type ButtonProps =
 
     isLoading?: boolean;
 
-    spinner?: JSX.Element;
     spinnerSize?: keyof typeof ButtonVariants.spinnersSizes;
   };

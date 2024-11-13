@@ -23,25 +23,34 @@ export default function Wrapper() {
 
   // Toggle the disabled state with a checkbox
   const toggleDisabled = () => {
-    setIsDisabled((prev) => !prev);
+    console.log("can cliecke");
   };
   return (
     <>
       <div class={"w-full flex flex-col gap-2"}>
-        <div className={"w-full bg-red-500"}>
-          <div>
+        <div className={""}>
+          <div className={`w-full flex flex-col gap-2`}>
             <Button
+              variant="solid"
               form={"name"}
               name={"ass"}
               onClick={toggleDisabled}
-              isLoading={isDisabled}
-              size="small"
+              size="large"
+              color="success"
             >
               asds
             </Button>
-            <Button type={"submit"} size="medium">asds</Button>
-            <Button type={"reset"} size="large">asds</Button>
-            <Button type="button" isFullWidth>asds</Button>
+            <Button
+              variant="ghost"
+              form={"name"}
+              name={"ass"}
+              onClick={toggleDisabled}
+              isLoading={false}
+              size="small"
+              color="error"
+            >
+              ASDF
+            </Button>
           </div>
         </div>
       </div>
