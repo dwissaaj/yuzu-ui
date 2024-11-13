@@ -43,7 +43,7 @@ import type { JSX } from "preact/jsx-runtime";
  * @param {string} [props.yuzuDisableStyle=""] - Custom styles for disabled state (optional).
  * @param {boolean} [props.isFullWidth=false] - Set the button to be full width.
  */
-
+import LoadingSpinner from "../../icon/component/LoadingSpinner.tsx";
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props) => {
   const {
     domRef,
@@ -52,24 +52,30 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props) => {
     className,
     style,
     isDisabled,
-    GetButtonClass,
-    yuzuDisableStyle,
+    isLoading,
     GetButtonProps,
+    GetSpinnerProps,
     ...otherProps
   } = useButton({ ...props });
-
+  const LoadSpinner = (
+    <LoadingSpinner className={`${GetSpinnerProps?.className}`} />
+  );
   return (
-    <button
-      {...otherProps}
-      onClick={onClick}
-      className={`${GetButtonClass.className} ${className} ${yuzuDisableStyle}`}
-      style={style}
-      disabled={isDisabled}
-      ref={domRef}
-      type={`${GetButtonProps}`}
+    <div
+      className={`flex flex-row justify-center items-center gap-4 ${GetButtonProps.className}`}
     >
-      {children}
-    </button>
+      <button
+        {...otherProps}
+        onClick={onClick}
+        className={` ${className} `.trim()}
+        style={style}
+        disabled={isDisabled}
+        ref={domRef}
+      >
+        {children}
+      </button>
+      {isLoading ? LoadSpinner : null}
+    </div>
   );
 });
 

@@ -12,15 +12,26 @@ export const ButtonVariants = {
     md: "rounded-md",
     lg: "rounded-lg",
   },
+  loadingStyle: "brightness-80",
   sizes: {
-    small:
-      "shadow-md py-1 px-4 w-20 hover:brightness-105 transition ease-in-out duration-500",
-    medium:
-      "shadow-lg py-1 px-4 w-32 hover:brightness-105 transition ease-in-out duration-500",
-    large:
-      "shadow-xl py-1 px-4 w-44 hover:brightness-105 transition ease-in-out duration-500",
+    buttons: {
+      small:
+        "shadow-md py-4 px-4 w-28 h-6",
+      medium:
+        "shadow-lg py-5 px-4 w-32 h-8",
+      large:
+        "shadow-xl py-6 px-4 w-44  h-10",
+      full:
+        "shadow-xl py-6 px-4 w-full h-14",
+    },
   },
-
+  spinnersSizes: {
+    small: "w-4 h-4 border-4 border-t-transparent rounded-full",
+    medium: "w-6 h-6 border-4 border-t-transparent rounded-full",
+    large: "w-8 h-5 border-4 border-t-transparent rounded-full",
+  },
+  spinnerStop: "animate-none",
+  spinnerAnimate: "animate-spin",
   variantsStyle: {
     primary:
       "bg-primary active:bg-primary/20 focus:outline-2 focus:outline-primary/80 ",
@@ -31,7 +42,13 @@ export const ButtonVariants = {
       "bg-success active:bg-success/20 focus:outline-2 focus:outline-success/80",
     warning:
       "bg-warning active:bg-warning/20 focus:outline-2 focus:outline-warning/80",
-    custom: "bg-yellow-500",
+  },
+  variants: {
+    solid:
+      "primary active:bg-primary/20 focus:outline-2 focus:outline-primary/80 hover:opacity-80 transition ease-in-out duration-500",
+    flat: "",
+    border: "",
+    ghost: "",
   },
   types: {
     button: "button",

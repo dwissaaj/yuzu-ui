@@ -10,10 +10,10 @@ export function useButton(props: ButtonProps) {
     style = "",
     isDisabled,
     size = "small",
+    spinnerSize = "small",
     variant = "primary",
-    types = "button",
     radius = "md",
-    yuzuDisableStyle = "",
+    isLoading,
     isFullWidth = false,
     ...otherProps
   } = props;
@@ -29,51 +29,76 @@ export function useButton(props: ButtonProps) {
   );
 
   /**
-   * Hook for full width component
-   * @default false
-   */
-  const fullWidthClass = useMemo(() => (isFullWidth ? "w-full" : ""), [
-    isFullWidth,
-  ]);
-
-  /**
    * Hooks for checking the type of the button
    * @returns {string} type  e.g "button"
    */
-  const GetButtonProps = useMemo(() => {
-    return types;
-  }, [types]);
 
+  const GetSpinnerSize = useMemo(
+    () => {
+      const sizespin = ButtonVariants.spinnersSizes[spinnerSize];
+
+      return {
+        sizespin,
+      };
+    },
+    [spinnerSize],
+  );
+
+  const GetSize = useMemo(
+    () => {
+      if (isFullWidth === true) {
+        const full = ButtonVariants.sizes.buttons.full;
+        return full;
+      } else {
+        const sizes = ButtonVariants.sizes.buttons[size];
+        return sizes;
+      }
+    },
+    [size, spinnerSize, isFullWidth],
+  );
   /**
    * @description
    * Hooks for all button className
    * @return {string}
    */
-  const GetButtonClass = useMemo(
+  const GetButtonProps = useMemo(
     () => {
       const disableStyle = disabledClass;
-      const getisFullWidth = fullWidthClass;
+
       const getvariants = ButtonVariants.variantsStyle[variant];
       const getradius = ButtonVariants.radiusStyle[radius];
-      const getsize = ButtonVariants.sizes[size];
+      const size = GetSize;
       return {
-        className:
-          `hover:brightness-105 transition ease-in-out duration-500 ${getvariants} ${getisFullWidth} ${getradius} ${getsize} ${fullWidthClass} ${disableStyle}`
-            .trim(),
+        className: ` ${getvariants} ${size} ${getradius} ${disableStyle} $`
+          .trim(),
       };
     },
-    [variant, radius, size, types],
+    [variant, radius, GetSize],
   );
+  const GetSpinnerProps = useMemo(
+    () => {
+      if (isLoading === true) {
+        const size = GetSpinnerSize.sizespin;
 
+        return {
+          className: `${size} animate-spin`,
+        };
+      }
+    },
+    [isLoading, GetSpinnerSize],
+  );
+  
   return {
     domRef,
     onClick,
     children,
+    GetSpinnerProps,
     className,
     style,
     isDisabled,
-    GetButtonClass,
-    yuzuDisableStyle,
+    GetSpinnerSize,
+    isLoading,
+
     GetButtonProps,
     ...otherProps,
   };
