@@ -1,9 +1,16 @@
 import type { Ref } from "https://esm.sh/v128/preact@10.22.0/hooks/src/index.js";
 import type { JSX } from "preact/jsx-runtime";
 import type { ButtonVariants } from "./button-variant.ts";
-
+export type ButtonSlot = Partial<
+  Record<
+    | "yuzuBase"
+    | "yuzuDisabled"
+    | "yuzuSpinner",
+    string
+  >
+>;
 export type ButtonProps =
-  & Omit<JSX.IntrinsicElements["button"], "size" | "type">
+  & Omit<JSX.IntrinsicElements["button"], "size" | "loading">
   & {
     /**
      * Dom Ref for button
@@ -28,11 +35,12 @@ export type ButtonProps =
      * @type {string} empty string if not provided
      */
     className?: string;
-
     /**
-     * Vanilla CSS type for component
+     * Custom class names for specific parts of the `SelectGroup` component, such as base, label, error, and more.
+     *
+     * @type {SelectGroupSlot}
      */
-    style?: JSX.CSSProperties | string;
+    classNames?: ButtonSlot;
 
     /**
      * Either the button disable or not
@@ -48,7 +56,7 @@ export type ButtonProps =
      * @example
      * size: {extra-large: "w-72 h-42"}
      */
-    size?: keyof typeof ButtonVariants.sizes;
+    size?: keyof typeof ButtonVariants.sizes.buttons;
 
     /**
      * Variant type similar to Tailwinds Variants, can be extended in the
@@ -59,13 +67,9 @@ export type ButtonProps =
      * @default "primary"
      * @example {variants: {custom: "bg-yellow-500"}}
      */
-    variant?: keyof typeof ButtonVariants.variantsStyle;
+    variant?: keyof typeof ButtonVariants.variants;
 
-    /**
-     * Button action type
-     * @default "button"
-     */
-    types?: "button" | "reset" | "submit";
+    color?: keyof typeof ButtonVariants.colors;
 
     /**
      * Button radius can be extended in variant file
@@ -76,15 +80,12 @@ export type ButtonProps =
     radius?: keyof typeof ButtonVariants.radiusStyle;
 
     /**
-     * @see Only use this for hooks or variant
-     * This for styling variant disabled, only use if you know what you are doing better Change styling for disabled is via variant file
-     */
-
-    yuzuDisableStyle?: string;
-
-    /**
      * @default false
      * Should a Button take parent width don't use with size
      */
     isFullWidth?: boolean;
+
+    isLoading?: boolean;
+
+    spinnerSize?: keyof typeof ButtonVariants.spinnersSizes;
   };

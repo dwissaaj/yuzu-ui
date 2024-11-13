@@ -6,10 +6,10 @@ import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $api_joke from "./routes/api/joke.ts";
 import * as $index from "./routes/index.tsx";
-import * as $Accordionsparent from "./islands/Accordionsparent.tsx";
 import * as $global_type from "./islands/global/type.ts";
 import * as $icon_component_ClosePassword from "./islands/icon/component/ClosePassword.tsx";
 import * as $icon_component_Icon from "./islands/icon/component/Icon.tsx";
+import * as $icon_component_LoadingSpinner from "./islands/icon/component/LoadingSpinner.tsx";
 import * as $icon_component_OpenPassword from "./islands/icon/component/OpenPassword.tsx";
 import * as $icon_component_PasswordIcon from "./islands/icon/component/PasswordIcon.tsx";
 import * as $inputs_button_Button from "./islands/inputs/button/Button.tsx";
@@ -71,10 +71,11 @@ const manifest = {
     "./routes/index.tsx": $index,
   },
   islands: {
-    "./islands/Accordionsparent.tsx": $Accordionsparent,
     "./islands/global/type.ts": $global_type,
     "./islands/icon/component/ClosePassword.tsx": $icon_component_ClosePassword,
     "./islands/icon/component/Icon.tsx": $icon_component_Icon,
+    "./islands/icon/component/LoadingSpinner.tsx":
+      $icon_component_LoadingSpinner,
     "./islands/icon/component/OpenPassword.tsx": $icon_component_OpenPassword,
     "./islands/icon/component/PasswordIcon.tsx": $icon_component_PasswordIcon,
     "./islands/inputs/button/Button.tsx": $inputs_button_Button,

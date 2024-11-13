@@ -7,73 +7,141 @@ export function useButton(props: ButtonProps) {
     onClick,
     children,
     className = "",
-    style = "",
     isDisabled,
     size = "small",
-    variant = "primary",
-    types = "button",
+    spinnerSize = "small",
+    color = "primary",
+    variant = "border",
     radius = "md",
-    yuzuDisableStyle = "",
+    isLoading,
     isFullWidth = false,
     ...otherProps
   } = props;
 
+  const GetColor = useMemo(
+    () => {
+      return {
+        color: ButtonVariants.colors[color],
+      };
+    },
+    [color],
+  );
+  const GetVariant = useMemo(
+    () => {
+      return {
+        variant: ButtonVariants.variants[variant],
+      };
+    },
+    [variant],
+  );
+
+  const GetVariantColor = useMemo(
+    () => {
+      
+      if (variant === "solid") {
+        const color = GetColor.color;
+        const variants = GetVariant.variant
+        console.log(variants);
+        return `${variants}${color}`;
+      } else if (variant === "border") {
+        const color = GetColor.color;
+        const variants = ButtonVariants.variants.border;
+        return `${variants}${color}`;
+      } else if (variant === "ghost") {
+        const color = GetColor.color;
+        console.log("coor", color);
+        // const borders = ButtonVariants.variants.border;
+        // const colorbor = borders + color;
+        const variants = ButtonVariants.variants.ghost;
+        
+        const combine = variants + color
+        console.log('type',typeof combine)
+        console.log(combine);
+        return combine.toString()
+      } else {
+        return "";
+      }
+    },
+    [GetColor, GetVariant, variant, color],
+  );
   /**
    * check if button disabled and return the disabled style from variant
    * @default false
    * @return {string} for variant
    */
-  const disabledClass = useMemo(
+  const GetDisabled = useMemo(
     () => (isDisabled ? ButtonVariants.disableStyle : ""),
     [isDisabled],
   );
 
   /**
-   * Hook for full width component
-   * @default false
-   */
-  const fullWidthClass = useMemo(() => (isFullWidth ? "w-full" : ""), [
-    isFullWidth,
-  ]);
-
-  /**
    * Hooks for checking the type of the button
    * @returns {string} type  e.g "button"
    */
-  const GetButtonProps = useMemo(() => {
-    return types;
-  }, [types]);
 
+  const GetSpinnerSize = useMemo(
+    () => {
+      const sizespin = ButtonVariants.spinnersSizes[spinnerSize];
+
+      return {
+        sizespin,
+      };
+    },
+    [spinnerSize],
+  );
+
+  const GetSize = useMemo(
+    () => {
+      if (isFullWidth === true) {
+        const full = ButtonVariants.sizes.buttons.full;
+        return full;
+      } else {
+        const sizes = ButtonVariants.sizes.buttons[size];
+        return sizes;
+      }
+    },
+    [size, spinnerSize, isFullWidth],
+  );
   /**
    * @description
    * Hooks for all button className
    * @return {string}
    */
-  const GetButtonClass = useMemo(
+  const GetButtonProps = useMemo(
     () => {
-      const disableStyle = disabledClass;
-      const getisFullWidth = fullWidthClass;
-      const getvariants = ButtonVariants.variantsStyle[variant];
+      const disabled = GetDisabled;
       const getradius = ButtonVariants.radiusStyle[radius];
-      const getsize = ButtonVariants.sizes[size];
+      const size = GetSize;
       return {
-        className:
-          `hover:brightness-105 transition ease-in-out duration-500 ${getvariants} ${getisFullWidth} ${getradius} ${getsize} ${fullWidthClass} ${disableStyle}`
-            .trim(),
+        className: `${size} ${getradius} ${disabled}`
+          .trim(),
       };
     },
-    [variant, radius, size, types],
+    [radius, GetSize],
+  );
+
+  const GetSpinnerProps = useMemo(
+    () => {
+      if (isLoading === true) {
+        const sizes = GetSpinnerSize.sizespin;
+        return {
+          className: `${sizes} animate-spin`,
+        };
+      }
+    },
+    [isLoading, GetSpinnerSize],
   );
 
   return {
     domRef,
     onClick,
     children,
+    GetSpinnerProps,
     className,
-    style,
     isDisabled,
-    GetButtonClass,
-    yuzuDisableStyle,
+    isLoading,
+    GetDisabled,
+    GetVariantColor,
     GetButtonProps,
     ...otherProps,
   };
