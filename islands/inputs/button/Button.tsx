@@ -47,7 +47,6 @@ import LoadingSpinner from "../../icon/component/LoadingSpinner.tsx";
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props) => {
   const {
     domRef,
-    onClick,
     children,
     className,
     isDisabled,
@@ -55,27 +54,26 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props) => {
     isLoading,
     GetButtonProps,
     GetSpinnerProps,
-    GetVariantColor,
     GetDisabled,
+    GetSlot,
     ...otherProps
   } = useButton({ ...props });
   const LoadSpinner = (
-    <LoadingSpinner className={`${GetSpinnerProps?.className}`} />
+    <LoadingSpinner className={`${GetSpinnerProps?.className} ${GetSlot.yuzuSpinner}`} />
   );
   return (
 <>
 
       <button
       {...otherProps}
-        onClick={onClick}
-        className={`flex flex-row items-center justify-center gap-2 ${className} ${GetDisabled} ${GetButtonProps.className} ${GetVariantButton}`.trim()}
+        className={`flex flex-row items-center justify-center gap-2 ${className} ${GetDisabled} ${GetButtonProps.className} ${GetVariantButton} ${GetSlot.yuzuBase} ${GetSlot.yuzuDisabled}`.trim()}
         disabled={isDisabled}
         ref={domRef}
       >
         {children}
         {isLoading ? LoadSpinner : null}
       </button>
-     
+      
       </>
   );
 });

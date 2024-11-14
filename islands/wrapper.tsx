@@ -36,25 +36,25 @@ export default function Wrapper() {
               onClick={toggleDisabled}
               size="small"
               color="secondary"
-              isLoading={false}
-              isDisabled
+              isLoading
+          
             >
               SUBMIT
             </Button>
             <Button
               variant="border"
               onClick={toggleDisabled}
-              isLoading={false}
+              isLoading={true}
               size="medium"
               color="secondary"
-              isDisabled
+              
             >
               SUBMIT
             </Button>
             <Button
               variant="light"
               onClick={toggleDisabled}
-              isLoading={false}
+              isLoading={true}
               size="large"
               color="secondary"
               
@@ -64,10 +64,10 @@ export default function Wrapper() {
             <Button
               variant="ghost"
               onClick={toggleDisabled}
-              isLoading={false}
+              isLoading={true}
               size="large"
               color="secondary"
-              isDisabled
+              
             >
               GHOST
             </Button>

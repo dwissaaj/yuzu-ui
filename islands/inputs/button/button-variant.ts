@@ -23,9 +23,9 @@ export const ButtonVariants = {
     },
   },
   spinnersSizes: {
-    small: "w-2 h-2 border-1 border-t-transparent rounded-full",
-    medium: "w-4 h-4 border-3 border-t-transparent rounded-full",
-    large: "w-6 h-6 border-5 border-t-transparent rounded-full",
+    small: "w-4 h-4 border-2 border-t-transparent rounded-full",
+    medium: "w-5 h-5 border-4 border-t-transparent rounded-full",
+    large: "w-6 h-6  border-6 border-t-transparent rounded-full",
   },
   variants: {
     solid: "active:scale-95 focus:outline-none transition ease-in-out duration-500",

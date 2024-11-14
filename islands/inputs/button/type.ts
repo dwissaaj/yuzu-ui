@@ -70,7 +70,7 @@ export type ButtonProps =
      * Button radius can be extended in variant file
      * @default "small"
      *
-     * @enum {"sm" | "md" | "lg"}
+     * @enum {"sm" | "md" | "lg |"fullWidth"}
      */
     radius?: keyof typeof ButtonVariants.radiusStyle;
 
@@ -83,4 +83,5 @@ export type ButtonProps =
     isLoading?: boolean;
 
     spinnerSize?: keyof typeof ButtonVariants.spinnersSizes;
+
   };

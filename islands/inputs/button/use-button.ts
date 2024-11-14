@@ -6,6 +6,7 @@ export function useButton(props: ButtonProps) {
     domRef,
     children,
     className = "",
+    classNames,
     isDisabled,
     size = "small",
     spinnerSize = "small",
@@ -55,34 +56,11 @@ export function useButton(props: ButtonProps) {
   };
   const GetVariantButton = useMemo(() => {
     const color = GetColor;
-    const variantStyle = variants[variant] || "";
+    const variantStyle = variants[variant]
     const colorStyles = GetStyle(color, variant);
-  
     return `${variantStyle} ${colorStyles}`.trim();
   }, [GetColor, variant]);
-  const GetVariantColor = useMemo(
-    () => {
-      if (variant === "solid") {
-        const color = GetColor
-        const variants = ButtonVariants.variants.solid
-        console.log(color)
-        return `${variants} hover:bg-${color}/60 bg-${color} active:bg-${color} ` ;
-      } else if (variant === "border") {
-        const color = GetColor;
-        const variants = ButtonVariants.variants.border;
-        return `${variants} border-${color} active:bg-${color}/20`;
-      } else if (variant === "ghost") {
-        const color = GetColor
-        const variants = ButtonVariants.variants.ghost
-        return `${variants} border-${color} text-${color} hover:bg-${color} active:bg-white`
-      } else if(variant === "light") {
-        const color = GetColor
-        const variants = ButtonVariants.variants.light
-        return `${variants} hover:bg-${color}/60 ${variant} text-${color}`
-      }
-    },
-    [GetColor, GetVariant, variant, color],
-  );
+
   /**
    * check if button disabled and return the disabled style from variant
    * @default false
@@ -126,7 +104,7 @@ export function useButton(props: ButtonProps) {
         return sizes;
       }
     },
-    [size, spinnerSize, isFullWidth],
+    [size, isFullWidth],
   );
   /**
    * @description
@@ -150,6 +128,7 @@ export function useButton(props: ButtonProps) {
     () => {
       if (isLoading === true) {
         const sizes = GetSpinnerSize.sizespin;
+        console.log(sizes)
         return {
           className: `${sizes} animate-spin`,
         };
@@ -157,7 +136,20 @@ export function useButton(props: ButtonProps) {
     },
     [isLoading, GetSpinnerSize],
   );
-
+  const GetSlot = useMemo(
+    () => {
+      const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";
+      const yuzuDisabled = GetDisabled ? GetDisabled + classNames?.yuzuDisabled : ""
+      const yuzuSpinner = classNames?.yuzuSpinner ? classNames?.yuzuSpinner : "";
+      console.log(yuzuDisabled)
+      return {
+        yuzuBase,
+        yuzuDisabled,
+        yuzuSpinner
+      };
+    },
+    [classNames],
+  );
   return {
     domRef,
     children,
@@ -167,8 +159,8 @@ export function useButton(props: ButtonProps) {
     isDisabled,
     isLoading,
     GetDisabled,
-    GetVariantColor,
     GetButtonProps,
+    GetSlot,
     ...otherProps,
   };
 }
