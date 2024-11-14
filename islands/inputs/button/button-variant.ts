@@ -5,8 +5,9 @@ Can be extended with more variant
 */
 
 export const ButtonVariants = {
+  baseStyle: "active:scale-95 transition ease-in-out duration-500",
   disableStyle:
-    "disabled:active:opacity-20 active:opacity-20 disabled:opacity-20 cursor-not-allowed ",
+    "disabled:opacity-20 cursor-not-allowed ",
   radiusStyle: {
     sm: "rounded-sm",
     md: "rounded-md",
@@ -15,36 +16,22 @@ export const ButtonVariants = {
   loadingStyle: "brightness-80",
   sizes: {
     buttons: {
-      small: "py-4 px-4 w-28 h-6 transition duration-150 ease-in-out",
-      medium: "py-5 px-4 w-32 h-8 transition duration-150 ease-in-out",
-      large: "py-6 px-4 w-44  h-10 transition duration-150 ease-in-out",
-      full: "py-6 px-4 w-full h-14 transition duration-150 ease-in-out",
+      small: "p-2 w-32",
+      medium: "p-2 w-36",
+      large: "p-2 w-48",
+      full: "p-2 w-full",
     },
   },
   spinnersSizes: {
-    small: "w-4 h-4 border-4 border-t-transparent rounded-full",
-    medium: "w-5 h-5 border-4 border-t-transparent rounded-full",
-    large: "w-8 h-8 border-4 border-t-transparent rounded-full",
+    small: "w-2 h-2 border-1 border-t-transparent rounded-full",
+    medium: "w-4 h-4 border-3 border-t-transparent rounded-full",
+    large: "w-6 h-6 border-5 border-t-transparent rounded-full",
   },
-  spinnerStop: "animate-none transition ease-in-out duration-150",
-  spinnerAnimate: "animate-spin transition ease-in-out duration-150",
-  // variantsStyle: {
-  //   primary:
-  //     "bg-primary active:bg-primary/20 focus:outline-2 focus:outline-primary/80 ",
-  //   secondary:
-  //     "bg-secondary active:bg-secondary/20 focus:outline-2 focus:outline-secondary/80",
-  //   error: "bg-error active:bg-error/20 focus:outline-2 focus:outline-error/80",
-  //   success:
-  //     "bg-success active:bg-success/20 focus:outline-2 focus:outline-success/80",
-  //   warning:
-  //     "bg-warning active:bg-warning/20 focus:outline-2 focus:outline-warning/80",
-  // },
   variants: {
-    solid: "bg-",
-    border: "border-2 border-",
-    light: "hover:bg-",
-    ghost: "hover:bg-",
-    shadow: "shadow-md shadow-white bg-",
+    solid: "active:scale-95 focus:outline-none transition ease-in-out duration-500",
+    border: "active:scale-95 transition ease-in-out duration-500 border-2",
+    light: "active:scale-95 transition ease-in-out duration-500 delay-150",
+    ghost: "active:scale-95 transition ease-in-out duration-500 border-1 hover:text-white",
   },
   colors: {
     primary: "primary",
@@ -53,10 +40,5 @@ export const ButtonVariants = {
     success: "success",
     warning: "warning",
     none: "",
-  },
-  types: {
-    button: "button",
-    reset: "reset",
-    submit: "submit",
   },
 };

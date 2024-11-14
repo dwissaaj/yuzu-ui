@@ -5,6 +5,25 @@ export default {
   content: [
     "{routes,islands,components}/**/*.{ts,tsx,js,jsx}",
   ],
+  safelist: [
+    {
+      pattern: /from-(primary|secondary|success|error|warning)/,
+      variants: ['hover', 'active', 'disabled', 'focus']
+    },
+    {
+      pattern: /to-(primary|secondary|success|error|warning)/,
+      variants: ['hover', 'active', 'disabled', 'focus']
+    },
+    {
+      pattern: /bg-(primary|secondary|success|error|warning)/,
+      variants: ['hover', 'active', 'disabled', 'focus']
+    },
+    {
+      pattern: /ring-(primary|secondary|success|error|warning)/,
+      variants: ['hover', 'active', 'focus']
+    },
+  ],
+  
   theme: {
     extend: {
       animation: {

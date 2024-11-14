@@ -18,11 +18,6 @@ export type ButtonProps =
     domRef?: Ref<HTMLButtonElement>;
 
     /**
-     * Return function void for button
-     */
-    onClick?: () => void;
-
-    /**
      * Take any component for children, can't be used with label
      *
      * @example

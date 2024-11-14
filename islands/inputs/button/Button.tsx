@@ -1,7 +1,7 @@
 import { forwardRef } from "preact/compat";
 import type { ButtonProps } from "./type.ts";
 import { useButton } from "./use-button.ts";
-
+import type { JSX } from "preact/jsx-runtime";
 /**
  * Button component with custom configuration variant
  * @component
@@ -51,6 +51,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props) => {
     children,
     className,
     isDisabled,
+    GetVariantButton,
     isLoading,
     GetButtonProps,
     GetSpinnerProps,
@@ -62,21 +63,20 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props) => {
     <LoadingSpinner className={`${GetSpinnerProps?.className}`} />
   );
   return (
-    <div
-      disabled={isDisabled}
-      className={`flex flex-row justify-center items-center gap-4 ${GetButtonProps.className} ${GetVariantColor}  `}
-    >
+<>
+
       <button
-        {...otherProps}
+      {...otherProps}
         onClick={onClick}
-        className={` ${className} ${GetDisabled}`.trim()}
+        className={`flex flex-row items-center justify-center gap-2 ${className} ${GetDisabled} ${GetButtonProps.className} ${GetVariantButton}`.trim()}
         disabled={isDisabled}
         ref={domRef}
       >
         {children}
+        {isLoading ? LoadSpinner : null}
       </button>
-      {isLoading ? LoadSpinner : null}
-    </div>
+     
+      </>
   );
 });
 

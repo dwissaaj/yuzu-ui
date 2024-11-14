@@ -30,26 +30,46 @@ export default function Wrapper() {
       <div class={"w-full flex flex-col gap-2"}>
         <div className={""}>
           <div className={`w-full flex flex-col gap-2`}>
+        
             <Button
               variant="solid"
-              form={"name"}
-              name={"ass"}
               onClick={toggleDisabled}
-              size="large"
-              color="success"
+              size="small"
+              color="secondary"
+              isLoading={false}
+              isDisabled
             >
-              asds
+              SUBMIT
+            </Button>
+            <Button
+              variant="border"
+              onClick={toggleDisabled}
+              isLoading={false}
+              size="medium"
+              color="secondary"
+              isDisabled
+            >
+              SUBMIT
+            </Button>
+            <Button
+              variant="light"
+              onClick={toggleDisabled}
+              isLoading={false}
+              size="large"
+              color="secondary"
+              
+            >
+              LIGHT
             </Button>
             <Button
               variant="ghost"
-              form={"name"}
-              name={"ass"}
               onClick={toggleDisabled}
               isLoading={false}
-              size="small"
-              color="error"
+              size="large"
+              color="secondary"
+              isDisabled
             >
-              ASDF
+              GHOST
             </Button>
           </div>
         </div>
