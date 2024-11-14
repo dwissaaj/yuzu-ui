@@ -1,7 +1,7 @@
 import { forwardRef } from "preact/compat";
 import type { ButtonProps } from "./type.ts";
 import { useButton } from "./use-button.ts";
-import type { JSX } from "preact/jsx-runtime";
+
 /**
  * Button component with custom configuration variant
  * @component
@@ -9,39 +9,46 @@ import type { JSX } from "preact/jsx-runtime";
  * @example
  * <Button
  *  size = "small",
- *  variant = "primary",
+ *  variant = "solid",
  *  types = "button",
- *  radius = "md" >
+ *  radius = "md"
+ *  endContent={<Home />}
+ * isLoading={false}>
  *    Click Me!!!
  * </Button>
  *
  * @param {Ref<HTMLButtonElement>} props.domRef - The ref for the button element.
- * @param {Function} props.onClick - The click handler for the button.
  * @param {JSX.Element} props.children - The content inside the button.
  * @param {string} [props.className=""] - Additional classes to apply to the button, if no value provided will return empty string
- * @param {JSX.CSSProperties} [props.style] - Inline styles to apply to the button.
  * @param {boolean} [props.isDisabled=false] - Disable the button functionality
  * @param {string} [props.size="small"] - The size of the button can be modified and extended
  * - `small`: Small button
  * - `medium`: Medium button (default)
  * - `large`: Large button
- * @param {string} [props.variant="primary"] - The variant of the button be modified and extended
+ * - `full`: Full parent button
+ * @param {string} [props.color="primary"] - The color of the button be modified and extended
  * - `primary` (default)
  * - `secondary`
  * - `error`
  * - `success`
  * - `warning`
  * - `custom`: your custom variant
- * @param {string} [props.types="button"] - The type of the button. Options are
- * - `button`: Default button type
- * - `reset`: Reset button type
- * - `submit`: Submit button type
+ *  * @param {string} [props.variant="primary"] - The variant of the button and can be extended in hooks and variant
+ * - `solid`: Solid button with background color.
+ * - `border`: Border button with outlined style.
+ * - `ghost`: Transparent background with a border and text color.
+ * - `flat`: Flat button without background, text color only.
  * @param {string} [props.radius="md"] - The radius of the button be modified and extended
  * - `sm`: small radius
  * - `md`: medium radius (default)
  * - `lg`: large radius
- * @param {string} [props.yuzuDisableStyle=""] - Custom styles for disabled state (optional).
- * @param {boolean} [props.isFullWidth=false] - Set the button to be full width.
+ * @param {string} [classNames] - Custom styles for component
+ * - `yuzuBase`: The base classes applied to the button wrapper.
+ * - `yuzuDisabled`: The classes applied when the button is disabled.
+ * - `yuzuSpinner`: The classes applied to the spinner element inside the button when loading.
+ * @param {boolean} [props.isLoading=false] - A flag to indicate if the button is in a loading state.
+ * @param {JSX.Element} [endContent] - Add icon to end of title
+ * @param {JSX.Element} [startContent] - Add icon to start of title
  */
 import LoadingSpinner from "../../icon/component/LoadingSpinner.tsx";
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props) => {
@@ -55,26 +62,31 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props) => {
     GetButtonProps,
     GetSpinnerProps,
     GetDisabled,
+    endContent,
+    startContent,
     GetSlot,
     ...otherProps
   } = useButton({ ...props });
   const LoadSpinner = (
-    <LoadingSpinner className={`${GetSpinnerProps?.className} ${GetSlot.yuzuSpinner}`} />
+    <LoadingSpinner
+      className={`${GetSpinnerProps?.className} ${GetSlot.yuzuSpinner}`}
+    />
   );
   return (
-<>
-
+    <>
       <button
-      {...otherProps}
-        className={`flex flex-row items-center justify-center gap-2 ${className} ${GetDisabled} ${GetButtonProps.className} ${GetVariantButton} ${GetSlot.yuzuBase} ${GetSlot.yuzuDisabled}`.trim()}
+        {...otherProps}
+        className={`flex flex-row items-center justify-center gap-2 ${className} ${GetDisabled} ${GetButtonProps.className} ${GetVariantButton} ${GetSlot.yuzuBase} ${GetSlot.yuzuDisabled}`
+          .trim()}
         disabled={isDisabled}
         ref={domRef}
       >
+        {startContent ? startContent : null}
         {children}
+        {endContent ? endContent : null}
         {isLoading ? LoadSpinner : null}
       </button>
-      
-      </>
+    </>
   );
 });
 

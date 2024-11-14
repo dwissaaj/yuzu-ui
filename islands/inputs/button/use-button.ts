@@ -15,20 +15,22 @@ export function useButton(props: ButtonProps) {
     radius = "md",
     isLoading,
     isFullWidth = false,
+    endContent,
+    startContent,
     ...otherProps
   } = props;
 
   const GetColor = useMemo(
     () => {
-      const colors = ButtonVariants.colors[color]
-      return colors
+      const colors = ButtonVariants.colors[color];
+      return colors;
     },
     [color],
   );
   const GetVariant = useMemo(
     () => {
       return {
-        variant: ButtonVariants.variants
+        variant: ButtonVariants.variants,
       };
     },
     [variant],
@@ -44,10 +46,10 @@ export function useButton(props: ButtonProps) {
       case "ghost":
         return `border-${color} text-${color} hover:text-white disabled:text-white disabled:hover:text-${color} hover:bg-${color} disabled:bg-${color}/50`;
       default:
-        return ""; 
+        return "";
     }
   }
-  const baseStyle = ButtonVariants.baseStyle
+  const baseStyle = ButtonVariants.baseStyle;
   const variants = {
     solid: `${baseStyle} focus:outline-none `,
     border: `${baseStyle} border-2`,
@@ -56,7 +58,7 @@ export function useButton(props: ButtonProps) {
   };
   const GetVariantButton = useMemo(() => {
     const color = GetColor;
-    const variantStyle = variants[variant]
+    const variantStyle = variants[variant];
     const colorStyles = GetStyle(color, variant);
     return `${variantStyle} ${colorStyles}`.trim();
   }, [GetColor, variant]);
@@ -72,15 +74,15 @@ export function useButton(props: ButtonProps) {
   );
 
   /**
-   * Hooks for checking the size of the spinner, can be customized 
+   * Hooks for checking the size of the spinner, can be customized
    * and extended via variant file
-   * @param {string} [spinnerSize="small"] 
+   * @param {string} [spinnerSize="small"]
    * @enum
    * "primary"   | @default
-   * "secondary" | 
-   * "error"     | 
-   * "warning"   | 
-   * "success"   | 
+   * "secondary" |
+   * "error"     |
+   * "warning"   |
+   * "success"   |
    * "Your Variant"
    */
 
@@ -128,7 +130,6 @@ export function useButton(props: ButtonProps) {
     () => {
       if (isLoading === true) {
         const sizes = GetSpinnerSize.sizespin;
-        console.log(sizes)
         return {
           className: `${sizes} animate-spin`,
         };
@@ -139,13 +140,16 @@ export function useButton(props: ButtonProps) {
   const GetSlot = useMemo(
     () => {
       const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";
-      const yuzuDisabled = GetDisabled ? GetDisabled + classNames?.yuzuDisabled : ""
-      const yuzuSpinner = classNames?.yuzuSpinner ? classNames?.yuzuSpinner : "";
-      console.log(yuzuDisabled)
+      const yuzuDisabled = GetDisabled
+        ? GetDisabled + classNames?.yuzuDisabled
+        : "";
+      const yuzuSpinner = classNames?.yuzuSpinner
+        ? classNames?.yuzuSpinner
+        : "";
       return {
         yuzuBase,
         yuzuDisabled,
-        yuzuSpinner
+        yuzuSpinner,
       };
     },
     [classNames],
@@ -160,6 +164,8 @@ export function useButton(props: ButtonProps) {
     isLoading,
     GetDisabled,
     GetButtonProps,
+    endContent,
+    startContent,
     GetSlot,
     ...otherProps,
   };

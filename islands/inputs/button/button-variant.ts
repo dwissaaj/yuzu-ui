@@ -6,8 +6,7 @@ Can be extended with more variant
 
 export const ButtonVariants = {
   baseStyle: "active:scale-95 transition ease-in-out duration-500",
-  disableStyle:
-    "disabled:opacity-20 cursor-not-allowed ",
+  disableStyle: "disabled:opacity-20 cursor-not-allowed ",
   radiusStyle: {
     sm: "rounded-sm",
     md: "rounded-md",
@@ -28,10 +27,12 @@ export const ButtonVariants = {
     large: "w-6 h-6  border-6 border-t-transparent rounded-full",
   },
   variants: {
-    solid: "active:scale-95 focus:outline-none transition ease-in-out duration-500",
+    solid:
+      "active:scale-95 focus:outline-none transition ease-in-out duration-500",
     border: "active:scale-95 transition ease-in-out duration-500 border-2",
     light: "active:scale-95 transition ease-in-out duration-500 delay-150",
-    ghost: "active:scale-95 transition ease-in-out duration-500 border-1 hover:text-white",
+    ghost:
+      "active:scale-95 transition ease-in-out duration-500 border-1 hover:text-white",
   },
   colors: {
     primary: "primary",

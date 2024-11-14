@@ -30,10 +30,11 @@ export type ButtonProps =
      * @type {string} empty string if not provided
      */
     className?: string;
+
     /**
-     * Custom class names for specific parts of the `SelectGroup` component, such as base, label, error, and more.
-     *
-     * @type {SelectGroupSlot}
+     * Custom class names for specific parts of the button.
+     * Use this to style the button's base, disabled state, or spinner individually.
+     * @type {ButtonSlot}
      */
     classNames?: ButtonSlot;
 
@@ -46,7 +47,6 @@ export type ButtonProps =
     /**
      * Customize can be done in button-variants and can be extended with additional size
      * @default small
-     *
      * Add Custom size
      * @example
      * size: {extra-large: "w-72 h-42"}
@@ -76,12 +76,34 @@ export type ButtonProps =
 
     /**
      * @default false
-     * Should a Button take parent width don't use with size
+     * Should a Button take parent width
      */
     isFullWidth?: boolean;
 
+    /**
+     * Indicates whether the button is in a loading state.
+     * When true, a loading spinner will be displayed inside the button.
+     * @default false
+     * @type {boolean}
+     */
     isLoading?: boolean;
 
+    /**
+     * The size of the spinner when the button is loading.
+     * You can select from predefined spinner sizes in the ButtonVariants file.
+     * @type {keyof typeof ButtonVariants.spinnersSizes}
+     */
     spinnerSize?: keyof typeof ButtonVariants.spinnersSizes;
 
+    /**
+     * The content that will be placed after the button text. Can be an icon or other content.
+     * @type {JSX.Element}
+     */
+    endContent?: JSX.Element;
+
+    /**
+     * The content that will be placed before the button text. Can be an icon or other content.
+     * @type {JSX.Element}
+     */
+    startContent?: JSX.Element;
   };
