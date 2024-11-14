@@ -4,9 +4,9 @@ import { ButtonVariants } from "./button-variant.ts";
 export function useButton(props: ButtonProps) {
   const {
     domRef,
-    onClick,
     children,
     className = "",
+    classNames,
     isDisabled,
     size = "small",
     spinnerSize = "small",
@@ -15,55 +15,43 @@ export function useButton(props: ButtonProps) {
     radius = "md",
     isLoading,
     isFullWidth = false,
+    endContent,
+    startContent,
     ...otherProps
   } = props;
 
   const GetColor = useMemo(
     () => {
-      return {
-        color: ButtonVariants.colors[color],
-      };
+      const colors = ButtonVariants.colors[color];
+      return colors;
     },
     [color],
   );
   const GetVariant = useMemo(
     () => {
       return {
-        variant: ButtonVariants.variants[variant],
+        variant: ButtonVariants.variants,
       };
     },
     [variant],
   );
 
-  const GetVariantColor = useMemo(
+
+  const GetVariantNew = useMemo(
     () => {
-      
-      if (variant === "solid") {
-        const color = GetColor.color;
-        const variants = GetVariant.variant
-        console.log(variants);
-        return `${variants}${color}`;
-      } else if (variant === "border") {
-        const color = GetColor.color;
-        const variants = ButtonVariants.variants.border;
-        return `${variants}${color}`;
-      } else if (variant === "ghost") {
-        const color = GetColor.color;
-        console.log("coor", color);
-        // const borders = ButtonVariants.variants.border;
-        // const colorbor = borders + color;
-        const variants = ButtonVariants.variants.ghost;
-        
-        const combine = variants + color
-        console.log('type',typeof combine)
-        console.log(combine);
-        return combine.toString()
-      } else {
-        return "";
+      const variants = ButtonVariants.variants[variant](color)
+      console.log(variants)
+      return {
+        variants 
       }
-    },
-    [GetColor, GetVariant, variant, color],
-  );
+    },[variant])
+  const GetVariantButton = useMemo(() => {
+    const variantStyle = GetVariantNew.variants
+    console.log(variantStyle)
+
+    return `${variantStyle}`.trim();
+  }, [GetColor, variant]);
+
   /**
    * check if button disabled and return the disabled style from variant
    * @default false
@@ -75,14 +63,21 @@ export function useButton(props: ButtonProps) {
   );
 
   /**
-   * Hooks for checking the type of the button
-   * @returns {string} type  e.g "button"
+   * Hooks for checking the size of the spinner, can be customized
+   * and extended via variant file
+   * @param {string} [spinnerSize="small"]
+   * @enum
+   * "primary"   | @default
+   * "secondary" |
+   * "error"     |
+   * "warning"   |
+   * "success"   |
+   * "Your Variant"
    */
 
   const GetSpinnerSize = useMemo(
     () => {
       const sizespin = ButtonVariants.spinnersSizes[spinnerSize];
-
       return {
         sizespin,
       };
@@ -100,7 +95,7 @@ export function useButton(props: ButtonProps) {
         return sizes;
       }
     },
-    [size, spinnerSize, isFullWidth],
+    [size, isFullWidth],
   );
   /**
    * @description
@@ -117,7 +112,7 @@ export function useButton(props: ButtonProps) {
           .trim(),
       };
     },
-    [radius, GetSize],
+    [radius, GetSize, GetDisabled, color, GetColor, GetVariant, variant],
   );
 
   const GetSpinnerProps = useMemo(
@@ -131,18 +126,36 @@ export function useButton(props: ButtonProps) {
     },
     [isLoading, GetSpinnerSize],
   );
-
+  const GetSlot = useMemo(
+    () => {
+      const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";
+      const yuzuDisabled = GetDisabled
+        ? GetDisabled + classNames?.yuzuDisabled
+        : "";
+      const yuzuSpinner = classNames?.yuzuSpinner
+        ? classNames?.yuzuSpinner
+        : "";
+      return {
+        yuzuBase,
+        yuzuDisabled,
+        yuzuSpinner,
+      };
+    },
+    [classNames],
+  );
   return {
     domRef,
-    onClick,
     children,
     GetSpinnerProps,
     className,
+    GetVariantButton,
     isDisabled,
     isLoading,
     GetDisabled,
-    GetVariantColor,
     GetButtonProps,
+    endContent,
+    startContent,
+    GetSlot,
     ...otherProps,
   };
 }

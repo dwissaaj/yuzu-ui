@@ -7,9 +7,10 @@ import {
 import SelectGroup from "./inputs/select/select-field/SelectGroup.tsx";
 import SelectItem from "./inputs/select/select-item/SelectItem.tsx";
 import Button from "./inputs/button/Button.tsx";
+import Home from "./icon/component/Home.tsx";
 
 export default function Wrapper() {
-  const fieldsetRef = useRef<HTMLSelectElement>(null);
+  const fieldsetRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     // Check if the fieldset ref is assigned properly
@@ -32,24 +33,41 @@ export default function Wrapper() {
           <div className={`w-full flex flex-col gap-2`}>
             <Button
               variant="solid"
-              form={"name"}
-              name={"ass"}
               onClick={toggleDisabled}
-              size="large"
-              color="success"
+              size="small"
+              color="secondary"
+              endContent={<Home />}
+              domRef={fieldsetRef}
             >
-              asds
+              SUBMIT
+            </Button>
+            <Button
+              variant="border"
+              onClick={toggleDisabled}
+              isLoading={true}
+              size="medium"
+              color="secondary"
+            >
+              SUBMIT
+            </Button>
+            <Button
+              variant="light"
+              onClick={toggleDisabled}
+              isLoading={true}
+              size="large"
+              color="secondary"
+            >
+              LIGHT
             </Button>
             <Button
               variant="ghost"
-              form={"name"}
-              name={"ass"}
               onClick={toggleDisabled}
-              isLoading={false}
-              size="small"
-              color="error"
+              isLoading={true}
+              size="large"
+              color="secondary"
+              
             >
-              ASDF
+              GHOST
             </Button>
           </div>
         </div>

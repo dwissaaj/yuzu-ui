@@ -8,6 +8,7 @@ import * as $api_joke from "./routes/api/joke.ts";
 import * as $index from "./routes/index.tsx";
 import * as $global_type from "./islands/global/type.ts";
 import * as $icon_component_ClosePassword from "./islands/icon/component/ClosePassword.tsx";
+import * as $icon_component_Home from "./islands/icon/component/Home.tsx";
 import * as $icon_component_Icon from "./islands/icon/component/Icon.tsx";
 import * as $icon_component_LoadingSpinner from "./islands/icon/component/LoadingSpinner.tsx";
 import * as $icon_component_OpenPassword from "./islands/icon/component/OpenPassword.tsx";
@@ -73,6 +74,7 @@ const manifest = {
   islands: {
     "./islands/global/type.ts": $global_type,
     "./islands/icon/component/ClosePassword.tsx": $icon_component_ClosePassword,
+    "./islands/icon/component/Home.tsx": $icon_component_Home,
     "./islands/icon/component/Icon.tsx": $icon_component_Icon,
     "./islands/icon/component/LoadingSpinner.tsx":
       $icon_component_LoadingSpinner,
