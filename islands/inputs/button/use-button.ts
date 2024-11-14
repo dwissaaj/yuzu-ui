@@ -35,32 +35,21 @@ export function useButton(props: ButtonProps) {
     },
     [variant],
   );
-  function GetStyle(color: string, variant: string) {
-    switch (variant) {
-      case "solid":
-        return `hover:bg-${color}/60 bg-${color} active:bg-${color} disabled:bg-${color}/60 disabled:hover:bg-${color}/60`;
-      case "border":
-        return `border-${color} active:bg-${color}/20`;
-      case "light":
-        return `hover:bg-${color}/60 text-${color}-200`;
-      case "ghost":
-        return `border-${color} text-${color} hover:text-white disabled:text-white disabled:hover:text-${color} hover:bg-${color} disabled:bg-${color}/50`;
-      default:
-        return "";
-    }
-  }
-  const baseStyle = ButtonVariants.baseStyle;
-  const variants = {
-    solid: `${baseStyle} focus:outline-none `,
-    border: `${baseStyle} border-2`,
-    light: `${baseStyle} delay-150`,
-    ghost: `${baseStyle} border-2`,
-  };
+
+
+  const GetVariantNew = useMemo(
+    () => {
+      const variants = ButtonVariants.variants[variant](color)
+      console.log(variants)
+      return {
+        variants 
+      }
+    },[variant])
   const GetVariantButton = useMemo(() => {
-    const color = GetColor;
-    const variantStyle = variants[variant];
-    const colorStyles = GetStyle(color, variant);
-    return `${variantStyle} ${colorStyles}`.trim();
+    const variantStyle = GetVariantNew.variants
+    console.log(variantStyle)
+
+    return `${variantStyle}`.trim();
   }, [GetColor, variant]);
 
   /**

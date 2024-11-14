@@ -65,6 +65,7 @@ export default function Wrapper() {
               isLoading={true}
               size="large"
               color="secondary"
+              
             >
               GHOST
             </Button>
