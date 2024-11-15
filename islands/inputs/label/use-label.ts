@@ -9,15 +9,12 @@ export function useLabel(props: LabelProps) {
     children,
     fontSize = "small",
     fontColor = "none",
-    style = "",
     className = "",
     fontWeight = "medium",
     isDisabled = false,
     isReadonly = false,
     isRequired = false,
-    yuzuFontReadonly = "",
-    yuzuFontDisabled = "",
-    yuzuFontRequired = "",
+    classNames,
     ...otherProps
   } = props;
   const getColors = useMemo(
@@ -38,49 +35,19 @@ export function useLabel(props: LabelProps) {
     },
     [fontWeight],
   );
-  const getReadonly = useMemo(
-    () => {
-      if (isReadonly === true) {
-        const isReadonly = true;
-        const fontReadonly = LabelVariants.fontReadonly;
-        return { isReadonly, fontReadonly };
-      } else if (isDisabled === false) {
-        const isReadonly = false;
-        const fontReadonly = "";
-        return { fontReadonly, isReadonly };
-      }
-    },
-    [isReadonly],
-  );
-  const getRequired = useMemo(
-    () => {
-      if (isRequired === true) {
-        const isRequired = true;
-        const requiredClass = LabelVariants.fontRequired;
-        return { isRequired, requiredClass };
-      } else if (isDisabled === false) {
-        const isRequired = false;
-        const requiredClass = "";
-        return { isRequired, requiredClass };
-      }
-    },
-    [isRequired],
-  );
+  const getReadonly = useMemo(() => {
+    const fontReadonly = isReadonly ? LabelVariants.fontReadonly : "";
+    return { isReadonly, fontReadonly };
+  }, [isReadonly]);
+  const getRequired = useMemo(() => {
+    const requiredClass = isRequired ? LabelVariants.fontRequired : "";
+    return { isRequired, requiredClass };
+  }, [isRequired]);
 
-  const getDisabled = useMemo(
-    () => {
-      if (isDisabled === true) {
-        const isDisabled = true;
-        const disabledClass = LabelVariants.fontDisabled;
-        return { isDisabled, disabledClass };
-      } else if (isDisabled === false) {
-        const isDisabled = false;
-        const disabledClass = "";
-        return { isDisabled, disabledClass };
-      }
-    },
-    [isDisabled],
-  );
+  const getDisabled = useMemo(() => {
+    const disabledClass = isDisabled ? LabelVariants.fontDisabled : "";
+    return { isDisabled, disabledClass };
+  }, [isDisabled]);
 
   const GetLabelProps = useMemo(
     () => {
@@ -99,19 +66,46 @@ export function useLabel(props: LabelProps) {
     [fontColor, fontSize, fontWeight],
   );
 
+  const GetSlot = useMemo(
+    () => {
+      const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";
+      const yuzuLabelDisabled = getDisabled.isDisabled ? classNames?.yuzuLabelDisabled  : "";
+      const yuzuLabelReadonly = getReadonly.isReadonly ? classNames?.yuzuLabelReadonly : "";
+      const yuzuLabelRequired = getRequired.isRequired ? classNames?.yuzuLabelRequired : "";
+      return {
+        yuzuBase,
+        yuzuLabelDisabled,
+        yuzuLabelReadonly,
+        yuzuLabelRequired,
+      };
+    },
+    [classNames],
+  );
+  const CheckRender = useMemo(
+    () => {
+      if (label && children) {
+        throw new Error("Only Support one, Pick: children as JSX Element or label as string, not both.");
+      }
+      if (children) {
+        return children;
+      }
+      if (label) {
+        return label;
+      }
+      return new Error("Children or Label not Specified");
+     
+    }, [children, label])
   return {
     domRef,
     label,
     children,
-    style,
     GetLabelProps,
     className,
+    CheckRender,
     isReadonly,
     isRequired,
     isDisabled,
-    yuzuFontReadonly,
-    yuzuFontDisabled,
-    yuzuFontRequired,
+    GetSlot,
     ...otherProps,
   };
 }

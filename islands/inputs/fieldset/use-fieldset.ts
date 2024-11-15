@@ -1,7 +1,7 @@
 import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
 import type { FieldsetProps } from "./type.ts";
 import { FieldsetVariants } from "./fieldset-variants.ts";
-import type { JSX } from "preact/jsx-runtime";
+
 
 export function useFieldset(props: FieldsetProps) {
   const {
@@ -14,8 +14,8 @@ export function useFieldset(props: FieldsetProps) {
     fieldsetColor = "primary",
     fieldsetVariant = "underline",
     isDisabled,
+    classNames,
     label,
-    yuzuDisableStyle = "",
     ...otherProps
   } = props;
 
@@ -72,7 +72,12 @@ export function useFieldset(props: FieldsetProps) {
         className: `${color} ${variant} ${direction} ${disabled}`.trim(),
       };
     },
-    [fieldsetDirection, fieldsetColor, fieldsetVariant],
+    [
+      GetFieldsetColor,
+      GetFieldsetVariant,
+      GetFieldsetDirection,
+      GetDisabledStyle,
+    ],
   );
 
   const GetFieldsetProps = useMemo(
@@ -83,6 +88,22 @@ export function useFieldset(props: FieldsetProps) {
     },
     [isDisabled],
   );
+  const GetSlot = useMemo(
+    () => {
+      const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";
+      const yuzuLabel = classNames?.yuzuLabel ? classNames?.yuzuLabel : "";
+      const yuzuBaseDisabled = isDisabled ? classNames?.yuzuLabel : "";
+      const yuzuLabelDisabled = isDisabled ? classNames?.yuzuLabelDisabled : "";
+
+      return {
+        yuzuBase,
+        yuzuLabel,
+        yuzuLabelDisabled,
+        yuzuBaseDisabled,
+      };
+    },
+    [classNames, isDisabled],
+  );
   return {
     domRef,
     style,
@@ -91,8 +112,8 @@ export function useFieldset(props: FieldsetProps) {
     GetFieldsetClass,
     GetLabelVariant,
     GetFieldsetProps,
-    yuzuDisableStyle,
     isDisabled,
+    GetSlot,
     ...otherProps,
   };
 }
