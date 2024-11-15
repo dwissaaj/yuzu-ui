@@ -3,11 +3,9 @@ import {
   useRef,
   useState,
 } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
-
-import SelectGroup from "./inputs/select/select-field/SelectGroup.tsx";
-import SelectItem from "./inputs/select/select-item/SelectItem.tsx";
 import Button from "./inputs/button/Button.tsx";
 import Home from "./icon/component/Home.tsx";
+import Checkbox from "./inputs/checkbox/Checkbox.tsx";
 
 export default function Wrapper() {
   const fieldsetRef = useRef<HTMLButtonElement>(null);
@@ -31,43 +29,31 @@ export default function Wrapper() {
       <div class={"w-full flex flex-col gap-2"}>
         <div className={""}>
           <div className={`w-full flex flex-col gap-2`}>
+            <Checkbox
+              isDisabled={false}
+              labelPosition="bottom"
+              name={"data"}
+              id={"name"}
+              label={"did you agree?"}
+              boxSize="small"
+              indeterminate
+              classNames={{
+                yuzuLabelDisabled: "bg-red-500",
+                yuzuInputDisabled: "outline-4 outline-green-300",
+                yuzuBaseDisabled: "ring-4 ring-red-500 bg-red-500",
+                yuzuBase: "bg-blue-100",
+                yuzuInput: "ring ring-red-300",
+                yuzuLabel: "font-bold",
+              }}
+            />
             <Button
-              variant="solid"
-              onClick={toggleDisabled}
-              size="small"
-              color="secondary"
-              endContent={<Home />}
-              domRef={fieldsetRef}
+              isDisabled={true}
+              classNames={{
+                yuzuBase: "bg-red-500",
+                yuzuDisabled: "disabled:ring-2 disabled:ring-yellow-500",
+              }}
             >
-              SUBMIT
-            </Button>
-            <Button
-              variant="border"
-              onClick={toggleDisabled}
-              isLoading={true}
-              size="medium"
-              color="secondary"
-            >
-              SUBMIT
-            </Button>
-            <Button
-              variant="light"
-              onClick={toggleDisabled}
-              isLoading={true}
-              size="large"
-              color="secondary"
-            >
-              LIGHT
-            </Button>
-            <Button
-              variant="ghost"
-              onClick={toggleDisabled}
-              isLoading={true}
-              size="large"
-              color="secondary"
-              
-            >
-              GHOST
+              Submit
             </Button>
           </div>
         </div>

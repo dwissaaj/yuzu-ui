@@ -3,6 +3,18 @@ import type {
   Ref,
 } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { CheckboxVariants } from "./checkbox-variants.ts";
+
+export type CheckboxSlot = Partial<
+  Record<
+    | "yuzuBase"
+    | "yuzuBaseDisabled"
+    | "yuzuLabel"
+    | "yuzuLabelDisabled"
+    | "yuzuInput"
+    | "yuzuInputDisabled",
+    string
+  >
+>;
 export type CheckboxProps =
   & Omit<JSX.IntrinsicElements["input"], "size" | "color">
   & {
@@ -19,22 +31,6 @@ export type CheckboxProps =
     isDisabled?: boolean;
 
     /**
-     * custom style access for disable but for better result and to prevent error change the style to variant file
-     */
-    yuzudisableBoxStyle?: string;
-
-    /**
-     * custom style access for disable but for better result and to prevent error change the style to variant file
-     */
-    yuzudisabledTitleStyle?: string;
-
-    /**
-     * Input checked or not
-     * @default false
-     */
-    isIndeterminate?: boolean;
-
-    /**
      * Take any component for children, can't be used with label
      *
      * @example
@@ -48,6 +44,7 @@ export type CheckboxProps =
      */
     className?: string;
 
+    classNames?: CheckboxSlot;
     /**
      * Position between label and box
      *

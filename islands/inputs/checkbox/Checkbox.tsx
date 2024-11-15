@@ -23,7 +23,6 @@ import { useCheckbox } from "./use-checkbox.ts";
  *
  * @param {Ref<HTMLInputElement>} props.domRef - The ref for the button element.
  * @param {string} [props.className=""] - Additional classes to apply to the button, if no value provided will return empty string
- * @param {JSX.CSSProperties} [props.style=""] - Inline styles to apply to the button, if no value provided will return empty string
  * @param {string} [boxSize="medium"] - Size of the checkbox box. Possible values are:
  *   - `"small"`
  *   - `"medium"`  (default)
@@ -54,12 +53,13 @@ import { useCheckbox } from "./use-checkbox.ts";
  *   - `"medium"`
  *   - `"large"`
  * @param {boolean} [isDisabled=false] - Whether the checkbox is disabled or not.
- * @param {boolean} [isIndeterminate=false] - is checbox checked or not
- * @param {string} [className=""] - A classnames override to div parent, if no called will return empty string
- * @param {string} [yuzudisabledTitleStyle=""] - Override disabled for title/label
- *
- * @param {string} [yuzudisableBoxStyle=""] - Override disabled for box
- *
+ * @param {string} [classNames] - Custom styles for component
+ * - `yuzuBase`: The base classes applied to the button wrapper.
+ * - `yuzuBaseDisabled`: The base classes applied to the wrapper when disabled
+ * - `yuzuInputDisabled`: The classes applied when the button is disabled.
+ * - `yuzuInput`: The classes applied to the input element inside the wrapper
+ * - `yuzuLabel`: The classes applied to the label
+ * - `yuzuLabelDisabled`: The classes applied when the label is disabled.
  * @returns {JSX.Element} - Return JSX Element accept any props from input
  */
 
@@ -67,41 +67,41 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
   const {
     domRef,
     children,
-    className,
-    GetLabelClass,
+    GetLabelStyle,
     GetBoxStyle,
-    yuzudisabledTitleStyle,
-    yuzudisableBoxStyle,
-    GetDisabledClass,
+    className,
     GetCheckboxProps,
-    isIndeterminate,
+    GetWrapperStyle,
+    label,
+    GetSlot,
     ...otherProps
   } = useCheckbox({ ...props });
   const InputWrapper = (
     <input
       {...otherProps}
-      className={`${GetBoxStyle.className} ${yuzudisableBoxStyle} `}
+      className={`${className} ${GetBoxStyle.className} ${GetSlot.yuzuInput} ${GetSlot.yuzuInputDisabled}`}
       ref={domRef}
-      indeterminate={isIndeterminate}
       disabled={GetCheckboxProps.isDisabled}
       type={"checkbox"}
     />
   );
   const LabelWrapper = (
     <label
-      disabled={GetCheckboxProps?.isDisabled}
-      className={`${GetLabelClass.className} ${yuzudisabledTitleStyle}`}
+      disabled={GetCheckboxProps.isDisabled}
+      className={`${GetLabelStyle.className} ${GetSlot.yuzuLabel} ${GetSlot.yuzuLabelDisabled}`
+        .trim()}
     >
-      {GetLabelClass.label}
+      {label}
     </label>
   );
 
   const rightWrapper = useMemo(() => {
-    if (GetLabelClass.labelPosition === "right") {
+    if (GetLabelStyle.labelPosition === "right") {
       return (
         <div
-          className={`${className} ${GetDisabledClass?.getParentStyle} flex flex-col gap-2 items-center
-   `}
+          disabled={GetCheckboxProps.isDisabled}
+          className={`${GetWrapperStyle.className} ${GetSlot.yuzuBase} ${GetSlot.yuzuBaseDisabled} flex flex-col gap-2 items-center
+   `.trim()}
         >
           {children}
           {InputWrapper}
@@ -109,13 +109,14 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
         </div>
       );
     }
-  }, [GetLabelClass.labelPosition]);
+  }, [GetLabelStyle.labelPosition]);
   const leftWrapper = useMemo(() => {
-    if (GetLabelClass.labelPosition === "left") {
+    if (GetLabelStyle.labelPosition === "left") {
       return (
         <div
-          className={`${className} ${GetDisabledClass?.getParentStyle} flex flex-col gap-2 items-center
-   `}
+          disabled={GetCheckboxProps.isDisabled}
+          className={`${GetWrapperStyle.className} ${GetSlot.yuzuBase} ${GetSlot.yuzuBaseDisabled} flex flex-col gap-2 items-center
+   `.trim()}
         >
           {children}
           {LabelWrapper}
@@ -123,13 +124,14 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
         </div>
       );
     }
-  }, [GetLabelClass.labelPosition]);
+  }, [GetLabelStyle.labelPosition]);
   const topWrapper = useMemo(() => {
-    if (GetLabelClass.labelPosition === "top") {
+    if (GetLabelStyle.labelPosition === "top") {
       return (
         <div
-          className={`${className} ${GetDisabledClass?.getParentStyle} flex flex-col gap-2 items-center
-   `}
+          disabled={GetCheckboxProps.isDisabled}
+          className={`${GetWrapperStyle.className} ${GetSlot.yuzuBase} ${GetSlot.yuzuBaseDisabled} flex flex-col gap-2 items-center
+   `.trim()}
         >
           {children}
           {LabelWrapper}
@@ -137,13 +139,14 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
         </div>
       );
     }
-  }, [GetLabelClass.labelPosition]);
+  }, [GetLabelStyle.labelPosition]);
   const bottomWrapper = useMemo(() => {
-    if (GetLabelClass.labelPosition === "bottom") {
+    if (GetLabelStyle.labelPosition === "bottom") {
       return (
         <div
-          className={`${className} ${GetDisabledClass?.getParentStyle} flex flex-col gap-2 items-center
-   `}
+          disabled={GetCheckboxProps.isDisabled}
+          className={`${GetWrapperStyle.className} ${GetSlot.yuzuBase} ${GetSlot.yuzuBaseDisabled} flex flex-col gap-2 items-center
+   `.trim()}
         >
           {children}
           {InputWrapper}
@@ -151,7 +154,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
         </div>
       );
     }
-  }, [GetLabelClass.labelPosition]);
+  }, [GetLabelStyle.labelPosition]);
   return (
     <>
       {leftWrapper && leftWrapper}
