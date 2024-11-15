@@ -35,7 +35,11 @@ import { useFieldset } from "./use-fieldset.ts";
  *   - `"full"`
  * @param {boolean} [isDisabled] - If `true`, the fieldset and its contents will be disabled.
  * @param {string} label - The text content for the Fieldset's label.
- * @param {string} [yuzuDisableStyle] - Custom class name to override the default disabled styles. Use with caution and prefer changing styles via variants.
+ * @param {string} [classNames={{}}] - Custom styles for component
+ * - `yuzuBase`: The base classes applied to the button wrapper.
+ * - `yuzuBaseDisabled`: The base classes applied to the wrapper when disabled
+ * - `yuzuLabel`: The classes applied to the label
+ * - `yuzuLabelDisabled`: The classes applied when the label is disabled.
  */
 const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>((props) => {
   const {

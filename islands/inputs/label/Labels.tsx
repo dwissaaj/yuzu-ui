@@ -29,36 +29,37 @@ import { useLabel } from "./use-label.ts";
  * @param {boolean} [isRequired=false] - Should a label contain asterik for required
  * @param {boolean} [isReadonly=false] - Should a label only read state
  * @param {boolean} [isDisabled=false] - Should a label disabled state
- * @param {string} [yuzuFontReadonly=""] - override styling disabled, better to change in variant file, if no provded will return empty string
- *  * @param {string} [yuzuFontDisabled=""] - override styling disabled, better to change in variant file
- *  * @param {string} [yuzuFontRequired=""] - override styling disabled, better to change in variant file
+ * @param {string} [classNames={{}}] - Custom styles for component
+ * - `yuzuBase`: The base classes applied to the button wrapper.
+ * - `yuzuLabelDisabled`: The base classes applied to the label when disabled
+ * - `yuzuLabelRequired`: The classes applied to the label when required state
+ * - `yuzuLabelReadonly`: The classes applied when the label is readonly.
+ *
  * @return {JSX.Element}
  */
 
 const Label = forwardRef<HTMLLabelElement, LabelProps>((props) => {
   const {
     domRef,
-    label,
     className,
-    children,
-    style,
+    GetSlot,
     GetLabelProps,
-    yuzuFontReadonly,
-    yuzuFontDisabled,
-    yuzuFontRequired,
+    CheckRender,
     ...otherProps
   } = useLabel({ ...props });
 
+  if (CheckRender instanceof Error) {
+    throw CheckRender; 
+  }
+  
   return (
     <label
       {...otherProps}
-      style={style}
       ref={domRef}
       className={`${className} ${GetLabelProps.className}
-      ${yuzuFontDisabled} ${yuzuFontReadonly} ${yuzuFontRequired}`}
+     ${GetSlot.yuzuBase} ${GetSlot.yuzuLabelDisabled} ${GetSlot.yuzuLabelReadonly} ${GetSlot.yuzuLabelRequired}`.trim()}
     >
-      {label}
-      {children}
+      {CheckRender}
     </label>
   );
 });

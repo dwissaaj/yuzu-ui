@@ -3,6 +3,15 @@ import type {
   Ref,
 } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { LabelVariants } from "./label-variant.ts";
+export type LabelSlot = Partial<
+  Record<
+  |"yuzuBase"
+    | "yuzuLabelRequired"
+    | "yuzuLabelReadonly"
+    | "yuzuLabelDisabled",
+    string
+  >
+>;
 export type LabelProps = JSX.IntrinsicElements["label"] & {
   /**
    * Dom ref
@@ -19,15 +28,12 @@ export type LabelProps = JSX.IntrinsicElements["label"] & {
    */
   className?: string;
 
-  /**
-   * Add children to label
-   */
-  children?: JSX.Element | string;
+  classNames?: LabelSlot
 
   /**
-   * Native style label
-   */
-  style?: JSX.CSSProperties;
+   * Add children to label
+   */ 
+  children?: JSX.Element | string
 
   /**
    * Label size, configuration can be custom to label-variant
@@ -44,20 +50,6 @@ export type LabelProps = JSX.IntrinsicElements["label"] & {
    */
   fontWeight?: keyof typeof LabelVariants.fontWeights;
 
-  /**
-   * Readonly class
-   */
-  yuzuFontReadonly?: string;
-
-  /**
-   * Required class for label
-   */
-  yuzuFontRequired?: string;
-
-  /**
-   * Required class for label
-   */
-  yuzuFontDisabled?: string;
 
   /**
    * the label state readonly

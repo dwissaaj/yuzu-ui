@@ -73,9 +73,13 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
     GetCheckboxProps,
     GetWrapperStyle,
     label,
+    CheckRender,
     GetSlot,
     ...otherProps
   } = useCheckbox({ ...props });
+  if (CheckRender instanceof Error) {
+    throw CheckRender; 
+  }
   const InputWrapper = (
     <input
       {...otherProps}
@@ -100,12 +104,12 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
       return (
         <div
           disabled={GetCheckboxProps.isDisabled}
-          className={`${GetWrapperStyle.className} ${GetSlot.yuzuBase} ${GetSlot.yuzuBaseDisabled} flex flex-col gap-2 items-center
+          className={`flex flex-row gap-2 items-center ${GetWrapperStyle.className} ${GetSlot.yuzuBase} ${GetSlot.yuzuBaseDisabled} 
    `.trim()}
         >
-          {children}
+          
           {InputWrapper}
-          {LabelWrapper}
+          {children || LabelWrapper}
         </div>
       );
     }
@@ -115,11 +119,10 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
       return (
         <div
           disabled={GetCheckboxProps.isDisabled}
-          className={`${GetWrapperStyle.className} ${GetSlot.yuzuBase} ${GetSlot.yuzuBaseDisabled} flex flex-col gap-2 items-center
+          className={`flex flex-row gap-2 items-center ${GetWrapperStyle.className} ${GetSlot.yuzuBase} ${GetSlot.yuzuBaseDisabled} x
    `.trim()}
         >
-          {children}
-          {LabelWrapper}
+          {children || LabelWrapper}
           {InputWrapper}
         </div>
       );
@@ -130,11 +133,10 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
       return (
         <div
           disabled={GetCheckboxProps.isDisabled}
-          className={`${GetWrapperStyle.className} ${GetSlot.yuzuBase} ${GetSlot.yuzuBaseDisabled} flex flex-col gap-2 items-center
+          className={`flex flex-col gap-2 items-center ${GetWrapperStyle.className} ${GetSlot.yuzuBase} ${GetSlot.yuzuBaseDisabled} 
    `.trim()}
         >
-          {children}
-          {LabelWrapper}
+          {children || LabelWrapper}
           {InputWrapper}
         </div>
       );
@@ -145,12 +147,11 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
       return (
         <div
           disabled={GetCheckboxProps.isDisabled}
-          className={`${GetWrapperStyle.className} ${GetSlot.yuzuBase} ${GetSlot.yuzuBaseDisabled} flex flex-col gap-2 items-center
+          className={`flex flex-col gap-2 items-center ${GetWrapperStyle.className} ${GetSlot.yuzuBase} ${GetSlot.yuzuBaseDisabled} 
    `.trim()}
         >
-          {children}
           {InputWrapper}
-          {LabelWrapper}
+          {children || LabelWrapper}
         </div>
       );
     }

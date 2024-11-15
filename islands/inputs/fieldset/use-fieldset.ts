@@ -102,7 +102,7 @@ export function useFieldset(props: FieldsetProps) {
         yuzuBaseDisabled,
       };
     },
-    [classNames, GetDisabledStyle],
+    [classNames, isDisabled],
   );
   return {
     domRef,

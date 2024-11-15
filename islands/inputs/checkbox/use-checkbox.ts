@@ -148,6 +148,20 @@ export function useCheckbox(props: CheckboxProps) {
     },
     [classNames, GetDisabledWrapper, GetBoxDisabled, GetDisabledLabel],
   );
+  const CheckRender = useMemo(
+    () => {
+      if (label && children) {
+        throw new Error("Only Support one, Pick: children as JSX Element or label as string, not both.");
+      }
+      if (children) {
+        return children;
+      }
+      if (label) {
+        return label;
+      }
+      return new Error("Children or Label not Specified");
+     
+    }, [children, label])
   return {
     domRef,
     children,
@@ -155,6 +169,7 @@ export function useCheckbox(props: CheckboxProps) {
     GetCheckboxProps,
     GetBoxStyle,
     label,
+    CheckRender,
     GetSlot,
     className,
     GetWrapperStyle,
