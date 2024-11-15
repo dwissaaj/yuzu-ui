@@ -36,18 +36,17 @@ export function useButton(props: ButtonProps) {
     [variant],
   );
 
-
   const GetVariantNew = useMemo(
     () => {
-      const variants = ButtonVariants.variants[variant](color)
-      console.log(variants)
+      const variants = ButtonVariants.variants[variant](color);
       return {
-        variants 
-      }
-    },[variant])
+        variants,
+      };
+    },
+    [variant],
+  );
   const GetVariantButton = useMemo(() => {
-    const variantStyle = GetVariantNew.variants
-    console.log(variantStyle)
+    const variantStyle = GetVariantNew.variants;
 
     return `${variantStyle}`.trim();
   }, [GetColor, variant]);
@@ -128,12 +127,10 @@ export function useButton(props: ButtonProps) {
   );
   const GetSlot = useMemo(
     () => {
-      const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";
-      const yuzuDisabled = GetDisabled
-        ? GetDisabled + classNames?.yuzuDisabled
-        : "";
+      const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase || "" : "";
+      const yuzuDisabled = GetDisabled ? classNames?.yuzuDisabled || "" : "";
       const yuzuSpinner = classNames?.yuzuSpinner
-        ? classNames?.yuzuSpinner
+        ? classNames?.yuzuSpinner || ""
         : "";
       return {
         yuzuBase,

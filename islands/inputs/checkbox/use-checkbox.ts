@@ -12,12 +12,10 @@ export function useCheckbox(props: CheckboxProps) {
     boxVariant = "primary",
     labelColor = "none",
     labelSize = "small",
+    classNames,
+    className = "",
     label,
     isDisabled,
-    yuzudisabledTitleStyle = "",
-    yuzudisableBoxStyle = "",
-    isIndeterminate,
-    className = "",
     ...otherProps
   } = props;
 
@@ -25,20 +23,12 @@ export function useCheckbox(props: CheckboxProps) {
    * Used for checking input disabled and return class and sate
    * @return { isDisabled, parentDisabledStyle}
    */
-  const GetDisabledClass = useMemo(() => {
-    if (isDisabled === true) {
-      const disabled = true;
-      const getParentStyle = "disabled:opacity-20 cursor-not-allowed";
-      return { disabled, getParentStyle };
-    } else if (isDisabled === false) {
-      const disabled = false;
-      const getParentStyle = "";
-      return { getParentStyle, disabled };
-    }
-  }, [isDisabled, yuzudisabledTitleStyle, yuzudisableBoxStyle]);
-
-  const GetTextDisabledStyle = useMemo(
-    () => (isDisabled ? CheckboxVariants.disableTextStyle : ""),
+  const GetDisabledWrapper = useMemo(
+    () => (isDisabled ? CheckboxVariants.disabledWrapper : ""),
+    [isDisabled],
+  );
+  const GetDisabledLabel = useMemo(
+    () => (isDisabled ? CheckboxVariants.disableLabelStyle : ""),
     [isDisabled],
   );
 
@@ -56,17 +46,24 @@ export function useCheckbox(props: CheckboxProps) {
     };
   }, [labelSize]);
 
-  const GetLabelClass = useMemo(() => {
+  const GetLabelStyle = useMemo(() => {
     const getSize = GetSizeLabel.labelSize;
     const getColor = GetColorLabel.labelColors;
     const getPosition = labelPosition;
-    const getDisabled = GetTextDisabledStyle;
+    const getDisabled = GetDisabledLabel;
     return {
       className: `${getSize} ${getColor} ${getDisabled} `.trim(),
-      label: `${label}`,
       labelPosition: getPosition,
     };
-  }, [label, labelPosition, labelSize, labelColor]);
+  }, [
+    label,
+    labelPosition,
+    labelSize,
+    labelColor,
+    GetSizeLabel,
+    GetDisabledLabel,
+    GetColorLabel,
+  ]);
 
   const GetBoxRadius = useMemo(() => {
     return {
@@ -86,7 +83,7 @@ export function useCheckbox(props: CheckboxProps) {
     };
   }, [boxVariant]);
 
-  const GetBoxDisabledStyle = useMemo(
+  const GetBoxDisabled = useMemo(
     () => (isDisabled ? CheckboxVariants.disableBoxStyle : ""),
     [isDisabled],
   );
@@ -98,36 +95,69 @@ export function useCheckbox(props: CheckboxProps) {
     const getBoxColor = GetBoxVariant.boxVariant;
     const getBoxsize = GetBoxSize.boxSize;
     const getBoxRadius = GetBoxRadius.boxRadius;
-    const getBoxDisabled = GetBoxDisabledStyle;
+    const getBoxDisabled = GetBoxDisabled;
     return {
       className:
         `${CheckboxVariants.boxAppearance} ${getBoxColor} ${getBoxsize} ${getBoxRadius} ${getBoxDisabled}`
           .trim(),
     };
-  }, [boxVariant, boxRadius, boxSize, GetBoxDisabledStyle]);
+  }, [boxVariant, boxRadius, boxSize, GetBoxDisabled]);
 
   /*
    * For state input as props dont add to styling or class name
    * dont use or export disabled class for state
    */
-
+  const GetWrapperStyle = useMemo(
+    () => {
+      const wrapperBase = CheckboxVariants.wrapperBase;
+      const disabled = GetDisabledWrapper;
+      console.log(disabled);
+      return {
+        className: `${wrapperBase} ${disabled}`,
+      };
+    },
+    [GetDisabledWrapper],
+  );
   const GetCheckboxProps = useMemo(() => {
     return {
       isDisabled,
     };
   }, [isDisabled]);
-
+  const GetSlot = useMemo(
+    () => {
+      const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";
+      const yuzuInput = classNames?.yuzuInput ? classNames?.yuzuInput : "";
+      const yuzuLabel = classNames?.yuzuLabel ? classNames?.yuzuLabel : "";
+      const yuzuLabelDisabled = GetDisabledLabel
+        ? classNames?.yuzuLabelDisabled || ""
+        : "";
+      const yuzuInputDisabled = GetBoxDisabled
+        ? classNames?.yuzuInputDisabled || ""
+        : "";
+      const yuzuBaseDisabled = GetDisabledWrapper
+        ? classNames?.yuzuBaseDisabled || ""
+        : "";
+      return {
+        yuzuBase,
+        yuzuInput,
+        yuzuLabel,
+        yuzuLabelDisabled,
+        yuzuBaseDisabled,
+        yuzuInputDisabled,
+      };
+    },
+    [classNames, GetDisabledWrapper, GetBoxDisabled, GetDisabledLabel],
+  );
   return {
     domRef,
     children,
-    className,
-    GetLabelClass,
+    GetLabelStyle,
     GetCheckboxProps,
     GetBoxStyle,
-    GetDisabledClass,
-    yuzudisabledTitleStyle,
-    yuzudisableBoxStyle,
-    isIndeterminate,
+    label,
+    GetSlot,
+    className,
+    GetWrapperStyle,
     ...otherProps,
   };
 }

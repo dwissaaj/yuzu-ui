@@ -12,16 +12,15 @@ export const CheckboxVariants = {
     medium: "text-3xl",
     large: "text-5xl",
   },
-  disableTextStyle: "disabled:opacity-20 cursor-not-allowed line-through",
-  disableBoxStyle: "disabled:opacity-50 cursor-not-allowed",
-
+  disableLabelStyle: "opacity-20 cursor-not-allowed line-through",
+  disableBoxStyle: "disabled:opacity-50 disabled:cursor-not-allowed",
+  disabledWrapper: "cursor-not-allowed",
   boxSizes: {
     small: "w-5 h-5",
     medium: "w-8 h-8",
     large: "w-12 h-12",
   },
   boxAppearance: "appearance-none",
-
   boxRadius: {
     full: "rounded-full border-2",
     large: "rounded-lg border-2",
@@ -40,4 +39,5 @@ export const CheckboxVariants = {
     warning:
       "checked:bg-warning peer checked:after:content-['✓'] checked:after:block checked:after:w-full checked:after:h-full checked:after:flex checked:after:items-center checked:after:justify-center transition duration-150 ease-in-out",
   },
+  wrapperBase: "p-2 m-2",
 };
