@@ -3,14 +3,17 @@ import type {
 } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { JSX } from "preact/jsx-runtime";
 import type { FieldsetVariants } from "./fieldset-variants.ts";
-
+export type FieldsetSlot = Partial<
+  Record<
+    | "yuzuBase"
+    | "yuzuLabel"
+    | "yuzuBaseDisabled"
+    | "yuzuLabelDisabled",
+    string
+  >
+>;
 export type FieldsetProps = JSX.IntrinsicElements["fieldset"] & {
   domRef?: Ref<HTMLFieldSetElement>;
-
-  /**
-   * Css styling
-   */
-  style?: JSX.CSSProperties;
 
   /**
    * Label for the fieldset
@@ -44,11 +47,6 @@ export type FieldsetProps = JSX.IntrinsicElements["fieldset"] & {
   isDisabled?: boolean;
 
   /**
-   * Access to class disabled fieldset
-   */
-  yuzuDisableStyle?: string;
-
-  /**
    * fieldset variant can be extended in variant-file
    * @default underline
    */
@@ -62,7 +60,12 @@ export type FieldsetProps = JSX.IntrinsicElements["fieldset"] & {
   fieldsetColor?: keyof typeof FieldsetVariants.fieldsetColors;
 
   /**
-   * Parent classnames
+   * Parent classnames/ fieldset direct access to classNames
    */
   className?: string;
+
+  /**
+   * Custom Yuzu system for override
+   */
+  classNames?: FieldsetSlot;
 };

@@ -6,6 +6,8 @@ import {
 import Button from "./inputs/button/Button.tsx";
 import Home from "./icon/component/Home.tsx";
 import Checkbox from "./inputs/checkbox/Checkbox.tsx";
+import Fieldset from "./inputs/fieldset/Fieldset.tsx";
+import Input from "./inputs/input/Inputs.tsx";
 
 export default function Wrapper() {
   const fieldsetRef = useRef<HTMLButtonElement>(null);
@@ -29,32 +31,20 @@ export default function Wrapper() {
       <div class={"w-full flex flex-col gap-2"}>
         <div className={""}>
           <div className={`w-full flex flex-col gap-2`}>
-            <Checkbox
+            <Fieldset
+              label={"fruits"}
+              classNames={{
+                yuzuBase: "",
+                yuzuLabel: "bg-blue-500",
+                yuzuBaseDisabled: "bg-blue-500",
+                yuzuLabelDisabled: "font-bold",
+              }}
               isDisabled={false}
-              labelPosition="bottom"
-              name={"data"}
-              id={"name"}
-              label={"did you agree?"}
-              boxSize="small"
-              indeterminate
-              classNames={{
-                yuzuLabelDisabled: "bg-red-500",
-                yuzuInputDisabled: "outline-4 outline-green-300",
-                yuzuBaseDisabled: "ring-4 ring-red-500 bg-red-500",
-                yuzuBase: "bg-blue-100",
-                yuzuInput: "ring ring-red-300",
-                yuzuLabel: "font-bold",
-              }}
-            />
-            <Button
-              isDisabled={true}
-              classNames={{
-                yuzuBase: "bg-red-500",
-                yuzuDisabled: "disabled:ring-2 disabled:ring-yellow-500",
-              }}
+              fieldsetDirection="column"
             >
-              Submit
-            </Button>
+              <Input label={"name"} />
+              <Input label={"name"} />
+            </Fieldset>
           </div>
         </div>
       </div>

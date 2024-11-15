@@ -22,5 +22,5 @@ export const FieldsetVariants = {
     warning: "text-warning",
     none: "",
   },
-  disableStyle: "disabled:opacity-50 ",
+  disableStyle: "disabled:opacity-50 disabled:cursor-not-allowed",
 };

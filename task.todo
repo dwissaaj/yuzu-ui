@@ -1,6 +1,5 @@
 is it possoble to make selected key disabled from parent?
 
 
-add variant and radius and placement
-
+input not show disabled cursor when disabled when become children
 adding focus on blur and change
