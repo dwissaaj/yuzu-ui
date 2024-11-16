@@ -10,20 +10,20 @@ export function usePassword(props: PasswordProps) {
     size = "medium",
     color = "none",
     variant = "full",
+    label,
+    description,
     isFullWidth = false,
     isDisabled = false,
-    yuzuErrorStyle = "",
-    yuzuReadonlyStyle = "",
-    yuzuDisabledStyle = "",
     isReadonly = false,
+    isIconHidden,
     isError = false,
     ...otherProps
   } = props;
 
-  const fullWidthClass = useMemo(
+  const GetSize = useMemo(
     () => {
       if (isFullWidth === true) {
-        return { size: PasswordsVariants.fullWidth };
+        return { size: PasswordsVariants.sizes.fullWidth };
       } else isFullWidth === false;
       {
         return { size: PasswordsVariants.sizes[size] };
@@ -31,14 +31,7 @@ export function usePassword(props: PasswordProps) {
     },
     [isFullWidth, size],
   );
-  const GetSizeClass = useMemo(
-    () => {
-      return {
-        parentSize: PasswordsVariants.sizes[size],
-      };
-    },
-    [size],
-  );
+
   const GetVariantClass = useMemo(
     () => {
       return {
@@ -61,42 +54,7 @@ export function usePassword(props: PasswordProps) {
     },
     [isDisabled],
   );
-  const GetCustomDisabled = useMemo(
-    () => {
-      if (isDisabled === true) {
-        return yuzuDisabledStyle;
-      } else isDisabled === false;
-      {
-        const yuzuInputDisables = "";
-        return yuzuInputDisables;
-      }
-    },
-    [isDisabled],
-  );
-  const GetCustomError = useMemo(
-    () => {
-      if (isError === true) {
-        return yuzuErrorStyle;
-      } else isError === false;
-      {
-        const errorStyle = "";
-        return errorStyle;
-      }
-    },
-    [isError],
-  );
-  const GetCustomReadonly = useMemo(
-    () => {
-      if (isReadonly === true) {
-        return yuzuReadonlyStyle;
-      } else isError === false;
-      {
-        const yuzuReadonlyStyle = "";
-        return yuzuReadonlyStyle;
-      }
-    },
-    [isReadonly],
-  );
+
   const GetErrorInput = useMemo(
     () => {
       if (isError === true) {
@@ -138,21 +96,20 @@ export function usePassword(props: PasswordProps) {
   );
   const GetParentsStyle = useMemo(
     () => {
-      const size = fullWidthClass.size;
+      const size = GetSize.size;
       const color = GetColorClass;
       const disable = GetDisabled.disabledStyle;
       const variant = GetVariantClass.variant;
       const error = GetErrorInput.errorStyle;
-      const readonly = GetReadonly.inputReadonlyStyle;
       return {
-        className: `${size} ${color} ${variant} ${disable} ${error} ${readonly}`
+        className: `${size} ${color} ${variant} ${disable} ${error}`
           .trim(),
       };
     },
     [
       GetColorClass,
       GetDisabled,
-      GetSizeClass,
+      GetSize,
       GetVariantClass,
     ],
   );
@@ -170,18 +127,29 @@ export function usePassword(props: PasswordProps) {
     },
     [GetColorClass, GetDisabled],
   );
+
+  const GetIconStyle = useMemo(
+
+    () => {
+      const style = PasswordsVariants.buttonStyle
+      const hidden = isIconHidden ? "hidden": ""
+      const disabled = isDisabled ? GetDisabled.disabledStyle : ""
+      return {
+        className: `${style} ${hidden} ${disabled}`
+      }
+    },[])
   return {
     domRef,
     className,
-    style,
     GetParentsStyle,
     isDisabled,
     GetInputStyle,
+    isIconHidden,
+    GetIconStyle,
     GetDisabled,
-    GetCustomError,
-    GetCustomReadonly,
-    GetCustomDisabled,
     isReadonly,
+    label,
+    description,
     ...otherProps,
   };
 }

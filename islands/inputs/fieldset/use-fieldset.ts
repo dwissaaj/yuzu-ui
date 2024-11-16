@@ -92,8 +92,8 @@ export function useFieldset(props: FieldsetProps) {
     () => {
       const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";
       const yuzuLabel = classNames?.yuzuLabel ? classNames?.yuzuLabel : "";
-      const yuzuBaseDisabled = isDisabled ? classNames?.yuzuLabel : "";
-      const yuzuLabelDisabled = isDisabled ? classNames?.yuzuLabelDisabled : "";
+      const yuzuBaseDisabled = isDisabled ? classNames?.yuzuBaseDisabled || "" : "";
+      const yuzuLabelDisabled = isDisabled ? classNames?.yuzuLabelDisabled || "" : "";
 
       return {
         yuzuBase,

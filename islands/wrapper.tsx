@@ -6,6 +6,8 @@ import {
 
 import Label from "./inputs/label/Labels.tsx";
 import Checkbox from "./inputs/checkbox/Checkbox.tsx";
+import Fieldset from "./inputs/fieldset/Fieldset.tsx";
+import Password from "./inputs/password/Password.tsx";
 
 export default function Wrapper() {
   const fieldsetRef = useRef<HTMLButtonElement>(null);
@@ -29,7 +31,12 @@ export default function Wrapper() {
       <div class={"w-full flex flex-col gap-2"}>
         <div className={""}>
           <div className={`w-full flex flex-col gap-2`}>
-            <Label>asss</Label>
+            <Fieldset label={'your data'} classNames={{
+              yuzuBaseDisabled: "cursor-not-allowed"
+            }}>
+              <Password  isIconHidden={false} description="you remmeberd it" label={"your pass"}  isFullWidth={false} variant="full" color="primary" />
+              <Password  isDisabled isIconHidden={true} description="you remmeberd it" label={"your pass"}  isFullWidth={false} variant="full" color="primary" />
+            </Fieldset>
           </div>
         </div>
       </div>

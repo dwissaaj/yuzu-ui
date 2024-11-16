@@ -53,15 +53,15 @@ import OpenPassword from "../../icon/component/OpenPassword.tsx";
 const Password = forwardRef<HTMLInputElement, PasswordProps>((props) => {
   const {
     domRef,
-    style,
     className,
     GetParentsStyle,
     isDisabled,
     GetInputStyle,
-    GetCustomError,
     GetDisabled,
-    GetCustomReadonly,
-    GetCustomDisabled,
+    label,
+    GetIconStyle,
+    isIconHidden,
+    description,
     isReadonly,
     ...otherProps
   } = usePassword({ ...props });
@@ -73,32 +73,38 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>((props) => {
   };
   const closeIcon = (
     <span className={``}>
-      <ClosePassword svgStyle={` w-6`} />
+      <ClosePassword svgStyle={`w-6`} />
     </span>
   );
   const openIcon = (
     <span className={``}>
-      <OpenPassword svgStyle={` w-6`} />
+      <OpenPassword svgStyle={`w-6`} />
     </span>
   );
   return (
-    <>
+    <div className={'flex flex-col gap-2'}>
+      <div>
+          <label>{label}</label>
+          <p>{description}</p>
+      </div>
       <div
-        style={style}
         className={`${className} ${GetParentsStyle.className}
-    ${GetCustomError} ${GetCustomReadonly}${GetCustomDisabled}`}
+   `}
+   
       >
+        
         <div className={`w-full flex flex-row`}>
+          
           <input
             {...otherProps}
             disabled={isDisabled}
             readOnly={isReadonly}
             ref={domRef}
-            className={`${GetInputStyle.className} ${GetCustomReadonly} ${GetCustomError} ${GetCustomDisabled}`}
+            className={`${GetInputStyle.className}`}
             type={isPasswordVisible ? "text" : "password"}
           />
           <button
-            className={`transition ease-in-out delay-150 duration-300 ${GetDisabled.disabledStyle}`}
+            className={`${GetIconStyle.className} ${isIconHidden ? "hidden" : ""}`}
             type={"button"}
             onClick={togglePasswordVisibility}
             disabled={isDisabled}
@@ -107,7 +113,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>((props) => {
           </button>
         </div>
       </div>
-    </>
+      </div>
   );
 });
 

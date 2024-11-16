@@ -1,11 +1,13 @@
 export const PasswordsVariants = {
   sizes: {
     small:
-      "m-1 p-2 w-52 hover:brightness-105 transition ease-in-out duration-300 rounded-sm ",
+      "p-2 w-52 hover:brightness-105 transition ease-in-out duration-300 rounded-sm ",
     medium:
-      "m-1 p-2 w-64 hover:brightness-105 transition ease-in-out duration-300 rounded-lg ",
+      "p-2 w-64 hover:brightness-105 transition ease-in-out duration-300 rounded-lg ",
     large:
-      "m-1 p-2 w-96 hover:brightness-105 transition ease-in-out duration-300 rounded-lg ",
+      "p-2 w-96 hover:brightness-105 transition ease-in-out duration-300 rounded-lg ",
+      fullWidth:
+      "p-2 w-full hover:brightness-105 transition ease-in-out duration-300 rounded-sm",
   },
   colors: {
     primary: "primary",
@@ -20,10 +22,8 @@ export const PasswordsVariants = {
   variants: {
     underline:
       "border-b-2 transition ease-in-out delay-150 duration-300 !rounded-none",
-    full: "border-2 transition ease-in-out delay-150 duration-300",
+    full: "transition ease-in-out delay-150 duration-300",
   },
-  fullWidth:
-    "m-1 p-2 w-full hover:brightness-105 transition ease-in-out duration-300 rounded-sm",
   errorStyle:
     "outline-error focus:outline-error invalid:text-error text-error !border-error",
   errorStyleParent: "border-error",
@@ -32,4 +32,6 @@ export const PasswordsVariants = {
   inputDisableStyle: "opacity-50 cursor-not-allowed",
   inputStyle: "w-full border-0 focus:outline-0 focus:ring-0 focus:border-0",
   buttonStyle: "transition ease-in-out delay-150 duration-300",
+  labelStyles : "",
+  descriptionStyles: "italic"
 };

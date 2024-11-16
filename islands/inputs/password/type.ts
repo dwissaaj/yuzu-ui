@@ -1,7 +1,23 @@
 import type { Ref } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { JSX } from "preact/jsx-runtime";
 import type { PasswordsVariants } from "./password-variants.ts";
-
+import type  Label  from "../label/Labels.tsx";
+export type LabelSlot = Partial<
+  Record<
+    |"yuzuBase"
+    | "yuzuBaseDisabled"
+    | "yuzuInput"
+    | "yuzuInputError"
+    | "yuzuInputReadonly"
+    | "yuzuInputDisabled"
+    | "yuzuDescription"
+    | "yuzuDescriptionError"
+    | "yuzuDescriptionDisabled"
+    | "yuzuLabelRequired"
+    | "yuzuLabelError",
+    string
+  >
+>;
 export type PasswordProps =
   & Omit<JSX.IntrinsicElements["input"], "size" | "color">
   & {
@@ -14,11 +30,6 @@ export type PasswordProps =
      * Classname styling for div parent, not recomended to use
      */
     className?: string;
-
-    /**
-     * Vanilla css plain styling
-     */
-    style?: JSX.CSSProperties;
 
     /**
      * Size of the input will consume by div parents
@@ -35,22 +46,7 @@ export type PasswordProps =
      */
     variant?: keyof typeof PasswordsVariants.variants;
 
-    /**
-     * Access to error state style
-     */
-    yuzuErrorStyle?: string;
 
-    /**
-     * Access to readonly state style
-     */
-    yuzuReadonlyStyle?: string;
-    /**
-     * Access to readonly state style
-     */
-    yuzuDisabledStyle?: string;
-    /**
-     *  State for read only
-     */
     isReadonly?: boolean;
 
     /**
@@ -67,4 +63,11 @@ export type PasswordProps =
      *  State for disabled
      */
     isDisabled?: boolean;
+
+    isIconHidden?: boolean
+
+    label?: string
+
+    description?: string 
+
   };
