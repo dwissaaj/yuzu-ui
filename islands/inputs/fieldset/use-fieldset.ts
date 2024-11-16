@@ -2,7 +2,6 @@ import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js"
 import type { FieldsetProps } from "./type.ts";
 import { FieldsetVariants } from "./fieldset-variants.ts";
 
-
 export function useFieldset(props: FieldsetProps) {
   const {
     domRef,
@@ -91,8 +90,12 @@ export function useFieldset(props: FieldsetProps) {
     () => {
       const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";
       const yuzuLabel = classNames?.yuzuLabel ? classNames?.yuzuLabel : "";
-      const yuzuBaseDisabled = isDisabled ? classNames?.yuzuBaseDisabled || "" : "";
-      const yuzuLabelDisabled = isDisabled ? classNames?.yuzuLabelDisabled || "" : "";
+      const yuzuBaseDisabled = isDisabled
+        ? classNames?.yuzuBaseDisabled || ""
+        : "";
+      const yuzuLabelDisabled = isDisabled
+        ? classNames?.yuzuLabelDisabled || ""
+        : "";
 
       return {
         yuzuBase,

@@ -52,7 +52,6 @@ export function useButton(props: ButtonProps) {
     [isDisabled],
   );
 
-
   const GetSpinnerSize = useMemo(
     () => {
       const sizespin = ButtonVariants.spinnersSizes[spinnerSize];

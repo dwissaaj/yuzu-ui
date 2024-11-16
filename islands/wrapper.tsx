@@ -32,10 +32,23 @@ export default function Wrapper() {
       <div class={"w-full flex flex-col gap-2"}>
         <div className={""}>
           <div className={`w-full flex flex-col gap-2`}>
-            <Fieldset label={'your data'} classNames={{
-              yuzuBaseDisabled: "cursor-not-allowed"
-            }}>
-              <Password size="small" isIconHidden={false} description="you remmeberd it" label={"your pass"}  isFullWidth={false} variant="full" color="secondary" />
+            <Fieldset
+              label={"your data"}
+              classNames={{
+                yuzuBaseDisabled: "cursor-not-allowed",
+              }}
+            >
+              <Password
+              isError={true}
+                size="small"
+                isIconHidden={false}
+                description="you remmeberd it"
+                label={"your pass"}
+                isFullWidth={false}
+                variant="underline"
+                color="secondary"
+                errorMessage="You are try again"
+              />
             </Fieldset>
             <Button color="success" variant="solid">ASLI</Button>
           </div>

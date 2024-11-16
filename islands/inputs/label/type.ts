@@ -5,7 +5,7 @@ import type {
 import type { LabelVariants } from "./label-variant.ts";
 export type LabelSlot = Partial<
   Record<
-  |"yuzuBase"
+    | "yuzuBase"
     | "yuzuLabelRequired"
     | "yuzuLabelReadonly"
     | "yuzuLabelDisabled",
@@ -28,12 +28,12 @@ export type LabelProps = JSX.IntrinsicElements["label"] & {
    */
   className?: string;
 
-  classNames?: LabelSlot
+  classNames?: LabelSlot;
 
   /**
    * Add children to label
-   */ 
-  children?: JSX.Element | string
+   */
+  children?: JSX.Element | string;
 
   /**
    * Label size, configuration can be custom to label-variant
@@ -49,7 +49,6 @@ export type LabelProps = JSX.IntrinsicElements["label"] & {
    * Font weight
    */
   fontWeight?: keyof typeof LabelVariants.fontWeights;
-
 
   /**
    * the label state readonly

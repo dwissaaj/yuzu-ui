@@ -151,7 +151,9 @@ export function useCheckbox(props: CheckboxProps) {
   const CheckRender = useMemo(
     () => {
       if (label && children) {
-        throw new Error("Only Support one, Pick: children as JSX Element or label as string, not both.");
+        throw new Error(
+          "Only Support one, Pick: children as JSX Element or label as string, not both.",
+        );
       }
       if (children) {
         return children;
@@ -160,8 +162,9 @@ export function useCheckbox(props: CheckboxProps) {
         return label;
       }
       return new Error("Children or Label not Specified");
-     
-    }, [children, label])
+    },
+    [children, label],
+  );
   return {
     domRef,
     children,

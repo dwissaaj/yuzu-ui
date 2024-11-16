@@ -16,9 +16,17 @@ export function usePassword(props: PasswordProps) {
     isReadonly = false,
     isIconHidden,
     isError = false,
+    errorMessage,
     ...otherProps
   } = props;
 
+
+  const GetError = useMemo(
+    () => {
+      if(isError === true) {
+        return isError
+      }
+    },[isError])
   const GetSize = useMemo(
     () => {
       if (isFullWidth === true) {
@@ -60,7 +68,6 @@ export function usePassword(props: PasswordProps) {
     [isDisabled],
   );
 
-  
   const GetReadonly = useMemo(
     () => {
       if (isReadonly === true) {
@@ -87,7 +94,7 @@ export function usePassword(props: PasswordProps) {
   const GetWrapperBaseStyle = useMemo(
     () => {
       const size = GetSize.size;
-      const disabled = GetDisabled.disabledStyle
+      const disabled = GetDisabled.disabledStyle;
       return {
         className: `${size} ${disabled}`
           .trim(),
@@ -103,11 +110,12 @@ export function usePassword(props: PasswordProps) {
   const GetWrapperInputStyle = useMemo(
     () => {
       const size = GetSize.size;
-      const disable = GetDisabled.disabledStyle
-      const variants = GetVariantAndColor.variants
-      const disabled = GetDisabled.disabledStyle
+      const disable = GetDisabled.disabledStyle;
+      const variants = GetVariantAndColor.variants;
+      const disabled = GetDisabled.disabledStyle;
+      const error = GetError ? "!border-error" : ""
       return {
-        className: `${size} ${variants} ${disable} ${disabled}`
+        className: `${size} ${variants} ${disable} ${disabled} ${error}`
           .trim(),
       };
     },
@@ -124,43 +132,61 @@ export function usePassword(props: PasswordProps) {
       const disable = GetDisabled.disabledStyle;
       const base = PasswordsVariants.inputStyle;
       const readonly = GetReadonly.inputReadonlyStyle;
-       const variant = GetVariantAndColor.variants
-       const disabled = GetDisabled.disabledStyle
+      const variant = GetVariantAndColor.variants;
+      const disabled = GetDisabled.disabledStyle;
+      const error = GetError ? "text-error" : ""
       return {
-        className: `${base} ${disable} ${readonly} ${variant} ${disabled}`.trim(),
+        className: `${base} ${disable} ${readonly} ${variant} ${disabled} ${error}`
+          .trim(),
       };
     },
-    [GetDisabled, GetVariantAndColor, GetReadonly],
+    [GetDisabled, GetVariantAndColor, GetReadonly, GetError],
   );
 
   const GetIconStyle = useMemo(
     () => {
-      const style = PasswordsVariants.buttonStyle
-      const hidden = isIconHidden ? "hidden": ""
-      const disabled = isDisabled ? GetDisabled.disabledStyle : ""
+      const style = PasswordsVariants.buttonStyle;
+      const hidden = isIconHidden ? "hidden" : "";
+      const disabled = isDisabled ? GetDisabled.disabledStyle : "";
+      const error = GetError ? "text-error stroke-error" : ""
       return {
-        className: `${style} ${hidden} ${disabled}`
-      }
-    },[GetDisabled, isDisabled])
-  
-    const GetLabelProps = useMemo(
-      () => {
-        const classLabel = PasswordsVariants.labelStyles
-        const disabled = GetDisabled.disabledStyle
-        return {
-          className: `${classLabel} ${disabled}`,
-          label
-        }
-      },[label])
-      const GetDescriptionProps = useMemo(
-        () => {
-          const classDesc = PasswordsVariants.descriptionStyles
-          const disabled = GetDisabled.disabledStyle
-          return {
-            className: `${classDesc} ${disabled}`,
-            description
-          }
-        },[description])
+        className: `${style} ${hidden} ${disabled} ${error}`,
+      };
+    },
+    [GetDisabled, isDisabled],
+  );
+
+  const GetLabelProps = useMemo(
+    () => {
+      const classLabel = PasswordsVariants.labelStyles;
+      const disabled = GetDisabled.disabledStyle;
+      return {
+        className: `${classLabel} ${disabled}`,
+        label,
+      };
+    },
+    [label],
+  );
+  const GetDescriptionProps = useMemo(
+    () => {
+      const classDesc = PasswordsVariants.descriptionStyles;
+      const disabled = GetDisabled.disabledStyle;
+      return {
+        className: `${classDesc} ${disabled}`,
+        description,
+      };
+    },
+    [description],
+  );
+  const GetErrorMessageProps = useMemo(
+    () => {
+      const classDesc = GetError ? PasswordsVariants.errorMessageStyle : "hidden"
+      return {
+        className: `${classDesc}`,
+      };
+    },
+    [GetError],
+  );
   return {
     domRef,
     className,
@@ -174,6 +200,8 @@ export function usePassword(props: PasswordProps) {
     GetLabelProps,
     GetDescriptionProps,
     isReadonly,
+    GetErrorMessageProps,
+    errorMessage,
     ...otherProps,
   };
 }

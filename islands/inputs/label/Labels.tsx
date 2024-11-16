@@ -49,15 +49,16 @@ const Label = forwardRef<HTMLLabelElement, LabelProps>((props) => {
   } = useLabel({ ...props });
 
   if (CheckRender instanceof Error) {
-    throw CheckRender; 
+    throw CheckRender;
   }
-  
+
   return (
     <label
       {...otherProps}
       ref={domRef}
       className={`${className} ${GetLabelProps.className}
-     ${GetSlot.yuzuBase} ${GetSlot.yuzuLabelDisabled} ${GetSlot.yuzuLabelReadonly} ${GetSlot.yuzuLabelRequired}`.trim()}
+     ${GetSlot.yuzuBase} ${GetSlot.yuzuLabelDisabled} ${GetSlot.yuzuLabelReadonly} ${GetSlot.yuzuLabelRequired}`
+        .trim()}
     >
       {CheckRender}
     </label>

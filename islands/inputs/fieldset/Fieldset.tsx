@@ -58,10 +58,13 @@ const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>((props) => {
       {...otherProps}
       ref={domRef}
       disabled={GetFieldsetProps.isDisabled}
-      className={`${className} ${GetFieldsetClass.className} ${GetSlot.yuzuBase} ${GetSlot.yuzuBaseDisabled}`.trim()}
+      className={`${className} ${GetFieldsetClass.className} ${GetSlot.yuzuBase} ${GetSlot.yuzuBaseDisabled}`
+        .trim()}
     >
-      <legend className={`p-2 m-2 ${GetLabelVariant.labelVariant} 
-      ${GetSlot.yuzuLabel} ${GetSlot.yuzuLabelDisabled}`.trim()}>
+      <legend
+        className={`p-2 m-2 ${GetLabelVariant.labelVariant} 
+      ${GetSlot.yuzuLabel} ${GetSlot.yuzuLabelDisabled}`.trim()}
+      >
         {GetLabelVariant.label}
       </legend>
       {children}

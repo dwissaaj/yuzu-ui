@@ -69,9 +69,15 @@ export function useLabel(props: LabelProps) {
   const GetSlot = useMemo(
     () => {
       const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";
-      const yuzuLabelDisabled = getDisabled.isDisabled ? classNames?.yuzuLabelDisabled  : "";
-      const yuzuLabelReadonly = getReadonly.isReadonly ? classNames?.yuzuLabelReadonly : "";
-      const yuzuLabelRequired = getRequired.isRequired ? classNames?.yuzuLabelRequired : "";
+      const yuzuLabelDisabled = getDisabled.isDisabled
+        ? classNames?.yuzuLabelDisabled
+        : "";
+      const yuzuLabelReadonly = getReadonly.isReadonly
+        ? classNames?.yuzuLabelReadonly
+        : "";
+      const yuzuLabelRequired = getRequired.isRequired
+        ? classNames?.yuzuLabelRequired
+        : "";
       return {
         yuzuBase,
         yuzuLabelDisabled,
@@ -84,7 +90,9 @@ export function useLabel(props: LabelProps) {
   const CheckRender = useMemo(
     () => {
       if (label && children) {
-        throw new Error("Only Support one, Pick: children as JSX Element or label as string, not both.");
+        throw new Error(
+          "Only Support one, Pick: children as JSX Element or label as string, not both.",
+        );
       }
       if (children) {
         return children;
@@ -93,8 +101,9 @@ export function useLabel(props: LabelProps) {
         return label;
       }
       return new Error("Children or Label not Specified");
-     
-    }, [children, label])
+    },
+    [children, label],
+  );
   return {
     domRef,
     label,

@@ -78,7 +78,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
     ...otherProps
   } = useCheckbox({ ...props });
   if (CheckRender instanceof Error) {
-    throw CheckRender; 
+    throw CheckRender;
   }
   const InputWrapper = (
     <input
@@ -107,7 +107,6 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
           className={`flex flex-row gap-2 items-center ${GetWrapperStyle.className} ${GetSlot.yuzuBase} ${GetSlot.yuzuBaseDisabled} 
    `.trim()}
         >
-          
           {InputWrapper}
           {children || LabelWrapper}
         </div>

@@ -54,19 +54,18 @@ export type ButtonProps =
     size?: keyof typeof ButtonVariants.sizes.buttons;
 
     /** @enum
-    * "solid" | "border" | "ghost" | "flat" | "Your Variant"
-    *
+     * "solid" | "border" | "ghost" | "flat" | "Your Variant"
+     *
      * @default "solid"
      * @example {variants: {custom: "bg-yellow-500"}}
      */
     variant?: keyof typeof ButtonVariants.variants;
 
     /**
-    *color type similar to Tailwinds Variants, can be extended in the
+     * color type similar to Tailwinds Variants, can be extended in the
      * variant file at `use-theme.ts`. The default enum can choose, if not provided will defaulted to "solid"
      * @enum
      * "primary" | "secondary" | "error" | "warning" | "success" | "Your Variant"
-     *
      */
     color?: keyof typeof ButtonVariants.colors;
 

@@ -58,7 +58,8 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>((props) => {
     GetWrapperInputStyle,
     isDisabled,
     GetInputStyle,
-    GetDisabled,
+    GetErrorMessageProps,
+    errorMessage,
     GetIconStyle,
     isIconHidden,
     GetDescriptionProps,
@@ -83,29 +84,32 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>((props) => {
     </span>
   );
   return (
-    <div className={`flex flex-col gap-2 ${GetWrapperBaseStyle.className}`}>
+    <div className={`flex flex-col gap-2 ${GetWrapperBaseStyle.className}`.trim()}>
       <div>
-          <label className={`${GetLabelProps.className}`}>{GetLabelProps.label}</label>
-          <p className={`${GetDescriptionProps.className}`}>{GetDescriptionProps.description}</p>
+        <label className={`${GetLabelProps.className}`}>
+          {GetLabelProps.label}
+        </label>
+        <p className={`${GetDescriptionProps.className}`}>
+          {GetDescriptionProps.description}
+        </p>
       </div>
       <div
         className={`${className} ${GetWrapperInputStyle.className}
-   `}
-   
+   `.trim()}
       >
-        
         <div className={`w-full flex flex-row`}>
-          
           <input
             {...otherProps}
             disabled={isDisabled}
             readOnly={isReadonly}
             ref={domRef}
-            className={`${GetInputStyle.className}`}
+            className={`${GetInputStyle.className}`.trim()}
             type={isPasswordVisible ? "text" : "password"}
           />
           <button
-            className={`${GetIconStyle.className} ${isIconHidden ? "hidden" : ""}`}
+            className={`${GetIconStyle.className} ${
+              isIconHidden ? "hidden" : ""
+            }`.trim()}
             type={"button"}
             onClick={togglePasswordVisibility}
             disabled={isDisabled}
@@ -115,9 +119,9 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>((props) => {
         </div>
       </div>
       <div>
-        <span>arrror message</span>
+        <span className={`${GetErrorMessageProps.className}`}>{errorMessage}</span>
       </div>
-      </div>
+    </div>
   );
 });
 
