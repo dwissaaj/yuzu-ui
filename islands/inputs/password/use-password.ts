@@ -6,7 +6,6 @@ export function usePassword(props: PasswordProps) {
   const {
     domRef,
     className = "",
-    style = "",
     size = "medium",
     color = "none",
     variant = "full",
@@ -32,7 +31,7 @@ export function usePassword(props: PasswordProps) {
     [isFullWidth, size],
   );
 
-  const GetVariantClass = useMemo(
+  const GetVariant = useMemo(
     () => {
       return {
         variant: PasswordsVariants.variants[variant],
@@ -40,7 +39,13 @@ export function usePassword(props: PasswordProps) {
     },
     [variant],
   );
-
+  const GetColor = useMemo(
+    () => {
+      const colors = PasswordsVariants.colors[color];
+      return colors;
+    },
+    [color],
+  );
   const GetDisabled = useMemo(
     () => {
       if (isDisabled === true) {
@@ -55,19 +60,7 @@ export function usePassword(props: PasswordProps) {
     [isDisabled],
   );
 
-  const GetErrorInput = useMemo(
-    () => {
-      if (isError === true) {
-        const errorStyle = PasswordsVariants.errorStyle;
-        return { errorStyle };
-      } else isError === false;
-      {
-        const errorStyle = "";
-        return { errorStyle };
-      }
-    },
-    [isDisabled],
-  );
+  
   const GetReadonly = useMemo(
     () => {
       if (isReadonly === true) {
@@ -81,55 +74,66 @@ export function usePassword(props: PasswordProps) {
     },
     [isDisabled],
   );
-  const GetColorClass = useMemo(
+
+  const GetVariantAndColor = useMemo(
     () => {
-      if (variant === "underline") {
-        const colorSelected = PasswordsVariants.colors[color];
-        return `border-${colorSelected}`;
-      } else variant === "full";
-      {
-        const colorSelected = PasswordsVariants.colors[color];
-        return `bg-${colorSelected}`;
-      }
+      const variants = PasswordsVariants.variants[variant](GetColor);
+      return {
+        variants,
+      };
     },
-    [color, variant],
+    [variant, GetColor],
   );
-  const GetParentsStyle = useMemo(
+  const GetWrapperBaseStyle = useMemo(
     () => {
       const size = GetSize.size;
-      const color = GetColorClass;
-      const disable = GetDisabled.disabledStyle;
-      const variant = GetVariantClass.variant;
-      const error = GetErrorInput.errorStyle;
+      const disabled = GetDisabled.disabledStyle
       return {
-        className: `${size} ${color} ${variant} ${disable} ${error}`
+        className: `${size} ${disabled}`
           .trim(),
       };
     },
     [
-      GetColorClass,
+      GetVariant,
       GetDisabled,
       GetSize,
-      GetVariantClass,
+    ],
+  );
+
+  const GetWrapperInputStyle = useMemo(
+    () => {
+      const size = GetSize.size;
+      const disable = GetDisabled.disabledStyle
+      const variants = GetVariantAndColor.variants
+      const disabled = GetDisabled.disabledStyle
+      return {
+        className: `${size} ${variants} ${disable} ${disabled}`
+          .trim(),
+      };
+    },
+    [
+      GetVariant,
+      GetDisabled,
+      GetSize,
+      GetVariantAndColor,
     ],
   );
 
   const GetInputStyle = useMemo(
     () => {
-      const color = GetColorClass;
       const disable = GetDisabled.disabledStyle;
-      const error = GetErrorInput.errorStyle;
       const base = PasswordsVariants.inputStyle;
       const readonly = GetReadonly.inputReadonlyStyle;
+       const variant = GetVariantAndColor.variants
+       const disabled = GetDisabled.disabledStyle
       return {
-        className: `${base} ${color} ${disable} ${error} ${readonly}`.trim(),
+        className: `${base} ${disable} ${readonly} ${variant} ${disabled}`.trim(),
       };
     },
-    [GetColorClass, GetDisabled],
+    [GetDisabled, GetVariantAndColor, GetReadonly],
   );
 
   const GetIconStyle = useMemo(
-
     () => {
       const style = PasswordsVariants.buttonStyle
       const hidden = isIconHidden ? "hidden": ""
@@ -137,19 +141,39 @@ export function usePassword(props: PasswordProps) {
       return {
         className: `${style} ${hidden} ${disabled}`
       }
-    },[])
+    },[GetDisabled, isDisabled])
+  
+    const GetLabelProps = useMemo(
+      () => {
+        const classLabel = PasswordsVariants.labelStyles
+        const disabled = GetDisabled.disabledStyle
+        return {
+          className: `${classLabel} ${disabled}`,
+          label
+        }
+      },[label])
+      const GetDescriptionProps = useMemo(
+        () => {
+          const classDesc = PasswordsVariants.descriptionStyles
+          const disabled = GetDisabled.disabledStyle
+          return {
+            className: `${classDesc} ${disabled}`,
+            description
+          }
+        },[description])
   return {
     domRef,
     className,
-    GetParentsStyle,
+    GetWrapperInputStyle,
+    GetWrapperBaseStyle,
     isDisabled,
     GetInputStyle,
     isIconHidden,
     GetIconStyle,
     GetDisabled,
+    GetLabelProps,
+    GetDescriptionProps,
     isReadonly,
-    label,
-    description,
     ...otherProps,
   };
 }

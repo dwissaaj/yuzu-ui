@@ -54,14 +54,15 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>((props) => {
   const {
     domRef,
     className,
-    GetParentsStyle,
+    GetWrapperBaseStyle,
+    GetWrapperInputStyle,
     isDisabled,
     GetInputStyle,
     GetDisabled,
-    label,
     GetIconStyle,
     isIconHidden,
-    description,
+    GetDescriptionProps,
+    GetLabelProps,
     isReadonly,
     ...otherProps
   } = usePassword({ ...props });
@@ -82,13 +83,13 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>((props) => {
     </span>
   );
   return (
-    <div className={'flex flex-col gap-2'}>
+    <div className={`flex flex-col gap-2 ${GetWrapperBaseStyle.className}`}>
       <div>
-          <label>{label}</label>
-          <p>{description}</p>
+          <label className={`${GetLabelProps.className}`}>{GetLabelProps.label}</label>
+          <p className={`${GetDescriptionProps.className}`}>{GetDescriptionProps.description}</p>
       </div>
       <div
-        className={`${className} ${GetParentsStyle.className}
+        className={`${className} ${GetWrapperInputStyle.className}
    `}
    
       >
@@ -112,6 +113,9 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>((props) => {
             {isPasswordVisible ? closeIcon : openIcon}
           </button>
         </div>
+      </div>
+      <div>
+        <span>arrror message</span>
       </div>
       </div>
   );

@@ -58,6 +58,7 @@ export type PasswordProps =
      *  State for error
      */
     isError?: boolean;
+    errorMessage?: string;
 
     /**
      *  State for disabled

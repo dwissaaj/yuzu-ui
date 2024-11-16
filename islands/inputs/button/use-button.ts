@@ -27,18 +27,10 @@ export function useButton(props: ButtonProps) {
     },
     [color],
   );
+
   const GetVariant = useMemo(
     () => {
-      return {
-        variant: ButtonVariants.variants,
-      };
-    },
-    [variant],
-  );
-
-  const GetVariantNew = useMemo(
-    () => {
-      const variants = ButtonVariants.variants[variant](color);
+      const variants = ButtonVariants.variants[variant](GetColor);
       return {
         variants,
       };
@@ -46,10 +38,9 @@ export function useButton(props: ButtonProps) {
     [variant],
   );
   const GetVariantButton = useMemo(() => {
-    const variantStyle = GetVariantNew.variants;
-
+    const variantStyle = GetVariant.variants;
     return `${variantStyle}`.trim();
-  }, [GetColor, variant]);
+  }, [variant, GetVariant]);
 
   /**
    * check if button disabled and return the disabled style from variant
@@ -61,18 +52,6 @@ export function useButton(props: ButtonProps) {
     [isDisabled],
   );
 
-  /**
-   * Hooks for checking the size of the spinner, can be customized
-   * and extended via variant file
-   * @param {string} [spinnerSize="small"]
-   * @enum
-   * "primary"   | @default
-   * "secondary" |
-   * "error"     |
-   * "warning"   |
-   * "success"   |
-   * "Your Variant"
-   */
 
   const GetSpinnerSize = useMemo(
     () => {
@@ -111,7 +90,7 @@ export function useButton(props: ButtonProps) {
           .trim(),
       };
     },
-    [radius, GetSize, GetDisabled, color, GetColor, GetVariant, variant],
+    [radius, GetSize, GetDisabled, color, GetColor, variant],
   );
 
   const GetSpinnerProps = useMemo(

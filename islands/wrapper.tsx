@@ -8,6 +8,7 @@ import Label from "./inputs/label/Labels.tsx";
 import Checkbox from "./inputs/checkbox/Checkbox.tsx";
 import Fieldset from "./inputs/fieldset/Fieldset.tsx";
 import Password from "./inputs/password/Password.tsx";
+import Button from "./inputs/button/Button.tsx";
 
 export default function Wrapper() {
   const fieldsetRef = useRef<HTMLButtonElement>(null);
@@ -34,9 +35,9 @@ export default function Wrapper() {
             <Fieldset label={'your data'} classNames={{
               yuzuBaseDisabled: "cursor-not-allowed"
             }}>
-              <Password  isIconHidden={false} description="you remmeberd it" label={"your pass"}  isFullWidth={false} variant="full" color="primary" />
-              <Password  isDisabled isIconHidden={true} description="you remmeberd it" label={"your pass"}  isFullWidth={false} variant="full" color="primary" />
+              <Password size="small" isIconHidden={false} description="you remmeberd it" label={"your pass"}  isFullWidth={false} variant="full" color="secondary" />
             </Fieldset>
+            <Button color="success" variant="solid">ASLI</Button>
           </div>
         </div>
       </div>

@@ -67,7 +67,6 @@ export function useFieldset(props: FieldsetProps) {
       const variant = GetFieldsetVariant.fieldsetVariant;
       const direction = GetFieldsetDirection.fieldsetDirection;
       const disabled = GetDisabledStyle;
-      console.log(color);
       return {
         className: `${color} ${variant} ${direction} ${disabled}`.trim(),
       };
