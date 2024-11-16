@@ -7,9 +7,10 @@ export function usePassword(props: PasswordProps) {
     domRef,
     className = "",
     size = "medium",
-    color = "none",
+    color = "primary",
     variant = "full",
     label,
+    classNames,
     description,
     isFullWidth = false,
     isDisabled = false,
@@ -58,12 +59,12 @@ export function usePassword(props: PasswordProps) {
   const GetDisabled = useMemo(
     () => {
       if (isDisabled === true) {
-        const disabledStyle = PasswordsVariants.disabledStyle;
-        return { disabledStyle };
+        const disabledStyle = PasswordsVariants.disabledStyle
+        return disabledStyle
       } else isDisabled === false;
       {
         const disabledStyle = "";
-        return { disabledStyle };
+        return disabledStyle
       }
     },
     [isDisabled],
@@ -95,8 +96,9 @@ export function usePassword(props: PasswordProps) {
   const GetWrapperBaseStyle = useMemo(
     () => {
       const size = GetSize.size;
-      const disabled = GetDisabled.disabledStyle;
+      const disabled = GetDisabled;
       const readonly = GetReadonly.readonlyStyles;
+    
       return {
         className: `${size} ${disabled} ${readonly}`
           .trim(),
@@ -112,9 +114,10 @@ export function usePassword(props: PasswordProps) {
   const GetWrapperInputStyle = useMemo(
     () => {
       const size = GetSize.size;
-      const disable = GetDisabled.disabledStyle;
+      const disable = GetDisabled;
       const variants = GetVariantAndColor.variants;
-      const disabled = GetDisabled.disabledStyle;
+      const disabled = GetDisabled;
+      console.log(disabled)
       const error = GetError ? "!border-error" : ""
       return {
         className: `${size} ${variants} ${disable} ${disabled} ${error}`
@@ -131,11 +134,11 @@ export function usePassword(props: PasswordProps) {
 
   const GetInputStyle = useMemo(
     () => {
-      const disable = GetDisabled.disabledStyle;
+      const disable = GetDisabled;
       const base = PasswordsVariants.inputStyle;
       const readonly = GetReadonly.readonlyStyles;
       const variant = GetVariantAndColor.variants;
-      const disabled = GetDisabled.disabledStyle;
+      const disabled = GetDisabled;
       const error = GetError ? "text-error" : ""
       return {
         className: `${base} ${disable} ${readonly} ${variant} ${disabled} ${error}`
@@ -145,11 +148,11 @@ export function usePassword(props: PasswordProps) {
     [GetDisabled, GetVariantAndColor, GetReadonly, GetError],
   );
 
-  const GetIconStyle = useMemo(
+  const GetIconProps = useMemo(
     () => {
       const style = PasswordsVariants.buttonStyle;
       const hidden = isIconHidden ? "hidden" : "";
-      const disabled = isDisabled ? GetDisabled.disabledStyle : "";
+      const disabled = isDisabled ? GetDisabled : "";
       const error = GetError ? "text-error stroke-error" : ""
       const readonly = GetReadonly.readonlyStyles;
       return {
@@ -162,7 +165,7 @@ export function usePassword(props: PasswordProps) {
   const GetLabelProps = useMemo(
     () => {
       const classLabel = PasswordsVariants.labelStyles;
-      const disabled = GetDisabled.disabledStyle;
+      const disabled = GetDisabled;
       const required = isRequired ? PasswordsVariants.requiredStyle : ""
       return {
         className: `${classLabel} ${disabled} ${required}`,
@@ -174,7 +177,7 @@ export function usePassword(props: PasswordProps) {
   const GetDescriptionProps = useMemo(
     () => {
       const classDesc = PasswordsVariants.descriptionStyles;
-      const disabled = GetDisabled.disabledStyle;
+      const disabled = GetDisabled;
       return {
         className: `${classDesc} ${disabled}`,
         description,
@@ -200,6 +203,18 @@ export function usePassword(props: PasswordProps) {
         );
       }}
   ,[isFullWidth, size]);
+
+  const GetSlot = useMemo(
+    () => {
+      const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";
+      const yuzuBaseDisabled = isDisabled ? classNames?.yuzuBaseDisabled : ""
+      return {
+        yuzuBase,
+          yuzuBaseDisabled
+      };
+    },
+    [classNames],
+  );
   return {
     domRef,
     className,
@@ -208,8 +223,7 @@ export function usePassword(props: PasswordProps) {
     isDisabled,
     GetInputStyle,
     isIconHidden,
-    GetIconStyle,
-    GetDisabled,
+    GetIconProps,
     GetLabelProps,
     GetDescriptionProps,
     isReadonly,
@@ -217,6 +231,7 @@ export function usePassword(props: PasswordProps) {
     CheckRender,
     GetErrorMessageProps,
     errorMessage,
+    GetSlot,
     ...otherProps,
   };
 }

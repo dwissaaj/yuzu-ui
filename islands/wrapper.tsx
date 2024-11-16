@@ -39,14 +39,18 @@ export default function Wrapper() {
               }}
             >
               <Password
-              isRequired
+              isDisabled
                 size="fullWidth"
                 isIconHidden={false}
                 description="you remmeberd it"
                 label={"your pass"}
-                variant="full"
-                color="secondary"
+                variant="underline"
+                color="primary"
                 errorMessage="You are try again"
+                classNames={{
+                  yuzuBase: "bg-red-500",
+                  yuzuBaseDisabled: "bg-red-500"
+                }}
               />
             </Fieldset>
             <Checkbox label={'did you ready?'} />

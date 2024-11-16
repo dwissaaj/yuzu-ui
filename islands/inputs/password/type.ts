@@ -2,7 +2,7 @@ import type { Ref } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js
 import type { JSX } from "preact/jsx-runtime";
 import type { PasswordsVariants } from "./password-variants.ts";
 import type Label from "../label/Labels.tsx";
-export type LabelSlot = Partial<
+export type PasswordSlot = Partial<
   Record<
     | "yuzuBase"
     | "yuzuBaseDisabled"
@@ -10,6 +10,7 @@ export type LabelSlot = Partial<
     | "yuzuInputError"
     | "yuzuInputReadonly"
     | "yuzuInputDisabled"
+    | "yuzuIcon"
     | "yuzuDescription"
     | "yuzuDescriptionError"
     | "yuzuDescriptionDisabled"
@@ -31,7 +32,8 @@ export type PasswordProps =
      */
     className?: string;
 
-    isRequired?: boolean
+    classNames?: PasswordSlot
+    isRequired?: boolean;
     /**
      * Size of the input will consume by div parents
      */
@@ -40,7 +42,7 @@ export type PasswordProps =
     /**
      * Color based on variant, only consume by div parent
      */
-    color?: keyof typeof PasswordsVariants.colors;
+    color?: keyof typeof PasswordsVariants.colors
 
     /**
      * Variant can't be extended unless config the hooks
