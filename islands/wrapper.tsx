@@ -39,18 +39,18 @@ export default function Wrapper() {
               }}
             >
               <Password
-              isError={true}
-                size="small"
+              isRequired
+                size="fullWidth"
                 isIconHidden={false}
                 description="you remmeberd it"
                 label={"your pass"}
-                isFullWidth={false}
-                variant="underline"
+                variant="full"
                 color="secondary"
                 errorMessage="You are try again"
               />
             </Fieldset>
-            <Button color="success" variant="solid">ASLI</Button>
+            <Checkbox label={'did you ready?'} />
+            <Label>ads</Label>
           </div>
         </div>
       </div>

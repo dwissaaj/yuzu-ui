@@ -31,6 +31,7 @@ export type PasswordProps =
      */
     className?: string;
 
+    isRequired?: boolean
     /**
      * Size of the input will consume by div parents
      */

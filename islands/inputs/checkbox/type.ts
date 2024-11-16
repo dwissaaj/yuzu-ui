@@ -92,4 +92,6 @@ export type CheckboxProps =
      * @default none
      */
     labelColor?: keyof typeof CheckboxVariants.labelColors;
+
   };
+

@@ -57,6 +57,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>((props) => {
     GetWrapperBaseStyle,
     GetWrapperInputStyle,
     isDisabled,
+    isRequired,
     GetInputStyle,
     GetErrorMessageProps,
     errorMessage,
@@ -67,6 +68,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>((props) => {
     isReadonly,
     ...otherProps
   } = usePassword({ ...props });
+
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -102,6 +104,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>((props) => {
             {...otherProps}
             disabled={isDisabled}
             readOnly={isReadonly}
+            required={isRequired}
             ref={domRef}
             className={`${GetInputStyle.className}`.trim()}
             type={isPasswordVisible ? "text" : "password"}
@@ -112,7 +115,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>((props) => {
             }`.trim()}
             type={"button"}
             onClick={togglePasswordVisibility}
-            disabled={isDisabled}
+            disabled={isDisabled || isReadonly}
           >
             {isPasswordVisible ? closeIcon : openIcon}
           </button>

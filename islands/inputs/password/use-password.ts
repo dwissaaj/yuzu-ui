@@ -14,6 +14,7 @@ export function usePassword(props: PasswordProps) {
     isFullWidth = false,
     isDisabled = false,
     isReadonly = false,
+    isRequired =false,
     isIconHidden,
     isError = false,
     errorMessage,
@@ -31,7 +32,7 @@ export function usePassword(props: PasswordProps) {
     () => {
       if (isFullWidth === true) {
         return { size: PasswordsVariants.sizes.fullWidth };
-      } else isFullWidth === false;
+      } else
       {
         return { size: PasswordsVariants.sizes[size] };
       }
@@ -71,12 +72,12 @@ export function usePassword(props: PasswordProps) {
   const GetReadonly = useMemo(
     () => {
       if (isReadonly === true) {
-        const inputReadonlyStyle = PasswordsVariants.inputReadonlyStyles;
-        return { inputReadonlyStyle };
+        const readonlyStyles = PasswordsVariants.readonlyStyles;
+        return { readonlyStyles };
       } else isReadonly === false;
       {
-        const inputReadonlyStyle = "";
-        return { inputReadonlyStyle };
+        const readonlyStyles = "";
+        return { readonlyStyles };
       }
     },
     [isDisabled],
@@ -95,8 +96,9 @@ export function usePassword(props: PasswordProps) {
     () => {
       const size = GetSize.size;
       const disabled = GetDisabled.disabledStyle;
+      const readonly = GetReadonly.readonlyStyles;
       return {
-        className: `${size} ${disabled}`
+        className: `${size} ${disabled} ${readonly}`
           .trim(),
       };
     },
@@ -131,7 +133,7 @@ export function usePassword(props: PasswordProps) {
     () => {
       const disable = GetDisabled.disabledStyle;
       const base = PasswordsVariants.inputStyle;
-      const readonly = GetReadonly.inputReadonlyStyle;
+      const readonly = GetReadonly.readonlyStyles;
       const variant = GetVariantAndColor.variants;
       const disabled = GetDisabled.disabledStyle;
       const error = GetError ? "text-error" : ""
@@ -149,8 +151,9 @@ export function usePassword(props: PasswordProps) {
       const hidden = isIconHidden ? "hidden" : "";
       const disabled = isDisabled ? GetDisabled.disabledStyle : "";
       const error = GetError ? "text-error stroke-error" : ""
+      const readonly = GetReadonly.readonlyStyles;
       return {
-        className: `${style} ${hidden} ${disabled} ${error}`,
+        className: `${style} ${hidden} ${disabled} ${error} ${readonly}`,
       };
     },
     [GetDisabled, isDisabled],
@@ -160,8 +163,9 @@ export function usePassword(props: PasswordProps) {
     () => {
       const classLabel = PasswordsVariants.labelStyles;
       const disabled = GetDisabled.disabledStyle;
+      const required = isRequired ? PasswordsVariants.requiredStyle : ""
       return {
-        className: `${classLabel} ${disabled}`,
+        className: `${classLabel} ${disabled} ${required}`,
         label,
       };
     },
@@ -187,6 +191,15 @@ export function usePassword(props: PasswordProps) {
     },
     [GetError],
   );
+
+  const CheckRender = useMemo(
+    () => {
+      if (isFullWidth && size) {
+        throw new Error(
+          'You cannot use isFullWidth=true and size="any" together. To make it full width, set size="fullwidth" instead',
+        );
+      }}
+  ,[isFullWidth, size]);
   return {
     domRef,
     className,
@@ -200,6 +213,8 @@ export function usePassword(props: PasswordProps) {
     GetLabelProps,
     GetDescriptionProps,
     isReadonly,
+    isRequired,
+    CheckRender,
     GetErrorMessageProps,
     errorMessage,
     ...otherProps,
