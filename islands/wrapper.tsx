@@ -33,12 +33,31 @@ export default function Wrapper() {
       <div class={"w-full flex flex-col gap-2"}>
         <div className={""}>
           <div className={`w-full flex flex-col gap-2`}>
-            <RadioGroup classNames={{
-              yuzuBase: "bg-red-500",
-              yuzuLabel: '!text-5xl'
-            }} label={'fav fruits'}>
-              <Radio>Orange</Radio>
-              <Radio>apple</Radio>
+            <RadioGroup label={"fav fruits"}>
+              <Radio
+                classNames={{
+                  yuzuBase: "",
+                  yuzuInput: "",
+                  yuzuLabel: "text-5xl",
+                  yuzuInputDisabled: "ring-2 ring-red-500",
+                }}
+                name="fruits"
+                label="orange"
+                id="orange"
+                color="primary"
+              />
+              <Radio
+                classNames={{
+                  yuzuBase: "",
+                  yuzuInput: "",
+                  yuzuLabel: "text-5xl",
+                  yuzuInputDisabled: "ring-2 ring-red-500",
+                }}
+                name="fruits"
+                label="apple"
+                id="apple"
+                color="primary"
+              />
             </RadioGroup>
           </div>
         </div>

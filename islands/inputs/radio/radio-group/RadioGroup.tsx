@@ -25,7 +25,9 @@ import { useRadioGroup } from "./use-radio-group.ts";
  * @param {"primary" | "secondary" | "error" | "success" | "warning" | "default"} [borderColor="primary"] - The border color for the `RadioGroup` anc can be extended and customize, Options include `"primary"`, `"secondary"`, `"error"`, `"success"`, `"warning"`, and `"default"`.
  * @param {"primary" | "secondary" | "error" | "success" | "warning" | "default"} [labelColor="default"] - The label color for the `RadioGroup` anc can be extended and customize Controls the text color of the label.
  * @param {"small" | "medium" | "large"} [labelSize="small"] - The size of the label text. Controls font size, with options like `"small"`, `"medium"`, and `"large"` anc can be extended and customize
- * @param {string} [yuzuLabelStyle] - Custom style for the label of the `RadioGroup`, if needed.
+ * @param {RadioGroupSlot} [classNames={{}}] - Custom styles for specific component slots. Possible slot keys are:
+ * - `yuzuBase`: The base classes applied to the wrapper of the radio group.
+ * - `yuzuLabel`: The classes applied to the label of the radio group.
  * @returns {JSX.Element} The `RadioGroup` component with the appropriate styles and layout applied.
  */
 

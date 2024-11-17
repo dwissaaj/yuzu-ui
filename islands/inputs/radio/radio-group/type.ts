@@ -1,5 +1,4 @@
 import type {
-  CSSProperties,
   Ref,
 } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { JSX } from "preact/jsx-runtime";
@@ -79,5 +78,14 @@ export type RadioGroupProps = JSX.IntrinsicElements["fieldset"] & {
    */
   children?: JSX.Element | JSX.Element[];
 
-  classNames?: RadioGroupSlot
+  /**
+   * Custom styles for specific component slots. Possible slot keys are:
+   *
+   * - `yuzuBase`: The base classes applied to the radio group container.
+   * - `yuzuLabel`: The classes applied to the label of the radio group.
+   *
+   * @type {RadioGroupSlot}
+   * @default {}
+   */
+  classNames?: RadioGroupSlot;
 };

@@ -22,47 +22,48 @@ import { useRadio } from "./use-radio.ts";
  * @param {"primary" | "secondary" | "error" | "success" | "warning" | "default"} [color="default"] - The color scheme for the radio button and can be extended
  * @param {"small" | "medium" | "large"} [textSize="medium"] - Size of the label text can be extended and Customize. Defaults to `"medium"`.
  * @param {"small" | "medium" | "large"} [radioSize="medium"] - Size of the radio button can be extended and Customize. Defaults to `"medium"`.
-
+ * @param {RadioSlot} [classNames={{}}] - Custom styles for specific component slots. Possible slot keys are:
+ * - `yuzuBase`: The base classes applied to the radio button wrapper.
+ * - `yuzuLabel`: The base classes applied to the label of the radio button.
+ * - `yuzuInput`: The base classes applied to the radio input element.
+ * - `yuzuInputDisabled`: The classes applied to the radio input element when it is disabled.
  * @param {boolean} [isDisabled=false] - If true, applies disabled styles and prevents interaction.
- * @param {boolean} [isError=false] - If true, applies error styling to indicate an error state.
- * @param {string} [yuzuDisableStyle=""] - A string representing the custom CSS * to apply when the component is disabled.
- * Default is an empty string if not provided.
- * @param {string} [yuzuErrorStyle=""] - A string representing the custom CSS * to apply when the component is in an error state.
- * Default is an empty string if not provided.
- * @param {React.ReactNode} children - Content displayed alongside the radio
- * button, often a label or description.
  */
 const Radio = forwardRef<HTMLInputElement, RadioProps>((props) => {
   const {
     domRef,
-    style,
     className,
-    children,
     GetRadioProps,
     label,
+    children,
     isDisabled,
     GetLabelProps,
+    GetSlot,
+    CheckRender,
     GetParentProps,
-    GetCustomDisabled,
-    GetCustomError,
     ...otherProps
   } = useRadio({ ...props });
 
+  const labelWrapper = (
+    <label className={`${GetLabelProps.className} ${GetSlot.yuzuLabel}`}>
+      {label}
+    </label>
+  );
+  if (CheckRender instanceof Error) {
+    throw CheckRender;
+  }
   return (
     <div
-      className={`flex flex-row gap-2 items-center ${GetParentProps.className}`}
+      className={`flex flex-row gap-2 items-center ${GetParentProps.className} ${GetSlot.yuzuBase}`}
     >
       <input
         ref={domRef}
         {...otherProps}
-        style={style}
         type="radio"
         disabled={isDisabled}
-        className={`${className} ${GetRadioProps.className} ${GetCustomDisabled} ${GetCustomDisabled}`}
-      >
-        {children}
-      </input>
-      <label className={`${GetLabelProps.className}`}>{label}</label>
+        className={`${className} ${GetRadioProps.className} ${GetSlot.yuzuInput} ${GetSlot.yuzuInputDisabled}`}
+      />
+      {children || labelWrapper}
     </div>
   );
 });

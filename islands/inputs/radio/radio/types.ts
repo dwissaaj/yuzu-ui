@@ -3,6 +3,17 @@ import type {
   Ref,
 } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { RadioVariants } from "./radio-variants.ts";
+
+export type RadioSlot = Partial<
+  Record<
+    | "yuzuBase"
+    | "yuzuLabel"
+    | "yuzuInput"
+    | "yuzuInputDisabled",
+    string
+  >
+>;
+
 export type RadioProps =
   & Omit<JSX.IntrinsicElements["input"], "size" | "color">
   & {
@@ -14,9 +25,9 @@ export type RadioProps =
      * The label for the Radio input, either as a string or JSX element.
      * It is displayed beside the radio button.
      *
-     * @type {JSX.Element | string}
+     * @type {string}
      */
-    label?: JSX.Element | string;
+    label?: string;
     /**
      * Boolean flag to specify if the Radio input is disabled.
      * When `true`, the Radio input will be non-interactive and styled accordingly.
@@ -28,52 +39,11 @@ export type RadioProps =
     isDisabled?: boolean;
 
     /**
-     * Boolean flag to specify if the Radio input is in an error state.
-     * When `true`, the Radio input will be styled with error styles.
-     *
-     * @type {boolean}
-     */
-    isError?: boolean;
-
-    /**
-     * Custom CSS style to apply when the Radio input is in an error state.
-     *
-     * @type {string}
-     */
-    errorStyle?: string;
-
-    /**
-     * Custom style to apply when the Radio input is disabled.
-     * For better results and to avoid errors, it's recommended to modify the style in the variant file.
-     *
-     * @type {string}
-     */
-    yuzudisableStyle?: string;
-
-    /**
-     * Custom style to apply when the Radio input is in an error state.
-     *
-     * @type {string}
-     */
-    yuzuErrorStyle?: string;
-
-    /**
      * Custom style to apply when the Radio input is disabled.
      *
      * @type {string}
      */
-    disabledStyle?: string;
-
-    /**
-     * The content to be rendered as children inside the Radio component.
-     * If `label` is used, `children` cannot be used.
-     *
-     * @example
-     * <span>An Example!</span>
-     *
-     * @type {JSX.Element | string}
-     */
-    children?: JSX.Element | string;
+    disabledStyle?: keyof typeof RadioVariants.disabledStyles;
 
     /**
      * Custom CSS class names for additional styling of the Radio component.
@@ -107,4 +77,17 @@ export type RadioProps =
      * @type {keyof typeof RadioVariants.sizes.radio}
      */
     radioSize?: keyof typeof RadioVariants.sizes.radio;
+
+    /**
+     * Custom styles for specific component slots. Possible slot keys are:
+     * - `yuzuBase`: The base classes applied to the radio button wrapper.
+     * - `yuzuLabel`: The base classes applied to the label of the radio button.
+     * - `yuzuInput`: The base classes applied to the radio input element.
+     * - `yuzuInputDisabled`: The classes applied to the radio input element when it is disabled.
+     * @type {RadioGroupSlot}
+     * @default {}
+     */
+    classNames?: RadioSlot;
+
+    children?: JSX.Element;
   };

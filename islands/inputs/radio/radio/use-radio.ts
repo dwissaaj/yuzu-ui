@@ -5,29 +5,18 @@ import { RadioVariants } from "./radio-variants.ts";
 export function useRadio(props: RadioProps) {
   const {
     domRef,
-    style,
-    children,
     className = "",
     label,
+    children,
     color = "default",
     textSize = "medium",
     radioSize = "medium",
     disabledStyle = "",
     isDisabled,
-    isError,
-    errorStyle = "",
-    yuzuErrorStyle = "",
-    yuzudisableStyle = "",
+    classNames,
     ...otherProps
   } = props;
-  const GetCustomError = useMemo(() => (isError ? yuzuErrorStyle : ""), [
-    isError,
-    yuzuErrorStyle,
-  ]);
-  const GetCustomDisabled = useMemo(
-    () => (isDisabled ? yuzudisableStyle : ""),
-    [isDisabled, yuzudisableStyle],
-  );
+
   const GetColor = useMemo(
     () => {
       return {
@@ -56,34 +45,30 @@ export function useRadio(props: RadioProps) {
   const GetDisabledStyle = useMemo(() => ({
     disabledStyle: isDisabled ? RadioVariants.disabledStyles : "",
   }), [isDisabled, disabledStyle]);
-  const GetErrorStyle = useMemo(() => ({
-    errorStyle: isError ? RadioVariants.errorStyles : "",
-  }), [isError, errorStyle]);
+
   const GetLabelProps = useMemo(
     () => {
       const size = GetTextSize.textSize;
-      const error = GetErrorStyle.errorStyle;
       const disable = GetDisabledStyle.disabledStyle;
       return {
-        className: `${size} ${error} ${disable}`.trim(),
+        className: `${size} ${disable}`.trim(),
       };
     },
-    [GetTextSize, GetErrorStyle, GetDisabledStyle],
+    [GetTextSize, GetDisabledStyle],
   );
   const GetRadioProps = useMemo(
     () => {
       const color = GetColor.color;
       const size = GetTextSize.textSize;
       const radioSize = GetRadioSize.radioSize;
-      const error = GetErrorStyle.errorStyle;
       const disable = GetDisabledStyle.disabledStyle;
       const base = RadioVariants.baseStyles;
       return {
-        className: `${base} ${color} ${size} ${radioSize} ${error} ${disable}`
+        className: `${base} ${color} ${size} ${radioSize} ${disable}`
           .trim(),
       };
     },
-    [GetColor, GetTextSize, GetRadioSize, GetErrorStyle, GetDisabledStyle],
+    [GetColor, GetTextSize, GetRadioSize, GetDisabledStyle],
   );
   const GetParentProps = useMemo(
     () => {
@@ -95,19 +80,52 @@ export function useRadio(props: RadioProps) {
     },
     [GetDisabledStyle],
   );
+
+  const GetSlot = useMemo(
+    () => {
+      const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";
+      const yuzuLabel = classNames?.yuzuLabel ? classNames?.yuzuLabel : "";
+      const yuzuInput = classNames?.yuzuInput ? classNames?.yuzuInput : "";
+      const yuzuInputDisabled = isDisabled ? classNames?.yuzuInputDisabled : "";
+      return {
+        yuzuBase,
+        yuzuLabel,
+        yuzuInput,
+        yuzuInputDisabled,
+      };
+    },
+    [classNames],
+  );
+  const CheckRender = useMemo(
+    () => {
+      if (label && children) {
+        throw new Error(
+          "You both add label and children together, currently supported one",
+        );
+      } else if (children) {
+        return children;
+      } else if (label) {
+        return label;
+      } else !children || !label;
+      {
+        throw new Error(
+          "Specify children or label",
+        );
+      }
+    },
+    [label, children],
+  );
   return {
     domRef,
-    style,
     className,
-    children,
     GetRadioProps,
     label,
     isDisabled,
-    isError,
+    children,
+    GetSlot,
+    CheckRender,
     GetLabelProps,
     GetParentProps,
-    GetCustomError,
-    GetCustomDisabled,
     ...otherProps,
   };
 }

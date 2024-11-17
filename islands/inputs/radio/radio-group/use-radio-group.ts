@@ -81,11 +81,11 @@ export function useRadioGroup(props: RadioGroupProps) {
   );
   const GetSlot = useMemo(
     () => {
-      const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : ""
-      const yuzuLabel = classNames?.yuzuLabel ? classNames?.yuzuLabel : ""
+      const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";
+      const yuzuLabel = classNames?.yuzuLabel ? classNames?.yuzuLabel : "";
       return {
         yuzuBase,
-        yuzuLabel
+        yuzuLabel,
       };
     },
     [classNames],
