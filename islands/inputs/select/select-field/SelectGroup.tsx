@@ -36,14 +36,14 @@ import { useSelectField } from "./use-select-field.ts";
  * @param {boolean} [isError=false] - Boolean to apply error styles to the `SelectGroup`.
  * @param {boolean} [isRequired=false] - Boolean to add a red asterisk (`*`) to the label indicating the field is required.
  * @param {string} [description] - A description text that will be displayed below the `SelectGroup` label.
-   * @param {SelectGroupSlot} [classNames={{}}] - Custom styles for specific component slots. Possible slot keys are:
-   * - `yuzuBase`: The base classes applied to the `SelectGroup` container.
-   * - `yuzuBaseDisabled`: The classes applied when the `SelectGroup` is disabled.
-   * - `yuzuBaseError`: The classes applied when the `SelectGroup` has an error (typically used for border or background color).
-   * - `yuzuLabel`: The classes applied to the label of the `SelectGroup`.
-   * - `yuzuDescription`: The classes applied to the description of the `SelectGroup`.
-   * - `yuzuSelect`: The classes applied to the dropdown/select element inside the `SelectGroup`.
-   * 
+ * @param {SelectGroupSlot} [classNames={{}}] - Custom styles for specific component slots. Possible slot keys are:
+ * - `yuzuBase`: The base classes applied to the `SelectGroup` container.
+ * - `yuzuBaseDisabled`: The classes applied when the `SelectGroup` is disabled.
+ * - `yuzuBaseError`: The classes applied when the `SelectGroup` has an error (typically used for border or background color).
+ * - `yuzuLabel`: The classes applied to the label of the `SelectGroup`.
+ * - `yuzuDescription`: The classes applied to the description of the `SelectGroup`.
+ * - `yuzuSelect`: The classes applied to the dropdown/select element inside the `SelectGroup`.
+ *
  * @returns {JSX.Element} The `SelectGroup` component with the appropriate styles and layout applied.
  */
 
@@ -53,9 +53,10 @@ const SelectGroup = forwardRef<HTMLSelectElement, SelectGroupProps>((props) => {
     children,
     className,
     GetLabel,
-    GetSelectFieldProps,
+    GetBaseWrapperProps,
     GetDescription,
     GetSlot,
+    GetSelectProps,
     GetError,
     GetColorClass,
     isDisabled,
@@ -64,7 +65,7 @@ const SelectGroup = forwardRef<HTMLSelectElement, SelectGroupProps>((props) => {
 
   return (
     <div
-      className={`${className} ${GetSelectFieldProps.className} ${GetError.errorStyle} ${GetSlot?.yuzuBase} ${GetSlot?.yuzuBaseDisabled} ${GetSlot?.yuzuBaseError} `}
+      className={`${className} ${GetBaseWrapperProps.className} ${GetError.errorStyle} ${GetSlot?.yuzuBase} ${GetSlot?.yuzuBaseDisabled} ${GetSlot?.yuzuBaseError} `}
     >
       <div className={"w-full flex flex-col gap-1"}>
         <legend
@@ -85,7 +86,7 @@ const SelectGroup = forwardRef<HTMLSelectElement, SelectGroupProps>((props) => {
           required={GetLabel.isRequired}
           disabled={isDisabled}
           ref={domRef}
-          className={`w-full p-2 ${GetColorClass} ${GetSlot.yuzuSelect}`}
+          className={`w-full p-2 ${GetSelectProps.className} ${GetSlot.yuzuSelect}`}
         >
           {children}
         </select>

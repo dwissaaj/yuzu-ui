@@ -20,23 +20,27 @@ export function useInput(props: InputProps) {
     labelPlacement = "top",
     ...otherProps
   } = props;
-
-  const fullWidthClass = useMemo(
-    () => {
-      if (isFullWidth === true) {
-        return { size: InputVariants.fullWidth };
-      } else isFullWidth === false;
-      {
-        return { size: InputVariants.sizes[size] };
-      }
-    },
-    [isFullWidth, size],
-  );
-  const GetSizeClass = useMemo(
+  const GetSize = useMemo(
     () => {
       return {
-        parentSize: InputVariants.sizes[size],
+        size: InputVariants.sizes[size],
       };
+    },
+    [size],
+  );
+
+  const GetSizeClass = useMemo(
+    () => {
+      if (isFullWidth === true) {
+        return {
+          parentSize: InputVariants.sizes.fullWidth,
+        };
+      } else;
+      {
+        return {
+          parentSize: InputVariants.sizes[size],
+        };
+      }
     },
     [size],
   );
@@ -60,11 +64,11 @@ export function useInput(props: InputProps) {
     () => {
       if (isDisabled === true) {
         const disabledStyle = InputVariants.disabledStyle;
-        return {disabledStyle, isDisabled}
+        return { disabledStyle, isDisabled };
       } else isDisabled === false;
       {
         const disabledStyle = "";
-        return {disabledStyle, isDisabled}
+        return { disabledStyle, isDisabled };
       }
     },
     [isDisabled],
@@ -83,7 +87,6 @@ export function useInput(props: InputProps) {
     },
     [isError],
   );
-
 
   const GetReadonly = useMemo(
     () => {
@@ -114,9 +117,9 @@ export function useInput(props: InputProps) {
 
   const GetParentsStyle = useMemo(
     () => {
-      const size = fullWidthClass.size;
+      const size = GetSizeClass.parentSize;
       const color = GetColorClass;
-      const disable = GetDisabled;
+      const disable = GetDisabled.disabledStyle;
       const variant = GetVariantClass.variant;
       const error = GetErrorInput.yuzuErrorStyle;
       const readonly = GetReadonly.readonlyStyles;
@@ -137,7 +140,7 @@ export function useInput(props: InputProps) {
   const GetInputStyle = useMemo(
     () => {
       const color = GetColorClass;
-      const disable = GetDisabled;
+      const disable = GetDisabled.disabledStyle;
       const error = GetErrorInput.yuzuErrorStyle;
       const base = InputVariants.inputStyle;
       const readonly = GetReadonly.readonlyStyles;
@@ -152,11 +155,11 @@ export function useInput(props: InputProps) {
     () => {
       if (isRequired === true) {
         const requiredStyle = InputVariants.labelRequiredStyle;
-        return {requiredStyle, isRequired}
+        return { requiredStyle, isRequired };
       } else isDisabled === false;
       {
         const requiredStyle = "";
-        return {isRequired, requiredStyle}
+        return { isRequired, requiredStyle };
       }
     },
     [isDisabled],
@@ -164,8 +167,8 @@ export function useInput(props: InputProps) {
   const GetLabelProps = useMemo(
     () => {
       const labels = label;
-      const disable = GetDisabled;
-      const readonly = GetRequiredLabel;
+      const disable = GetDisabled.disabledStyle;
+      const readonly = GetRequiredLabel.requiredStyle;
       return {
         className: `${disable} ${readonly}`.trim(),
         labelPlacement: GetLabelPlacement.label,
@@ -177,15 +180,29 @@ export function useInput(props: InputProps) {
   const GetSlot = useMemo(
     () => {
       const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";
-      const yuzuBaseDisabled = GetDisabled.isDisabled ? classNames?.yuzuBaseDisabled : "";
-      const yuzuBaseReadonly = GetReadonly.isReadonly ? classNames?.yuzuBaseReadonly : "";
-      const yuzuBaseError = GetErrorInput.isError ? classNames?.yuzuBaseError : "";
+      const yuzuBaseDisabled = GetDisabled.isDisabled
+        ? classNames?.yuzuBaseDisabled
+        : "";
+      const yuzuBaseReadonly = GetReadonly.isReadonly
+        ? classNames?.yuzuBaseReadonly
+        : "";
+      const yuzuBaseError = GetErrorInput.isError
+        ? classNames?.yuzuBaseError
+        : "";
       const yuzuInput = classNames?.yuzuInput ? classNames?.yuzuInput : "";
-      const yuzuInputDisabled = GetDisabled.isDisabled ? classNames?.yuzuInputDisabled : "";
-      const yuzuInputReadonly = GetReadonly.isReadonly ? classNames?.yuzuInputReadonly : "";
-      const yuzuInputError = GetErrorInput.isError ? classNames?.yuzuInputError : "";
-      const yuzuLabelRequired = GetRequiredLabel.isRequired ? classNames?.yuzuLabelRequired : "";
-      const yuzuLabel = classNames?.yuzuLabel  ? classNames?.yuzuLabel : "";
+      const yuzuInputDisabled = GetDisabled.isDisabled
+        ? classNames?.yuzuInputDisabled
+        : "";
+      const yuzuInputReadonly = GetReadonly.isReadonly
+        ? classNames?.yuzuInputReadonly
+        : "";
+      const yuzuInputError = GetErrorInput.isError
+        ? classNames?.yuzuInputError
+        : "";
+      const yuzuLabelRequired = GetRequiredLabel.isRequired
+        ? classNames?.yuzuLabelRequired
+        : "";
+      const yuzuLabel = classNames?.yuzuLabel ? classNames?.yuzuLabel : "";
       return {
         yuzuBase,
         yuzuBaseDisabled,
@@ -196,11 +213,12 @@ export function useInput(props: InputProps) {
         yuzuInputError,
         yuzuInputReadonly,
         yuzuLabel,
-        yuzuLabelRequired
+        yuzuLabelRequired,
       };
     },
     [classNames, GetErrorInput, GetDisabled],
   );
+
   return {
     domRef,
     className,
@@ -208,7 +226,6 @@ export function useInput(props: InputProps) {
     GetParentsStyle,
     isDisabled,
     GetInputStyle,
-    GetDisabled,
     isReadonly,
     isRequired,
     GetSlot,

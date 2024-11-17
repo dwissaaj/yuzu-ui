@@ -132,7 +132,6 @@ export function usePassword(props: PasswordProps) {
       const disable = GetDisabledStyle;
       const variants = GetVariantAndColor.variants;
       const disabled = GetDisabledStyle;
-      console.log(disabled);
       const error = GetError ? "!border-error" : "";
       return {
         className: `${size} ${variants} ${disable} ${disabled} ${error}`

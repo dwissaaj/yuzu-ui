@@ -7,7 +7,7 @@ export function useSelectField(props: SelectGroupProps) {
     domRef,
     style,
     children,
-    className,
+    className = "",
     classNames,
     isDisabled,
     description,
@@ -63,7 +63,16 @@ export function useSelectField(props: SelectGroupProps) {
     },
     [isDisabled],
   );
-  const GetSelectFieldProps = useMemo(
+  const GetSelectProps = useMemo(
+    () => {
+      const base = "border-0 focus:outline-0 active:outline-0";
+      return {
+        className: `${base}`,
+      };
+    },
+    [],
+  );
+  const GetBaseWrapperProps = useMemo(
     () => {
       const disabled = GetDisabled.disabledStyles;
       const base = SelectGroupVariants.base;
@@ -95,7 +104,6 @@ export function useSelectField(props: SelectGroupProps) {
   const GetLabel = useMemo(
     () => {
       const yuzuLabel = classNames?.yuzuLabel;
-      console.log(SelectGroupVariants.labelRequired);
       if (isRequired === true) {
         return {
           requiredStyle: SelectGroupVariants.labelRequired,
@@ -153,9 +161,10 @@ export function useSelectField(props: SelectGroupProps) {
     style,
     children,
     className,
-    GetSelectFieldProps,
+    GetBaseWrapperProps,
     GetDescription,
     GetSlot,
+    GetSelectProps,
     isDisabled,
     GetColorClass,
     GetLabel,

@@ -111,7 +111,6 @@ export function useCheckbox(props: CheckboxProps) {
     () => {
       const wrapperBase = CheckboxVariants.wrapperBase;
       const disabled = GetDisabledWrapper;
-      console.log(disabled);
       return {
         className: `${wrapperBase} ${disabled}`,
       };

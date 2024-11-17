@@ -1,11 +1,13 @@
 export const InputVariants = {
   sizes: {
     small:
-      "m-1 p-2 w-52 hover:brightness-110 transition ease-in-out duration-300 rounded-sm ",
+      "m-1 p-2 w-52 hover:brightness-110 transition ease-in-out duration-300 rounded-sm",
     medium:
-      "m-1 p-2 w-64 hover:brightness-110 transition ease-in-out duration-300 rounded-lg ",
+      "m-1 p-2 w-64 hover:brightness-110 transition ease-in-out duration-300 rounded-lg",
     large:
-      "m-1 p-2 w-96 hover:brightness-110 transition ease-in-out duration-300 rounded-lg ",
+      "m-1 p-2 w-96 hover:brightness-110 transition ease-in-out duration-300 rounded-lg",
+    fullWidth:
+      "m-1 p-2 w-full hover:brightness-110 transition ease-in-out duration-300 rounded-lg",
   },
   colors: {
     primary: "primary",
@@ -15,7 +17,6 @@ export const InputVariants = {
     warning: "warning",
     default: "",
   },
-
   disabledStyle:
     "opacity-50 cursor-not-allowed disabled:opacity-50 disabled:cursor-not-allowed",
   variants: {
@@ -23,8 +24,6 @@ export const InputVariants = {
       "border-b-2 transition ease-in-out delay-150 duration-300 !rounded-none",
     full: "border-2 transition ease-in-out delay-150 duration-300",
   },
-  fullWidth:
-    "m-1 p-2 w-full hover:brightness-105 transition ease-in-out duration-300 rounded-sm",
   errorStyle:
     "outline-error focus:outline-error invalid:text-error text-error !border-error",
   errorStyleParent: "border-error",

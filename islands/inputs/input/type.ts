@@ -21,65 +21,97 @@ export type InputProps =
   & Omit<JSX.IntrinsicElements["input"], "size" | "color">
   & {
     /**
-     * Ref dom
+     * Reference to the input DOM element.
+     *
+     * @type {Ref<HTMLInputElement> | null}
      */
     domRef?: Ref<HTMLInputElement> | null;
 
     /**
-     * Classname styling for div parent, not recomended to use
+     * Custom class name for the parent container.
+     * **Note:** Not recommended for use.
+     *
+     * @type {string}
      */
     className?: string;
 
-    classNames?: InputSlot;
-    
     /**
-     * Size of the input will consume by div parents
+     * Custom class names for component slots.
+     * @type {InputSlot}
+     */
+    classNames?: InputSlot;
+
+    /**
+     * The size of the input component.
+     * Consumed by the parent container for styling purposes.
+     *
+     * @type {keyof typeof InputVariants.sizes}
      */
     size?: keyof typeof InputVariants.sizes;
 
     /**
-     * Color based on variant, only consume by div parent
+     * The color variant for the input component.
+     * Consumed by the parent container for styling purposes.
+     *
+     * @type {keyof typeof InputVariants.colors}
      */
     color?: keyof typeof InputVariants.colors;
 
     /**
-     * Variant can't be extended unless config the hooks
+     * The variant of the input component.
+     * Variants cannot be extended unless configured through hooks.
+     *
+     * @type {keyof typeof InputVariants.variants}
      */
     variant?: keyof typeof InputVariants.variants;
 
-
     /**
-     *  State for read only
+     * Whether the input is read-only.
+     *
+     * @type {boolean}
      */
     isReadonly?: boolean;
 
     /**
-     *  State for read only
+     * Whether the input should span the full width of its container.
+     *
+     * @type {boolean}
      */
     isFullWidth?: boolean;
 
     /**
-     *  State for error
+     * Whether the input is in an error state.
+     *
+     * @type {boolean}
      */
     isError?: boolean;
+
     /**
-     *  State for disabled
+     * Whether the input is disabled.
+     *
+     * @type {boolean}
      */
     isDisabled?: boolean;
 
     /**
-     * Is required ?
+     * Whether the input is required.
+     *
+     * @type {boolean}
      * @default false
      */
     isRequired?: boolean;
 
     /**
-     * label title
+     * The label for the input field.
+     *
+     * @type {string}
      */
     label?: string;
 
     /**
-     * where label should rendered
+     * The position of the label relative to the input field.
+     *
+     * @type {"top" | "bottom" | "left" | "right"}
      */
     labelPlacement?: "top" | "bottom" | "left" | "right";
   };

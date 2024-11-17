@@ -83,7 +83,6 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>((props) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const togglePasswordVisibility = () => {
-    console.log(isPasswordVisible);
     setIsPasswordVisible((prev) => !prev);
   };
   const closeIcon = (

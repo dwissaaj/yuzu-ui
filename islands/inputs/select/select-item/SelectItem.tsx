@@ -22,29 +22,30 @@ import type { SelectItemProps } from "./type.ts";
  * @param {string} [className=""] - Custom class names to apply additional styling to the `SelectItem` container. Defaults to an empty string if not provided.
  * @param {SelectItemSlot} [classNames={{yuzuOptions :""}}] - Custom class names for specific parts of the `SelectItem` component, such as the option element.
  * @param {boolean} [isDisabled=false] - If true, the option will be disabled and cannot be selected.
- * @param {boolean} [isRequired=false] - If true, the `SelectItem` will be marked as required. This typically affects validation.
  */
-const SelectItem = forwardRef<HTMLOptionElement, SelectItemProps>((props) => {
-  const {
-    domRef,
-    children,
-    className,
-    GetSlot,
-    isDisabled,
-    GetDisabled,
-    ...otherProps
-  } = useSelectItem({ ...props });
+const SelectItem = forwardRef<HTMLOptionElement, SelectItemProps>(
+  (props, disabledKeys) => {
+    const {
+      domRef,
+      children,
+      className,
+      GetSlot,
+      isDisabled,
+      GetDisabled,
+      ...otherProps
+    } = useSelectItem({ ...props });
 
-  return (
-    <option
-      {...otherProps}
-      className={`${className} ${GetDisabled.disabledStyles} ${GetSlot.yuzuOption}`}
-      disabled={isDisabled}
-      ref={domRef}
-    >
-      {children}
-    </option>
-  );
-});
+    return (
+      <option
+        {...otherProps}
+        className={`${className} ${GetDisabled.disabledStyles} ${GetSlot.yuzuOption}`}
+        disabled={isDisabled}
+        ref={domRef}
+      >
+        {children}
+      </option>
+    );
+  },
+);
 
 export default SelectItem;

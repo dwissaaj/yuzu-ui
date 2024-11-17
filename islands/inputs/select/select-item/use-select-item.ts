@@ -5,7 +5,6 @@ import { SelectItemVariants } from "./select-item-variants.ts";
 export function useSelectItem(props: SelectItemProps) {
   const {
     domRef,
-    style,
     children,
     className = "",
     classNames,
@@ -40,7 +39,6 @@ export function useSelectItem(props: SelectItemProps) {
 
   return {
     domRef,
-    style,
     children,
     className,
     GetDisabled,

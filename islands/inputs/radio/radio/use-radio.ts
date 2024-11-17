@@ -73,7 +73,6 @@ export function useRadio(props: RadioProps) {
   const GetParentProps = useMemo(
     () => {
       const disable = GetDisabledStyle.disabledStyle;
-      console.log(disable);
       return {
         className: `${disable}`.trim(),
       };
