@@ -10,10 +10,7 @@ export function useInput(props: InputProps) {
     size = "medium",
     color = "primary",
     variant = "full",
-    yuzuErrorStyle = "",
-    yuzuReadonlyStyle = "",
-    yuzuDisabledStyle = "",
-    yuzuRequiredStyle = "",
+    classNames,
     isReadonly = false,
     isFullWidth = false,
     isDisabled = false,
@@ -63,89 +60,40 @@ export function useInput(props: InputProps) {
     () => {
       if (isDisabled === true) {
         const disabledStyle = InputVariants.disabledStyle;
-        return disabledStyle;
+        return {disabledStyle, isDisabled}
       } else isDisabled === false;
       {
         const disabledStyle = "";
-        return disabledStyle;
+        return {disabledStyle, isDisabled}
       }
     },
     [isDisabled],
-  );
-
-  const GetCustomError = useMemo(
-    () => {
-      if (isError === true) {
-        return yuzuErrorStyle;
-      } else isError === false;
-      {
-        const yuzuErrorStyle = "";
-        return yuzuErrorStyle;
-      }
-    },
-    [isError],
-  );
-  const GetCustomReadonly = useMemo(
-    () => {
-      if (isReadonly === true) {
-        return yuzuReadonlyStyle;
-      } else isError === false;
-      {
-        const yuzuReadonlyStyle = "";
-        return yuzuReadonlyStyle;
-      }
-    },
-    [isReadonly],
   );
 
   const GetErrorInput = useMemo(
     () => {
       if (isError === true) {
         const yuzuErrorStyle = InputVariants.errorStyle;
-        return { yuzuErrorStyle };
+        return { yuzuErrorStyle, isError };
       } else isError === false;
       {
         const yuzuErrorStyle = "";
-        return { yuzuErrorStyle };
+        return { yuzuErrorStyle, isError };
       }
     },
     [isError],
   );
 
-  const GetCustomRequired = useMemo(
-    () => {
-      if (isRequired === true) {
-        return yuzuRequiredStyle;
-      } else isRequired === false;
-      {
-        const yuzuRequiredStyle = "";
-        return yuzuRequiredStyle;
-      }
-    },
-    [isRequired],
-  );
-  const GetCustomDisabled = useMemo(
-    () => {
-      if (isDisabled === true) {
-        return yuzuDisabledStyle;
-      } else isDisabled === false;
-      {
-        const yuzuInputDisables = "";
-        return yuzuInputDisables;
-      }
-    },
-    [isDisabled],
-  );
 
   const GetReadonly = useMemo(
     () => {
       if (isReadonly === true) {
         const readonlyStyles = InputVariants.readonlyStyles;
-        return { readonlyStyles };
+        return { readonlyStyles, isReadonly };
       } else isReadonly === false;
       {
         const readonlyStyles = "";
-        return { readonlyStyles };
+        return { readonlyStyles, isReadonly };
       }
     },
     [isReadonly],
@@ -204,11 +152,11 @@ export function useInput(props: InputProps) {
     () => {
       if (isRequired === true) {
         const requiredStyle = InputVariants.labelRequiredStyle;
-        return requiredStyle;
+        return {requiredStyle, isRequired}
       } else isDisabled === false;
       {
         const requiredStyle = "";
-        return requiredStyle;
+        return {isRequired, requiredStyle}
       }
     },
     [isDisabled],
@@ -226,6 +174,33 @@ export function useInput(props: InputProps) {
     },
     [GetColorClass, GetDisabled],
   );
+  const GetSlot = useMemo(
+    () => {
+      const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";
+      const yuzuBaseDisabled = GetDisabled.isDisabled ? classNames?.yuzuBaseDisabled : "";
+      const yuzuBaseReadonly = GetReadonly.isReadonly ? classNames?.yuzuBaseReadonly : "";
+      const yuzuBaseError = GetErrorInput.isError ? classNames?.yuzuBaseError : "";
+      const yuzuInput = classNames?.yuzuInput ? classNames?.yuzuInput : "";
+      const yuzuInputDisabled = GetDisabled.isDisabled ? classNames?.yuzuInputDisabled : "";
+      const yuzuInputReadonly = GetReadonly.isReadonly ? classNames?.yuzuInputReadonly : "";
+      const yuzuInputError = GetErrorInput.isError ? classNames?.yuzuInputError : "";
+      const yuzuLabelRequired = GetRequiredLabel.isRequired ? classNames?.yuzuLabelRequired : "";
+      const yuzuLabel = classNames?.yuzuLabel  ? classNames?.yuzuLabel : "";
+      return {
+        yuzuBase,
+        yuzuBaseDisabled,
+        yuzuBaseError,
+        yuzuBaseReadonly,
+        yuzuInput,
+        yuzuInputDisabled,
+        yuzuInputError,
+        yuzuInputReadonly,
+        yuzuLabel,
+        yuzuLabelRequired
+      };
+    },
+    [classNames, GetErrorInput, GetDisabled],
+  );
   return {
     domRef,
     className,
@@ -234,12 +209,9 @@ export function useInput(props: InputProps) {
     isDisabled,
     GetInputStyle,
     GetDisabled,
-    GetCustomError,
-    GetCustomReadonly,
-    GetCustomRequired,
     isReadonly,
     isRequired,
-    GetCustomDisabled,
+    GetSlot,
     GetLabelProps,
     ...otherProps,
   };

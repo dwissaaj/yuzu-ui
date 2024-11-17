@@ -2,6 +2,21 @@ import type { Ref } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js
 import type { JSX } from "preact/jsx-runtime";
 import type { InputVariants } from "./input-variants.ts";
 
+export type InputSlot = Partial<
+  Record<
+    | "yuzuBase"
+    | "yuzuBaseDisabled"
+    | "yuzuBaseError"
+    | "yuzuBaseReadonly"
+    | "yuzuInput"
+    | "yuzuInputDisabled"
+    | "yuzuInputError"
+    | "yuzuInputReadonly"
+    | "yuzuLabel"
+    | "yuzuLabelRequired",
+    string
+  >
+>;
 export type InputProps =
   & Omit<JSX.IntrinsicElements["input"], "size" | "color">
   & {
@@ -15,11 +30,8 @@ export type InputProps =
      */
     className?: string;
 
-    /**
-     * Vanilla css plain styling
-     */
-    style?: JSX.CSSProperties;
-
+    classNames?: InputSlot;
+    
     /**
      * Size of the input will consume by div parents
      */
@@ -35,24 +47,7 @@ export type InputProps =
      */
     variant?: keyof typeof InputVariants.variants;
 
-    /**
-     * Access to error state style
-     */
-    yuzuErrorStyle?: string;
 
-    /**
-     * Access to readonly state style
-     */
-    yuzuReadonlyStyle?: string;
-
-    /**
-     * Access to error state style
-     */
-    yuzuDisabledStyle?: string;
-    /**
-     * Access to error state style
-     */
-    yuzuRequiredStyle?: string;
     /**
      *  State for read only
      */

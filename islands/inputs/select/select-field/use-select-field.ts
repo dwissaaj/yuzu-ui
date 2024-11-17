@@ -136,14 +136,14 @@ export function useSelectField(props: SelectGroupProps) {
       const yuzuDescription = classNames?.yuzuDescription
         ? classNames?.yuzuDescription
         : "";
-      const yuzuOption = classNames?.yuzuOption ? classNames?.yuzuOption : "";
+      const yuzuSelect = classNames?.yuzuSelect ? classNames?.yuzuSelect : "";
       return {
         yuzuBase,
         yuzuBaseDisabled,
         yuzuBaseError,
         yuzuDescription,
         yuzuLabel,
-        yuzuOption,
+        yuzuSelect,
       };
     },
     [classNames],

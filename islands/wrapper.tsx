@@ -10,6 +10,9 @@ import Fieldset from "./inputs/fieldset/Fieldset.tsx";
 import Password from "./inputs/password/Password.tsx";
 import Button from "./inputs/button/Button.tsx";
 import { Radio, RadioGroup } from "./inputs/radio/index.ts";
+import SelectGroup from "./inputs/select/select-field/SelectGroup.tsx";
+import SelectItem from "./inputs/select/select-item/SelectItem.tsx";
+import Input from "./inputs/input/Inputs.tsx";
 
 export default function Wrapper() {
   const fieldsetRef = useRef<HTMLButtonElement>(null);
@@ -33,32 +36,12 @@ export default function Wrapper() {
       <div class={"w-full flex flex-col gap-2"}>
         <div className={""}>
           <div className={`w-full flex flex-col gap-2`}>
-            <RadioGroup label={"fav fruits"}>
-              <Radio
-                classNames={{
-                  yuzuBase: "",
-                  yuzuInput: "",
-                  yuzuLabel: "text-5xl",
-                  yuzuInputDisabled: "ring-2 ring-red-500",
-                }}
-                name="fruits"
-                label="orange"
-                id="orange"
-                color="primary"
-              />
-              <Radio
-                classNames={{
-                  yuzuBase: "",
-                  yuzuInput: "",
-                  yuzuLabel: "text-5xl",
-                  yuzuInputDisabled: "ring-2 ring-red-500",
-                }}
-                name="fruits"
-                label="apple"
-                id="apple"
-                color="primary"
-              />
-            </RadioGroup>
+            <Input isRequired classNames={{
+              yuzuLabel : "bg-red-100",
+              yuzuLabelRequired: "ring-2 ring-blue-500",
+              yuzuInputError: "shadow-lg shadow-orange-500",
+              yuzuInputReadonly: "ring ring-purple-500"
+            }} className={'!bg-green-500'} variant="full" label={"your name"} />
           </div>
         </div>
       </div>

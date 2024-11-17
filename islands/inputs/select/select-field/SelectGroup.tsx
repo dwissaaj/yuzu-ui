@@ -36,15 +36,14 @@ import { useSelectField } from "./use-select-field.ts";
  * @param {boolean} [isError=false] - Boolean to apply error styles to the `SelectGroup`.
  * @param {boolean} [isRequired=false] - Boolean to add a red asterisk (`*`) to the label indicating the field is required.
  * @param {string} [description] - A description text that will be displayed below the `SelectGroup` label.
- * @param {string} [classNames] - Custom style for the label, if needed see slot operation, options
- * @param {string} "yuzuBase" component  base container
-* @param {string} [yuzuBase=""] - Custom class for the base container of the `SelectGroup`.
- * @param {string} [yuzuBaseDisabled=""] - Custom class for the `SelectGroup` when it is disabled.
- * @param {string} [yuzuBaseError=""] - Custom class for the `SelectGroup` when there is an error (typically used for border or background color).
- * @param {string} [yuzuLabel=""] - Custom class for the label of the `SelectGroup`.
- * @param {string} [yuzuDescription=""] - Custom class for the description of the `SelectGroup`.
- * @param {string} [yuzuOption=""] - Custom class for the options inside the `SelectGroup` dropdown.
-
+   * @param {SelectGroupSlot} [classNames={{}}] - Custom styles for specific component slots. Possible slot keys are:
+   * - `yuzuBase`: The base classes applied to the `SelectGroup` container.
+   * - `yuzuBaseDisabled`: The classes applied when the `SelectGroup` is disabled.
+   * - `yuzuBaseError`: The classes applied when the `SelectGroup` has an error (typically used for border or background color).
+   * - `yuzuLabel`: The classes applied to the label of the `SelectGroup`.
+   * - `yuzuDescription`: The classes applied to the description of the `SelectGroup`.
+   * - `yuzuSelect`: The classes applied to the dropdown/select element inside the `SelectGroup`.
+   * 
  * @returns {JSX.Element} The `SelectGroup` component with the appropriate styles and layout applied.
  */
 
@@ -86,7 +85,7 @@ const SelectGroup = forwardRef<HTMLSelectElement, SelectGroupProps>((props) => {
           required={GetLabel.isRequired}
           disabled={isDisabled}
           ref={domRef}
-          className={`w-full p-2 ${GetColorClass} ${GetSlot.yuzuOption}`}
+          className={`w-full p-2 ${GetColorClass} ${GetSlot.yuzuSelect}`}
         >
           {children}
         </select>

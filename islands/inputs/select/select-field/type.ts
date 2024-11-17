@@ -10,7 +10,7 @@ export type SelectGroupSlot = Partial<
     | "yuzuBaseError"
     | "yuzuLabel"
     | "yuzuDescription"
-    | "yuzuOption",
+    | "yuzuSelect",
     string
   >
 >;
