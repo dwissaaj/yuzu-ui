@@ -15,26 +15,42 @@ export function usePassword(props: PasswordProps) {
     isFullWidth = false,
     isDisabled = false,
     isReadonly = false,
-    isRequired =false,
+    isRequired = false,
     isIconHidden,
     isError = false,
     errorMessage,
     ...otherProps
   } = props;
 
-
+  const GetDisabled = useMemo(
+    () => {
+      if (isDisabled === true) {
+        return isError;
+      }
+    },
+    [isDisabled],
+  );
+  const GetReadonly = useMemo(
+    () => {
+      if (isDisabled === true) {
+        return isError;
+      }
+    },
+    [isDisabled],
+  );
   const GetError = useMemo(
     () => {
-      if(isError === true) {
-        return isError
+      if (isError === true) {
+        return isError;
       }
-    },[isError])
+    },
+    [isError],
+  );
   const GetSize = useMemo(
     () => {
       if (isFullWidth === true) {
         return { size: PasswordsVariants.sizes.fullWidth };
-      } else
-      {
+      } else {
         return { size: PasswordsVariants.sizes[size] };
       }
     },
@@ -56,21 +72,21 @@ export function usePassword(props: PasswordProps) {
     },
     [color],
   );
-  const GetDisabled = useMemo(
+  const GetDisabledStyle = useMemo(
     () => {
       if (isDisabled === true) {
-        const disabledStyle = PasswordsVariants.disabledStyle
-        return disabledStyle
+        const disabledStyle = PasswordsVariants.disabledStyle;
+        return disabledStyle;
       } else isDisabled === false;
       {
         const disabledStyle = "";
-        return disabledStyle
+        return disabledStyle;
       }
     },
     [isDisabled],
   );
 
-  const GetReadonly = useMemo(
+  const GetReadonlyClass = useMemo(
     () => {
       if (isReadonly === true) {
         const readonlyStyles = PasswordsVariants.readonlyStyles;
@@ -96,17 +112,16 @@ export function usePassword(props: PasswordProps) {
   const GetWrapperBaseStyle = useMemo(
     () => {
       const size = GetSize.size;
-      const disabled = GetDisabled;
-      const readonly = GetReadonly.readonlyStyles;
-    
+      const disabled = GetDisabledStyle;
+      const readonly = GetReadonlyClass.readonlyStyles;
+
       return {
-        className: `${size} ${disabled} ${readonly}`
-          .trim(),
+        className: `${size} ${disabled} ${readonly}`,
       };
     },
     [
       GetVariant,
-      GetDisabled,
+      GetDisabledStyle,
       GetSize,
     ],
   );
@@ -114,11 +129,11 @@ export function usePassword(props: PasswordProps) {
   const GetWrapperInputStyle = useMemo(
     () => {
       const size = GetSize.size;
-      const disable = GetDisabled;
+      const disable = GetDisabledStyle;
       const variants = GetVariantAndColor.variants;
-      const disabled = GetDisabled;
-      console.log(disabled)
-      const error = GetError ? "!border-error" : ""
+      const disabled = GetDisabledStyle;
+      console.log(disabled);
+      const error = GetError ? "!border-error" : "";
       return {
         className: `${size} ${variants} ${disable} ${disabled} ${error}`
           .trim(),
@@ -126,7 +141,7 @@ export function usePassword(props: PasswordProps) {
     },
     [
       GetVariant,
-      GetDisabled,
+      GetDisabledStyle,
       GetSize,
       GetVariantAndColor,
     ],
@@ -134,39 +149,40 @@ export function usePassword(props: PasswordProps) {
 
   const GetInputStyle = useMemo(
     () => {
-      const disable = GetDisabled;
+      const disable = GetDisabledStyle;
       const base = PasswordsVariants.inputStyle;
-      const readonly = GetReadonly.readonlyStyles;
+      const readonly = GetReadonlyClass.readonlyStyles;
       const variant = GetVariantAndColor.variants;
-      const disabled = GetDisabled;
-      const error = GetError ? "text-error" : ""
+      const disabled = GetDisabledStyle;
+      const error = GetError ? "text-error" : "";
       return {
-        className: `${base} ${disable} ${readonly} ${variant} ${disabled} ${error}`
-          .trim(),
+        className:
+          `${base} ${disable} ${readonly} ${variant} ${disabled} ${error}`
+            .trim(),
       };
     },
-    [GetDisabled, GetVariantAndColor, GetReadonly, GetError],
+    [GetDisabledStyle, GetVariantAndColor, GetReadonlyClass, GetError],
   );
 
   const GetIconProps = useMemo(
     () => {
       const style = PasswordsVariants.buttonStyle;
       const hidden = isIconHidden ? "hidden" : "";
-      const disabled = isDisabled ? GetDisabled : "";
-      const error = GetError ? "text-error stroke-error" : ""
-      const readonly = GetReadonly.readonlyStyles;
+      const disabled = isDisabled ? GetDisabledStyle : "";
+      const error = GetError ? "text-error stroke-error" : "";
+      const readonly = GetReadonlyClass.readonlyStyles;
       return {
         className: `${style} ${hidden} ${disabled} ${error} ${readonly}`,
       };
     },
-    [GetDisabled, isDisabled],
+    [GetDisabledStyle, isDisabled],
   );
 
   const GetLabelProps = useMemo(
     () => {
       const classLabel = PasswordsVariants.labelStyles;
-      const disabled = GetDisabled;
-      const required = isRequired ? PasswordsVariants.requiredStyle : ""
+      const disabled = GetDisabledStyle;
+      const required = isRequired ? PasswordsVariants.requiredStyle : "";
       return {
         className: `${classLabel} ${disabled} ${required}`,
         label,
@@ -177,7 +193,7 @@ export function usePassword(props: PasswordProps) {
   const GetDescriptionProps = useMemo(
     () => {
       const classDesc = PasswordsVariants.descriptionStyles;
-      const disabled = GetDisabled;
+      const disabled = GetDisabledStyle;
       return {
         className: `${classDesc} ${disabled}`,
         description,
@@ -187,7 +203,9 @@ export function usePassword(props: PasswordProps) {
   );
   const GetErrorMessageProps = useMemo(
     () => {
-      const classDesc = GetError ? PasswordsVariants.errorMessageStyle : "hidden"
+      const classDesc = GetError
+        ? PasswordsVariants.errorMessageStyle
+        : "hidden";
       return {
         className: `${classDesc}`,
       };
@@ -201,16 +219,36 @@ export function usePassword(props: PasswordProps) {
         throw new Error(
           'You cannot use isFullWidth=true and size="any" together. To make it full width, set size="fullwidth" instead',
         );
-      }}
-  ,[isFullWidth, size]);
+      }
+    },
+    [isFullWidth, size],
+  );
 
   const GetSlot = useMemo(
     () => {
-      const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";
-      const yuzuBaseDisabled = isDisabled ? classNames?.yuzuBaseDisabled : ""
+      const yuzuBase = classNames?.yuzuBase
+        ? classNames?.yuzuBase
+        : GetWrapperBaseStyle.className;
+      const yuzuBaseDisabled = GetDisabled ? classNames?.yuzuBaseDisabled : "";
+      const yuzuInput = classNames?.yuzuInput ? classNames?.yuzuInput : "";
+      const yuzuInputError = GetError ? classNames?.yuzuInputError : "";
+      const yuzuIcon = classNames?.yuzuIcon ? classNames?.yuzuIcon : "";
+      const yuzuLabel = classNames?.yuzuLabel ? classNames?.yuzuLabel : "";
+      const yuzuLabelRequired = isRequired ? classNames?.yuzuLabelRequired : "";
+      const yuzuDescription = classNames?.yuzuDescription
+        ? classNames?.yuzuDescription
+        : "";
+      const yuzuErrorMessage = GetError ? classNames?.yuzuErrorMessage : "";
       return {
         yuzuBase,
-          yuzuBaseDisabled
+        yuzuBaseDisabled,
+        yuzuInput,
+        yuzuInputError,
+        yuzuIcon,
+        yuzuLabel,
+        yuzuLabelRequired,
+        yuzuDescription,
+        yuzuErrorMessage,
       };
     },
     [classNames],

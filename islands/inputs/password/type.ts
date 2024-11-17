@@ -8,14 +8,11 @@ export type PasswordSlot = Partial<
     | "yuzuBaseDisabled"
     | "yuzuInput"
     | "yuzuInputError"
-    | "yuzuInputReadonly"
-    | "yuzuInputDisabled"
     | "yuzuIcon"
     | "yuzuDescription"
-    | "yuzuDescriptionError"
-    | "yuzuDescriptionDisabled"
     | "yuzuLabelRequired"
-    | "yuzuLabelError",
+    | "yuzuLabel"
+    | "yuzuErrorMessage",
     string
   >
 >;
@@ -23,53 +20,80 @@ export type PasswordProps =
   & Omit<JSX.IntrinsicElements["input"], "size" | "color">
   & {
     /**
-     * Ref dom
+     * Reference to the DOM element of the input.
      */
     domRef?: Ref<HTMLInputElement> | null;
 
     /**
-     * Classname styling for div parent, not recomended to use
+     * Additional class names for the parent wrapper. Not recommended for general use.
      */
     className?: string;
 
-    classNames?: PasswordSlot
-    isRequired?: boolean;
     /**
-     * Size of the input will consume by div parents
+     * Custom class names for various internal parts of the component.
+     */
+    classNames?: PasswordSlot;
+
+    /**
+     * Marks the input field as required.
+     */
+    isRequired?: boolean;
+
+    /**
+     * Determines the size of the input field.
+     * Controlled by the `PasswordsVariants.sizes`.
      */
     size?: keyof typeof PasswordsVariants.sizes;
 
     /**
-     * Color based on variant, only consume by div parent
+     * Color theme for the input field.
+     * Controlled by the `PasswordsVariants.colors`.
      */
-    color?: keyof typeof PasswordsVariants.colors
+    color?: keyof typeof PasswordsVariants.colors;
 
     /**
-     * Variant can't be extended unless config the hooks
+     * Variant of the input field.
+     * Controlled by the `PasswordsVariants.variants`. Cannot be extended without modifying the hooks.
      */
     variant?: keyof typeof PasswordsVariants.variants;
 
+    /**
+     * Marks the input field as read-only.
+     */
     isReadonly?: boolean;
 
     /**
-     *  State for read only
+     * Expands the input to take the full width of its container.
      */
     isFullWidth?: boolean;
 
     /**
-     *  State for error
+     * Marks the input as being in an error state.
      */
     isError?: boolean;
+
+    /**
+     * Message to display when the input is in an error state.
+     */
     errorMessage?: string;
 
     /**
-     *  State for disabled
+     * Disables the input field.
      */
     isDisabled?: boolean;
 
+    /**
+     * Hides any icons within the input field.
+     */
     isIconHidden?: boolean;
 
+    /**
+     * Label for the input field.
+     */
     label?: string;
 
+    /**
+     * Description for the input field.
+     */
     description?: string;
   };

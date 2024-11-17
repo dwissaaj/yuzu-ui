@@ -39,7 +39,7 @@ export default function Wrapper() {
               }}
             >
               <Password
-              isDisabled
+                isDisabled
                 size="fullWidth"
                 isIconHidden={false}
                 description="you remmeberd it"
@@ -48,12 +48,19 @@ export default function Wrapper() {
                 color="primary"
                 errorMessage="You are try again"
                 classNames={{
-                  yuzuBase: "bg-red-500",
-                  yuzuBaseDisabled: "bg-red-500"
+                  yuzuBase: "bg-red-100",
+                  yuzuBaseDisabled: "bg-",
+                  yuzuInput: "",
+                  yuzuInputError: "bg-blue-500",
+                  yuzuIcon: "bg-red-500",
+                  yuzuDescription: "bg-red-500",
+                  yuzuLabel: "bg-yellow-500",
+                  yuzuLabelRequired: "font-bold",
+                  yuzuErrorMessage: "uppercase",
                 }}
               />
             </Fieldset>
-            <Checkbox label={'did you ready?'} />
+            <Checkbox label={"did you ready?"} />
             <Label>ads</Label>
           </div>
         </div>
