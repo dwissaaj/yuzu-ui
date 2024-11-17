@@ -5,9 +5,13 @@ import type {
 import type { JSX } from "preact/jsx-runtime";
 
 import { RadioGroupVariants } from "./radio-group-variants.ts";
-
-export type RadioGroupSlot = Record<"yuzuBase" | "yuzuLabel", string>;
-
+export type RadioGroupSlot = Partial<
+  Record<
+    | "yuzuBase"
+    | "yuzuLabel",
+    string
+  >
+>;
 export type RadioGroupProps = JSX.IntrinsicElements["fieldset"] & {
   /**
    * Ref dom
@@ -21,14 +25,6 @@ export type RadioGroupProps = JSX.IntrinsicElements["fieldset"] & {
    * @default ""
    */
   className?: string;
-
-  /**
-   * Custom inline styles to apply to the `RadioGroup` container using vanilla CSS.
-   *
-   * @type {CSSProperties}
-   * @default {}
-   */
-  style?: CSSProperties;
 
   /**
    * The label text to be displayed for the `RadioGroup`.
@@ -83,10 +79,5 @@ export type RadioGroupProps = JSX.IntrinsicElements["fieldset"] & {
    */
   children?: JSX.Element | JSX.Element[];
 
-  /**
-   * Custom style to apply to the label of the `RadioGroup`.
-   *
-   * @type {string}
-   */
-  yuzuLabelStyle?: string;
+  classNames?: RadioGroupSlot
 };

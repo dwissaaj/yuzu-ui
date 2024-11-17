@@ -9,6 +9,7 @@ import Checkbox from "./inputs/checkbox/Checkbox.tsx";
 import Fieldset from "./inputs/fieldset/Fieldset.tsx";
 import Password from "./inputs/password/Password.tsx";
 import Button from "./inputs/button/Button.tsx";
+import { Radio, RadioGroup } from "./inputs/radio/index.ts";
 
 export default function Wrapper() {
   const fieldsetRef = useRef<HTMLButtonElement>(null);
@@ -32,36 +33,13 @@ export default function Wrapper() {
       <div class={"w-full flex flex-col gap-2"}>
         <div className={""}>
           <div className={`w-full flex flex-col gap-2`}>
-            <Fieldset
-              label={"your data"}
-              classNames={{
-                yuzuBaseDisabled: "cursor-not-allowed",
-              }}
-            >
-              <Password
-                isDisabled
-                size="fullWidth"
-                isIconHidden={false}
-                description="you remmeberd it"
-                label={"your pass"}
-                variant="underline"
-                color="primary"
-                errorMessage="You are try again"
-                classNames={{
-                  yuzuBase: "bg-red-100",
-                  yuzuBaseDisabled: "bg-",
-                  yuzuInput: "",
-                  yuzuInputError: "bg-blue-500",
-                  yuzuIcon: "bg-red-500",
-                  yuzuDescription: "bg-red-500",
-                  yuzuLabel: "bg-yellow-500",
-                  yuzuLabelRequired: "font-bold",
-                  yuzuErrorMessage: "uppercase",
-                }}
-              />
-            </Fieldset>
-            <Checkbox label={"did you ready?"} />
-            <Label>ads</Label>
+            <RadioGroup classNames={{
+              yuzuBase: "bg-red-500",
+              yuzuLabel: '!text-5xl'
+            }} label={'fav fruits'}>
+              <Radio>Orange</Radio>
+              <Radio>apple</Radio>
+            </RadioGroup>
           </div>
         </div>
       </div>

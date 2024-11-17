@@ -32,12 +32,11 @@ import { useRadioGroup } from "./use-radio-group.ts";
 const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>((props) => {
   const {
     domRef,
-    style,
     className,
     children,
     GetFieldsetProps,
     GetLabelProps,
-    GetCustomLabel,
+    GetSlot,
     ...otherProps
   } = useRadioGroup({ ...props });
 
@@ -45,10 +44,9 @@ const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>((props) => {
     <fieldset
       {...otherProps}
       ref={domRef}
-      style={style}
-      className={`${className} ${GetFieldsetProps.className} `}
+      className={`${className} ${GetSlot.yuzuBase} ${GetFieldsetProps.className} `}
     >
-      <legend className={`${GetCustomLabel} ${GetLabelProps.className}`}>
+      <legend className={`${GetLabelProps.className} ${GetSlot.yuzuLabel}`}>
         {GetLabelProps.label}
       </legend>
       {children}

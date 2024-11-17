@@ -5,7 +5,6 @@ import { RadioGroupVariants } from "./radio-group-variants.ts";
 export function useRadioGroup(props: RadioGroupProps) {
   const {
     domRef,
-    style,
     children,
     className = "",
     label,
@@ -14,7 +13,7 @@ export function useRadioGroup(props: RadioGroupProps) {
     borderColor = "primary",
     labelColor = "default",
     labelSize = "small",
-    yuzuLabelStyle,
+    classNames,
     ...otherProps
   } = props;
   const GetVariant = useMemo(
@@ -80,19 +79,24 @@ export function useRadioGroup(props: RadioGroupProps) {
     },
     [GetLabelColor, GetLabelSize, label],
   );
-  const GetCustomLabel = useMemo(
-    () => (yuzuLabelStyle ? yuzuLabelStyle : ""),
-    [yuzuLabelStyle],
+  const GetSlot = useMemo(
+    () => {
+      const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : ""
+      const yuzuLabel = classNames?.yuzuLabel ? classNames?.yuzuLabel : ""
+      return {
+        yuzuBase,
+        yuzuLabel
+      };
+    },
+    [classNames],
   );
-
   return {
     domRef,
-    style,
     className,
     children,
     GetFieldsetProps,
     GetLabelProps,
-    GetCustomLabel,
+    GetSlot,
     ...otherProps,
   };
 }

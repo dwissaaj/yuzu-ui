@@ -1,7 +1,6 @@
 import type { Ref } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { JSX } from "preact/jsx-runtime";
 import type { PasswordsVariants } from "./password-variants.ts";
-import type Label from "../label/Labels.tsx";
 export type PasswordSlot = Partial<
   Record<
     | "yuzuBase"
