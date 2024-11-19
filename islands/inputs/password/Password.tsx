@@ -4,8 +4,8 @@ import {
 } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { PasswordProps } from "./type.ts";
 import { usePassword } from "./use-password.ts";
-import ClosePassword from "../../icon/component/ClosePassword.tsx";
-import OpenPassword from "../../icon/component/OpenPassword.tsx";
+import ClosePassword from "../../icon/ClosePassword.tsx";
+import OpenPassword from "../../icon/OpenPassword.tsx";
 
 /**
  * Input component for form data entry with customizable styles and behaviors.

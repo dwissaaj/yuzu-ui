@@ -6,13 +6,12 @@ import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $api_joke from "./routes/api/joke.ts";
 import * as $index from "./routes/index.tsx";
-import * as $global_type from "./islands/global/type.ts";
-import * as $icon_component_ClosePassword from "./islands/icon/component/ClosePassword.tsx";
-import * as $icon_component_Home from "./islands/icon/component/Home.tsx";
-import * as $icon_component_Icon from "./islands/icon/component/Icon.tsx";
-import * as $icon_component_LoadingSpinner from "./islands/icon/component/LoadingSpinner.tsx";
-import * as $icon_component_OpenPassword from "./islands/icon/component/OpenPassword.tsx";
-import * as $icon_component_PasswordIcon from "./islands/icon/component/PasswordIcon.tsx";
+import * as $icon_ClosePassword from "./islands/icon/ClosePassword.tsx";
+import * as $icon_Home from "./islands/icon/Home.tsx";
+import * as $icon_LoadingSpinner from "./islands/icon/LoadingSpinner.tsx";
+import * as $icon_OpenPassword from "./islands/icon/OpenPassword.tsx";
+import * as $icon_PasswordIcon from "./islands/icon/PasswordIcon.tsx";
+import * as $icon_index from "./islands/icon/index.ts";
 import * as $inputs_button_Button from "./islands/inputs/button/Button.tsx";
 import * as $inputs_button_button_variant from "./islands/inputs/button/button-variant.ts";
 import * as $inputs_button_index from "./islands/inputs/button/index.ts";
@@ -52,10 +51,11 @@ import * as $inputs_radio_radio_Radio from "./islands/inputs/radio/radio/Radio.t
 import * as $inputs_radio_radio_radio_variants from "./islands/inputs/radio/radio/radio-variants.ts";
 import * as $inputs_radio_radio_types from "./islands/inputs/radio/radio/types.ts";
 import * as $inputs_radio_radio_use_radio from "./islands/inputs/radio/radio/use-radio.ts";
-import * as $inputs_select_select_field_SelectGroup from "./islands/inputs/select/select-field/SelectGroup.tsx";
-import * as $inputs_select_select_field_select_field_variants from "./islands/inputs/select/select-field/select-field-variants.ts";
-import * as $inputs_select_select_field_type from "./islands/inputs/select/select-field/type.ts";
-import * as $inputs_select_select_field_use_select_field from "./islands/inputs/select/select-field/use-select-field.ts";
+import * as $inputs_select_index from "./islands/inputs/select/index.ts";
+import * as $inputs_select_select_group_SelectGroup from "./islands/inputs/select/select-group/SelectGroup.tsx";
+import * as $inputs_select_select_group_select_group_variants from "./islands/inputs/select/select-group/select-group-variants.ts";
+import * as $inputs_select_select_group_type from "./islands/inputs/select/select-group/type.ts";
+import * as $inputs_select_select_group_use_select_group from "./islands/inputs/select/select-group/use-select-group.ts";
 import * as $inputs_select_select_item_SelectItem from "./islands/inputs/select/select-item/SelectItem.tsx";
 import * as $inputs_select_select_item_select_item_variants from "./islands/inputs/select/select-item/select-item-variants.ts";
 import * as $inputs_select_select_item_type from "./islands/inputs/select/select-item/type.ts";
@@ -72,14 +72,12 @@ const manifest = {
     "./routes/index.tsx": $index,
   },
   islands: {
-    "./islands/global/type.ts": $global_type,
-    "./islands/icon/component/ClosePassword.tsx": $icon_component_ClosePassword,
-    "./islands/icon/component/Home.tsx": $icon_component_Home,
-    "./islands/icon/component/Icon.tsx": $icon_component_Icon,
-    "./islands/icon/component/LoadingSpinner.tsx":
-      $icon_component_LoadingSpinner,
-    "./islands/icon/component/OpenPassword.tsx": $icon_component_OpenPassword,
-    "./islands/icon/component/PasswordIcon.tsx": $icon_component_PasswordIcon,
+    "./islands/icon/ClosePassword.tsx": $icon_ClosePassword,
+    "./islands/icon/Home.tsx": $icon_Home,
+    "./islands/icon/LoadingSpinner.tsx": $icon_LoadingSpinner,
+    "./islands/icon/OpenPassword.tsx": $icon_OpenPassword,
+    "./islands/icon/PasswordIcon.tsx": $icon_PasswordIcon,
+    "./islands/icon/index.ts": $icon_index,
     "./islands/inputs/button/Button.tsx": $inputs_button_Button,
     "./islands/inputs/button/button-variant.ts": $inputs_button_button_variant,
     "./islands/inputs/button/index.ts": $inputs_button_index,
@@ -127,14 +125,15 @@ const manifest = {
       $inputs_radio_radio_radio_variants,
     "./islands/inputs/radio/radio/types.ts": $inputs_radio_radio_types,
     "./islands/inputs/radio/radio/use-radio.ts": $inputs_radio_radio_use_radio,
-    "./islands/inputs/select/select-field/SelectGroup.tsx":
-      $inputs_select_select_field_SelectGroup,
-    "./islands/inputs/select/select-field/select-field-variants.ts":
-      $inputs_select_select_field_select_field_variants,
-    "./islands/inputs/select/select-field/type.ts":
-      $inputs_select_select_field_type,
-    "./islands/inputs/select/select-field/use-select-field.ts":
-      $inputs_select_select_field_use_select_field,
+    "./islands/inputs/select/index.ts": $inputs_select_index,
+    "./islands/inputs/select/select-group/SelectGroup.tsx":
+      $inputs_select_select_group_SelectGroup,
+    "./islands/inputs/select/select-group/select-group-variants.ts":
+      $inputs_select_select_group_select_group_variants,
+    "./islands/inputs/select/select-group/type.ts":
+      $inputs_select_select_group_type,
+    "./islands/inputs/select/select-group/use-select-group.ts":
+      $inputs_select_select_group_use_select_group,
     "./islands/inputs/select/select-item/SelectItem.tsx":
       $inputs_select_select_item_SelectItem,
     "./islands/inputs/select/select-item/select-item-variants.ts":

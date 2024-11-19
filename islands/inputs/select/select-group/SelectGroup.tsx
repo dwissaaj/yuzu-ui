@@ -1,6 +1,6 @@
 import { forwardRef } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
 import type { SelectGroupProps } from "./type.ts";
-import { useSelectField } from "./use-select-field.ts";
+import { useSelectGroup } from "./use-select-group.ts";
 /**
  * The `SelectGroup` component allows you to group and style a set of `select` options with customizable styling and layout options.
  *
@@ -58,10 +58,9 @@ const SelectGroup = forwardRef<HTMLSelectElement, SelectGroupProps>((props) => {
     GetSlot,
     GetSelectProps,
     GetError,
-    GetColorClass,
     isDisabled,
     ...otherProps
-  } = useSelectField({ ...props });
+  } = useSelectGroup({ ...props });
 
   return (
     <div

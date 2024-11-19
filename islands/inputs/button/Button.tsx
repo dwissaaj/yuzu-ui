@@ -50,7 +50,7 @@ import { useButton } from "./use-button.ts";
  * @param {JSX.Element} [endContent] - Add icon to end of title
  * @param {JSX.Element} [startContent] - Add icon to start of title
  */
-import LoadingSpinner from "../../icon/component/LoadingSpinner.tsx";
+import LoadingSpinner from "../../icon/LoadingSpinner.tsx";
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props) => {
   const {
     domRef,

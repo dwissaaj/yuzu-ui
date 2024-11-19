@@ -2,7 +2,7 @@ import type { JSX } from "preact/jsx-runtime";
 import type {
   Ref,
 } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
-import type { SelectGroupVariants } from "./select-field-variants.ts";
+import type { SelectGroupVariants } from "./select-group-variants.ts";
 export type SelectGroupSlot = Partial<
   Record<
     | "yuzuBase"

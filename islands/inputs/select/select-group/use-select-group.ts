@@ -1,8 +1,8 @@
 import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
 import type { SelectGroupProps } from "./type.ts";
-import { SelectGroupVariants } from "./select-field-variants.ts";
+import { SelectGroupVariants } from "./select-group-variants.ts";
 
-export function useSelectField(props: SelectGroupProps) {
+export function useSelectGroup(props: SelectGroupProps) {
   const {
     domRef,
     style,
@@ -166,7 +166,6 @@ export function useSelectField(props: SelectGroupProps) {
     GetSlot,
     GetSelectProps,
     isDisabled,
-    GetColorClass,
     GetLabel,
     GetError,
     ...otherProps,
