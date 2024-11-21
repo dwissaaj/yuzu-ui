@@ -1,8 +1,9 @@
 {
   "lock": false,
-  "name": "@yuzutest/test",
-  "version": "1.0.0",
-  "license": "Apache 2.0 License",
+  "name": "@yuzu-ui/yuzu-ui",
+  "version": "0.1.0",
+  "license": "MIT",
+  "exports": "./mod.ts",
   "tasks": {
     "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
     "cli": "echo \"import '\\$fresh/src/dev/cli.ts'\" | deno run --unstable -A -",
@@ -39,8 +40,10 @@
     "jsx": "react-jsx",
     "jsxImportSource": "preact"
   },
-  "exports": {
-    ".": "./mod.ts"
+  "publish": {
+    "exclude": [
+      "!_fresh/**" 
+    ]
   },
   "nodeModulesDir": "auto"
 }

@@ -58,7 +58,6 @@ const SelectGroup = forwardRef<HTMLSelectElement, SelectGroupProps>((props) => {
     GetSlot,
     GetSelectProps,
     GetError,
-    GetColorClass,
     isDisabled,
     ...otherProps
   } = useSelectGroup({ ...props });

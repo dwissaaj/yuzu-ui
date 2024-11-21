@@ -30,14 +30,7 @@ export function usePassword(props: PasswordProps) {
     },
     [isDisabled],
   );
-  const GetReadonly = useMemo(
-    () => {
-      if (isDisabled === true) {
-        return isError;
-      }
-    },
-    [isDisabled],
-  );
+
   const GetError = useMemo(
     () => {
       if (isError === true) {
