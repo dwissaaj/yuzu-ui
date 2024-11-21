@@ -1,5 +1,5 @@
 import type { ButtonProps } from "./type.ts";
-import { useMemo } from "preact/compat";
+import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
 import { ButtonVariants } from "./button-variant.ts";
 export function useButton(props: ButtonProps) {
   const {
