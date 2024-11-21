@@ -1,4 +1,3 @@
-import MyIslan from "../islands/my-island.tsx";
 
 export default function Home() {
   return (
@@ -16,7 +15,6 @@ export default function Home() {
           Try updating this message in the
           <code class="mx-2">./routes/index.tsx</code> file, and refresh.
         </p>
-        <MyIslan />
       </div>
     </div>
   );
