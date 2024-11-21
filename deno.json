@@ -42,7 +42,7 @@
   },
   "publish": {
     "exclude": [
-      "!_fresh/**" 
+      "!_fresh/**"
     ]
   },
   "nodeModulesDir": "auto"

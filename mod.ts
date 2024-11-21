@@ -8,4 +8,3 @@ export * from "./islands/inputs/radio/index.ts";
 export * from "./islands/inputs/select/index.ts";
 export * from "./islands/icon/index.ts";
 export * from "./islands/theme/index.ts";
-
