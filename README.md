@@ -1,16 +1,13 @@
-# Fresh project
+# Yuzu UI
+![Yuzu Logo](./static/yuzu.png)
+A lightweight, **Preact-based UI library** for creating reusable and accessible components. Built for developers who need fast, composable, and design-friendly solutions.
 
-Your new Fresh project is ready to go. You can follow the Fresh "Getting
-Started" guide here: https://fresh.deno.dev/docs/getting-started
+## A History
 
-### Usage
+Inspired by the Japanese *Yuzu* fruit, **Yuzu UI** is a component library designed for modern web development. Just like the *Yuzu* fruit adds a zesty twist to culinary experiences, **Yuzu UI** brings a refreshing and modular approach to user interface design.
 
-Make sure to install Deno: https://deno.land/manual/getting_started/installation
+## Features
+- **Preact Compatibility**: Fully optimized for [Preact](https://preactjs.com/), ensuring fast rendering and a small bundle size.
+- **Customizable**: TailwindCSS integration for styling flexibility.
+- **Type-Safe**: Written in TypeScript for improved developer experience.
 
-Then start the project:
-
-```
-deno task start
-```
-
-This will watch the project directory and restart as necessary.
