@@ -1,8 +1,7 @@
-import { signal } from "https://esm.sh/v135/@preact/signals-core@1.5.1/X-ZS8q/dist/signals-core.js";
+import { signal } from "@preact/signals";
 
 /*
-Temporary global configuration for theme, this theme will auto imported
-by tailwind config
+Global Configuration for theme
 */
 export const todos = signal({
   primary: "#12fff3",
