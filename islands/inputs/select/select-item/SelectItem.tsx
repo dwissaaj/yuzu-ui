@@ -24,7 +24,7 @@ import type { SelectItemProps } from "./type.ts";
  * @param {boolean} [isDisabled=false] - If true, the option will be disabled and cannot be selected.
  */
 const SelectItem = forwardRef<HTMLOptionElement, SelectItemProps>(
-  (props, disabledKeys) => {
+  (props) => {
     const {
       domRef,
       children,

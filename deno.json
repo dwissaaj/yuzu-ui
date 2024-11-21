@@ -1,7 +1,9 @@
 {
   "lock": false,
-  "name": "@yuzutest/test",
-  "version": "1.0.0",
+  "name": "@yuzu-ui/yuzu-ui",
+  "version": "0.1.0",
+  "license": "MIT",
+  "exports": "./mod.ts",
   "tasks": {
     "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
     "cli": "echo \"import '\\$fresh/src/dev/cli.ts'\" | deno run --unstable -A -",
@@ -24,6 +26,7 @@
   ],
   "imports": {
     "$fresh/": "https://deno.land/x/fresh@1.7.3/",
+    "@luca/esbuild-deno-loader": "jsr:@luca/esbuild-deno-loader@^0.11.0",
     "preact": "https://esm.sh/preact@10.22.0",
     "preact/": "https://esm.sh/preact@10.22.0/",
     "@preact/signals": "https://esm.sh/*@preact/signals@1.2.2",
@@ -37,8 +40,10 @@
     "jsx": "react-jsx",
     "jsxImportSource": "preact"
   },
-  "exports": {
-    ".": "./mod.ts"
+  "publish": {
+    "exclude": [
+      "!_fresh/**" 
+    ]
   },
   "nodeModulesDir": "auto"
 }

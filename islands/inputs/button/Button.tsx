@@ -1,4 +1,5 @@
-import { forwardRef } from "preact/compat";
+import { forwardRef } from "npm:preact@10.22.0/compat";
+
 import type { ButtonProps } from "./type.ts";
 import { useButton } from "./use-button.ts";
 import LoadingSpinner from "../../icon/LoadingSpinner.tsx";

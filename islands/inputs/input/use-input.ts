@@ -20,14 +20,6 @@ export function useInput(props: InputProps) {
     labelPlacement = "top",
     ...otherProps
   } = props;
-  const GetSize = useMemo(
-    () => {
-      return {
-        size: InputVariants.sizes[size],
-      };
-    },
-    [size],
-  );
 
   const GetSizeClass = useMemo(
     () => {
