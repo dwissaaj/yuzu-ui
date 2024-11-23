@@ -36,8 +36,21 @@ export type InputProps =
     className?: string;
 
     /**
-     * Custom class names for component slots.
+     * Custom styles for specific parts of the input component. Possible slot keys are:
+     *
+     * - `yuzuBase`: The base classes applied to the input container.
+     * - `yuzuBaseDisabled`: The classes applied to the input when it is disabled.
+     * - `yuzuBaseError`: The classes applied to the input when it has an error state.
+     * - `yuzuBaseReadonly`: The classes applied to the input when it is in read-only mode.
+     * - `yuzuInput`: The classes applied to the input element itself.
+     * - `yuzuInputDisabled`: The classes applied to the input element when disabled.
+     * - `yuzuInputError`: The classes applied to the input element when there's an error.
+     * - `yuzuInputReadonly`: The classes applied to the input element when in read-only mode.
+     * - `yuzuLabel`: The classes applied to the label of the input.
+     * - `yuzuLabelRequired`: The classes applied to the label when the field is required.
+     *
      * @type {InputSlot}
+     * @default {}
      */
     classNames?: InputSlot;
 

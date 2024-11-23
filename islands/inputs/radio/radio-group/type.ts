@@ -83,7 +83,6 @@ export type RadioGroupProps = JSX.IntrinsicElements["fieldset"] & {
    *
    * - `yuzuBase`: The base classes applied to the radio group container.
    * - `yuzuLabel`: The classes applied to the label of the radio group.
-   *
    * @type {RadioGroupSlot}
    * @default {}
    */

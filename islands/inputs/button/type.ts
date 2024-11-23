@@ -32,9 +32,14 @@ export type ButtonProps =
     className?: string;
 
     /**
-     * Custom class names for specific parts of the button.
-     * Use this to style the button's base, disabled state, or spinner individually.
+     * Custom styles for specific parts of the button component. Possible slot keys are:
+     *
+     * - `yuzuBase`: The base classes applied to the button.
+     * - `yuzuDisabled`: The classes applied to the button when it is disabled.
+     * - `yuzuSpinner`: The classes applied to the spinner element inside the button (if any).
+     *
      * @type {ButtonSlot}
+     * @default {}
      */
     classNames?: ButtonSlot;
 

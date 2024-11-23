@@ -28,6 +28,17 @@ export type LabelProps = JSX.IntrinsicElements["label"] & {
    */
   className?: string;
 
+  /**
+   * Custom styles for specific parts of the label component. Possible slot keys are:
+   *
+   * - `yuzuBase`: The base classes applied to the label container.
+   * - `yuzuLabelRequired`: The classes applied to the label when the field is required.
+   * - `yuzuLabelReadonly`: The classes applied to the label when the field is read-only.
+   * - `yuzuLabelDisabled`: The classes applied to the label when the field is disabled.
+   *
+   * @type {LabelSlot}
+   * @default {}
+   */
   classNames?: LabelSlot;
 
   /**

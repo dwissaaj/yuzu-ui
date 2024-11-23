@@ -21,6 +21,9 @@ export function useInput(props: InputProps) {
     ...otherProps
   } = props;
 
+  /**
+   * Computes the size-related styles for the input or parent container.
+   */
   const GetSizeClass = useMemo(
     () => {
       if (isFullWidth === true) {
@@ -36,6 +39,9 @@ export function useInput(props: InputProps) {
     },
     [size],
   );
+  /**
+   * Computes the variant-specific styles for the input.
+   */
   const GetVariantClass = useMemo(
     () => {
       return {
@@ -44,6 +50,10 @@ export function useInput(props: InputProps) {
     },
     [variant],
   );
+
+  /**
+   * Determines the label placement style.
+   */
   const GetLabelPlacement = useMemo(
     () => {
       return {
@@ -52,6 +62,10 @@ export function useInput(props: InputProps) {
     },
     [label],
   );
+
+  /**
+   * Computes the styles for a disabled input.
+   */
   const GetDisabled = useMemo(
     () => {
       if (isDisabled === true) {
@@ -66,6 +80,9 @@ export function useInput(props: InputProps) {
     [isDisabled],
   );
 
+  /**
+   * Computes the styles for an input in an error state.
+   */
   const GetErrorInput = useMemo(
     () => {
       if (isError === true) {
@@ -80,6 +97,9 @@ export function useInput(props: InputProps) {
     [isError],
   );
 
+  /**
+   * Computes the styles for a readonly input.
+   */
   const GetReadonly = useMemo(
     () => {
       if (isReadonly === true) {
@@ -93,6 +113,10 @@ export function useInput(props: InputProps) {
     },
     [isReadonly],
   );
+
+  /**
+   * Computes the color-related or variants styles for the input based on its variant.
+   */
   const GetColorClass = useMemo(
     () => {
       if (variant === "underline") {
@@ -107,6 +131,9 @@ export function useInput(props: InputProps) {
     [color, variant],
   );
 
+  /**
+   * Combines all computed styles for the parent container of the input.
+   */
   const GetParentsStyle = useMemo(
     () => {
       const size = GetSizeClass.parentSize;
@@ -129,6 +156,10 @@ export function useInput(props: InputProps) {
     ],
   );
 
+  /**
+   * Combines all computed styles for the input element itself.
+   */
+
   const GetInputStyle = useMemo(
     () => {
       const color = GetColorClass;
@@ -143,6 +174,9 @@ export function useInput(props: InputProps) {
     [GetColorClass, GetDisabled],
   );
 
+  /**
+   * Computes the styles for the "required" state of the label.
+   */
   const GetRequiredLabel = useMemo(
     () => {
       if (isRequired === true) {
@@ -156,6 +190,10 @@ export function useInput(props: InputProps) {
     },
     [isDisabled],
   );
+
+  /**
+   * Combines all computed properties for the label.
+   */
   const GetLabelProps = useMemo(
     () => {
       const labels = label;
@@ -169,6 +207,10 @@ export function useInput(props: InputProps) {
     },
     [GetColorClass, GetDisabled],
   );
+
+  /**
+   * Computes slot-based styles for the input and its container.
+   */
   const GetSlot = useMemo(
     () => {
       const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";

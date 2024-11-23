@@ -26,9 +26,12 @@ export type SelectItemProps = JSX.IntrinsicElements["option"] & {
   className?: string;
 
   /**
-   * Custom class names for specific parts of the `SelectItem` component, such as the option element.
+   * Custom styles for specific component slots. Possible slot keys are:
+   *
+   * - `yuzuOption`: The classes applied to each select item option within the select group.
    *
    * @type {SelectItemSlot}
+   * @default {}
    */
   classNames?: SelectItemSlot;
 

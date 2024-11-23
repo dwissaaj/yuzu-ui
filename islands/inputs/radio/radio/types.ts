@@ -89,5 +89,8 @@ export type RadioProps =
      */
     classNames?: RadioSlot;
 
+    /**
+     * Children inside radio, if used then won't work with native children radio item
+     */
     children?: JSX.Element;
   };

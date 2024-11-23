@@ -1,7 +1,11 @@
 import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
 import type { RadioGroupProps } from "./type.ts";
 import { RadioGroupVariants } from "./radio-group-variants.ts";
-
+/**
+ * Custom hook for managing a group of radio buttons with shared styles and configurations.
+ * @param {RadioGroupProps} props - Configuration properties for the radio group.
+ * @returns {object} Processed properties, styles, and class names for the radio group.
+ */
 export function useRadioGroup(props: RadioGroupProps) {
   const {
     domRef,
@@ -16,6 +20,10 @@ export function useRadioGroup(props: RadioGroupProps) {
     classNames,
     ...otherProps
   } = props;
+
+  /**
+   * Retrieves the variant style for the radio group.
+   */
   const GetVariant = useMemo(
     () => {
       return {
@@ -24,6 +32,10 @@ export function useRadioGroup(props: RadioGroupProps) {
     },
     [variant],
   );
+
+  /**
+   * Retrieves the border color style for the radio group.
+   */
   const GetBorderColor = useMemo(
     () => {
       return {
@@ -32,6 +44,10 @@ export function useRadioGroup(props: RadioGroupProps) {
     },
     [borderColor],
   );
+
+  /**
+   * Retrieves the direction (layout) style for the radio group.
+   */
   const GetDirection = useMemo(
     () => {
       return {
@@ -40,6 +56,10 @@ export function useRadioGroup(props: RadioGroupProps) {
     },
     [direction],
   );
+
+  /**
+   * Retrieves the label color style for the radio group.
+   */
   const GetLabelColor = useMemo(
     () => {
       return {
@@ -48,6 +68,10 @@ export function useRadioGroup(props: RadioGroupProps) {
     },
     [labelColor],
   );
+
+  /**
+   * Retrieves the label size style for the radio group.
+   */
   const GetLabelSize = useMemo(
     () => {
       return {
@@ -56,6 +80,10 @@ export function useRadioGroup(props: RadioGroupProps) {
     },
     [labelSize],
   );
+
+  /**
+   * Retrieves the properties and styles for the fieldset element.
+   */
   const GetFieldsetProps = useMemo(
     () => {
       const variant = GetVariant.variant;
@@ -68,6 +96,10 @@ export function useRadioGroup(props: RadioGroupProps) {
     [GetDirection, GetBorderColor, GetVariant],
   );
 
+  /**
+   * Retrieves the properties and styles for the label element.
+   */
+
   const GetLabelProps = useMemo(
     () => {
       const color = GetLabelColor.labelColor;
@@ -79,6 +111,10 @@ export function useRadioGroup(props: RadioGroupProps) {
     },
     [GetLabelColor, GetLabelSize, label],
   );
+
+  /**
+   * Handles slot-based class names and customizations.
+   */
   const GetSlot = useMemo(
     () => {
       const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";

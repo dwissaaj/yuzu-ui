@@ -2,6 +2,11 @@ import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js"
 import { PasswordsVariants } from "./password-variants.ts";
 import type { PasswordProps } from "./type.ts";
 
+/**
+ * Custom hook for managing password input styles and properties.
+ * @param {PasswordProps} props - Configuration properties for the password input.
+ * @returns {object} Processed properties, styles, and class names for the password input.
+ */
 export function usePassword(props: PasswordProps) {
   const {
     domRef,
@@ -22,6 +27,9 @@ export function usePassword(props: PasswordProps) {
     ...otherProps
   } = props;
 
+  /**
+   * Determines if the input is disabled.
+   */
   const GetDisabled = useMemo(
     () => {
       if (isDisabled === true) {
@@ -31,6 +39,9 @@ export function usePassword(props: PasswordProps) {
     [isDisabled],
   );
 
+  /**
+   * Determines if there is an error state.
+   */
   const GetError = useMemo(
     () => {
       if (isError === true) {
@@ -39,6 +50,10 @@ export function usePassword(props: PasswordProps) {
     },
     [isError],
   );
+
+  /**
+   * Calculates the size style based on `size` and `isFullWidth`.
+   */
   const GetSize = useMemo(
     () => {
       if (isFullWidth === true) {
@@ -50,6 +65,9 @@ export function usePassword(props: PasswordProps) {
     [isFullWidth, size],
   );
 
+  /**
+   * Retrieves the style variant for the input.
+   */
   const GetVariant = useMemo(
     () => {
       return {
@@ -58,6 +76,11 @@ export function usePassword(props: PasswordProps) {
     },
     [variant],
   );
+
+  /**
+   * Retrieves the color style for the input.
+   */
+
   const GetColor = useMemo(
     () => {
       const colors = PasswordsVariants.colors[color];
@@ -65,6 +88,10 @@ export function usePassword(props: PasswordProps) {
     },
     [color],
   );
+
+  /**
+   * Calculates the disabled style.
+   */
   const GetDisabledStyle = useMemo(
     () => {
       if (isDisabled === true) {
@@ -78,6 +105,10 @@ export function usePassword(props: PasswordProps) {
     },
     [isDisabled],
   );
+
+  /**
+   * Calculates the readonly class if applicable.
+   */
 
   const GetReadonlyClass = useMemo(
     () => {
@@ -93,6 +124,10 @@ export function usePassword(props: PasswordProps) {
     [isDisabled],
   );
 
+  /**
+   * Combines the variant and color styles for the input.
+   */
+
   const GetVariantAndColor = useMemo(
     () => {
       const variants = PasswordsVariants.variants[variant](GetColor);
@@ -102,6 +137,11 @@ export function usePassword(props: PasswordProps) {
     },
     [variant, GetColor],
   );
+
+  /**
+   * Generates the base wrapper style for the input.
+   */
+
   const GetWrapperBaseStyle = useMemo(
     () => {
       const size = GetSize.size;
@@ -118,6 +158,10 @@ export function usePassword(props: PasswordProps) {
       GetSize,
     ],
   );
+
+  /**
+   * Generates the wrapper input style for the input.
+   */
 
   const GetWrapperInputStyle = useMemo(
     () => {
@@ -139,6 +183,9 @@ export function usePassword(props: PasswordProps) {
     ],
   );
 
+  /**
+   * Generates the input-specific styles.
+   */
   const GetInputStyle = useMemo(
     () => {
       const disable = GetDisabledStyle;
@@ -156,6 +203,10 @@ export function usePassword(props: PasswordProps) {
     [GetDisabledStyle, GetVariantAndColor, GetReadonlyClass, GetError],
   );
 
+  /**
+   * Generates the icon styles for the password input.
+   */
+
   const GetIconProps = useMemo(
     () => {
       const style = PasswordsVariants.buttonStyle;
@@ -170,6 +221,9 @@ export function usePassword(props: PasswordProps) {
     [GetDisabledStyle, isDisabled],
   );
 
+  /**
+   * Generates the label styles for the input.
+   */
   const GetLabelProps = useMemo(
     () => {
       const classLabel = PasswordsVariants.labelStyles;
@@ -182,6 +236,11 @@ export function usePassword(props: PasswordProps) {
     },
     [label],
   );
+
+  /**
+   * Generates the description styles for the input.
+   */
+
   const GetDescriptionProps = useMemo(
     () => {
       const classDesc = PasswordsVariants.descriptionStyles;
@@ -193,6 +252,11 @@ export function usePassword(props: PasswordProps) {
     },
     [description],
   );
+
+  /**
+   * Generates the error message styles for the input.
+   */
+
   const GetErrorMessageProps = useMemo(
     () => {
       const classDesc = GetError
@@ -205,6 +269,9 @@ export function usePassword(props: PasswordProps) {
     [GetError],
   );
 
+  /**
+   * Validates rendering conditions, ensuring no conflicting props are provided.
+   */
   const CheckRender = useMemo(
     () => {
       if (isFullWidth && size) {
@@ -216,6 +283,9 @@ export function usePassword(props: PasswordProps) {
     [isFullWidth, size],
   );
 
+  /**
+   * Handles slot-based class names and customizations.
+   */
   const GetSlot = useMemo(
     () => {
       const yuzuBase = classNames?.yuzuBase

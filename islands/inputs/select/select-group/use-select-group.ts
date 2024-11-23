@@ -2,6 +2,11 @@ import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js"
 import type { SelectGroupProps } from "./type.ts";
 import { SelectGroupVariants } from "./select-group-variants.ts";
 
+/**
+ * Custom hook for managing a select group with consistent styles and behaviors.
+ * @param {SelectGroupProps} props - The properties for the select group.
+ * @returns {object} Processed properties, styles, and class names for the select group.
+ */
 export function useSelectGroup(props: SelectGroupProps) {
   const {
     domRef,
@@ -19,6 +24,11 @@ export function useSelectGroup(props: SelectGroupProps) {
     label,
     ...otherProps
   } = props;
+
+  /**
+   * Computes the color class based on the variant and color properties.
+   */
+
   const GetColorClass = useMemo(
     () => {
       if (variant === "underline") {
@@ -33,6 +43,10 @@ export function useSelectGroup(props: SelectGroupProps) {
     },
     [color, variant],
   );
+
+  /**
+   * Retrieves the radius class for styling the component.
+   */
   const GetRadius = useMemo(
     () => {
       return {
@@ -41,6 +55,10 @@ export function useSelectGroup(props: SelectGroupProps) {
     },
     [radius],
   );
+
+  /**
+   * Retrieves the variant style class.
+   */
   const GetVariant = useMemo(
     () => {
       return {
@@ -50,6 +68,9 @@ export function useSelectGroup(props: SelectGroupProps) {
     [variant],
   );
 
+  /**
+   * Computes the disabled styles if the select group is disabled.
+   */
   const GetDisabled = useMemo(
     () => {
       if (isDisabled === true) {
@@ -63,6 +84,10 @@ export function useSelectGroup(props: SelectGroupProps) {
     },
     [isDisabled],
   );
+
+  /**
+   * Provides base styles for the select element.
+   */
   const GetSelectProps = useMemo(
     () => {
       const base = "border-0 focus:outline-0 active:outline-0";
@@ -72,6 +97,10 @@ export function useSelectGroup(props: SelectGroupProps) {
     },
     [],
   );
+
+  /**
+   * Computes the base wrapper styles for the select group.
+   */
   const GetBaseWrapperProps = useMemo(
     () => {
       const disabled = GetDisabled.disabledStyles;
@@ -86,6 +115,10 @@ export function useSelectGroup(props: SelectGroupProps) {
     },
     [GetDisabled, GetRadius, GetColorClass],
   );
+
+  /**
+   * Computes the error styles if there's an error in the select group.
+   */
   const GetError = useMemo(
     () => {
       if (isError === true) {
@@ -101,6 +134,10 @@ export function useSelectGroup(props: SelectGroupProps) {
     },
     [isError],
   );
+
+  /**
+   * Computes the label styles, including required indicators.
+   */
   const GetLabel = useMemo(
     () => {
       const yuzuLabel = classNames?.yuzuLabel;
@@ -121,6 +158,10 @@ export function useSelectGroup(props: SelectGroupProps) {
     },
     [label, isRequired, classNames],
   );
+
+  /**
+   * Retrieves the description styles for the select group.
+   */
   const GetDescription = useMemo(
     () => {
       return {
@@ -131,6 +172,9 @@ export function useSelectGroup(props: SelectGroupProps) {
     [description],
   );
 
+  /**
+   * Manages slot-based class names for customization.
+   */
   const GetSlot = useMemo(
     () => {
       const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";

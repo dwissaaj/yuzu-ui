@@ -1,6 +1,13 @@
 import type { ButtonProps } from "./type.ts";
 import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
 import { ButtonVariants } from "./button-variant.ts";
+
+/**
+ * Custom hook to handle button properties and dynamic styles.
+ * @param {ButtonProps} props - Button configuration props.
+ * @returns {object} Resolved properties and classNames for the button component.
+ */
+
 export function useButton(props: ButtonProps) {
   const {
     domRef,
@@ -20,6 +27,9 @@ export function useButton(props: ButtonProps) {
     ...otherProps
   } = props;
 
+  /**
+   * Resolve the color from ButtonVariants based on the given `color` prop.
+   */
   const GetColor = useMemo(
     () => {
       const colors = ButtonVariants.colors[color];
@@ -27,7 +37,9 @@ export function useButton(props: ButtonProps) {
     },
     [color],
   );
-
+  /**
+   * Resolve the variant styles based on the given `variant` prop.
+   */
   const GetVariant = useMemo(
     () => {
       const variants = ButtonVariants.variants[variant](GetColor);
@@ -37,9 +49,13 @@ export function useButton(props: ButtonProps) {
     },
     [variant],
   );
+
+  /**
+   * Generate the final variant styles as a string.
+   */
   const GetVariantButton = useMemo(() => {
     const variantStyle = GetVariant.variants;
-    return `${variantStyle}`.trim();
+    return `${variantStyle}`;
   }, [variant, GetVariant]);
 
   /**
@@ -52,6 +68,9 @@ export function useButton(props: ButtonProps) {
     [isDisabled],
   );
 
+  /**
+   * Get the spinner size style from `ButtonVariants` based on the `spinnerSize` prop.
+   */
   const GetSpinnerSize = useMemo(
     () => {
       const sizespin = ButtonVariants.spinnersSizes[spinnerSize];
@@ -61,7 +80,23 @@ export function useButton(props: ButtonProps) {
     },
     [spinnerSize],
   );
-
+  /**
+   * Get the spinner styles if the button is loading.
+   */
+  const GetSpinnerProps = useMemo(
+    () => {
+      if (isLoading === true) {
+        const sizes = GetSpinnerSize.sizespin;
+        return {
+          className: `${sizes} animate-spin`,
+        };
+      }
+    },
+    [isLoading, GetSpinnerSize],
+  );
+  /**
+   * Get the size style from `ButtonVariants` based on the `size` and `isFullWidth` props.
+   */
   const GetSize = useMemo(
     () => {
       if (isFullWidth === true) {
@@ -91,18 +126,10 @@ export function useButton(props: ButtonProps) {
     },
     [radius, GetSize, GetDisabled, color, GetColor, variant],
   );
+  /**
+   * Get any additional slot-based styles from the `classNames` prop.
+   */
 
-  const GetSpinnerProps = useMemo(
-    () => {
-      if (isLoading === true) {
-        const sizes = GetSpinnerSize.sizespin;
-        return {
-          className: `${sizes} animate-spin`,
-        };
-      }
-    },
-    [isLoading, GetSpinnerSize],
-  );
   const GetSlot = useMemo(
     () => {
       const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase || "" : "";

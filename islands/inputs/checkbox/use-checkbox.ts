@@ -1,7 +1,11 @@
 import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
 import type { CheckboxProps } from "./type.ts";
 import { CheckboxVariants } from "./checkbox-variants.ts";
-
+/**
+ * Custom hook for managing checkbox properties and styles.
+ * @param {CheckboxProps} props - Configuration properties for the checkbox.
+ * @returns {object} Processed props, styles, and class names for the checkbox.
+ */
 export function useCheckbox(props: CheckboxProps) {
   const {
     domRef,
@@ -32,6 +36,9 @@ export function useCheckbox(props: CheckboxProps) {
     [isDisabled],
   );
 
+  /**
+   * Label Processing hooks
+   */
   const GetColorLabel = useMemo(
     () => {
       return {
@@ -65,6 +72,14 @@ export function useCheckbox(props: CheckboxProps) {
     GetColorLabel,
   ]);
 
+  /**
+   * Box Radius processing hooks
+   */
+  const GetCheckboxProps = useMemo(() => {
+    return {
+      isDisabled,
+    };
+  }, [isDisabled]);
   const GetBoxRadius = useMemo(() => {
     return {
       boxRadius: CheckboxVariants.boxRadius[boxRadius],
@@ -88,9 +103,6 @@ export function useCheckbox(props: CheckboxProps) {
     [isDisabled],
   );
 
-  /**
-   * Style for box
-   */
   const GetBoxStyle = useMemo(() => {
     const getBoxColor = GetBoxVariant.boxVariant;
     const getBoxsize = GetBoxSize.boxSize;
@@ -104,8 +116,7 @@ export function useCheckbox(props: CheckboxProps) {
   }, [boxVariant, boxRadius, boxSize, GetBoxDisabled]);
 
   /*
-   * For state input as props dont add to styling or class name
-   * dont use or export disabled class for state
+   * For Wrapper base hooks
    */
   const GetWrapperStyle = useMemo(
     () => {
@@ -117,11 +128,11 @@ export function useCheckbox(props: CheckboxProps) {
     },
     [GetDisabledWrapper],
   );
-  const GetCheckboxProps = useMemo(() => {
-    return {
-      isDisabled,
-    };
-  }, [isDisabled]);
+
+  /**
+   * Slot hooks for checkbox
+   * @returns {string}
+   */
   const GetSlot = useMemo(
     () => {
       const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";
@@ -147,6 +158,10 @@ export function useCheckbox(props: CheckboxProps) {
     },
     [classNames, GetDisabledWrapper, GetBoxDisabled, GetDisabledLabel],
   );
+
+  /**
+   * Hooks for checking for children or label rendered
+   */
   const CheckRender = useMemo(
     () => {
       if (label && children) {
@@ -164,6 +179,7 @@ export function useCheckbox(props: CheckboxProps) {
     },
     [children, label],
   );
+
   return {
     domRef,
     children,

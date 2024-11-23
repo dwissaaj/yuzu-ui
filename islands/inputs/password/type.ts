@@ -29,7 +29,20 @@ export type PasswordProps =
     className?: string;
 
     /**
-     * Custom class names for various internal parts of the component.
+     * Custom styles for specific component slots. Possible slot keys are:
+     *
+     * - `yuzuBase`: The base classes applied to the password field container.
+     * - `yuzuBaseDisabled`: The classes applied when the password field is disabled.
+     * - `yuzuInput`: The classes applied to the password input itself.
+     * - `yuzuInputError`: The classes applied to the password input when there is an error.
+     * - `yuzuIcon`: The classes applied to the password visibility toggle icon.
+     * - `yuzuDescription`: The classes applied to the password description.
+     * - `yuzuLabelRequired`: The classes applied to the label when the password field is required.
+     * - `yuzuLabel`: The classes applied to the label of the password field.
+     * - `yuzuErrorMessage`: The classes applied to the error message displayed for the password field.
+     *
+     * @type {PasswordSlot}
+     * @default {}
      */
     classNames?: PasswordSlot;
 

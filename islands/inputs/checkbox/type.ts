@@ -44,7 +44,6 @@ export type CheckboxProps =
      */
     className?: string;
 
-    classNames?: CheckboxSlot;
     /**
      * Position between label and box
      *
@@ -92,4 +91,19 @@ export type CheckboxProps =
      * @default none
      */
     labelColor?: keyof typeof CheckboxVariants.labelColors;
+
+    /**
+     * Custom styles for specific parts of the checkbox component. Possible slot keys are:
+     *
+     * - `yuzuBase`: The base classes applied to the checkbox container.
+     * - `yuzuBaseDisabled`: The classes applied to the checkbox container when it is disabled.
+     * - `yuzuLabel`: The classes applied to the checkbox label.
+     * - `yuzuLabelDisabled`: The classes applied to the checkbox label when it is disabled.
+     * - `yuzuInput`: The classes applied to the checkbox input element.
+     * - `yuzuInputDisabled`: The classes applied to the checkbox input element when it is disabled.
+     *
+     * @type {CheckboxSlot}
+     * @default {}
+     */
+    classNames?: CheckboxSlot;
   };

@@ -30,9 +30,17 @@ export type SelectGroupProps = JSX.IntrinsicElements["select"] & {
   className?: string;
 
   /**
-   * Custom class names for specific parts of the `SelectGroup` component, such as base, label, error, and more.
+   * Custom styles for specific component slots. Possible slot keys are:
+   *
+   * - `yuzuBase`: The base classes applied to the select group container.
+   * - `yuzuBaseDisabled`: The classes applied when the select group is disabled.
+   * - `yuzuBaseError`: The classes applied when the select group is in an error state.
+   * - `yuzuLabel`: The classes applied to the label of the select group.
+   * - `yuzuDescription`: The classes applied to the description of the select group.
+   * - `yuzuSelect`: The classes applied to the select element within the group.
    *
    * @type {SelectGroupSlot}
+   * @default {}
    */
   classNames?: SelectGroupSlot;
 

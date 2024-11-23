@@ -18,6 +18,9 @@ export function useFieldset(props: FieldsetProps) {
     ...otherProps
   } = props;
 
+  /**
+   * Compute label variant styles
+   */
   const GetLabelVariant = useMemo(
     () => {
       return {
@@ -28,6 +31,9 @@ export function useFieldset(props: FieldsetProps) {
     [labelVariant],
   );
 
+  /**
+   * Compute Fieldset variant
+   */
   const GetFieldsetVariant = useMemo(
     () => {
       return {
@@ -55,11 +61,19 @@ export function useFieldset(props: FieldsetProps) {
     [fieldsetColor],
   );
 
+  /**
+   * is component disabled style from variant
+   * @returns {string}
+   */
   const GetDisabledStyle = useMemo(
     () => (isDisabled ? FieldsetVariants.disableStyle : ""),
     [isDisabled],
   );
 
+  /**
+   * Classnames for fieldset
+   * @returns {className=""}
+   */
   const GetFieldsetClass = useMemo(
     () => {
       const color = GetFieldsetColor.fieldsetColor;
@@ -78,6 +92,9 @@ export function useFieldset(props: FieldsetProps) {
     ],
   );
 
+  /**
+   * Props for checking disabled
+   */
   const GetFieldsetProps = useMemo(
     () => {
       return {
@@ -86,6 +103,10 @@ export function useFieldset(props: FieldsetProps) {
     },
     [isDisabled],
   );
+
+  /**
+   * Hooks for yuzu system
+   */
   const GetSlot = useMemo(
     () => {
       const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";

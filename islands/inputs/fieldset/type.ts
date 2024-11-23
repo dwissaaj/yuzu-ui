@@ -65,7 +65,15 @@ export type FieldsetProps = JSX.IntrinsicElements["fieldset"] & {
   className?: string;
 
   /**
-   * Custom Yuzu system for override
+   * Custom styles for specific parts of the fieldset component. Possible slot keys are:
+   *
+   * - `yuzuBase`: The base classes applied to the fieldset container.
+   * - `yuzuLabel`: The classes applied to the label inside the fieldset.
+   * - `yuzuBaseDisabled`: The classes applied to the fieldset when it is disabled.
+   * - `yuzuLabelDisabled`: The classes applied to the label when the fieldset is disabled.
+   *
+   * @type {FieldsetSlot}
+   * @default {}
    */
   classNames?: FieldsetSlot;
 };

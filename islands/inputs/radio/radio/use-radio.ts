@@ -2,6 +2,11 @@ import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js"
 import type { RadioProps } from "./types.ts";
 import { RadioVariants } from "./radio-variants.ts";
 
+/**
+ * Custom hook for managing radio button styles and properties.
+ * @param {RadioProps} props - Configuration properties for the radio button.
+ * @returns {object} Processed properties, styles, and class names for the radio button.
+ */
 export function useRadio(props: RadioProps) {
   const {
     domRef,
@@ -17,6 +22,10 @@ export function useRadio(props: RadioProps) {
     ...otherProps
   } = props;
 
+  /**
+   * Retrieves the color style for the radio button.
+   */
+
   const GetColor = useMemo(
     () => {
       return {
@@ -26,6 +35,9 @@ export function useRadio(props: RadioProps) {
     [color],
   );
 
+  /**
+   * Retrieves the size style for the radio button itself.
+   */
   const GetRadioSize = useMemo(
     () => {
       return {
@@ -34,6 +46,10 @@ export function useRadio(props: RadioProps) {
     },
     [radioSize],
   );
+
+  /**
+   * Retrieves the size style for the radio button's text.
+   */
   const GetTextSize = useMemo(
     () => {
       return {
@@ -42,10 +58,17 @@ export function useRadio(props: RadioProps) {
     },
     [textSize],
   );
+
+  /**
+   * Retrieves the disabled style if the radio button is disabled.
+   */
   const GetDisabledStyle = useMemo(() => ({
     disabledStyle: isDisabled ? RadioVariants.disabledStyles : "",
   }), [isDisabled, disabledStyle]);
 
+  /**
+   * Retrieves the styles and properties for the label.
+   */
   const GetLabelProps = useMemo(
     () => {
       const size = GetTextSize.textSize;
@@ -56,6 +79,11 @@ export function useRadio(props: RadioProps) {
     },
     [GetTextSize, GetDisabledStyle],
   );
+
+  /**
+   * Retrieves the styles and properties for the radio button element.
+   */
+
   const GetRadioProps = useMemo(
     () => {
       const color = GetColor.color;
@@ -70,6 +98,10 @@ export function useRadio(props: RadioProps) {
     },
     [GetColor, GetTextSize, GetRadioSize, GetDisabledStyle],
   );
+
+  /**
+   * Retrieves the styles and properties for the parent container of the radio button.
+   */
   const GetParentProps = useMemo(
     () => {
       const disable = GetDisabledStyle.disabledStyle;
@@ -80,6 +112,9 @@ export function useRadio(props: RadioProps) {
     [GetDisabledStyle],
   );
 
+  /**
+   * Handles slot-based class names and customizations.
+   */
   const GetSlot = useMemo(
     () => {
       const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";
@@ -95,6 +130,11 @@ export function useRadio(props: RadioProps) {
     },
     [classNames],
   );
+
+  /**
+   * Validates rendering conditions, ensuring no conflicting props are provided.
+   * Ensures either `label` or `children` is provided, but not both.
+   */
   const CheckRender = useMemo(
     () => {
       if (label && children) {
