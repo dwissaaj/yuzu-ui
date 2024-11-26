@@ -1,6 +1,7 @@
+
 import {
   forwardRef,
-} from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
+} from "npm:preact/compat";
 import type { ButtonProps } from "./type.ts";
 import { useButton } from "./use-button.ts";
 import LoadingSpinner from "../../icon/LoadingSpinner.tsx";
