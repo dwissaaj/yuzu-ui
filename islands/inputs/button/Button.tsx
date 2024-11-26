@@ -1,7 +1,7 @@
 
 import {
   forwardRef,
-} from "npm:preact/compat";
+} from "preact/compat";
 import type { ButtonProps } from "./type.ts";
 import { useButton } from "./use-button.ts";
 import LoadingSpinner from "../../icon/LoadingSpinner.tsx";

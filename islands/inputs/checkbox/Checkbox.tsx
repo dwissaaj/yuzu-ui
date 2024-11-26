@@ -1,7 +1,7 @@
 import {
   forwardRef,
-  useMemo,
-} from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
+  useMemo
+} from "preact/compat";
 import type { CheckboxProps } from "./type.ts";
 import { useCheckbox } from "./use-checkbox.ts";
 
@@ -85,13 +85,13 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
       {...otherProps}
       className={`${className} ${GetBoxStyle.className} ${GetSlot.yuzuInput} ${GetSlot.yuzuInputDisabled}`}
       ref={domRef}
-      disabled={GetCheckboxProps.isDisabled}
+    
       type={"checkbox"}
     />
   );
   const LabelWrapper = (
     <label
-      disabled={GetCheckboxProps.isDisabled}
+    
       className={`${GetLabelStyle.className} ${GetSlot.yuzuLabel} ${GetSlot.yuzuLabelDisabled}`
         .trim()}
     >
@@ -103,7 +103,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
     if (GetLabelStyle.labelPosition === "right") {
       return (
         <div
-          disabled={GetCheckboxProps.isDisabled}
+        
           className={`flex flex-row gap-2 items-center ${GetWrapperStyle.className} ${GetSlot.yuzuBase} ${GetSlot.yuzuBaseDisabled} 
    `.trim()}
         >
@@ -117,7 +117,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
     if (GetLabelStyle.labelPosition === "left") {
       return (
         <div
-          disabled={GetCheckboxProps.isDisabled}
+          
           className={`flex flex-row gap-2 items-center ${GetWrapperStyle.className} ${GetSlot.yuzuBase} ${GetSlot.yuzuBaseDisabled} x
    `.trim()}
         >
@@ -131,7 +131,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
     if (GetLabelStyle.labelPosition === "top") {
       return (
         <div
-          disabled={GetCheckboxProps.isDisabled}
+        
           className={`flex flex-col gap-2 items-center ${GetWrapperStyle.className} ${GetSlot.yuzuBase} ${GetSlot.yuzuBaseDisabled} 
    `.trim()}
         >
@@ -145,7 +145,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
     if (GetLabelStyle.labelPosition === "bottom") {
       return (
         <div
-          disabled={GetCheckboxProps.isDisabled}
+        
           className={`flex flex-col gap-2 items-center ${GetWrapperStyle.className} ${GetSlot.yuzuBase} ${GetSlot.yuzuBaseDisabled} 
    `.trim()}
         >
