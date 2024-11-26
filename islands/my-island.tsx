@@ -5,7 +5,7 @@ export default function MyIslan() {
   return (
     <div>
       <Button value={"hold"} type={"button"} id={"ase"} form={"sdsd"}>Submit</Button>
-      <CheckBox name={"sss"}  label="ass"/>
+      <CheckBox name={"ss"} form={"sad"} value={"sss"} id={"name"} label="aser" />
     </div>
   );
 }

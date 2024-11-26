@@ -1,12 +1,13 @@
 import { useMemo } from "preact/compat"
 import type { CheckboxProps } from "./type.ts";
 import { CheckboxVariants } from "./checkbox-variants.ts";
+import { UseCheckboxReturn } from "./checkbox-return.ts";
 /**
  * Custom hook for managing checkbox properties and styles.
  * @param {CheckboxProps} props - Configuration properties for the checkbox.
  * @returns {object} Processed props, styles, and class names for the checkbox.
  */
-export function useCheckbox(props: CheckboxProps) {
+export function useCheckbox(props: CheckboxProps): UseCheckboxReturn {
   const {
     domRef,
     children,

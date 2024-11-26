@@ -70,7 +70,6 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
     GetLabelStyle,
     GetBoxStyle,
     className,
-    GetCheckboxProps,
     GetWrapperStyle,
     label,
     CheckRender,

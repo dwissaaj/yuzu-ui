@@ -18,6 +18,7 @@ import * as $inputs_button_index from "./islands/inputs/button/index.ts";
 import * as $inputs_button_type from "./islands/inputs/button/type.ts";
 import * as $inputs_button_use_button from "./islands/inputs/button/use-button.ts";
 import * as $inputs_checkbox_Checkbox from "./islands/inputs/checkbox/Checkbox.tsx";
+import * as $inputs_checkbox_checkbox_return from "./islands/inputs/checkbox/checkbox-return.ts";
 import * as $inputs_checkbox_checkbox_variants from "./islands/inputs/checkbox/checkbox-variants.ts";
 import * as $inputs_checkbox_index from "./islands/inputs/checkbox/index.ts";
 import * as $inputs_checkbox_type from "./islands/inputs/checkbox/type.ts";
@@ -85,6 +86,8 @@ const manifest = {
     "./islands/inputs/button/type.ts": $inputs_button_type,
     "./islands/inputs/button/use-button.ts": $inputs_button_use_button,
     "./islands/inputs/checkbox/Checkbox.tsx": $inputs_checkbox_Checkbox,
+    "./islands/inputs/checkbox/checkbox-return.ts":
+      $inputs_checkbox_checkbox_return,
     "./islands/inputs/checkbox/checkbox-variants.ts":
       $inputs_checkbox_checkbox_variants,
     "./islands/inputs/checkbox/index.ts": $inputs_checkbox_index,
