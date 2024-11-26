@@ -4,7 +4,7 @@ import CheckBox from "../islands/inputs/checkbox/Checkbox.tsx";
 export default function MyIslan() {
   return (
     <div>
-      <Button id={"asd"} form={"ass"}>check</Button>
+      <Button value={"hold"} type={"button"} id={"ase"} form={"sdsd"}>Submit</Button>
       <CheckBox name={"sss"}  label="ass"/>
     </div>
   );

@@ -12,6 +12,7 @@ import * as $icon_OpenPassword from "./islands/icon/OpenPassword.tsx";
 import * as $icon_PasswordIcon from "./islands/icon/PasswordIcon.tsx";
 import * as $icon_index from "./islands/icon/index.ts";
 import * as $inputs_button_Button from "./islands/inputs/button/Button.tsx";
+import * as $inputs_button_button_return from "./islands/inputs/button/button-return.ts";
 import * as $inputs_button_button_variant from "./islands/inputs/button/button-variant.ts";
 import * as $inputs_button_index from "./islands/inputs/button/index.ts";
 import * as $inputs_button_type from "./islands/inputs/button/type.ts";
@@ -78,6 +79,7 @@ const manifest = {
     "./islands/icon/PasswordIcon.tsx": $icon_PasswordIcon,
     "./islands/icon/index.ts": $icon_index,
     "./islands/inputs/button/Button.tsx": $inputs_button_Button,
+    "./islands/inputs/button/button-return.ts": $inputs_button_button_return,
     "./islands/inputs/button/button-variant.ts": $inputs_button_button_variant,
     "./islands/inputs/button/index.ts": $inputs_button_index,
     "./islands/inputs/button/type.ts": $inputs_button_type,
