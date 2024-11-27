@@ -1,4 +1,6 @@
-import { forwardRef } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
+import {
+  forwardRef,
+} from "preact/compat";
 import type { SelectGroupProps } from "./type.ts";
 import { useSelectGroup } from "./use-select-group.ts";
 /**
@@ -68,7 +70,7 @@ const SelectGroup = forwardRef<HTMLSelectElement, SelectGroupProps>((props) => {
     >
       <div className={"w-full flex flex-col gap-1"}>
         <legend
-          required={GetLabel?.isRequired}
+        
           className={`px-2 ${GetSlot?.yuzuLabel} ${GetLabel.requiredStyle}`}
         >
           {GetLabel?.label}

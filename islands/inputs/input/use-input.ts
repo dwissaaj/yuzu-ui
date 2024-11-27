@@ -215,28 +215,28 @@ export function useInput(props: InputProps): UseInputReturn {
     () => {
       const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";
       const yuzuBaseDisabled = GetDisabled.isDisabled
-        ? classNames?.yuzuBaseDisabled
+        ? classNames?.yuzuBaseDisabled || ""
         : "";
       const yuzuBaseReadonly = GetReadonly.isReadonly
-        ? classNames?.yuzuBaseReadonly
+        ? classNames?.yuzuBaseReadonly || ""
         : "";
       const yuzuBaseError = GetErrorInput.isError
-        ? classNames?.yuzuBaseError
+        ? classNames?.yuzuBaseError || ""
         : "";
       const yuzuInput = classNames?.yuzuInput ? classNames?.yuzuInput : "";
-      const yuzuInputDisabled = GetDisabled.isDisabled
-        ? classNames?.yuzuInputDisabled
+      const yuzuInputDisabled = GetDisabled.isDisabled 
+        ? classNames?.yuzuInputDisabled || ""
         : "";
       const yuzuInputReadonly = GetReadonly.isReadonly
-        ? classNames?.yuzuInputReadonly
+        ? classNames?.yuzuInputReadonly || ""
         : "";
       const yuzuInputError = GetErrorInput.isError
-        ? classNames?.yuzuInputError
+        ? classNames?.yuzuInputError || ""
         : "";
       const yuzuLabelRequired = GetRequiredLabel.isRequired
-        ? classNames?.yuzuLabelRequired
+        ? classNames?.yuzuLabelRequired || ""
         : "";
-      const yuzuLabel = classNames?.yuzuLabel ? classNames?.yuzuLabel : "";
+      const yuzuLabel = classNames?.yuzuLabel ? classNames?.yuzuLabel || "" : "";
       return {
         yuzuBase,
         yuzuBaseDisabled,

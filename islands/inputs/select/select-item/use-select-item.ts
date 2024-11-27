@@ -1,12 +1,13 @@
-import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
+import { useMemo } from "preact/compat"
 import type { SelectItemProps } from "./type.ts";
 import { SelectItemVariants } from "./select-item-variants.ts";
+import { UseSelectItemReturn } from "./select-item-return.ts";
 /**
  * Custom hook for managing individual select items with consistent styles and behaviors.
  * @param {SelectItemProps} props - The properties for the select item.
  * @returns {object} Processed properties, styles, and class names for the select item.
  */
-export function useSelectItem(props: SelectItemProps) {
+export function useSelectItem(props: SelectItemProps): UseSelectItemReturn {
   const {
     domRef,
     children,

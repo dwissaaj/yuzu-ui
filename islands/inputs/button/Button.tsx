@@ -5,6 +5,7 @@ import {
 import type { ButtonProps } from "./type.ts";
 import { useButton } from "./use-button.ts";
 import LoadingSpinner from "../../icon/LoadingSpinner.tsx";
+import type { JSX } from "preact/jsx-runtime";
 /**
  * Button component with custom configuration variant
  * @component
@@ -54,7 +55,7 @@ import LoadingSpinner from "../../icon/LoadingSpinner.tsx";
  * @param {JSX.Element} [startContent] - Add icon to start of title
  */
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>((props) => {
+const Button = forwardRef<HTMLButtonElement, ButtonProps>((props): JSX.Element => {
   const {
     domRef,
     children,

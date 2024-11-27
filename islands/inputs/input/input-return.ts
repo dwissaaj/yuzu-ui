@@ -13,16 +13,16 @@ export type UseInputReturn = {
   isReadonly: boolean;
   isRequired: boolean;
   GetSlot: {
-    yuzuBase: string | undefined;
-    yuzuBaseDisabled: string | undefined;
-    yuzuBaseError: string | undefined;
-    yuzuBaseReadonly: string | undefined;
-    yuzuInput: string | undefined;
-    yuzuInputDisabled: string | undefined;
-    yuzuInputError: string | undefined;
-    yuzuInputReadonly: string | undefined;
-    yuzuLabel: string | undefined;
-    yuzuLabelRequired: string | undefined;
+    yuzuBase: string;
+    yuzuBaseDisabled: string;
+    yuzuBaseError: string;
+    yuzuBaseReadonly: string;
+    yuzuInput: string;
+    yuzuInputDisabled: string;
+    yuzuInputError: string;
+    yuzuInputReadonly: string;
+    yuzuLabel: string;
+    yuzuLabelRequired: string;
   };
   GetLabelProps: {
     className: string;

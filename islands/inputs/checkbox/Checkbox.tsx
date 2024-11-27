@@ -4,7 +4,7 @@ import {
 } from "preact/compat";
 import type { CheckboxProps } from "./type.ts";
 import { useCheckbox } from "./use-checkbox.ts";
-
+import type { JSX } from "preact/jsx-runtime";
 /**
  * Checkbox component that can be used for form inputs.
  *
@@ -63,7 +63,7 @@ import { useCheckbox } from "./use-checkbox.ts";
  * @returns {JSX.Element} - Return JSX Element accept any props from input
  */
 
-const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
+const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props): JSX.Element => {
   const {
     domRef,
     children,

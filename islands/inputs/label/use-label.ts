@@ -1,12 +1,13 @@
-import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
+import { useMemo } from "preact/compat"
 import type { LabelProps } from "./type.ts";
 import { LabelVariants } from "./label-variant.ts";
+import { UseLabelReturn } from "./label-return.ts";
 /**
  * Custom hook for managing label properties and styles.
  * @param {LabelProps} props - Configuration properties for the label.
  * @returns {object} Processed properties, styles, and class names for the label.
  */
-export function useLabel(props: LabelProps) {
+export function useLabel(props: LabelProps): UseLabelReturn {
   const {
     domRef,
     label,
@@ -104,13 +105,13 @@ export function useLabel(props: LabelProps) {
     () => {
       const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";
       const yuzuLabelDisabled = getDisabled.isDisabled
-        ? classNames?.yuzuLabelDisabled
+        ? classNames?.yuzuLabelDisabled || ""
         : "";
       const yuzuLabelReadonly = getReadonly.isReadonly
-        ? classNames?.yuzuLabelReadonly
+        ? classNames?.yuzuLabelReadonly || ""
         : "";
       const yuzuLabelRequired = getRequired.isRequired
-        ? classNames?.yuzuLabelRequired
+        ? classNames?.yuzuLabelRequired || ""
         : "";
       return {
         yuzuBase,

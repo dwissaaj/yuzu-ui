@@ -37,29 +37,35 @@ import * as $inputs_input_type from "./islands/inputs/input/type.ts";
 import * as $inputs_input_use_input from "./islands/inputs/input/use-input.ts";
 import * as $inputs_label_Labels from "./islands/inputs/label/Labels.tsx";
 import * as $inputs_label_index from "./islands/inputs/label/index.ts";
+import * as $inputs_label_label_return from "./islands/inputs/label/label-return.ts";
 import * as $inputs_label_label_variant from "./islands/inputs/label/label-variant.ts";
 import * as $inputs_label_type from "./islands/inputs/label/type.ts";
 import * as $inputs_label_use_label from "./islands/inputs/label/use-label.ts";
 import * as $inputs_password_Password from "./islands/inputs/password/Password.tsx";
 import * as $inputs_password_index from "./islands/inputs/password/index.ts";
+import * as $inputs_password_password_return from "./islands/inputs/password/password-return.ts";
 import * as $inputs_password_password_variants from "./islands/inputs/password/password-variants.ts";
 import * as $inputs_password_type from "./islands/inputs/password/type.ts";
 import * as $inputs_password_use_password from "./islands/inputs/password/use-password.ts";
 import * as $inputs_radio_index from "./islands/inputs/radio/index.ts";
 import * as $inputs_radio_radio_group_RadioGroup from "./islands/inputs/radio/radio-group/RadioGroup.tsx";
+import * as $inputs_radio_radio_group_radio_group_return from "./islands/inputs/radio/radio-group/radio-group-return.ts";
 import * as $inputs_radio_radio_group_radio_group_variants from "./islands/inputs/radio/radio-group/radio-group-variants.ts";
 import * as $inputs_radio_radio_group_type from "./islands/inputs/radio/radio-group/type.ts";
 import * as $inputs_radio_radio_group_use_radio_group from "./islands/inputs/radio/radio-group/use-radio-group.ts";
 import * as $inputs_radio_radio_Radio from "./islands/inputs/radio/radio/Radio.tsx";
+import * as $inputs_radio_radio_radio_return from "./islands/inputs/radio/radio/radio-return.ts";
 import * as $inputs_radio_radio_radio_variants from "./islands/inputs/radio/radio/radio-variants.ts";
 import * as $inputs_radio_radio_types from "./islands/inputs/radio/radio/types.ts";
 import * as $inputs_radio_radio_use_radio from "./islands/inputs/radio/radio/use-radio.ts";
 import * as $inputs_select_index from "./islands/inputs/select/index.ts";
 import * as $inputs_select_select_group_SelectGroup from "./islands/inputs/select/select-group/SelectGroup.tsx";
 import * as $inputs_select_select_group_select_group_variants from "./islands/inputs/select/select-group/select-group-variants.ts";
+import * as $inputs_select_select_group_selet_group_return from "./islands/inputs/select/select-group/selet-group-return.ts";
 import * as $inputs_select_select_group_type from "./islands/inputs/select/select-group/type.ts";
 import * as $inputs_select_select_group_use_select_group from "./islands/inputs/select/select-group/use-select-group.ts";
 import * as $inputs_select_select_item_SelectItem from "./islands/inputs/select/select-item/SelectItem.tsx";
+import * as $inputs_select_select_item_select_item_return from "./islands/inputs/select/select-item/select-item-return.ts";
 import * as $inputs_select_select_item_select_item_variants from "./islands/inputs/select/select-item/select-item-variants.ts";
 import * as $inputs_select_select_item_type from "./islands/inputs/select/select-item/type.ts";
 import * as $inputs_select_select_item_use_select_item from "./islands/inputs/select/select-item/use-select-item.ts";
@@ -111,11 +117,14 @@ const manifest = {
     "./islands/inputs/input/use-input.ts": $inputs_input_use_input,
     "./islands/inputs/label/Labels.tsx": $inputs_label_Labels,
     "./islands/inputs/label/index.ts": $inputs_label_index,
+    "./islands/inputs/label/label-return.ts": $inputs_label_label_return,
     "./islands/inputs/label/label-variant.ts": $inputs_label_label_variant,
     "./islands/inputs/label/type.ts": $inputs_label_type,
     "./islands/inputs/label/use-label.ts": $inputs_label_use_label,
     "./islands/inputs/password/Password.tsx": $inputs_password_Password,
     "./islands/inputs/password/index.ts": $inputs_password_index,
+    "./islands/inputs/password/password-return.ts":
+      $inputs_password_password_return,
     "./islands/inputs/password/password-variants.ts":
       $inputs_password_password_variants,
     "./islands/inputs/password/type.ts": $inputs_password_type,
@@ -123,6 +132,8 @@ const manifest = {
     "./islands/inputs/radio/index.ts": $inputs_radio_index,
     "./islands/inputs/radio/radio-group/RadioGroup.tsx":
       $inputs_radio_radio_group_RadioGroup,
+    "./islands/inputs/radio/radio-group/radio-group-return.ts":
+      $inputs_radio_radio_group_radio_group_return,
     "./islands/inputs/radio/radio-group/radio-group-variants.ts":
       $inputs_radio_radio_group_radio_group_variants,
     "./islands/inputs/radio/radio-group/type.ts":
@@ -130,6 +141,8 @@ const manifest = {
     "./islands/inputs/radio/radio-group/use-radio-group.ts":
       $inputs_radio_radio_group_use_radio_group,
     "./islands/inputs/radio/radio/Radio.tsx": $inputs_radio_radio_Radio,
+    "./islands/inputs/radio/radio/radio-return.ts":
+      $inputs_radio_radio_radio_return,
     "./islands/inputs/radio/radio/radio-variants.ts":
       $inputs_radio_radio_radio_variants,
     "./islands/inputs/radio/radio/types.ts": $inputs_radio_radio_types,
@@ -139,12 +152,16 @@ const manifest = {
       $inputs_select_select_group_SelectGroup,
     "./islands/inputs/select/select-group/select-group-variants.ts":
       $inputs_select_select_group_select_group_variants,
+    "./islands/inputs/select/select-group/selet-group-return.ts":
+      $inputs_select_select_group_selet_group_return,
     "./islands/inputs/select/select-group/type.ts":
       $inputs_select_select_group_type,
     "./islands/inputs/select/select-group/use-select-group.ts":
       $inputs_select_select_group_use_select_group,
     "./islands/inputs/select/select-item/SelectItem.tsx":
       $inputs_select_select_item_SelectItem,
+    "./islands/inputs/select/select-item/select-item-return.ts":
+      $inputs_select_select_item_select_item_return,
     "./islands/inputs/select/select-item/select-item-variants.ts":
       $inputs_select_select_item_select_item_variants,
     "./islands/inputs/select/select-item/type.ts":

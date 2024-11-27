@@ -1,4 +1,6 @@
-import { forwardRef } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
+import {
+  forwardRef
+} from "preact/compat";
 import type { LabelProps } from "./type.ts";
 import { useLabel } from "./use-label.ts";
 

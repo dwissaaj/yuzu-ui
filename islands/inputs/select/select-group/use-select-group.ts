@@ -1,16 +1,16 @@
-import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
+import { useMemo } from "preact/compat"
 import type { SelectGroupProps } from "./type.ts";
 import { SelectGroupVariants } from "./select-group-variants.ts";
+import { UseSelectGroupReturn } from "./selet-group-return.ts";
 
 /**
  * Custom hook for managing a select group with consistent styles and behaviors.
  * @param {SelectGroupProps} props - The properties for the select group.
  * @returns {object} Processed properties, styles, and class names for the select group.
  */
-export function useSelectGroup(props: SelectGroupProps) {
+export function useSelectGroup(props: SelectGroupProps): UseSelectGroupReturn {
   const {
     domRef,
-    style,
     children,
     className = "",
     classNames,
@@ -177,18 +177,18 @@ export function useSelectGroup(props: SelectGroupProps) {
    */
   const GetSlot = useMemo(
     () => {
-      const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";
+      const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase || "" : "";
       const yuzuBaseDisabled = classNames?.yuzuBaseDisabled
-        ? classNames?.yuzuBaseDisabled
+        ? classNames?.yuzuBaseDisabled || ""
         : "";
       const yuzuBaseError = classNames?.yuzuBaseError
-        ? classNames?.yuzuBaseError
+        ? classNames?.yuzuBaseError || ""
         : "";
-      const yuzuLabel = classNames?.yuzuLabel ? classNames?.yuzuLabel : "";
+      const yuzuLabel = classNames?.yuzuLabel ? classNames?.yuzuLabel || "" : "";
       const yuzuDescription = classNames?.yuzuDescription
-        ? classNames?.yuzuDescription
+        ? classNames?.yuzuDescription || ""
         : "";
-      const yuzuSelect = classNames?.yuzuSelect ? classNames?.yuzuSelect : "";
+      const yuzuSelect = classNames?.yuzuSelect ? classNames?.yuzuSelect || "" : "";
       return {
         yuzuBase,
         yuzuBaseDisabled,
@@ -202,7 +202,6 @@ export function useSelectGroup(props: SelectGroupProps) {
   );
   return {
     domRef,
-    style,
     children,
     className,
     GetBaseWrapperProps,

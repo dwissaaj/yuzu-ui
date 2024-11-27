@@ -1,7 +1,6 @@
 import type { JSX } from "preact/jsx-runtime";
-import type {
-  Ref,
-} from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
+import type { Ref } from "preact";
+
 export type SelectItemSlot = Partial<
   Record<
     "yuzuOption",
