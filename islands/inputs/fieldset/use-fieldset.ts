@@ -1,11 +1,11 @@
-import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
+import { useMemo } from "preact/compat"
 import type { FieldsetProps } from "./type.ts";
 import { FieldsetVariants } from "./fieldset-variants.ts";
+import { UseFieldsetReturn } from "./fieldset-return.ts";
 
-export function useFieldset(props: FieldsetProps) {
+export function useFieldset(props: FieldsetProps): UseFieldsetReturn {
   const {
     domRef,
-    style,
     children,
     className = "",
     fieldsetDirection = "row",
@@ -129,7 +129,6 @@ export function useFieldset(props: FieldsetProps) {
   );
   return {
     domRef,
-    style,
     className,
     children,
     GetFieldsetClass,

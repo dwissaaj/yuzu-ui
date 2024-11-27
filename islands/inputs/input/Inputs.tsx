@@ -1,7 +1,7 @@
 import {
   forwardRef,
-  useMemo,
-} from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
+  useMemo
+} from "preact/compat";
 import { useInput } from "./use-input.ts";
 import type { InputProps } from "./type.ts";
 /**
@@ -79,7 +79,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
       disabled={isDisabled}
       readOnly={isReadonly}
       required={isRequired}
-      className={`${className} ${GetInputStyle.className} ${GetSlot.yuzuInput} ${GetSlot.yuzuInputDisabled} ${GetSlot.yuzuInputError} ${GetSlot.yuzuInputReadonly}`}
+      className={`${className} ${GetInputStyle.className} ${GetSlot.yuzuInput} ${GetSlot.yuzuInputDisabled} ${GetSlot.yuzuInputError} ${GetSlot.yuzuInputReadonly}`.trim()}
     />
   );
   const mainWrapper = useMemo(() => {

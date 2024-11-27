@@ -7,9 +7,7 @@ export type UseCheckboxReturn = {
       className: string;
       labelPosition: string;
     };
-    GetCheckboxProps: {
-      isDisabled: boolean | undefined;
-    };
+    GetCheckboxProps: boolean | undefined
     GetBoxStyle: {
       className: string;
     };

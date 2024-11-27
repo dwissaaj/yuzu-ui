@@ -1,12 +1,12 @@
-import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
+import { useMemo } from "preact/compat"
 import type { InputProps } from "./type.ts";
 import { InputVariants } from "./input-variants.ts";
+import { UseInputReturn } from "./input-return.ts";
 
-export function useInput(props: InputProps) {
+export function useInput(props: InputProps): UseInputReturn {
   const {
     domRef,
     className = "",
-    style = "",
     size = "medium",
     color = "primary",
     variant = "full",
@@ -256,7 +256,6 @@ export function useInput(props: InputProps) {
   return {
     domRef,
     className,
-    style,
     GetParentsStyle,
     isDisabled,
     GetInputStyle,

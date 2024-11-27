@@ -70,6 +70,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
     GetLabelStyle,
     GetBoxStyle,
     className,
+    GetCheckboxProps,
     GetWrapperStyle,
     label,
     CheckRender,
@@ -84,13 +85,12 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
       {...otherProps}
       className={`${className} ${GetBoxStyle.className} ${GetSlot.yuzuInput} ${GetSlot.yuzuInputDisabled}`}
       ref={domRef}
-    
+      disabled={GetCheckboxProps}
       type={"checkbox"}
     />
   );
   const LabelWrapper = (
     <label
-    
       className={`${GetLabelStyle.className} ${GetSlot.yuzuLabel} ${GetSlot.yuzuLabelDisabled}`
         .trim()}
     >

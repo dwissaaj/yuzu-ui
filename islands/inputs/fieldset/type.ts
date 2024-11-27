@@ -1,6 +1,4 @@
-import type {
-  Ref,
-} from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
+import type { Ref } from "preact"
 import type { JSX } from "preact/jsx-runtime";
 import type { FieldsetVariants } from "./fieldset-variants.ts";
 export type FieldsetSlot = Partial<

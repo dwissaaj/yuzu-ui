@@ -24,12 +24,14 @@ import * as $inputs_checkbox_index from "./islands/inputs/checkbox/index.ts";
 import * as $inputs_checkbox_type from "./islands/inputs/checkbox/type.ts";
 import * as $inputs_checkbox_use_checkbox from "./islands/inputs/checkbox/use-checkbox.ts";
 import * as $inputs_fieldset_Fieldset from "./islands/inputs/fieldset/Fieldset.tsx";
+import * as $inputs_fieldset_fieldset_return from "./islands/inputs/fieldset/fieldset-return.ts";
 import * as $inputs_fieldset_fieldset_variants from "./islands/inputs/fieldset/fieldset-variants.ts";
 import * as $inputs_fieldset_index from "./islands/inputs/fieldset/index.ts";
 import * as $inputs_fieldset_type from "./islands/inputs/fieldset/type.ts";
 import * as $inputs_fieldset_use_fieldset from "./islands/inputs/fieldset/use-fieldset.ts";
 import * as $inputs_input_Inputs from "./islands/inputs/input/Inputs.tsx";
 import * as $inputs_input_index from "./islands/inputs/input/index.ts";
+import * as $inputs_input_input_return from "./islands/inputs/input/input-return.ts";
 import * as $inputs_input_input_variants from "./islands/inputs/input/input-variants.ts";
 import * as $inputs_input_type from "./islands/inputs/input/type.ts";
 import * as $inputs_input_use_input from "./islands/inputs/input/use-input.ts";
@@ -94,6 +96,8 @@ const manifest = {
     "./islands/inputs/checkbox/type.ts": $inputs_checkbox_type,
     "./islands/inputs/checkbox/use-checkbox.ts": $inputs_checkbox_use_checkbox,
     "./islands/inputs/fieldset/Fieldset.tsx": $inputs_fieldset_Fieldset,
+    "./islands/inputs/fieldset/fieldset-return.ts":
+      $inputs_fieldset_fieldset_return,
     "./islands/inputs/fieldset/fieldset-variants.ts":
       $inputs_fieldset_fieldset_variants,
     "./islands/inputs/fieldset/index.ts": $inputs_fieldset_index,
@@ -101,6 +105,7 @@ const manifest = {
     "./islands/inputs/fieldset/use-fieldset.ts": $inputs_fieldset_use_fieldset,
     "./islands/inputs/input/Inputs.tsx": $inputs_input_Inputs,
     "./islands/inputs/input/index.ts": $inputs_input_index,
+    "./islands/inputs/input/input-return.ts": $inputs_input_input_return,
     "./islands/inputs/input/input-variants.ts": $inputs_input_input_variants,
     "./islands/inputs/input/type.ts": $inputs_input_type,
     "./islands/inputs/input/use-input.ts": $inputs_input_use_input,

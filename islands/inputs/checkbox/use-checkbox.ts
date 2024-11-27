@@ -77,9 +77,7 @@ export function useCheckbox(props: CheckboxProps): UseCheckboxReturn {
    * Box Radius processing hooks
    */
   const GetCheckboxProps = useMemo(() => {
-    return {
-      isDisabled,
-    };
+    return isDisabled
   }, [isDisabled]);
   const GetBoxRadius = useMemo(() => {
     return {

@@ -1,4 +1,5 @@
-export default function PasswordIcon() {
+import type { JSX } from "preact/jsx-runtime";
+export default function PasswordIcon(): JSX.Element {
   return (
     <svg
       width="100%"
