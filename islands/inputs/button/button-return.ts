@@ -1,7 +1,6 @@
 import type { Ref } from "preact"
 import type { JSX } from "preact/jsx-runtime";
 export type UseButtonReturn = {
-    domRef?: Ref<HTMLButtonElement>;
     children?: JSX.Element | string;
     GetSpinnerProps?: { className: string } | undefined;
     className: string;

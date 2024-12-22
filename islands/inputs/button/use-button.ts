@@ -11,7 +11,6 @@ import { UseButtonReturn } from "./button-return.ts";
 
 export function useButton(props: ButtonProps): UseButtonReturn  {
   const {
-    domRef,
     children,
     className = "",
     classNames,
@@ -147,7 +146,6 @@ export function useButton(props: ButtonProps): UseButtonReturn  {
     [classNames],
   );
   return {
-    domRef,
     children,
     GetSpinnerProps,
     className,

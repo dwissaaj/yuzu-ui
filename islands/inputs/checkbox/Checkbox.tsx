@@ -63,7 +63,7 @@ import type { JSX } from "preact/jsx-runtime";
  * @returns {JSX.Element} - Return JSX Element accept any props from input
  */
 
-const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props): JSX.Element => {
+const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref): JSX.Element => {
   const {
     domRef,
     children,

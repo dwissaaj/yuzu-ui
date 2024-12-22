@@ -1,11 +1,13 @@
 
 import {
-  forwardRef,
+  forwardRef, PropsWithoutRef, Ref
 } from "preact/compat";
+import { FunctionalComponent } from "preact";
 import type { ButtonProps } from "./type.ts";
 import { useButton } from "./use-button.ts";
 import LoadingSpinner from "../../icon/LoadingSpinner.tsx";
 import type { JSX } from "preact/jsx-runtime";
+import { UseButtonReturn } from "./index.ts";
 /**
  * Button component with custom configuration variant
  * @component
@@ -55,9 +57,10 @@ import type { JSX } from "preact/jsx-runtime";
  * @param {JSX.Element} [startContent] - Add icon to start of title
  */
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>((props): JSX.Element => {
+
+
+const Button: FunctionalComponent<PropsWithoutRef<ButtonProps> & { ref?: Ref<HTMLButtonElement> | undefined; }> = forwardRef<HTMLButtonElement, ButtonProps>((props,ref)=> {
   const {
-    domRef,
     children,
     className,
     isDisabled,
@@ -80,10 +83,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props): JSX.Element =
     <>
       <button
         {...otherProps}
-        className={`flex flex-row items-center justify-center gap-2 ${className} ${GetDisabled} ${GetButtonProps.className} ${GetVariantButton} ${GetSlot.yuzuBase} ${GetSlot.yuzuDisabled}`
-          .trim()}
+        className={`flex flex-row items-center justify-center gap-2 ${className} ${GetDisabled} ${GetButtonProps.className} ${GetVariantButton} ${GetSlot.yuzuBase} ${GetSlot.yuzuDisabled}`}
         disabled={isDisabled}
-        ref={domRef}
+        ref={ref}
       >
         {startContent ? startContent : null}
         {children}
