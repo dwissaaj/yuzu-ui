@@ -1,6 +1,9 @@
 import {
   forwardRef,
+  PropsWithoutRef,
+  Ref
 } from "preact/compat";
+import { FunctionalComponent } from "preact";
 import type { FieldsetProps } from "./type.ts";
 import { useFieldset } from "./use-fieldset.ts";
 /**
@@ -43,7 +46,7 @@ import { useFieldset } from "./use-fieldset.ts";
  * - `yuzuLabel`: The classes applied to the label
  * - `yuzuLabelDisabled`: The classes applied when the label is disabled.
  */
-const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>((props) => {
+const Fieldset: FunctionalComponent<PropsWithoutRef<FieldsetProps> & { ref?: Ref<HTMLFieldSetElement> }>  = forwardRef<HTMLFieldSetElement, FieldsetProps>((props) => {
   const {
     domRef,
     className,

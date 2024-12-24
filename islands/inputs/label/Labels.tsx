@@ -1,6 +1,9 @@
 import {
-  forwardRef
+  forwardRef,
+  PropsWithoutRef,
+  Ref,
 } from "preact/compat";
+import { FunctionalComponent } from "preact";
 import type { LabelProps } from "./type.ts";
 import { useLabel } from "./use-label.ts";
 
@@ -40,7 +43,7 @@ import { useLabel } from "./use-label.ts";
  * @return {JSX.Element}
  */
 
-const Label = forwardRef<HTMLLabelElement, LabelProps>((props) => {
+const Label: FunctionalComponent<PropsWithoutRef<LabelProps> & { ref?: Ref<HTMLLabelElement> }>  = forwardRef<HTMLLabelElement, LabelProps>((props) => {
   const {
     domRef,
     className,

@@ -1,6 +1,9 @@
 import {
   forwardRef,
+  PropsWithoutRef,
+  Ref,
 } from "preact/compat";
+import { FunctionalComponent } from "preact";
 import { useSelectItem } from "./use-select-item.ts";
 import type { SelectItemProps } from "./type.ts";
 /**
@@ -25,7 +28,7 @@ import type { SelectItemProps } from "./type.ts";
  * @param {SelectItemSlot} [classNames={{yuzuOptions :""}}] - Custom class names for specific parts of the `SelectItem` component, such as the option element.
  * @param {boolean} [isDisabled=false] - If true, the option will be disabled and cannot be selected.
  */
-const SelectItem = forwardRef<HTMLOptionElement, SelectItemProps>(
+const SelectItem: FunctionalComponent<PropsWithoutRef<SelectItemProps> & { ref?: Ref<HTMLOptionElement> }> = forwardRef<HTMLOptionElement, SelectItemProps>(
   (props) => {
     const {
       domRef,

@@ -1,7 +1,10 @@
 import {
   forwardRef,
+  PropsWithoutRef,
+  Ref,
   useMemo
 } from "preact/compat";
+import { FunctionalComponent } from "preact";
 import { useInput } from "./use-input.ts";
 import type { InputProps } from "./type.ts";
 /**
@@ -48,7 +51,7 @@ import type { InputProps } from "./type.ts";
  * - `yuzuLabel`: The classes applied to the label of the input field.
  * - `yuzuLabelRequired`: The classes applied to the label when the input field is required.
  */
-const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
+const Input: FunctionalComponent<PropsWithoutRef<InputProps> & { ref?: Ref<HTMLInputElement> }>  = forwardRef<HTMLInputElement, InputProps>((props) => {
   const {
     domRef,
     className,

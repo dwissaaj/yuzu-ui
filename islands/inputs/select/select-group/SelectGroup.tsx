@@ -1,6 +1,9 @@
 import {
   forwardRef,
+  PropsWithoutRef,
+  Ref,
 } from "preact/compat";
+import { FunctionalComponent } from "preact";
 import type { SelectGroupProps } from "./type.ts";
 import { useSelectGroup } from "./use-select-group.ts";
 /**
@@ -49,7 +52,7 @@ import { useSelectGroup } from "./use-select-group.ts";
  * @returns {JSX.Element} The `SelectGroup` component with the appropriate styles and layout applied.
  */
 
-const SelectGroup = forwardRef<HTMLSelectElement, SelectGroupProps>((props) => {
+const SelectGroup: FunctionalComponent<PropsWithoutRef<SelectGroupProps> & { ref?: Ref<HTMLSelectElement> }> = forwardRef<HTMLSelectElement, SelectGroupProps>((props) => {
   const {
     domRef,
     children,

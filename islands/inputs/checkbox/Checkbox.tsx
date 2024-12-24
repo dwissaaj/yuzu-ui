@@ -1,10 +1,14 @@
 import {
   forwardRef,
-  useMemo
+  useMemo,
+  PropsWithoutRef,
+  Ref
 } from "preact/compat";
+import { FunctionalComponent } from "preact";
 import type { CheckboxProps } from "./type.ts";
 import { useCheckbox } from "./use-checkbox.ts";
 import type { JSX } from "preact/jsx-runtime";
+
 /**
  * Checkbox component that can be used for form inputs.
  *
@@ -63,7 +67,8 @@ import type { JSX } from "preact/jsx-runtime";
  * @returns {JSX.Element} - Return JSX Element accept any props from input
  */
 
-const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref): JSX.Element => {
+//  FunctionalComponent<PropsWithoutRef<ButtonProps> & { ref?: Ref<HTMLButtonElement> }>
+const Checkbox: FunctionalComponent<PropsWithoutRef<CheckboxProps> & { ref?: Ref<HTMLInputElement> }>  = forwardRef<HTMLInputElement, CheckboxProps>((props): JSX.Element => {
   const {
     domRef,
     children,

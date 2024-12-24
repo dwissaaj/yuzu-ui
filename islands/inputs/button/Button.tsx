@@ -6,8 +6,6 @@ import { FunctionalComponent } from "preact";
 import type { ButtonProps } from "./type.ts";
 import { useButton } from "./use-button.ts";
 import LoadingSpinner from "../../icon/LoadingSpinner.tsx";
-import type { JSX } from "preact/jsx-runtime";
-import { UseButtonReturn } from "./index.ts";
 /**
  * Button component with custom configuration variant
  * @component
@@ -59,7 +57,7 @@ import { UseButtonReturn } from "./index.ts";
 
 
 
-const Button: FunctionalComponent<PropsWithoutRef<ButtonProps> & { ref?: Ref<HTMLButtonElement> | undefined; }> = forwardRef<HTMLButtonElement, ButtonProps>((props,ref)=> {
+const Button: FunctionalComponent<PropsWithoutRef<ButtonProps> & { ref?: Ref<HTMLButtonElement> }> = forwardRef<HTMLButtonElement, ButtonProps>((props,ref)=> {
   const {
     children,
     className,
