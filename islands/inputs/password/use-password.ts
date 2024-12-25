@@ -1,13 +1,14 @@
-import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
+import { useMemo } from "preact/compat"
 import { PasswordsVariants } from "./password-variants.ts";
 import type { PasswordProps } from "./type.ts";
+import { UsePasswordReturn } from "./password-return.ts";
 
 /**
  * Custom hook for managing password input styles and properties.
  * @param {PasswordProps} props - Configuration properties for the password input.
  * @returns {object} Processed properties, styles, and class names for the password input.
  */
-export function usePassword(props: PasswordProps) {
+export function usePassword(props: PasswordProps): UsePasswordReturn {
   const {
     domRef,
     className = "",
@@ -289,18 +290,18 @@ export function usePassword(props: PasswordProps) {
   const GetSlot = useMemo(
     () => {
       const yuzuBase = classNames?.yuzuBase
-        ? classNames?.yuzuBase
+        ? classNames?.yuzuBase || ""
         : GetWrapperBaseStyle.className;
-      const yuzuBaseDisabled = GetDisabled ? classNames?.yuzuBaseDisabled : "";
-      const yuzuInput = classNames?.yuzuInput ? classNames?.yuzuInput : "";
-      const yuzuInputError = GetError ? classNames?.yuzuInputError : "";
-      const yuzuIcon = classNames?.yuzuIcon ? classNames?.yuzuIcon : "";
-      const yuzuLabel = classNames?.yuzuLabel ? classNames?.yuzuLabel : "";
-      const yuzuLabelRequired = isRequired ? classNames?.yuzuLabelRequired : "";
+      const yuzuBaseDisabled = GetDisabled ? classNames?.yuzuBaseDisabled || "" : "";
+      const yuzuInput = classNames?.yuzuInput ? classNames?.yuzuInput || "" : "";
+      const yuzuInputError = GetError ? classNames?.yuzuInputError  || "": "";
+      const yuzuIcon = classNames?.yuzuIcon ? classNames?.yuzuIcon || "" : "";
+      const yuzuLabel = classNames?.yuzuLabel ? classNames?.yuzuLabel  || "" : "";
+      const yuzuLabelRequired = isRequired ? classNames?.yuzuLabelRequired || "" : "";
       const yuzuDescription = classNames?.yuzuDescription
-        ? classNames?.yuzuDescription
+        ? classNames?.yuzuDescription || ""
         : "";
-      const yuzuErrorMessage = GetError ? classNames?.yuzuErrorMessage : "";
+      const yuzuErrorMessage = GetError ? classNames?.yuzuErrorMessage || "" : "";
       return {
         yuzuBase,
         yuzuBaseDisabled,

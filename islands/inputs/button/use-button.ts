@@ -1,6 +1,7 @@
 import type { ButtonProps } from "./type.ts";
-import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
+import { useMemo } from "preact/compat"
 import { ButtonVariants } from "./button-variant.ts";
+import { UseButtonReturn } from "./button-return.ts";
 
 /**
  * Custom hook to handle button properties and dynamic styles.
@@ -8,9 +9,8 @@ import { ButtonVariants } from "./button-variant.ts";
  * @returns {object} Resolved properties and classNames for the button component.
  */
 
-export function useButton(props: ButtonProps) {
+export function useButton(props: ButtonProps): UseButtonReturn  {
   const {
-    domRef,
     children,
     className = "",
     classNames,
@@ -146,7 +146,6 @@ export function useButton(props: ButtonProps) {
     [classNames],
   );
   return {
-    domRef,
     children,
     GetSpinnerProps,
     className,

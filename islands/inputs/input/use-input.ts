@@ -1,12 +1,12 @@
-import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
+import { useMemo } from "preact/compat"
 import type { InputProps } from "./type.ts";
 import { InputVariants } from "./input-variants.ts";
+import { UseInputReturn } from "./input-return.ts";
 
-export function useInput(props: InputProps) {
+export function useInput(props: InputProps): UseInputReturn {
   const {
     domRef,
     className = "",
-    style = "",
     size = "medium",
     color = "primary",
     variant = "full",
@@ -215,28 +215,28 @@ export function useInput(props: InputProps) {
     () => {
       const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";
       const yuzuBaseDisabled = GetDisabled.isDisabled
-        ? classNames?.yuzuBaseDisabled
+        ? classNames?.yuzuBaseDisabled || ""
         : "";
       const yuzuBaseReadonly = GetReadonly.isReadonly
-        ? classNames?.yuzuBaseReadonly
+        ? classNames?.yuzuBaseReadonly || ""
         : "";
       const yuzuBaseError = GetErrorInput.isError
-        ? classNames?.yuzuBaseError
+        ? classNames?.yuzuBaseError || ""
         : "";
       const yuzuInput = classNames?.yuzuInput ? classNames?.yuzuInput : "";
-      const yuzuInputDisabled = GetDisabled.isDisabled
-        ? classNames?.yuzuInputDisabled
+      const yuzuInputDisabled = GetDisabled.isDisabled 
+        ? classNames?.yuzuInputDisabled || ""
         : "";
       const yuzuInputReadonly = GetReadonly.isReadonly
-        ? classNames?.yuzuInputReadonly
+        ? classNames?.yuzuInputReadonly || ""
         : "";
       const yuzuInputError = GetErrorInput.isError
-        ? classNames?.yuzuInputError
+        ? classNames?.yuzuInputError || ""
         : "";
       const yuzuLabelRequired = GetRequiredLabel.isRequired
-        ? classNames?.yuzuLabelRequired
+        ? classNames?.yuzuLabelRequired || ""
         : "";
-      const yuzuLabel = classNames?.yuzuLabel ? classNames?.yuzuLabel : "";
+      const yuzuLabel = classNames?.yuzuLabel ? classNames?.yuzuLabel || "" : "";
       return {
         yuzuBase,
         yuzuBaseDisabled,
@@ -256,7 +256,6 @@ export function useInput(props: InputProps) {
   return {
     domRef,
     className,
-    style,
     GetParentsStyle,
     isDisabled,
     GetInputStyle,

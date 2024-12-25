@@ -1,9 +1,13 @@
 import {
   forwardRef,
   useMemo,
-} from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
+  PropsWithoutRef,
+  Ref
+} from "preact/compat";
+import { FunctionalComponent } from "preact";
 import type { CheckboxProps } from "./type.ts";
 import { useCheckbox } from "./use-checkbox.ts";
+import type { JSX } from "preact/jsx-runtime";
 
 /**
  * Checkbox component that can be used for form inputs.
@@ -63,7 +67,8 @@ import { useCheckbox } from "./use-checkbox.ts";
  * @returns {JSX.Element} - Return JSX Element accept any props from input
  */
 
-const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
+//  FunctionalComponent<PropsWithoutRef<ButtonProps> & { ref?: Ref<HTMLButtonElement> }>
+const Checkbox: FunctionalComponent<PropsWithoutRef<CheckboxProps> & { ref?: Ref<HTMLInputElement> }>  = forwardRef<HTMLInputElement, CheckboxProps>((props): JSX.Element => {
   const {
     domRef,
     children,
@@ -85,13 +90,12 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
       {...otherProps}
       className={`${className} ${GetBoxStyle.className} ${GetSlot.yuzuInput} ${GetSlot.yuzuInputDisabled}`}
       ref={domRef}
-      disabled={GetCheckboxProps.isDisabled}
+      disabled={GetCheckboxProps}
       type={"checkbox"}
     />
   );
   const LabelWrapper = (
     <label
-      disabled={GetCheckboxProps.isDisabled}
       className={`${GetLabelStyle.className} ${GetSlot.yuzuLabel} ${GetSlot.yuzuLabelDisabled}`
         .trim()}
     >
@@ -103,7 +107,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
     if (GetLabelStyle.labelPosition === "right") {
       return (
         <div
-          disabled={GetCheckboxProps.isDisabled}
+        
           className={`flex flex-row gap-2 items-center ${GetWrapperStyle.className} ${GetSlot.yuzuBase} ${GetSlot.yuzuBaseDisabled} 
    `.trim()}
         >
@@ -117,7 +121,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
     if (GetLabelStyle.labelPosition === "left") {
       return (
         <div
-          disabled={GetCheckboxProps.isDisabled}
+          
           className={`flex flex-row gap-2 items-center ${GetWrapperStyle.className} ${GetSlot.yuzuBase} ${GetSlot.yuzuBaseDisabled} x
    `.trim()}
         >
@@ -131,7 +135,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
     if (GetLabelStyle.labelPosition === "top") {
       return (
         <div
-          disabled={GetCheckboxProps.isDisabled}
+        
           className={`flex flex-col gap-2 items-center ${GetWrapperStyle.className} ${GetSlot.yuzuBase} ${GetSlot.yuzuBaseDisabled} 
    `.trim()}
         >
@@ -145,7 +149,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props) => {
     if (GetLabelStyle.labelPosition === "bottom") {
       return (
         <div
-          disabled={GetCheckboxProps.isDisabled}
+        
           className={`flex flex-col gap-2 items-center ${GetWrapperStyle.className} ${GetSlot.yuzuBase} ${GetSlot.yuzuBaseDisabled} 
    `.trim()}
         >

@@ -15,8 +15,8 @@ export const PasswordsVariants = {
   },
   disabledStyle: "opacity-50 cursor-not-allowed",
   variants: {
-    underline: (color: string) => `border-${color} border-b-2 `,
-    full: (color: string) => `bg-${color}`,
+    underline: (color: string): string => `border-${color} border-b-2 `,
+    full: (color: string): string => `bg-${color}`,
   },
   readonlyStyles: "opacity-50 read-only:opacity-50",
   inputDisableStyle: "opacity-50 cursor-not-allowed",

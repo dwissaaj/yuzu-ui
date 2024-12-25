@@ -1,4 +1,4 @@
-import type { Ref } from "https://esm.sh/v128/preact@10.22.0/hooks/src/index.js";
+import type { Ref } from "preact"
 import type { JSX } from "preact/jsx-runtime";
 import type { ButtonVariants } from "./button-variant.ts";
 export type ButtonSlot = Partial<

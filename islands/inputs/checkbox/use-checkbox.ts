@@ -1,12 +1,13 @@
-import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
+import { useMemo } from "preact/compat"
 import type { CheckboxProps } from "./type.ts";
 import { CheckboxVariants } from "./checkbox-variants.ts";
+import { UseCheckboxReturn } from "./checkbox-return.ts";
 /**
  * Custom hook for managing checkbox properties and styles.
  * @param {CheckboxProps} props - Configuration properties for the checkbox.
  * @returns {object} Processed props, styles, and class names for the checkbox.
  */
-export function useCheckbox(props: CheckboxProps) {
+export function useCheckbox(props: CheckboxProps): UseCheckboxReturn {
   const {
     domRef,
     children,
@@ -76,9 +77,7 @@ export function useCheckbox(props: CheckboxProps) {
    * Box Radius processing hooks
    */
   const GetCheckboxProps = useMemo(() => {
-    return {
-      isDisabled,
-    };
+    return isDisabled
   }, [isDisabled]);
   const GetBoxRadius = useMemo(() => {
     return {

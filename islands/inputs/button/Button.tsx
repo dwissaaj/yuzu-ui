@@ -1,6 +1,8 @@
+
 import {
-  forwardRef,
-} from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
+  forwardRef, PropsWithoutRef, Ref
+} from "preact/compat";
+import { FunctionalComponent } from "preact";
 import type { ButtonProps } from "./type.ts";
 import { useButton } from "./use-button.ts";
 import LoadingSpinner from "../../icon/LoadingSpinner.tsx";
@@ -53,9 +55,10 @@ import LoadingSpinner from "../../icon/LoadingSpinner.tsx";
  * @param {JSX.Element} [startContent] - Add icon to start of title
  */
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>((props) => {
+
+
+const Button: FunctionalComponent<PropsWithoutRef<ButtonProps> & { ref?: Ref<HTMLButtonElement> }> = forwardRef<HTMLButtonElement, ButtonProps>((props,ref)=> {
   const {
-    domRef,
     children,
     className,
     isDisabled,
@@ -78,10 +81,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props) => {
     <>
       <button
         {...otherProps}
-        className={`flex flex-row items-center justify-center gap-2 ${className} ${GetDisabled} ${GetButtonProps.className} ${GetVariantButton} ${GetSlot.yuzuBase} ${GetSlot.yuzuDisabled}`
-          .trim()}
+        className={`flex flex-row items-center justify-center gap-2 ${className} ${GetDisabled} ${GetButtonProps.className} ${GetVariantButton} ${GetSlot.yuzuBase} ${GetSlot.yuzuDisabled}`}
         disabled={isDisabled}
-        ref={domRef}
+        ref={ref}
       >
         {startContent ? startContent : null}
         {children}

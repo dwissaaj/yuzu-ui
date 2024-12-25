@@ -1,7 +1,10 @@
 import {
   forwardRef,
-  useMemo,
-} from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
+  PropsWithoutRef,
+  Ref,
+  useMemo
+} from "preact/compat";
+import { FunctionalComponent } from "preact";
 import { useInput } from "./use-input.ts";
 import type { InputProps } from "./type.ts";
 /**
@@ -48,7 +51,7 @@ import type { InputProps } from "./type.ts";
  * - `yuzuLabel`: The classes applied to the label of the input field.
  * - `yuzuLabelRequired`: The classes applied to the label when the input field is required.
  */
-const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
+const Input: FunctionalComponent<PropsWithoutRef<InputProps> & { ref?: Ref<HTMLInputElement> }>  = forwardRef<HTMLInputElement, InputProps>((props) => {
   const {
     domRef,
     className,
@@ -79,7 +82,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props) => {
       disabled={isDisabled}
       readOnly={isReadonly}
       required={isRequired}
-      className={`${className} ${GetInputStyle.className} ${GetSlot.yuzuInput} ${GetSlot.yuzuInputDisabled} ${GetSlot.yuzuInputError} ${GetSlot.yuzuInputReadonly}`}
+      className={`${className} ${GetInputStyle.className} ${GetSlot.yuzuInput} ${GetSlot.yuzuInputDisabled} ${GetSlot.yuzuInputError} ${GetSlot.yuzuInputReadonly}`.trim()}
     />
   );
   const mainWrapper = useMemo(() => {

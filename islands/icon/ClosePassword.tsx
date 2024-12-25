@@ -1,7 +1,8 @@
+import type { JSX } from "preact/jsx-runtime";
 type svgIcon = {
   svgStyle?: string;
 };
-export default function ClosePassword({ svgStyle }: svgIcon) {
+export default function ClosePassword({ svgStyle }: svgIcon): JSX.Element {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

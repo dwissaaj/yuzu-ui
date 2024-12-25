@@ -1,7 +1,10 @@
 import {
   forwardRef,
-  useState,
-} from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
+  PropsWithoutRef,
+  Ref,
+  useState
+} from "preact/compat";
+import { FunctionalComponent } from "preact";
 import type { PasswordProps } from "./type.ts";
 import { usePassword } from "./use-password.ts";
 import ClosePassword from "../../icon/ClosePassword.tsx";
@@ -60,7 +63,7 @@ import OpenPassword from "../../icon/OpenPassword.tsx";
  * @returns {JSX.Element} The Input component.
  */
 
-const Password = forwardRef<HTMLInputElement, PasswordProps>((props) => {
+const Password: FunctionalComponent<PropsWithoutRef<PasswordProps> & { ref?: Ref<HTMLInputElement> }> = forwardRef<HTMLInputElement, PasswordProps>((props) => {
   const {
     domRef,
     className,

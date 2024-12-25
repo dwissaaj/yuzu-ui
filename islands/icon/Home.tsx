@@ -1,4 +1,5 @@
-export default function Home() {
+import type { JSX } from "preact/jsx-runtime";
+export default function Home(): JSX.Element {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

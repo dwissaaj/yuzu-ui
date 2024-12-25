@@ -1,13 +1,14 @@
-import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
+import { useMemo } from "preact/compat"
 import type { RadioProps } from "./types.ts";
 import { RadioVariants } from "./radio-variants.ts";
+import { UseRadioReturn } from "./radio-return.ts";
 
 /**
  * Custom hook for managing radio button styles and properties.
  * @param {RadioProps} props - Configuration properties for the radio button.
  * @returns {object} Processed properties, styles, and class names for the radio button.
  */
-export function useRadio(props: RadioProps) {
+export function useRadio(props: RadioProps): UseRadioReturn {
   const {
     domRef,
     className = "",
@@ -117,10 +118,10 @@ export function useRadio(props: RadioProps) {
    */
   const GetSlot = useMemo(
     () => {
-      const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase : "";
-      const yuzuLabel = classNames?.yuzuLabel ? classNames?.yuzuLabel : "";
-      const yuzuInput = classNames?.yuzuInput ? classNames?.yuzuInput : "";
-      const yuzuInputDisabled = isDisabled ? classNames?.yuzuInputDisabled : "";
+      const yuzuBase = classNames?.yuzuBase ? classNames?.yuzuBase  || "" : "";
+      const yuzuLabel = classNames?.yuzuLabel ? classNames?.yuzuLabel || "": "";
+      const yuzuInput = classNames?.yuzuInput ? classNames?.yuzuInput || "" : "";
+      const yuzuInputDisabled = isDisabled ? classNames?.yuzuInputDisabled || "" : "";
       return {
         yuzuBase,
         yuzuLabel,

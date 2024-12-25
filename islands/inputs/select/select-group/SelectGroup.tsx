@@ -1,4 +1,9 @@
-import { forwardRef } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
+import {
+  forwardRef,
+  PropsWithoutRef,
+  Ref,
+} from "preact/compat";
+import { FunctionalComponent } from "preact";
 import type { SelectGroupProps } from "./type.ts";
 import { useSelectGroup } from "./use-select-group.ts";
 /**
@@ -47,7 +52,7 @@ import { useSelectGroup } from "./use-select-group.ts";
  * @returns {JSX.Element} The `SelectGroup` component with the appropriate styles and layout applied.
  */
 
-const SelectGroup = forwardRef<HTMLSelectElement, SelectGroupProps>((props) => {
+const SelectGroup: FunctionalComponent<PropsWithoutRef<SelectGroupProps> & { ref?: Ref<HTMLSelectElement> }> = forwardRef<HTMLSelectElement, SelectGroupProps>((props) => {
   const {
     domRef,
     children,
@@ -68,7 +73,7 @@ const SelectGroup = forwardRef<HTMLSelectElement, SelectGroupProps>((props) => {
     >
       <div className={"w-full flex flex-col gap-1"}>
         <legend
-          required={GetLabel?.isRequired}
+        
           className={`px-2 ${GetSlot?.yuzuLabel} ${GetLabel.requiredStyle}`}
         >
           {GetLabel?.label}

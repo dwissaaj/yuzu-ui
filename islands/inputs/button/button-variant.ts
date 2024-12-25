@@ -27,13 +27,13 @@ export const ButtonVariants = {
     large: "w-6 h-6  border-6 border-t-transparent rounded-full",
   },
   variants: {
-    solid: (color: string) =>
+    solid: (color: string) : string =>
       `hover:bg-${color}/60 bg-${color} active:bg-${color} disabled:bg-${color}/60 disabled:hover:bg-${color}/60 focus:outline-none active:scale-95 focus:outline-none transition ease-in-out duration-500`,
-    border: (color: string) =>
+    border: (color: string) : string =>
       `border-2 border-${color} active:bg-${color}/50 hover:border-${color} focus:outline-none transition ease-in-out duration-500 active:scale-95`,
-    light: (color: string) =>
+    light: (color: string) : string =>
       `hover:bg-${color}/60 text-${color} active:text-${color} active:scale-95 transition ease-in-out duration-500`,
-    ghost: (color: string) =>
+    ghost: (color: string) : string =>
       `border-2 hover:bg-${color}/50 text-${color} active:text-white active:scale-95 transition ease-in-out duration-500 hover:text-white disabled:text-white disabled:bg-${color}/50`,
   },
   colors: {

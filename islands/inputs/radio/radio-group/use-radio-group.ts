@@ -1,12 +1,13 @@
-import { useMemo } from "https://esm.sh/v128/preact@10.22.0/compat/src/index.js";
+import { useMemo } from "preact/compat"
 import type { RadioGroupProps } from "./type.ts";
 import { RadioGroupVariants } from "./radio-group-variants.ts";
+import { UseRadioGroupReturn } from "./radio-group-return.ts";
 /**
  * Custom hook for managing a group of radio buttons with shared styles and configurations.
  * @param {RadioGroupProps} props - Configuration properties for the radio group.
  * @returns {object} Processed properties, styles, and class names for the radio group.
  */
-export function useRadioGroup(props: RadioGroupProps) {
+export function useRadioGroup(props: RadioGroupProps): UseRadioGroupReturn {
   const {
     domRef,
     children,

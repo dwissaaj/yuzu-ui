@@ -22,7 +22,7 @@ export const InputVariants = {
   variants: {
     underline:
       "border-b-2 transition ease-in-out delay-150 duration-300 !rounded-none",
-    full: "border-2 transition ease-in-out delay-150 duration-300",
+    full: "transition ease-in-out delay-150 duration-300",
   },
   errorStyle:
     "outline-error focus:outline-error invalid:text-error text-error !border-error",

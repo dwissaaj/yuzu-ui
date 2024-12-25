@@ -1,4 +1,9 @@
-import { forwardRef } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
+import {
+  forwardRef,
+  PropsWithoutRef,
+  Ref,
+} from "preact/compat";
+import { FunctionalComponent } from "preact";
 import type { RadioProps } from "./types.ts";
 import { useRadio } from "./use-radio.ts";
 
@@ -29,7 +34,7 @@ import { useRadio } from "./use-radio.ts";
  * - `yuzuInputDisabled`: The classes applied to the radio input element when it is disabled.
  * @param {boolean} [isDisabled=false] - If true, applies disabled styles and prevents interaction.
  */
-const Radio = forwardRef<HTMLInputElement, RadioProps>((props) => {
+const Radio: FunctionalComponent<PropsWithoutRef<RadioProps> & { ref?: Ref<HTMLInputElement> }>  = forwardRef<HTMLInputElement, RadioProps>((props) => {
   const {
     domRef,
     className,

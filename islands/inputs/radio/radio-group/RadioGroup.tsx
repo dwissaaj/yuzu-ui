@@ -1,4 +1,9 @@
-import { forwardRef } from "https://esm.sh/v135/preact@10.22.0/compat/src/index.js";
+import {
+  forwardRef,
+  PropsWithoutRef,
+  Ref,
+} from "preact/compat";
+import { FunctionalComponent } from "preact";
 import type { RadioGroupProps } from "./type.ts";
 import { useRadioGroup } from "./use-radio-group.ts";
 /**
@@ -31,7 +36,7 @@ import { useRadioGroup } from "./use-radio-group.ts";
  * @returns {JSX.Element} The `RadioGroup` component with the appropriate styles and layout applied.
  */
 
-const RadioGroup = forwardRef<HTMLFieldSetElement, RadioGroupProps>((props) => {
+const RadioGroup: FunctionalComponent<PropsWithoutRef<RadioGroupProps> & { ref?: Ref<HTMLFieldSetElement> }>  = forwardRef<HTMLFieldSetElement, RadioGroupProps>((props) => {
   const {
     domRef,
     className,
